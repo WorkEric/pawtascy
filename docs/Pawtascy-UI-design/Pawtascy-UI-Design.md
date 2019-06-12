@@ -128,7 +128,7 @@ On the right, the top is the input session. When the user clicks it, a complete 
 
 Below the session, there are a list of posts. Users can bark(comment), paw(like) and share.
 
-![Sharing Moments - Feeds Wall](Feeds-wall.png)
+![Sharing Moments - Feeds Wall](Feeds-wall)
 
 ## <a name="markdown-events-search"></a> Events + Search 
 
