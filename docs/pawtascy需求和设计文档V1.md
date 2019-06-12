@@ -1,4 +1,4 @@
-# pawtascy需求和设计文档V1
+# Pawtascy需求和设计文档V1
 
 
 Business requirement
@@ -9,13 +9,13 @@ Business requirement
 - event system
 - feedback system (comments and rating)
 - chatroom
+- sharing system (sharing event to FB, Twitter)
 
 
 database design
 ---
 
 **Table: user**
-
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
@@ -34,19 +34,18 @@ database design
 
 **Table: user_profile**
 
-
 |  Field | Type | Note |
 | -------- | -------- | -------- |
 | id | int(11) | PK, AUTO_INCREMENT |
 | user_id | int(11) | One to One to user.id |
-| gender | varchar(255) | option: man/woman |
-| age | int(11) | 0 - 200 range |
+| gender | varchar(255) | option: Male/Female |
+| age | int(11) | option: 0-18/18-24/24-35/35-55/above 35 |
 | job | varchar(255) |  |
 | phone | varchar(255) |  |
 | location_id | int(11) | Foreign key to the location table|
 | address | varchar(255) | |
 | avatar | varchar(1024) | image, store in s3 bucket |
-| description | longtext | |
+| self_introduction | longtext | |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
@@ -111,7 +110,7 @@ database design
 | -------- | -------- | -------- |
 | id | int(11) | PK, AUTO_INCREMENT |
 | user_id | int(11) | Foreign key to user.id |
-| fb_user_id | int(11) | unique |
+| `fb_user_id` | int(11) | unique |
 | exp_at | datetime(6) | Unix timestamp of the assertion's expiration time |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
@@ -120,8 +119,9 @@ database design
 
 **Table: location**
 
-- city and country are unique
+- unique together: city and country
 - search for city all the time
+- [cron job to fetch location](https://developers.google.com/places/web-service/details)
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
@@ -136,16 +136,24 @@ database design
 
 **Table: pet_profile**
 
+- Q: favirote and character 
+- Q: funny story
+
 |  Field | Type | Note |
 | -------- | -------- | -------- |
 | id | int(11) | PK, AUTO_INCREMENT |
 | nick_name | varchar(255) | |
+| avatar | varchar(1024) | image, store in s3 bucket |
+| breed | varchar(255) | 品种 |
+| birthday | datetime(6) |  |
 | age | int(11) |  |
 | gender | varchar(20) | option:male/female |
 | size | varchar(20) | option:small, medium,large |
-| weight | float |  |
-| character | varchar(255) | wording |
+| weight | varchar(255) | option: 1-25lbs/25-50lbs/... |
+| character | varchar(255) | wording, currently just list |
 | is_neutered | tinyint(1) |  |
+| dislike | varchar(1024) | desciption waht pet dislike |
+| health | varchar(1024) | description of pet health condition |
 | description | longtext | more description for this pet |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
@@ -156,7 +164,9 @@ database design
 |  Field | Type | Note |
 | -------- | -------- | -------- |
 | id | int(11) | PK, AUTO_INCREMENT |
-| pet_profile_id | int(11) | Foreign Key to pet_profile.id |
+| `pet_profile_id` | int(11) | Foreign Key to pet_profile.id |
+| title | varchar(255) | image name |
+| description | longtext | image description |
 | image_link | varchar(1024) | put on s3 bucket |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
@@ -167,7 +177,9 @@ database design
 |  Field | Type | Note |
 | -------- | -------- | -------- |
 | id | int(11) | PK, AUTO_INCREMENT |
-| pet_profile_id | int(11) | Foreign Key to pet_profile.id |
+| `pet_profile_id` | int(11) | Foreign Key to pet_profile.id |
+| title | varchar(255) | video name |
+| description | longtext | video description |
 | video_link | varchar(1024) | put on s3 bucket |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
@@ -178,34 +190,34 @@ database design
 |  Field | Type | Note |
 | -------- | -------- | -------- |
 | id | int(11) | PK, AUTO_INCREMENT |
-| name | varchar(255) |  |
+| name | varchar(255) | e.g.dogs/cat/birds/others |
 | order_number | varchar(255) |  |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
 
-**Table: pet_profile_category**
+**Table: `pet_profile_category`**
 
-- many to many transaction table for `pet_profile` and `pet_category`
+- relation: many to many transaction table for `pet_profile` and `pet_category`
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
 | id | int(11) | PK, AUTO_INCREMENT |
-| pet_profile_id | int(11) | Foreign Key to pet_profile.id |
-| pet_category_id | int(11) | Foreign Key to pet_category.id |
+| `pet_profile_id` | int(11) | Foreign Key to pet_profile.id |
+| `pet_category_id` | int(11) | Foreign Key to pet_category.id |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
 
 **Table: user_pet**
 
-- many to many transaction talbe for `user` and `pet_profile`
+- relation: many to many transaction talbe for `user` and `pet_profile`
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
 | id | int(11) | PK, AUTO_INCREMENT |
 | user_id | int(11) | Foreign Key to user.id |
-| pet_profile_id | int(11) | Foreign Key to pet_profile.id |
+| `pet_profile_id` | int(11) | Foreign Key to pet_profile.id |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
@@ -218,13 +230,15 @@ database design
 | title | varchar(255) |  |
 | location_id | int(11) | Foreign key to the location table|
 | address | varchar(255) | |
-| event_start_at | datetime(6) | event begin time(local time) |
-| event_end_at | datetime(6) | event end time(local time) |
+| `event_start_at` | datetime(6) | event begin time(local time) |
+| `event_end_at` | datetime(6) | event end time(local time) |
+| cover | varchar(255) | image, store in s3 bucket |
 | cost | varchar(255) | option:cost range |
-| restrict_guest_number | int(11) | limited of guest number |
-| restrict_pets_number | int(11) | limited of pet number |
+| `restrict_guest_number` | int(11) | limited of guest number |
+| `restrict_pets_number` | int(11) | limited of pet number |
 | is_neutered | tinyint(1) |  |
-| description | longtext | at least 50 words |
+| detail | longtext | at least 50 words |
+| notice | longtext | requirements need to pay attention |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
@@ -240,28 +254,28 @@ database design
 | updated_at | datetime(6) |  |
 
 
-**Table: event_information_topic**
+**Table: `event_information_topic`**
 
-- many to many transaction tables for `event` and `event_topic`
+- relation: many to many transaction tables for `event` and `event_topic`
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
 | id | int(11) | PK, AUTO_INCREMENT |
 | event_id | int(11) | Foreign key to event.id |
-| event_topic_id | int(11) | Foreign key to event_topic.id |
+| `event_topic_id` | int(11) | Foreign key to event_topic.id |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
 
-**Table: event_pet_category**
+**Table: `event_pet_category`**
 
-- many to many transaction table for `event` and `pet_category`
+- relation: many to many transaction table for `event` and `pet_category`
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
 | id | int(11) | PK, AUTO_INCREMENT |
 | event_id | int(11) | Foreign key to event.id |
-| pet_category_id | int(11) | Foreign key to pet_category.id |
+| `pet_category_id` | int(11) | Foreign key to pet_category.id |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
@@ -296,7 +310,8 @@ database design
 
 **Table: chatroom**
 
-- one to one relation to `event`
+- relation: one to one with `event`
+- no group owner and guest function
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
@@ -310,7 +325,7 @@ database design
 
 **Table: message**
 
-- no remove function
+- no recall message function
 - no multi-media type, only text now
 - no at reply specific message
 - no at specific person
@@ -321,7 +336,6 @@ database design
 | chatroom_id | int(11) | Foreign key to chartroom.id |
 | user_id | int(11) | Foreign key to user.id |
 | content | longtext |  |
-|  |  |  |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
