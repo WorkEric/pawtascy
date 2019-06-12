@@ -87,7 +87,7 @@ User needs to file out: name, age range, portfolio image, gender, job status/job
 
 If there is any mandatory field missing, an red alert will show.
 
-![Signup User Profile](Signup-user-Profile.png)
+![Signup User Profile](Signup-User-Profile.png)
 
 ####Pet Basic
 
@@ -122,6 +122,11 @@ If users have more than one pets, they can click "Add another pet profile", the 
 ![Signup Pet Final Confirm](Signup-Confirm.png)
 
 ## <a name="markdown-feeds-wall"></a> Sharing Moments - Feeds Wall 
+Left side is the basic info - user name and portfolio image. When clicking the info, user's personal dashboard will be directed to. In the future, there will be sessions such as posts recommendation and ads.
+
+On the right, the top is the input session. When the user clicks it, a complete input session will be expanded including, text area, image/video uploading, stickers and send button. 
+
+Below the session, there are a list of posts. Users can bark(comment), paw(like) and share.
 
 ![Sharing Moments - Feeds Wall](Feeds-wall.png)
 
@@ -135,8 +140,11 @@ The list of search result uses grid and lazy load to display. When users scroll 
 
 ## <a name="markdown-event-details"></a> Event Details
 
-urls: <https://macdown.uranusjr.com>  
-` <https://macdown.uranusjr.com>` 
+The top is the event basic info including image, type of pet, event name, date & time, location, host person, join button, share social media (Facebook, Indeed, and Twitter). When the user scrolls down the page, this session will become a brief bar fixed on the top in which join button will be shown. The middle part is the details and notice of the event. A map and time will be displayed on the right. Map UI API <https://snazzymaps.com/>  will be used to display.
+
+Then, up to 8 attendees cards will be shown. If there are more than 8, people can click "See All" to see a complete list of attendees which will be displayed as a scrolling popup window.
+
+On the bottom, there is a "find more events" session so that people can find more events in which they belong to. 
 
 ![Event Details](Event-Detail.png)
 
