@@ -325,6 +325,3 @@ database design
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
-
-- SQL database
-    - [sql tutorial](https://www.liaoxuefeng.com/wiki/1177760294764384/1179613436834240)
