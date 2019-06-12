@@ -1,7 +1,7 @@
 # Pawtascy需求和设计文档V1
 
 
-Business requirement
+Business Requirement
 ---
 
 - user system
@@ -10,9 +10,11 @@ Business requirement
 - feedback system (comments and rating)
 - chatroom
 - sharing system (sharing event to FB, Twitter)
+- post system
+- feed wall system (both post/event)
 
 
-database design
+Database Design
 ---
 
 **Table: user**
@@ -33,6 +35,8 @@ database design
 
 
 **Table: user_profile**
+
+- relation: 1-1 user
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
@@ -159,7 +163,9 @@ database design
 | updated_at | datetime(6) |  |
 
 
-**Table: pet_image**
+**Table: pet_image(not use now)**
+
+- business: pet growth dairy 
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
@@ -172,7 +178,9 @@ database design
 | updated_at | datetime(6) |  |
 
 
-**Table: pet_video**
+**Table: pet_video(not use now)**
+
+- business: pet growth dairy 
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
@@ -295,7 +303,7 @@ database design
 
 **Table: event_feedback**
 
-- unique together: event_id and user_id
+- unique together: `event_id` and `user_id`
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
@@ -308,9 +316,73 @@ database design
 | updated_at | datetime(6) |  |
 
 
+**Table: post**
+
+- no group present function
+
+|  Field | Type | Note |
+| -------- | -------- | -------- |
+| id | int(11) | PK, AUTO_INCREMENT |
+| user_id | int(11) | Foreign key to user.id |
+| title | varchar(255) | |
+| is_private | tinyint(1) |  |
+| created_at | datetime(6) |  |
+| updated_at | datetime(6) |  |
+
+**Table: post_image**
+
+|  Field | Type | Note |
+| -------- | -------- | -------- |
+| id | int(11) | PK, AUTO_INCREMENT |
+| post_id | int(11) | Foreign Key to post.id |
+| image_link | varchar(1024) | put on s3 bucket |
+| created_at | datetime(6) |  |
+| updated_at | datetime(6) |  |
+
+**Table: post_video**
+
+|  Field | Type | Note |
+| -------- | -------- | -------- |
+| id | int(11) | PK, AUTO_INCREMENT |
+| post_id  | int(11) | Foreign Key to post.id |
+| video_link | varchar(1024) | put on s3 bucket |
+| created_at | datetime(6) |  |
+| updated_at | datetime(6) |  |
+
+**Table: post_paws**
+
+- unique together: `user_id` and `post_id`
+
+|  Field | Type | Note |
+| -------- | -------- | -------- |
+| id | int(11) | PK, AUTO_INCREMENT |
+| user_id | int(11) | Foreign key to user.id |
+| post_id | int(11) | Foreign key to post.id |
+| is_paws | tinyint(1) | first time, create row, if is_paws false, meaning was paws but now not paws |
+| created_at | datetime(6) |  |
+| updated_at | datetime(6) |  |
+
+**Table: post_bark**
+
+- at reply specific message, present show @username
+- have recall bark function: soft_delete=True
+- no multi-media type, only text now
+
+|  Field | Type | Note |
+| -------- | -------- | -------- |
+| id | int(11) | PK, AUTO_INCREMENT |
+| user_id | int(11) | Foreign key to user.id |
+| post_id  | int(11) | Foreign Key to post.id |
+| soft_delete  | tinyint(1) | if True, hide this post |
+| content | varchar(255) | only text |
+| reply_id | int(11) | id of post_bark.id, can empty |
+| created_at | datetime(6) |  |
+| updated_at | datetime(6) |  |
+
+
 **Table: chatroom**
 
-- relation: one to one with `event`
+- relation: 1-1 with `event`
 - no group owner and guest function
 
 |  Field | Type | Note |
@@ -320,7 +392,6 @@ database design
 | title | varchar(255) | default: event name |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
-
 
 
 **Table: message**
@@ -338,4 +409,5 @@ database design
 | content | longtext |  |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
+
 
