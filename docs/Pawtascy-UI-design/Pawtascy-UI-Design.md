@@ -1,6 +1,6 @@
 # Pawtascy UI Design Doc
 
-![Pawtascy logo](Logo-icon.png)
+![Pawtascy logo](UI-Design-Images/Logo-icon.png)
 
 **Pawtascy** stands for paw fantascy, a social media platform for pets and pet owners. Users with their pets can attend or host events such as park meetup, birthday party, breeding experience sharing and so on. They can also post texts, images or videos to share their life with their lovely pets. We are aimed to building a pet largest community for pet lovers and owners to improve their pets life.
 
@@ -24,14 +24,14 @@ This design doc is for the Application UI, which contains:
 
 Find Sitter may be omitted for now and will be added in the future when we add this feature.
 
-![Home UI](Home.png)
+![Home UI](UI-Design-Images/Home.png)
 
 ## <a name="markdown-header"></a> Header 
 
 **Header** contains logo and company name on the left side, and on the right side there are:
 
 * Home
-* Share Moments - feeds wall
+* Feeds - replace the Sharing Moments in the image 
 * Events - contains search events and result lists
 * Create Event
 * Sign up
@@ -39,13 +39,13 @@ Find Sitter may be omitted for now and will be added in the future when we add t
 
 If users already log in, the signup and login will be replaced by user's profolio image and name.
 
-![Header](Header.png)
+![Header](UI-Design-Images/Header.png)
 
 ## <a name="markdown-footer"></a> Footer 
 
 **Footer** is a link map, which contains logo, copyright, and four main categories: events, company, further information and follow us. 
 
-![Footer](Footer.png)
+![Footer](UI-Design-Images/Footer.png)
 
 ## <a name="markdown-login-signup"></a> Login & Signup
 
@@ -59,7 +59,7 @@ In the login page, on the left side, there are some highlights regarding company
 
 "Not a member? Signup" will direct to the signup window if clicked. A switch reverse animation effect will be used.
 
-![Login](Login.png)
+![Login](UI-Design-Images/Login.png)
 
 ### 2. Signup
 
@@ -75,29 +75,29 @@ In the login page, on the left side, there are some highlights regarding company
 
 The same as login on the left side, it introduces some main points of business services. On the right side, users either use their email to social media to register the account. "Password" and "Comfirm password" need to be matched. If not, an error alert will be shown under the "I have read the...". Privacy Policy and Terms of Service will be linked to their pages. 
 
-Social Media API will be granted to access the accounts.
+Social Media API will be granted to access the accounts. After, the user agrees to the authentification, the page will grasp the email and username to show. If the username has been already in the database, there is an alert saying "username has been taken". After the user files out valid username, email and password, the registration is complete.
 
-![Signup with Multiple Methods](Signup-Methods.png)
+![Signup with Multiple Methods](UI-Design-Images/Signup-Methods.png)
 
 ####User Profile
 
 On the left side, there is a side navigation. Current session title will be **bold**. User can clicks "Save and Skip to Logout" to save the current info and log out the current signup model page. But the user status is **Logged in**. The header will replace "Sign up" and "Login" with email address(if user using email to register the account) or portfolio with name (if social media to register the account). 
 
-User needs to file out: name, age range, portfolio image, gender, job status/job (optional), city, state, zip and self-introduction(optional). Job status/type is under the age range. Portfolio image will be added in the front middle part of the form.
+User needs to file out: portfolio image, age range,  gender, job status/job (optional), city, state, zip and self-introduction(optional). Job status/type is under the age range. Portfolio image will be added in the front middle part of the form.
 
 If there is any mandatory field missing, an red alert will show.
 
-![Signup User Profile](Signup-User-Profile.png)
+![Signup User Profile](UI-Design-Images/Signup-User-Profile.png)
 
 ####Pet Basic
 
 Choose one pet type of the options. Click "Next" to the next page or "Back" to the previous
 
-![Signup Pet Basic Profile](Signup-Pet-Basic1.png)
+![Signup Pet Basic Profile](UI-Design-Images/Signup-Pet-Basic1.png)
 
 Choose one pet type of the options. Click "Next" to the next page or "Back" to the previous
 
-![Signup Pet Basic2 Profile](Signup-Pet-Basic2.png)
+![Signup Pet Basic2 Profile](UI-Design-Images/Signup-Pet-Basic2.png)
 
 File out the fields and upload a pet image. If there is any mandatory field missing, an red alert will show.
 
@@ -109,7 +109,7 @@ File out the fields and upload a pet image. If there is any mandatory field miss
 
 **All inputs are mandatory**
 
-![Signup Pet Details Profile](Signup-Pet-Details.png)
+![Signup Pet Details Profile](UI-Design-Images/Signup-Pet-Details.png)
 
 ####Pet Final Confirm
 
@@ -119,7 +119,7 @@ If users have more than one pets, they can click "Add another pet profile", the 
 
 **All inputs are mandatory**
 
-![Signup Pet Final Confirm](Signup-Confirm.png)
+![Signup Pet Final Confirm](UI-Design-Images/Signup-Confirm.png)
 
 ## <a name="markdown-feeds-wall"></a> Sharing Moments - Feeds Wall 
 Left side is the basic info - user name and portfolio image. When clicking the info, user's personal dashboard will be directed to. In the future, there will be sessions such as posts recommendation and ads.
@@ -128,7 +128,7 @@ On the right, the top is the input session. When the user clicks it, a complete 
 
 Below the session, there are a list of posts. Users can bark(comment), paw(like) and share.
 
-![Sharing Moments - Feeds Wall](Feeds-Wall.png)
+![Sharing Moments - Feeds Wall](UI-Design-Images/Feeds-Wall.png)
 
 ## <a name="markdown-events-search"></a> Events + Search 
 
@@ -136,7 +136,7 @@ There is an image and slogan on the top. Then, a search bar displays as follows.
 
 The list of search result uses grid and lazy load to display. When users scroll down, more results will show up.
 
-![Search and Result List](Search-and-Result.png)
+![Search and Result List](UI-Design-Images/Search-and-Result.png)
 
 ## <a name="markdown-event-details"></a> Event Details
 
@@ -146,7 +146,7 @@ Then, up to 8 attendees cards will be shown. If there are more than 8, people ca
 
 On the bottom, there is a "find more events" session so that people can find more events in which they belong to. 
 
-![Event Details](Event-Detail.png)
+![Event Details](UI-Design-Images/Event-Detail.png)
 
 ## <a name="markdown-create-event"></a> Create Event 
 
@@ -163,7 +163,7 @@ The event information contains:
 
 Users can click "Clear" to restart the creation or "Next" to go to the step 2.
 
-![Event Create 1](Event-Create-1.png)
+![Event Create 1](UI-Design-Images/Event-Create-1.png)
 
 The event information contains:
 
@@ -175,29 +175,29 @@ The event information contains:
 
 Users can click "Back" to go back or "Next" to go to the final step.
 
-![Event Create 2](Event-Create2.png)
+![Event Create 2](UI-Design-Images/Event-Create2.png)
 
 All the information users have filed out will show in this page. Users can hit the edit icon to go to the specific page to make changes. 
 
 When users click "Complete", a popup window "Congrats! You've created a special event. Enjoy!" will show in the middle. Then, the page will be directed to the upcoming events on the users dashboard.
 
-![Event Create Confirm](Event-Create-Confirm.png)
+![Event Create Confirm](UI-Design-Images/Event-Create-Confirm.png)
 
 ## <a name="markdown-profile-dashboard"></a> Profile Dashboard 
 
 The page will show a basic information on the top about the user including user portfolio image & name, pet's image & name, an edit icon besides the info and how many hosting events, joined events as well as posts. This page is also open to the public with no edit icon.
 
-### User's Own Posts
+### User's Personal Moments
 
 User's personal feeds wall design pattern is the same as the one under Sharing Moments. See more details [**there**](#markdown-feeds-wall)
 
-![Dashboard Feeds Wall](Dashboard-Feeds-Wall.png)
+![Dashboard Feeds Wall](UI-Design-Images/Dashboard-Feeds-Wall.png)
 
 ### Dashboard Hosting/Joined Events
 
 The left side are the upcoming events, and right side are past events. Design pattern for both hosting and joined events.
 
-![Dashboard Feeds Wall](Dashboard-Upcoming-Event.png)
+![Dashboard Feeds Wall](UI-Design-Images/Dashboard-Upcoming-Event.png)
 
 ### Edit Icon
 When the user clicks edit icon, a user-profile page with their pets information, password changes and privacy policy will show up.
@@ -206,20 +206,24 @@ When the user clicks edit icon, a user-profile page with their pets information,
 
 If the user files out the information when signing up, some information will be shown in the input field. User can click "Change Portfolio Image" to change photo. A small popup uploading window will show up. The submit button initially will be greyed out. After there is any changes, the button will become blue as normal. When the user clicks "Submit" button, the popup bubble showing "Saved!" will appear and the button will become greyed out again.
 
-![Change user profile](Change-User-Profile.png)
+![Change user profile](UI-Design-Images/Change-User-Profile.png)
 
 ####Edit Pet Profile
 
 Same pattern as the user profile
 
-![Change pet profile](Change-Pet-Profile.png)
+![Change pet profile](UI-Design-Images/Change-Pet-Profile.png)
 
 ####Change Password
 
 User needs to put the correct old password. If wrong, when click "Change Password", there is an error alert "Your old password is not correct" showing up. Also, "New Password" must match "Confirm New Password". If not, there will be an error alert "Not matched!". If user does not remember the password, they can click "Forgot Password?" to reset the new password through the link the system sends to their email.
 
-![Change Password](Change-Password.png)
+![Change Password](UI-Design-Images/Change-Password.png)
 
 ####Privacy Policy
 This privacy policy page will be designed and implemented in the future after talking with the lawyers.
 
+###Pet Profile
+
+Pet profile cotains the content the user completed. Later pet diary will be designed and implemented in the future.
+![Change Password](UI-Design-Images/Pet-Profile.png)
