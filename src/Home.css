@@ -1,0 +1,204 @@
+
+.back-image1 {
+  height: 20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+
+  top:0px;
+  left:0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+
+}
+.back-image2 {
+  height: 50%;
+  width: 80%;
+  margin-top: 300px;
+  margin-bottom: 300px;
+
+}
+.back-image3 {
+  height: 90%;
+  width: 80%;
+  margin-top: -300px;
+  margin-bottom: 300px;
+  margin-left: 100px;
+
+}
+.back-image4 {
+  height: 90%;
+  width: 80%;
+  margin-top: -300px;
+  margin-bottom: 300px;
+  margin-left: 100px;
+
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.title1 {
+  margin-top:150px;
+  margin-bottom: 0;
+  margin-left:50px;
+  font-size:70px;
+
+}
+.title2 {
+  margin-top:-400px;
+  margin-bottom: 0;
+  margin-left:50px;
+  font-size:70px;
+
+}
+.title3 {
+  margin-top:-400px;
+  margin-bottom: 0;
+  margin-left:50px;
+  font-size:70px;
+
+}
+.des1 {
+  margin-top:0;
+  font-size: 70px;
+  line-height: 100px;
+
+}
+.des2 {
+  margin-top: 0;
+  margin-bottom: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 30px;
+  line-height: 50px; 
+}
+.des3 {
+  margin-bottom: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 30px;
+  line-height: 50px; 
+}
+.des4 {
+  margin-bottom: 200px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-size: 30px;
+  line-height: 50px; 
+}
+.button1 {
+  font-size: 50px;  
+  margin-top: -150px;
+  height: 200px;
+
+}
+
+.button2 {
+  font-size: 50px;  
+  margin-top: -150px;
+  margin-left: 200px;
+  height: 200px;
+
+}
+.button3 {
+  font-size: 50px;  
+  margin-top: -250px;
+  margin-left: 200px;
+  height: 200px;
+
+}
+.button4 {
+  font-size: 50px;  
+  margin-top: -250px;
+  margin-left: 200px;
+  height: 200px;
+
+}
+.pet_signup {
+  display:inline-block;
+  width:130px;
+  height:30px;
+  border:1px solid #000;
+
+}
+.menu {
+    background-color: transparent;
+    box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    width: 752px;
+    display: flex;
+    padding: 0 40px;
+    position: absolute;
+    margin-top: 150px;
+    height: 20%;
+}
+
+.menu__right {
+    display: flex;
+    align-items: center;
+}
+
+.menu__list {
+    list-style-type: none;
+    height: 400%;
+    margin: 0;
+    margin-right: 40px;
+
+}
+
+.menu__list-item {
+    display: inline-block;
+    height: 50%;
+    margin-right: 20px;
+
+}
+
+.menu__list-item:last-child {
+    margin-right: 0;
+}
+
+.menu__link {
+    color: #3a3e47;
+    display: inline-block;
+    height: 50%;
+    height: 130px;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    padding: 0 3px;
+}
+
+.menu__link:hover {
+    color: #ffaa3b;
+
+}
+
+.menu__link--active {
+    color: #ffaa3b;
+    font-weight: 700;
+
+}
+
+.menu__logo {
+    text-indent: 100px;
+    display: inline-block;
+    height: 100%;
+    width: 92px;
+    background-size: cover 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 4;
+    font-size: 50px;
+}
+
+
