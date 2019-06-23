@@ -1,11 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import HomeContainer from './Home/HomeContainer';
-<<<<<<< Updated upstream
-=======
+//import HomeContainer from './Home/HomeContainer';
 import LoginContainer from './Login/LoginContainer';
->>>>>>> Stashed changes
 import * as serviceWorker from './serviceWorker';
 
 //ReactDOM.render(<HomeContainer />, document.getElementById('root'));
