@@ -1,0 +1,127 @@
+.background {
+	background-color: #DDDDDD;
+	background-size: cover;
+
+}
+.logo1 {
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 100px;
+
+
+}
+.title1 {
+  font-size: 50px;  
+  margin-top: 200px;
+  left-top: 100px;
+  color: #888888;
+
+}
+
+.title2 {
+  font-size: 80px;  
+  margin-top: 200px;
+  margin-left: 100px;
+  color: #888888;
+  line-height: 80px; 
+
+}
+
+.title3 {
+  font-size: 30px;
+  color: #ABABAB;
+  margin-left: 100px;
+
+}
+
+.title5 {
+  font-size: 40px;
+  color: #888888;
+  margin-left: 100px;
+
+}
+
+.block1{
+  width: 1000px;
+  height: 200px;
+  margin-top: -20px;
+
+}
+.block_last {
+  width: 1000px;
+  height: 200px;  
+  margin-bottom: 200px;
+
+}
+.logo2 {
+  margin-bottom: -40px;
+}
+
+.des {
+  font-size: 30px;
+  margin: 0;
+  display: inline-block;
+  color: #ABABAB;
+
+}
+.des1 {
+  font-size: 30px;
+  color: #ABABAB;
+}
+.Form {
+  margin-left: 100px;
+  font-size: 40px;
+}
+.box {
+  height:100px;
+  width:50%;
+}
+.emailstatediv {
+  margin-left: 100px;
+  margin-top: -20px;
+}
+.emailstate {
+  height: 50px;
+  font-size: 30px;
+}
+
+.resultdiv {
+  margin-left: 100px;
+  margin-top: -20px;
+}
+.result {
+  height: 100px;
+  font-size: 30px;
+  color: red;
+}
+.logindiv {
+  height: 100px;  
+}
+
+.login {
+  font-size: 30px;
+  margin-left: 100px;
+  background-color: #ABABAB;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 15%;
+}
+
+.social {
+  margin-top:0px;
+  height: 200px;
+}
+.logos {
+  margin-left: 100px;
+  height: 180px;
+
+}
+.signup {
+  color: #ABABAB;
+  font-size: 30px;
+  margin-left: 100px;
+}
+
+
