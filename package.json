@@ -8,7 +8,6 @@
     "express": "^4.17.1",
     "express-graphql": "^0.8.0",
     "graphql": "^14.3.1",
-<<<<<<< Updated upstream
     "js-yaml": "^3.13.1",
     "mysql2": "^1.6.5",
     "node-env-run": "^3.0.2",
@@ -20,12 +19,6 @@
     "react-grid-system": "^4.4.6",
     "react-scripts": "^3.0.1",
     "sequelize": "^5.8.11"
-=======
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-grid-system": "^4.4.6",
-    "react-scripts": "^3.0.1"
->>>>>>> Stashed changes
   },
   "scripts": {
     "start": "react-scripts start",
