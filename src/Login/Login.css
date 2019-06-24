@@ -16,6 +16,7 @@
   margin-top: 200px;
   left-top: 100px;
   color: #888888;
+  margin-left: 200px;
 
 }
 
@@ -46,12 +47,14 @@
   width: 1000px;
   height: 200px;
   margin-top: -20px;
+  margin-left: 100px;
 
 }
 .block_last {
   width: 1000px;
   height: 200px;  
   margin-bottom: 200px;
+  margin-left: 100px;
 
 }
 .logo2 {
