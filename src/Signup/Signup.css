@@ -1,0 +1,177 @@
+.background {
+	background-color: #DDDDDD;
+	background-size: cover;
+
+}
+.logo1 {
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 200px;
+
+
+}
+.logo2 {
+  margin-bottom: -40px;
+}
+
+.title1 {
+  font-size: 50px;  
+  margin-top: 300px;
+  margin-left: 200px;
+  color: #888888;
+
+}
+
+.title2 {
+  font-size: 80px;  
+  margin-top: 200px;
+  margin-left: 200px;
+  color: #888888;
+  line-height: 80px; 
+
+}
+
+.title3 {
+  font-size: 30px;
+  color: #ABABAB;
+  margin-left: 100px;
+  height: auto;
+}
+
+
+.title4 {
+  font-size: 30px;
+  color: #ABABAB;
+
+}
+
+.title6 {
+  font-size: 40px;
+  color: #888888;
+  margin-left: 100px;
+
+}
+
+.block_first {
+  width: 1000px;
+  height: 200px;
+  margin-top: 50px;
+  margin-left: 100px;
+
+}
+.block1{
+  width: 1000px;
+  height: 200px;
+  margin-top: 0px;
+  margin-left: 100px;
+
+}
+.block_last {
+  width: 1000px;
+  height: 200px;  
+  margin-bottom: 200px;
+  margin-left: 100px;
+
+}
+.des {
+  font-size: 30px;
+  margin: 0;
+  display: inline-block;
+  color: #ABABAB;
+
+}
+.des1 {
+  font-size: 30px;
+  color: #ABABAB;
+}
+.Form {
+  margin-left: 100px;
+  height: 60px;
+  font-size: 30px;
+
+}
+
+.Form2 {
+  height: 70px;
+  font-size: 30px;
+
+}
+
+.box_first {
+  height:60px;
+  width:50%;
+  margin-top:100px;
+
+}
+.box {
+  height:60px;
+  width:50%;
+
+}
+.boxinput {
+  height:60px;
+  width:50%;
+  margin-bottom:50px;
+
+}
+.checkbox {
+  width: 30px;
+  height: 30px;
+
+}
+.terms {
+  margin-top:0px;
+  margin-left: 100px;
+  height: 200px;
+  font-size: 30px;
+  color: #888888;
+}
+
+.social {
+  margin-top:0px;
+  height: 200px;
+}
+
+.resultdiv {
+  margin-top: 300px;
+  height: 100px;  
+}
+
+
+.result {
+  margin-top: -200px;
+  height: 100px;
+  font-size: 30px;
+  color: red;
+}
+.signupdiv {
+  margin-top: 10px;
+  height: 100px;  
+}
+
+.Login {
+  font-size: 30px;
+  margin-left: 100px;
+}
+
+.signup {
+  font-size: 30px;
+  margin-left: 100px;
+  background-color: #ABABAB;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 15%;
+}
+
+.logos {
+  margin-top: -100px;
+  margin-bottom: -50px;
+
+}
+
+input:invalid {
+  border-color: red;
+
+}
