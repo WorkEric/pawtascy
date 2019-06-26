@@ -31,7 +31,7 @@ class SignupComponent extends Component {
 
     if (!event.target.checkValidity()){
       this.setState({ displayErrors: true });
-      this.setState({result:"something is wrong..."})
+      this.setState({result:"please correct errors above"})
       return;
     }
     this.setState({ displayErrors: false });
@@ -77,7 +77,7 @@ class SignupComponent extends Component {
                           className="Form"
                           value={this.state.username}
                           onChange={this.handleChange}
-                          pattern="\w{8,20}"
+                          pattern="\w{4,20}"
                           required
                         />
                       </div>
