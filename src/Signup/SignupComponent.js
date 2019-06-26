@@ -28,13 +28,26 @@ class SignupComponent extends Component {
   handleSubmit(event) {
     // check if email exist, if password valid, if two password match, and if terms is checked
     event.preventDefault();
+    const data = new FormData(event.target);
+    const {firstpassword, secondpassword, terms} = this.state;
+    if (firstpassword !== secondpassword) {
+      alert("Passwords don't match")
 
+    }
+    if (!terms) {
+      alert("Please check terms and agreements")
+    }
     if (!event.target.checkValidity()){
       this.setState({ displayErrors: true });
       this.setState({result:"please correct errors above"})
       return;
     }
     this.setState({ displayErrors: false });
+    /// post to database
+    fetch('/api/form-submit-url',{ 
+      method: 'POST',
+      body: data,
+    });
 
   }
 
