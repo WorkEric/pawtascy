@@ -65,6 +65,7 @@ import image1 from '../images/homepage1.jpg';
 import image2 from '../images/homepage2.jpg';
 import image3 from '../images/homepage3.jpg';
 import image4 from '../images/homepage4.jpg';
+import Footer from '../Footer/Footer.js'
 
 class HomeContainer extends Component {
   render() {
@@ -75,7 +76,7 @@ class HomeContainer extends Component {
       {label: 'Create Events',link:'#create'},
       {label: 'Sign up',link:'#signup'},
       {label: 'Login',link:'#login'},
-    ];
+    ]
     let sep_links = [
       {label: 'sign up your pet',link:'#signpet'},
       {label: 'Host/find events',link:'#events'},
@@ -109,7 +110,8 @@ class HomeContainer extends Component {
     }
     return (
       <div className="container center">
-        <HomeComponent links={links} logo={logo} sep_links={sep_links} titles={titles} description={description} images={images}/>
+        <HomeComponent links={links} sep_links={sep_links} titles={titles} description={description} images={images}/>
+        <Footer />
       </div>
     );
 

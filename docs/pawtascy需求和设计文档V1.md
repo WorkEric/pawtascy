@@ -27,6 +27,7 @@ Database Design
 | first_name | varchar(255) |  |
 | last_name | varchar(255) |  |
 | password | varchar(255) | sha256 (salt + password) |
+| salt | varchar(255) | |
 | is_superuser | tinyint(1) | project owner role: higher than user and staff user |
 | is_staff | tinyint(1)| admin user |
 | is_active | tinyint(1)| True is active user, otherwise block user |
@@ -43,7 +44,7 @@ Database Design
 | id | int(11) | PK, AUTO_INCREMENT |
 | user_id | int(11) | One to One to user.id |
 | gender | varchar(255) | option: Male/Female |
-| age | int(11) | option: 0-18/18-24/24-35/35-55/above 35 |
+| age | varchar(11) | option: 0-18/18-24/24-35/35-55/above 35 |
 | job | varchar(255) |  |
 | phone | varchar(255) |  |
 | location_id | int(11) | Foreign key to the location table|
@@ -123,17 +124,19 @@ Database Design
 
 **Table: location**
 
-- unique together: city and country
+- unique together: city, state and country
 - search for city all the time
 - [cron job to fetch location](https://developers.google.com/places/web-service/details)
+- [google get timezone api](https://developers.google.com/maps/documentation/timezone/intro)
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
 | id | int(11) | PK, AUTO_INCREMENT |
 | city | varchar(255) | |
+| state | varchar(255) | |
 | country | varchar(255) | option |
 | zip_code | int(11) |  |
-| time_zone | varchar(255) | present time for different country |
+| time_zone | varchar(255) | present time for different country / business requirement: punishment |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
@@ -150,11 +153,9 @@ Database Design
 | avatar | varchar(1024) | image, store in s3 bucket |
 | breed | varchar(255) | 品种 |
 | birthday | datetime(6) |  |
-| age | int(11) |  |
 | gender | varchar(20) | option:male/female |
-| size | varchar(20) | option:small, medium,large |
 | weight | varchar(255) | option: 1-25lbs/25-50lbs/... |
-| character | varchar(255) | wording, currently just list |
+| character | varchar(255) | Favorite stuff |
 | is_neutered | tinyint(1) |  |
 | dislike | varchar(1024) | desciption waht pet dislike |
 | health | varchar(1024) | description of pet health condition |
@@ -242,11 +243,11 @@ Database Design
 | `event_end_at` | datetime(6) | event end time(local time) |
 | cover | varchar(255) | image, store in s3 bucket |
 | cost | varchar(255) | option:cost range |
-| `restrict_guest_number` | int(11) | limited of guest number |
+| `restrict_attendee_number` | int(11) | limited of Attendee number |
 | `restrict_pets_number` | int(11) | limited of pet number |
 | is_neutered | tinyint(1) |  |
 | detail | longtext | at least 50 words |
-| notice | longtext | requirements need to pay attention |
+| note | longtext | requirements need to pay attention |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
@@ -296,7 +297,7 @@ Database Design
 | id | int(11) | PK, AUTO_INCREMENT |
 | user_id | int(11) | Foreign key to user.id |
 | event_id | int(11) | Foreign key to event.id |
-| role | varchar(255) | option: host/guest |
+| role | varchar(255) | option: host/attendee |
 | created_at | datetime(6) |  |
 | updated_at | datetime(6) |  |
 
@@ -383,7 +384,7 @@ Database Design
 **Table: chatroom**
 
 - relation: 1-1 with `event`
-- no group owner and guest function
+- no group owner and Attendee function
 
 |  Field | Type | Note |
 | -------- | -------- | -------- |
