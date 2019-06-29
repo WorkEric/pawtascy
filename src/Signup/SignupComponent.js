@@ -57,7 +57,7 @@ class SignupComponent extends Component {
         <div>
           <Container fluid>
             <Row>
-              <Col className="background">
+              <Col lg= {6} sm = {6} className="background">
                 <img src={this.props.images.logo} className="logo1" ></img>
                 <h1 className="title1">{this.props.titles.title1}</h1>
                 <div className="block_first">
@@ -73,7 +73,7 @@ class SignupComponent extends Component {
                   <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des4}</h1>
                 </div>
               </Col>
-              <Col style={{backgroundColor: "#EEEEEE"}}>
+              <Col lg= {6} sm = {6} style={{backgroundColor: "#EEEEEE"}}>
                 <h1 className="title2">{this.props.titles.title2}</h1>
                 <form noValidate onSubmit={this.handleSubmit} className={displayErrors ? 'displayErrors': ''}>
                   <div>
