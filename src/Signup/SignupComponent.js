@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './Signup.css';
-import {Container,Row,Col} from 'react-grid-system';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 
 class SignupComponent extends Component {
@@ -54,26 +57,29 @@ class SignupComponent extends Component {
   render() {
       const { displayErrors } = this.state;
       return (
-        <div>
           <Container fluid>
             <Row>
-              <Col className="background">
+              <Col  xs lg="6" className="background">
                 <img src={this.props.images.logo} className="logo1" ></img>
                 <h1 className="title1">{this.props.titles.title1}</h1>
                 <div className="block_first">
-                  <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des1}</h1>
+                  <img src={this.props.images.logo} className="logo2"></img>
+                  <h1 className="des">{this.props.description.des1}</h1>
                 </div>
                 <div className="block1">
-                  <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des2}</h1>
+                  <img src={this.props.images.logo} className="logo2"></img>
+                  <h1 className="des">{this.props.description.des2}</h1>
                 </div>
                 <div className="block1">
-                  <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des3}</h1>
+                  <img src={this.props.images.logo} className="logo2"></img>
+                  <h1 className="des">{this.props.description.des3}</h1>
                 </div>
                 <div className="block_last">
-                  <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des4}</h1>
+                  <img src={this.props.images.logo} className="logo2"></img>
+                  <h1 className="des">{this.props.description.des4}</h1>
                 </div>
               </Col>
-              <Col style={{backgroundColor: "#EEEEEE"}}>
+              <Col xs lg="6" style={{backgroundColor: "#EEEEEE"}}>
                 <h1 className="title2">{this.props.titles.title2}</h1>
                 <form noValidate onSubmit={this.handleSubmit} className={displayErrors ? 'displayErrors': ''}>
                   <div>
@@ -186,8 +192,6 @@ class SignupComponent extends Component {
               </Col>
             </Row>
           </Container>
-        </div>
-
       )
   }
 }
