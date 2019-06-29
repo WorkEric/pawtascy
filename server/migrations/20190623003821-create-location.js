@@ -46,14 +46,15 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }, {
-      uniqueKeys: {
-        actions_unique: {
-          fields: ['city', 'state', 'country']
-        }
-      }
-    });
-  },
+    }, 
+    // {
+    //   uniqueKeys: {
+    //     actions_unique: {
+    //       fields: ['city', 'state', 'country']
+    //     }
+    //   }
+    // }
+  )},
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('location');
   }

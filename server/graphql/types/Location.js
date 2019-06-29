@@ -2,6 +2,7 @@ const {
     GraphQLObjectType,
     GraphQLID,
     GraphQLString,
+    GraphQLInt,
     GraphQLList
     } = require('graphql');
 
@@ -47,18 +48,18 @@ module.exports = new GraphQLObjectType({
                     return location.time_zone;
                 }
             },
-            created_at: {
-                type: DateType,
-                resolve (location) {
-                    return location.created_at
-                }
-            },
-            updated_at: {
-                type: DateType,
-                resolve (location) {
-                    return location.updated_at
-                }
-            }                  
+            // created_at: {
+            //     type: DateType,
+            //     resolve (location) {
+            //         return location.created_at
+            //     }
+            // },
+            // updated_at: {
+            //     type: DateType,
+            //     resolve (location) {
+            //         return location.updated_at
+            //     }
+            // }                  
         }
     }
 })
