@@ -76,7 +76,7 @@ class HomeContainer extends Component {
       {label: 'Create Events',link:'#create'},
       {label: 'Sign up',link:'#signup'},
       {label: 'Login',link:'#login'},
-    ];
+    ]
     let sep_links = [
       {label: 'sign up your pet',link:'#signpet'},
       {label: 'Host/find events',link:'#events'},
