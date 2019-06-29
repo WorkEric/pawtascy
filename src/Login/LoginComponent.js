@@ -108,7 +108,7 @@ class LoginComponent extends Component {
                   </div>
                   <div>
                     <Col>
-                      <a href={this.props.links[2].link} className="signup">{this.props.links[2].label}</a>
+                      <a href={this.props.links[2].link} className="signUp">{this.props.links[2].label}</a>
                     </Col>
                   </div>
                 </form>      
