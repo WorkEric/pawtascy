@@ -7,10 +7,12 @@ class LoginComponent extends Component {
   constructor() {
     super();
     this.state = {
-      result: ""
+      email: "",
+      password: "",
+      result: "",
     }
     this.handleChange = this.handleChange.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
@@ -21,26 +23,36 @@ class LoginComponent extends Component {
   }
 
 
-
-  handleClick(event) {
-    // check in backend if email password exist and match
-    const {name,value} = event.target
-    this.setState({
-      result : "Wrong email or password, please try again"
-    })
+  handleSubmit(event) {
+    // check if email exist, if password valid, if two password match, and if terms is checked
     event.preventDefault();
+    const data = new FormData(event.target);
+    const {email,password} = this.state;
+
+    if (!event.target.checkValidity()){
+      this.setState({ displayErrors: true });
+      this.setState({result:"please correct errors above"})
+      return;
+    }
+    this.setState({ displayErrors: false });
+    /// post to database
+    fetch('/api/form-submit-url',{ 
+      method: 'POST',
+      body: data,
+    });
+
   }
 
-
   render() {
+      const { displayErrors } = this.state;
       return (
         <div>
-          <Container fluid style={{ lineHeight: '320px' }}>
+          <Container fluid>
             <Row>
-            <Col className="background">
+            <Col lg= {6} sm = {6} className="background">
               <img src={this.props.images.logo} className="logo1" ></img>
               <h1 className="title1">{this.props.titles.title1}</h1>
-              <div className="block1">
+              <div className="block_first">
                 <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des1}</h1>
               </div>
               <div className="block1">
@@ -53,17 +65,17 @@ class LoginComponent extends Component {
                 <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des4}</h1>
               </div>
             </Col>
-            <Col style={{backgroundColor: "#EEEEEE"}}>
+            <Col lg= {6} sm = {6} style={{backgroundColor: "#EEEEEE"}}>
               <h1 className="title2">{this.props.titles.title2}</h1>
-                <form>
+                <form  noValidate onSubmit={this.handleSubmit} className={displayErrors ? 'displayErrors': ''}>
                   <div>
                     <div>
-                      <div className="box">
+                      <div className="box_first">
                         <label className="title3">{this.props.titles.title3}</label>
                       </div>
-                      <div className="box">
+                      <div className="boxinput">
                         <input
-                          type="text"
+                          type="email"
                           name="email"
                           placeholder="  Your email address"
                           className="Form"
@@ -76,7 +88,7 @@ class LoginComponent extends Component {
                       <div className="box">
                         <label className="title3">{this.props.titles.title4}</label>
                       </div>
-                      <div className="box">
+                      <div className="boxinput">
                         <input
                           type="password"
                           name="password"
@@ -90,7 +102,7 @@ class LoginComponent extends Component {
                         <h1 className="result">{this.state.result}</h1>
                       </div>
                       <div className="logindiv">
-                        <button className="login" onClick={this.handleClick}>{this.props.links[3].label}</button>
+                        <button className="login">{this.props.links[3].label}</button>
                       </div>
                     </div>
                     <div className="social">
