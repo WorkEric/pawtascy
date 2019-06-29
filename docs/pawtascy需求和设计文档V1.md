@@ -27,6 +27,7 @@ Database Design
 | first_name | varchar(255) |  |
 | last_name | varchar(255) |  |
 | password | varchar(255) | sha256 (salt + password) |
+| salt | varchar(255) | |
 | is_superuser | tinyint(1) | project owner role: higher than user and staff user |
 | is_staff | tinyint(1)| admin user |
 | is_active | tinyint(1)| True is active user, otherwise block user |
