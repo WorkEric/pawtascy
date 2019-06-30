@@ -35,5 +35,12 @@ mutation {
 ### update
 
 ```
-
+mutation {
+  updateLocation (id: "3", city: "aaa", state: "bbb", country: "china") {
+    id
+    city
+    state
+    country
+  }
+}
 ```
