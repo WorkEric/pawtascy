@@ -1,6 +1,8 @@
 const {
     GraphQLObjectType,
+    GraphQLInputObjectType,
     GraphQLID,
+    GraphQLNonNull,
     GraphQLString,
     GraphQLInt,
     GraphQLList
@@ -8,7 +10,16 @@ const {
 
 const DateType = require('./util.js');
 
-module.exports = new GraphQLObjectType({
+const InputLocation = new GraphQLInputObjectType({
+    name: 'InputLocation',
+    fields: {
+        city: {type: new GraphQLNonNull(GraphQLString)},
+        state: {type: new GraphQLNonNull(GraphQLString)},
+        country: {type: new GraphQLNonNull(GraphQLString)}
+    }
+});
+
+const Location = new GraphQLObjectType({
     name: 'Location',
     fields: () => {
         return {
@@ -62,4 +73,8 @@ module.exports = new GraphQLObjectType({
             // }                  
         }
     }
-})
+});
+
+module.exports = { 
+    Location: Location, InputLocation: InputLocation
+};
