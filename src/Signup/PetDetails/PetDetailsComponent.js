@@ -47,10 +47,9 @@ class PetDetailsComponent extends Component {
   }
 
   render() {
-      const { displayErrors } = this.state;
       const leftNav = this.props.description.map(function(des) {
         return (
-          <ol>
+          <ol key={des}>
             {/*<img src={this.props.images.circle} className="logo2" />*/}
             <h1 className="left-nav-item">{des}</h1>
           </ol>
