@@ -8,7 +8,7 @@ Location
 
 ```
 {
- locations {
+ getLocations {
   city,
   state,
   country,
