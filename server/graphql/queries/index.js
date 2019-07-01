@@ -6,13 +6,14 @@ const {
     GraphQLList, 
 } = require('graphql');
 
-const { getLocations } = require('./Location.js');
+const { getLocations, getLocationByKeys } = require('./Location.js');
 
 module.exports = new GraphQLObjectType({
     name: 'Query',
     fields: () => {
         return {
             getLocations,
+            getLocationByKeys
         }
     }
 });

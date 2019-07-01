@@ -18,6 +18,50 @@ Location
 }
 ```
 
+### find by city + state + country
+
+```
+# find one
+{
+ getLocationByKeys (city: "aaa", state: "bbb", country: "china") {
+  city,
+  state,
+  country,
+  zip_code,
+  time_zone
+ }
+}
+# result
+{
+  "data": {
+    "getLocationByKeys": {
+      "city": "aaa",
+      "state": "bbb",
+      "country": "china",
+      "zip_code": null,
+      "time_zone": "Africa/Bissau"
+    }
+  }
+}
+
+# not found
+{
+ getLocationByKeys (city: "aaa", state: "aaa", country: "china") {
+  city,
+  state,
+  country,
+  zip_code,
+  time_zone
+ }
+}
+# result
+{
+  "data": {
+    "getLocationByKeys": null
+  }
+}
+```
+
 ### create
 
 ```
