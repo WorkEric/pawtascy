@@ -7,16 +7,6 @@ const models = require('./models/index.js')
 
 const PORT = process.env.NODE_ENV === 'production' ? 5000 : 9000;
 
-// // GraphQL Schema
-// var schema = buildSchema(`
-//     type Query {
-//         message: String
-//     }
-// `);
-// var root = {
-//     message: () => 'Hello World!'
-// };
-// app.use(bodyParser.graphql());
 
 // Create an express server and a GraphQL endpoint
 var app = express();
@@ -39,7 +29,6 @@ app.use(bodyParser.graphql());
 
 app.use('/api', graphqlHTTP({
     schema: schema,
-    // rootValue: root,
     graphiql: process.env.NODE_ENV !== 'production',
     pretty : true    
 }));
