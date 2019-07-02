@@ -11,7 +11,7 @@ class HumanContainer extends Component {
 
   	}
   	let links = [
-      {label: 'Skip',link:'#Home'},
+      {label: 'Skip these steps',link:'#Home'},
       {label: 'Next',link:'#PetBasic'},
   	]
 

@@ -15,10 +15,11 @@ class HumanComponent extends Component {
       State: "CA",
       Zip: "",
       Intro: "",
+      photofile: null,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    // this.onImageDrop = this.onImageDrop.bind(this)
+    this.fileUploadHandler = this.fileUploadHandler.bind(this)
   }
 
   handleChange(event) {
@@ -27,29 +28,17 @@ class HumanComponent extends Component {
 
 
   }
-  // onImageDrop(event) {
 
+  fileUploadHandler(event) {
+    const file = event.target.files[0]
+    this.setState({photofile:file})
 
-  // }
-
+  }
   handleSubmit(event) {
     // check if email exist, if password valid, if two password match, and if terms is checked
     event.preventDefault();
     const data = new FormData(event.target);
-    const {firstpassword, secondpassword, terms} = this.state;
-    if (firstpassword !== secondpassword) {
-      alert("Passwords don't match")
 
-    }
-    if (!terms) {
-      alert("Please check terms and agreements")
-    }
-    if (!event.target.checkValidity()){
-      this.setState({ displayErrors: true });
-      this.setState({result:"please correct errors above"})
-      return;
-    }
-    this.setState({ displayErrors: false });
     /// post to database
     fetch('/api/form-submit-url',{ 
       method: 'POST',
@@ -65,7 +54,7 @@ class HumanComponent extends Component {
           <Container fluid>
             <Row>
               <Col lg md = "4" className="human_background">
-                <img src={this.props.images.logo} className="human_logo1" ></img>
+                <img src={this.props.images.logo} className="human_logo1"></img>
                 <div className="human_block_first">
                   <img src={this.props.images.circle} className="human_circle"></img>
                   <h1 className="human_des">{this.props.titles.title1}</h1>
@@ -79,16 +68,20 @@ class HumanComponent extends Component {
                 <div className="human_block_last">
                   <h1 className="human_des">{this.props.titles.title4}</h1>
                 </div>
+                <div>
+                  <a href={this.props.links[0].link} className="human_skip">{this.props.links[0].label}</a>
+                </div>
               </Col>
               <Col  lg md = "8" style={{backgroundColor: "#EEEEEE"}}>
                 <h1 className="human_title2">{this.props.titles.title5}</h1>
-                <form noValidate onSubmit={this.handleSubmit} className={displayErrors ? 'human_displayErrors': ''}>
+                <form onSubmit={this.handleSubmit}>
                   <div>
                     <div>
                       <Row>
                         <Col lg md = "3">
                           <div className="human_photo_div">
-                            <img src={this.props.images.logo} className="human_photo_logo"></img><h1 className="human_photo_text">upload your photo</h1>
+                            <h1 className="human_photo_text">Upload Your Photo</h1>
+                            <input type="file" onChange={this.fileChangedHandler} className="human_photo_upload"></input>
                           </div>
                           <div className="human_gender_div">
                             <h1 className="human_gender_title">{this.props.titles.title7}</h1>
@@ -196,6 +189,13 @@ class HumanComponent extends Component {
                             onChange={this.handleChange}
                             className="human_intro_box"
                           />
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col lg md = "3">
+                        </Col>
+                        <Col lg md = "3">
+                          <button className="human_next">next</button>
                         </Col>
                       </Row>
                     </div>
