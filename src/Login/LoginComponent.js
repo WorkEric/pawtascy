@@ -29,13 +29,14 @@ class LoginComponent extends Component {
     event.preventDefault();
     const data = new FormData(event.target);
     const {email,password} = this.state;
-
+    //const {back_email,back_password} = ;
     if (!event.target.checkValidity()){
       this.setState({ displayErrors: true });
       this.setState({result:"please correct errors above"})
       return;
     }
     this.setState({ displayErrors: false });
+    
     /// post to database
     fetch('/api/form-submit-url',{ 
       method: 'GET',

@@ -133,6 +133,7 @@ class SignupComponent extends Component {
                               className="signup_pwd_form"
                               value={this.state.firstpassword}
                               onChange={this.handleChange}
+                              pattern="\w{8}"
                               required
                             />
                           </div>
@@ -149,6 +150,7 @@ class SignupComponent extends Component {
                               className="signup_spwd_form"
                               value={this.state.secondpassword}
                               onChange={this.handleChange}
+                              pattern="\w{8}"
                               required
                             />
                           </div>                                   
