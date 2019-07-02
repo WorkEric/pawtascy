@@ -1,0 +1,173 @@
+.human_background {
+  background-color: #DDDDDD;
+  background-size: cover;
+
+}
+
+.human_logo1 {	
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 200px;
+}
+
+.human_title1 {
+  font-size: 50px;  
+  margin-top: 300px;
+  margin-left: 200px;
+  color: #888888;
+
+}
+
+.human_circle {
+  margin-bottom: -40px;
+  position: absolute;
+}
+.human_block_first {
+
+  height: 150px;
+  margin-top: 400px;
+  margin-left: 100px;
+
+}
+.human_block{
+  height: 150px;
+  margin-left: 100px;
+
+}
+.human_block_last {
+
+  height: 150px;
+  margin-left: 100px;
+  margin-bottom: 400px;
+}
+.human_des {
+  font-size: 40px;
+  margin-top: 30px;
+  margin-left: 100px;
+  display: inline-block;
+  color: #ABABAB;
+
+}
+
+.human_title2 {
+  font-size: 60px;  
+  margin-top: 200px;
+  margin-left: 100px;
+  color: #888888;
+  line-height: 80px; 
+
+}
+
+.human_photo_div {
+  margin-top: 100px;
+  margin-left: 50px;
+
+}
+.human_photo_text {
+  font-size: 30px;
+  color: #888888;
+  display: inline-block;
+}
+.human_gender_div {
+  margin-left: 50px;
+  margin-top: 80px;
+}
+.human_gender_title {
+  font-size: 30px;
+  color: #888888;
+
+}
+
+.human_gender_text {
+  font-size: 30px;
+  color: #888888;
+  margin-top: 20px;
+
+}
+.human_gender_radio_left {
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
+}
+.human_gender_radio_right {
+  width: 25px;
+  height: 25px;
+  margin-left: 50px;
+}
+.human_city_title {
+  font-size: 30px;
+  color: #888888;
+  margin-left: 50px;
+  margin-top: 40px;
+}
+
+.human_city_box {
+  margin-top: 20px;
+  margin-left: 50px;
+  height: 50px;
+  font-size: 30px;
+
+}
+.human_age_div {
+  margin-top: 120px;
+
+}
+.human_age_title {
+  font-size: 30px;
+  color: #888888;
+}
+.human_age_box {
+  font-size: 30px;
+  margin-top: 30px;
+}
+
+.human_job_title {
+  font-size: 30px;
+  color: #888888;
+  margin-top: 50px;
+}
+.human_job_box {
+  margin-top: 20px;
+  height: 50px;
+  font-size: 30px;
+
+}
+.human_state_title {
+  font-size: 30px;
+  color: #888888;
+  margin-top: 40px;
+}
+
+.human_state_box {
+  margin-top: 20px;
+  height: 50px;
+  font-size: 30px;
+}
+.human_zip_title {
+  font-size: 30px;
+  color: #888888;
+  margin-top: 40px;
+  margin-left: -100px;
+}
+
+.human_zip_box {
+  margin-top: 20px;
+  height: 50px;
+  font-size: 30px;
+  margin-left: -100px;
+}
+.human_intro_title {
+  margin-left: 50px;
+  font-size: 30px;
+  color: #888888;
+  margin-top: 100px;
+}
+.human_intro_box {
+  margin-top: 30px;
+  margin-left: 50px;
+  height: 300px;
+  width: 800px;
+  font-size: 30px;
+  margin-bottom: 20px;
+}

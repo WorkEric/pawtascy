@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
 import './Human.css';
-import {Container,Row,Col} from 'react-grid-system';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Dropzone from 'react-dropzone';
 
-
-class SignupComponent extends Component {
+class HumanComponent extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
-      email: "",
-      firstpassword: "",
-      secondpassword: "",
-      terms:false,
-      result: "",
-
+      Age: "age1",
+      Gender: "male",
+      City: "",
+      State: "CA",
+      Zip: "",
+      Intro: "",
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    // this.onImageDrop = this.onImageDrop.bind(this)
   }
 
   handleChange(event) {
     const {name,value,type,checked} = event.target
-    type === "checkbox" ? this.setState({ [name]:checked}):this.setState({[name]:value})
+    type === "checkbox" ? this.setState({ [name]:checked}) : this.setState({[name]:value})
+
 
   }
+  // onImageDrop(event) {
+
+
+  // }
 
   handleSubmit(event) {
     // check if email exist, if password valid, if two password match, and if terms is checked
@@ -57,140 +64,150 @@ class SignupComponent extends Component {
         <div>
           <Container fluid>
             <Row>
-              <Col className="background">
-                <img src={this.props.images.logo} className="logo1" ></img>
-                <h1 className="title1">{this.props.titles.title1}</h1>
-                <div className="block_first">
-                  <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des1}</h1>
+              <Col lg md = "4" className="human_background">
+                <img src={this.props.images.logo} className="human_logo1" ></img>
+                <div className="human_block_first">
+                  <img src={this.props.images.circle} className="human_circle"></img>
+                  <h1 className="human_des">{this.props.titles.title1}</h1>
                 </div>
-                <div className="block1">
-                  <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des2}</h1>
+                <div className="human_block">
+                  <h1 className="human_des">{this.props.titles.title2}</h1>
                 </div>
-                <div className="block1">
-                  <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des3}</h1>
+                <div className="human_block">
+                  <h1 className="human_des">{this.props.titles.title3}</h1>
                 </div>
-                <div className="block_last">
-                  <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des4}</h1>
+                <div className="human_block_last">
+                  <h1 className="human_des">{this.props.titles.title4}</h1>
                 </div>
               </Col>
-              <Col style={{backgroundColor: "#EEEEEE"}}>
-                <h1 className="title2">{this.props.titles.title2}</h1>
-                <form noValidate onSubmit={this.handleSubmit} className={displayErrors ? 'displayErrors': ''}>
+              <Col  lg md = "8" style={{backgroundColor: "#EEEEEE"}}>
+                <h1 className="human_title2">{this.props.titles.title5}</h1>
+                <form noValidate onSubmit={this.handleSubmit} className={displayErrors ? 'human_displayErrors': ''}>
                   <div>
-
-                    <div>
-                      <div className="box_first">
-                        <label className="title3">{this.props.titles.title3}</label>
-                      </div>
-                      <div className="boxinput">
-                        <input
-                          type="text"
-                          name="username"
-                          placeholder="  Your nickname"
-                          className="Form"
-                          value={this.state.username}
-                          onChange={this.handleChange}
-                          pattern="\w{4,20}"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <div className="box">
-                        <label className="title3">{this.props.titles.title4}</label>
-                      </div>
-                      <div className="boxinput">
-                        <input
-                          type="email"
-                          name="email"
-                          placeholder="  Your email address"
-                          className="Form"
-                          value={this.state.email}
-                          onChange={this.handleChange}
-                          required
-                        />
-                      </div>
-                    </div>
-
                     <div>
                       <Row>
-                        <Col>
-                          <div className="box">
-                            <label className="title3">{this.props.titles.title5}</label>
+                        <Col lg md = "3">
+                          <div className="human_photo_div">
+                            <img src={this.props.images.logo} className="human_photo_logo"></img><h1 className="human_photo_text">upload your photo</h1>
                           </div>
-                          <div className="boxinput">
+                          <div className="human_gender_div">
+                            <h1 className="human_gender_title">{this.props.titles.title7}</h1>
+                            <label className="human_gender_text">
+                              <input
+                                type="radio"
+                                name="Gender"
+                                value="male"
+                                checked={this.state.Gender === "male"}
+                                onChange={this.handleChange}
+                                className="human_gender_radio_left"
+                              /> Male
+                            </label>
+                            <label className="human_gender_text">
+                              <input
+                                type="radio"
+                                name="Gender"
+                                value="female"
+                                checked={this.state.Gender === "female"}
+                                onChange={this.handleChange}
+                                className="human_gender_radio_right"
+                              /> Male
+                            </label>
+                          </div> 
+                          <div>
+                            <h1 className="human_city_title">{this.props.titles.title9}</h1>
+                          </div>
+                          <div>
                             <input
-                              type="password"
-                              name="firstpassword"
-                              placeholder="  Create password"
-                              className="Form"
-                              value={this.state.firstpassword}
+                              type="text"
+                              name="City"
+                              placeholder="   City you live in"
+                              className="human_city_box"
+                              value={this.state.City}
                               onChange={this.handleChange}
-                              required
                             />
                           </div>
                         </Col>
-                        <Col>
-                          <div className="box">
-                            <label className="title4">{this.props.titles.title6}</label>
+                        <Col debug lg md = "3">
+                          <div className="human_age_div">
+                            <h1 className="human_age_title">{this.props.titles.title6}</h1>
+                            <select
+                                value={this.state.Age}
+                                onChange={this.handleChange}
+                                name="Age"
+                                className="human_age_box"
+                            >
+                                <option value="age1">Up to 18</option>
+                                <option value="age2">18-24</option>
+                                <option value="age3">24-35</option>
+                                <option value="age4">35-55</option>
+                                <option value="age5">Above 55</option>
+                            </select>
                           </div>
-                          <div className="box">
+                          <div>
+                            <h1 className="human_job_title">{this.props.titles.title8}</h1>
+                          </div>
+                          <div>
                             <input
-                              type="password"
-                              name="secondpassword"
-                              placeholder="  Confirm password"
-                              className="Form2"
-                              value={this.state.secondpassword}
+                              type="text"
+                              name="Job"
+                              placeholder="  Your Job type"
+                              className="human_job_box"
+                              value={this.state.Job}
                               onChange={this.handleChange}
-                              required
                             />
-                          </div>                                   
+                          </div> 
+                          <Row>
+                            <Col lg md = "1">
+                              <h1 className="human_state_title">{this.props.titles.title10}</h1>
+                              <select
+                                  value={this.state.State}
+                                  onChange={this.handleChange}
+                                  name="State"
+                                  className="human_state_box"
+                              >
+                                  <option value="CA">CA</option>
+                                  <option value="AZ">AZ</option>
+                                  <option value="WA">WA</option>
+                                  <option value="MT">MT</option>
+                                  <option value="OR">OR</option>
+                              </select>
+                            </Col>
+
+                            <Col lg md = "1">
+                              <h1 className="human_zip_title">{this.props.titles.title11}</h1>
+                              <input
+                                type="text"
+                                name="Zip"
+                                placeholder=" Your Zipcode"
+                                className="human_zip_box"
+                                value={this.state.Zip}
+                                onChange={this.handleChange}
+                              />
+                            </Col>
+                          </Row>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col lg md = "6">
+                          <h1 className="human_intro_title">{this.props.titles.title12}</h1>
+                          <textarea
+                            name="Intro"
+                            value={this.state.Intro}
+                            onChange={this.handleChange}
+                            className="human_intro_box"
+                          />
                         </Col>
                       </Row>
                     </div>
-                    <label className="terms">
-                      <input
-                        type="checkbox"
-                        name="terms"
-                        checked={this.state.terms}
-                        onChange={this.handleChange}
-                        className="checkbox"
-                        required
-                      /> {this.props.titles.title7}
-                    </label>
-                    <div className="resultdiv">
-                      <h1 className="result">{this.state.result}</h1>
-                    </div>
-                    <div className="signupdiv">
-                      <button className="signup">{this.props.links[3].label}</button>
-                    </div>
-                    <div className="social">
-                      <label className="title6">{this.props.titles.title8}</label>
-                    </div>
-                    <div className="logos">
-                      <a href={this.props.links[0].link}>
-                        <img src={this.props.images.fblogo}></img>
-                      </a>
-                      <a href={this.props.links[1].link}>
-                        <img src={this.props.images.googlelogo}></img>
-                      </a>
-                    </div>
-                  </div>
-                  <div>
-                    <Col>
-                      <a href={this.props.links[2].link} className="Login">{this.props.links[2].label}</a>
-                    </Col>
                   </div>
                 </form>
               </Col>
             </Row>
           </Container>
         </div>
-
       )
   }
 }
 
 
-export default SignupComponent;
+export default HumanComponent;

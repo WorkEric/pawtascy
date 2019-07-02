@@ -1,21 +1,23 @@
-.background {
+.signup_background {
 	background-color: #DDDDDD;
 	background-size: cover;
 
 }
-.logo1 {
+.signup_logo1 {
   background-repeat: no-repeat;
   position: absolute;
+
   margin-top: 200px;
   margin-left: 200px;
 
 
 }
-.logo2 {
+.signup_logo2 {
   margin-bottom: -40px;
+  position: absolute;
 }
 
-.title1 {
+.signup_title1 {
   font-size: 50px;  
   margin-top: 300px;
   margin-left: 200px;
@@ -23,7 +25,7 @@
 
 }
 
-.title2 {
+.signup_title2 {
   font-size: 80px;  
   margin-top: 200px;
   margin-left: 200px;
@@ -32,7 +34,61 @@
 
 }
 
-.title3 {
+
+.signup_title6 {
+  font-size: 40px;
+  color: #888888;
+  margin-left: 100px;
+
+}
+
+.signup_block_first {
+  margin-top: 200px;
+  height: 200px;  
+  margin-left: 100px;
+
+}
+.signup_block1{
+  height: 200px;
+  margin-left: 100px;
+
+}
+.signup_block_last {
+
+  height: 200px;  
+  margin-bottom: 400px;
+  margin-left: 100px;
+
+}
+.signup_des {
+  font-size: 30px;
+  margin-top: 30px;
+  margin-left: 100px;
+  display: inline-block;
+  color: #ABABAB;
+
+}
+.signup_des1 {
+  font-size: 30px;
+  color: #ABABAB;
+}
+.signup_Form {
+  margin-left: 100px;
+  height: 60px;
+  font-size: 30px;
+
+}
+
+
+.signup_username_div {
+  height:60px;
+  width:50%;
+  margin-top:100px;
+
+}
+
+
+.signup_username_text {
   font-size: 30px;
   color: #ABABAB;
   margin-left: 100px;
@@ -40,124 +96,132 @@
 }
 
 
-.title4 {
-  font-size: 30px;
-  color: #ABABAB;
+.signup_username_box {
+  height:60px;
+  width:50%;
+  margin-bottom:50px;
 
 }
 
-.title6 {
-  font-size: 40px;
-  color: #888888;
-  margin-left: 100px;
-
-}
-
-.block_first {
-  width: 1000px;
-  height: 200px;
-  margin-top: 50px;
-  margin-left: 100px;
-
-}
-.block1{
-  width: 1000px;
-  height: 200px;
-  margin-top: 0px;
-  margin-left: 100px;
-
-}
-.block_last {
-  width: 1000px;
-  height: 200px;  
-  margin-bottom: 200px;
-  margin-left: 100px;
-
-}
-.des {
-  font-size: 30px;
-  margin: 0;
-  display: inline-block;
-  color: #ABABAB;
-
-}
-.des1 {
-  font-size: 30px;
-  color: #ABABAB;
-}
-.Form {
+.signup_username_form {
   margin-left: 100px;
   height: 60px;
   font-size: 30px;
 
 }
 
-.Form2 {
-  height: 70px;
+.signup_email_div {
+  height:60px;
+  width:50%;
+
+}
+
+.signup_email_text {
   font-size: 30px;
-
+  color: #ABABAB;
+  margin-left: 100px;
+  height: auto;
 }
 
-.box_first {
-  height:60px;
-  width:50%;
-  margin-top:100px;
-
-}
-.box {
-  height:60px;
-  width:50%;
-
-}
-.boxinput {
+.signup_email_box {
   height:60px;
   width:50%;
   margin-bottom:50px;
 
 }
-.checkbox {
+.signup_email_form {
+  margin-left: 100px;
+  height: 60px;
+  font-size: 30px;
+
+}
+
+.signup_pwd_div {
+  height:60px;
+  width:50%;
+
+}
+
+.signup_pwd_text {
+  font-size: 30px;
+  color: #ABABAB;
+  margin-left: 100px;
+  height: auto;
+}
+
+.signup_pwd_box {
+  height:60px;
+  width:50%;
+  margin-bottom:50px;
+
+}
+.signup_pwd_form {
+  margin-left: 100px;
+  height: 60px;
+  font-size: 30px;
+
+}
+
+.signup_spwd_div {
+  height:60px;
+  width:50%;
+
+}
+
+.signup_spwd_text {
+  font-size: 30px;
+  color: #ABABAB;
+  margin-left: 100px;
+  height: auto;
+}
+
+.signup_spwd_box {
+  height:60px;
+  width:50%;
+  margin-bottom:50px;
+
+}
+.signup_spwd_form {
+  margin-left: 100px;
+  height: 60px;
+  font-size: 30px;
+
+}
+.signup_checkbox {
   width: 30px;
   height: 30px;
 
 }
-.terms {
+.signup_terms {
   margin-top:0px;
   margin-left: 100px;
-  height: 200px;
   font-size: 30px;
   color: #888888;
 }
 
-.social {
-  margin-top:0px;
-  height: 200px;
-}
-
-.resultdiv {
-  margin-top: 300px;
-  height: 100px;  
+.signup_resultdiv {
+  margin-top: 20px;
+  height: 10px;  
 }
 
 
-.result {
-  margin-top: -200px;
-  height: 100px;
+.signup_result {
+  margin-top: 20px;
+  height: 10px;
   font-size: 30px;
   color: red;
 }
-.signupdiv {
+.signup_signupdiv {
   margin-top: 10px;
   height: 100px;  
 }
 
-.Login {
-  font-size: 30px;
-  margin-left: 100px;
-}
 
-.signup {
+.signup_signup {
   font-size: 30px;
   margin-left: 100px;
+  margin-bottom: 50px;
+  margin-top: 50px;
   background-color: #ABABAB;
   padding: 14px 20px;
   border: none;
@@ -165,13 +229,24 @@
   width: 15%;
 }
 
-.logos {
-  margin-top: -100px;
-  margin-bottom: -50px;
-
+.signup_social {
+  margin-top:50px;
+  height: 100px;
 }
 
-.displayErrors input:invalid {
+.signup_logos {
+  margin-top: 0px;
+  margin-bottom: 50px;
+  margin-left: 100px;
+}
+
+.signup_login {
+  font-size: 30px;
+  margin-left: 100px;
+  height: 100px;
+  margin-bottom: 100px;
+}
+.signup_displayErrors input:invalid {
   border-color: red;
 
 }
