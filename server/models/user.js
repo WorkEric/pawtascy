@@ -89,6 +89,5 @@ module.exports = (sequelize, DataTypes) => {
     //   foreignKey: 'user_id',
     // })
   };
-  console.log('user: ', user.username);
   return user;
 };

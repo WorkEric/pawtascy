@@ -7,7 +7,7 @@ const {
 } = require('graphql');
 
 const { getLocations, getLocationByKeys } = require('./Location.js');
-const { getUsers } = require('./User.js');
+const { getUsers, getUserByUsername, getUserByEmail } = require('./User.js');
 
 module.exports = new GraphQLObjectType({
     name: 'Query',
@@ -19,6 +19,8 @@ module.exports = new GraphQLObjectType({
 
             // User
             getUsers,
+            getUserByUsername,
+            getUserByEmail,
         }
     }
 });

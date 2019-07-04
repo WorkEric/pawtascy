@@ -67,7 +67,7 @@ module.exports = (sequelize, DataTypes) => {
     ]
   });
   location.associate = function(models) {
-    models.location.hasMany(models.user, {foreignKey: 'location_id', sourceKey: 'id', as: 'userProfile'});
+    models.location.hasMany(models.user_profile, {foreignKey: 'location_id', sourceKey: 'id', as: 'userProfile'});
   };
   return location;
 };
