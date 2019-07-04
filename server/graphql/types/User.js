@@ -1,14 +1,13 @@
 const {
     GraphQLObjectType,
-    GraphQLList,
     GraphQLID,
     GraphQLBoolean,
     GraphQLString
     } = require('graphql');
 
-const DateType = require('./util.js');
+// const DateType = require('./util.js');
 
-module.exports = new GraphQLObjectType({
+ const User = new GraphQLObjectType({
     name: 'User',
     fields: () => {
         return {
@@ -72,18 +71,22 @@ module.exports = new GraphQLObjectType({
                     return user.is_active;
                 }
             },
-            created_at: {
-                type: DateType,
-                resolve (user) {
-                    return user.created_at
-                }
-            },
-            updated_at: {
-                type: DateType,
-                resolve (user) {
-                    return user.updated_at
-                }
-            }
+            // created_at: {
+            //     type: DateType,
+            //     resolve (user) {
+            //         return user.created_at
+            //     }
+            // },
+            // updated_at: {
+            //     type: DateType,
+            //     resolve (user) {
+            //         return user.updated_at
+            //     }
+            // }
         }
     }
 })
+
+module.exports = {
+    User: User
+}

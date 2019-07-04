@@ -9,11 +9,6 @@ const config = require(__dirname + '/../config/config.json');
 const db_conf = config[env]  // process.env.NODE_ENV === 'production' ? config.env : config.env;
 const db = {};
 
-// if (config.use_env_variable) {
-//   sequelize = new Sequelize(process.env[config.use_env_variable], config);
-// } else {
-//   sequelize = new Sequelize(config.database, config.username, config.password, config);
-// }
 const sequelize = new Sequelize(db_conf.database, db_conf.username, db_conf.password, {
     host: db_conf.host,
     dialect: 'mysql',
@@ -55,8 +50,5 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
-// 同步模型到数据库中
-// sequelize.sync({force: true});
 
 module.exports = db;
