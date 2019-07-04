@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './Login.css';
-import {Container,Row,Col} from 'react-grid-system';
-
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 class LoginComponent extends Component {
   constructor() {
@@ -28,16 +29,17 @@ class LoginComponent extends Component {
     event.preventDefault();
     const data = new FormData(event.target);
     const {email,password} = this.state;
-
+    //const {back_email,back_password} = ;
     if (!event.target.checkValidity()){
       this.setState({ displayErrors: true });
       this.setState({result:"please correct errors above"})
       return;
     }
     this.setState({ displayErrors: false });
+    
     /// post to database
     fetch('/api/form-submit-url',{ 
-      method: 'POST',
+      method: 'GET',
       body: data,
     });
 
@@ -49,66 +51,66 @@ class LoginComponent extends Component {
         <div>
           <Container fluid>
             <Row>
-            <Col lg= {6} sm = {6} className="background">
-              <img src={this.props.images.logo} className="logo1" ></img>
-              <h1 className="title1">{this.props.titles.title1}</h1>
-              <div className="block_first">
-                <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des1}</h1>
+            <Col lg md = "6" className="login_background">
+              <img src={this.props.images.logo} className="login_logo1" ></img>
+              <h1 className="login_title1">{this.props.titles.title1}</h1>
+              <div className="login_block_first">
+                <img src={this.props.images.logo} className="login_logo2"></img><h1 className="login_des">{this.props.description.des1}</h1>
               </div>
-              <div className="block1">
-                <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des2}</h1>
+              <div className="login_block1">
+                <img src={this.props.images.logo} className="login_logo2"></img><h1 className="login_des">{this.props.description.des2}</h1>
               </div>
-              <div className="block1">
-                <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des3}</h1>
+              <div className="login_block1">
+                <img src={this.props.images.logo} className="login_logo2"></img><h1 className="login_des">{this.props.description.des3}</h1>
               </div>
-              <div className="block_last">
-                <img src={this.props.images.logo} className="logo2"></img><h1 className="des">{this.props.description.des4}</h1>
+              <div className="login_block_last">
+                <img src={this.props.images.logo} className="login_logo2"></img><h1 className="login_des">{this.props.description.des4}</h1>
               </div>
             </Col>
-            <Col lg= {6} sm = {6} style={{backgroundColor: "#EEEEEE"}}>
-              <h1 className="title2">{this.props.titles.title2}</h1>
-                <form  noValidate onSubmit={this.handleSubmit} className={displayErrors ? 'displayErrors': ''}>
+            <Col lg md = "6" style={{backgroundColor: "#EEEEEE"}}>
+              <h1 className="login_title2">{this.props.titles.title2}</h1>
+                <form  noValidate onSubmit={this.handleSubmit} className={displayErrors ? 'login_displayErrors': ''}>
                   <div>
                     <div>
-                      <div className="box_first">
-                        <label className="title3">{this.props.titles.title3}</label>
+                      <div className="email_div">
+                        <label className="email_text">{this.props.titles.title3}</label>
                       </div>
-                      <div className="boxinput">
+                      <div className="email_box">
                         <input
                           type="email"
                           name="email"
                           placeholder="  Your email address"
-                          className="Form"
+                          className="email_form"
                           value={this.state.email}
                           onChange={this.handleChange}
                         />
                       </div>
                     </div>
                     <div>
-                      <div className="box">
-                        <label className="title3">{this.props.titles.title4}</label>
+                      <div className="password_div">
+                        <label className="password_text">{this.props.titles.title4}</label>
                       </div>
-                      <div className="boxinput">
+                      <div className="password_box">
                         <input
                           type="password"
                           name="password"
                           placeholder="  Your password"
-                          className="Form"
+                          className="password_form"
                           value={this.state.password}
                           onChange={this.handleChange}
                         />
                       </div>
-                      <div className="resultdiv">
-                        <h1 className="result">{this.state.result}</h1>
+                      <div className="login_resultdiv">
+                        <h1 className="login_result">{this.state.result}</h1>
                       </div>
-                      <div className="logindiv">
-                        <button className="login">{this.props.links[3].label}</button>
+                      <div className="login_logindiv">
+                        <button className="login_login">{this.props.links[3].label}</button>
                       </div>
                     </div>
-                    <div className="social">
-                      <label className="title5">{this.props.titles.title5}</label>
+                    <div className="login_social">
+                      <label className="login_title5">{this.props.titles.title5}</label>
                     </div>
-                    <div className="logos">
+                    <div className="login_logos">
                       <a href={this.props.links[0].link}>
                         <img src={this.props.images.fblogo}></img>
                       </a>
@@ -120,7 +122,7 @@ class LoginComponent extends Component {
                   </div>
                   <div>
                     <Col>
-                      <a href={this.props.links[2].link} className="signUp">{this.props.links[2].label}</a>
+                      <a href={this.props.links[2].link} className="login_signup">{this.props.links[2].label}</a>
                     </Col>
                   </div>
                 </form>      

@@ -1,9 +1,9 @@
-.background {
+.login_background {
 	background-color: #DDDDDD;
 	background-size: cover;
 
 }
-.logo1 {
+.login_logo1 {
   background-repeat: no-repeat;
   position: absolute;
   margin-top: 200px;
@@ -11,7 +11,7 @@
 
 
 }
-.title1 {
+.login_title1 {
   font-size: 50px;  
   margin-top: 300px;
   margin-left: 200px;
@@ -19,7 +19,7 @@
 
 }
 
-.title2 {
+.login_title2 {
   font-size: 80px;  
   margin-top: 200px;
   margin-left: 100px;
@@ -28,99 +28,115 @@
 
 }
 
-.title3 {
-  font-size: 30px;
-  color: #ABABAB;
-  margin-left: 100px;
 
-}
-
-.title5 {
+.login_title5 {
   font-size: 40px;
   color: #888888;
   margin-left: 100px;
 
 }
+.login_block_first {
+  margin-top: 200px;
+  height: 200px;  
+  margin-left: 100px;
+}
 
-.block1{
-  width: 1000px;
+.login_block1{
+
   height: 200px;
-  margin-top: 0px;
   margin-left: 100px;
 
 }
 
-.block_first {
-  width: 1000px;
-  height: 200px;
-  margin-top: 50px;
-  margin-left: 100px;
+.login_block_last {
 
-}
-.block_last {
-  width: 1000px;
   height: 200px;  
   margin-bottom: 200px;
-
+  margin-left: 100px;
 }
-.logo2 {
+.login_logo2 {
   margin-bottom: -40px;
+  position: absolute;
 }
 
-.des {
+.login_des {
   font-size: 30px;
-  margin: 0;
+  margin-top: 30px;
+  margin-left: 100px;
   display: inline-block;
   color: #ABABAB;
 
 }
-.des1 {
+.login_des1 {
   font-size: 30px;
   color: #ABABAB;
 }
-.Form {
+.email_form {
   margin-left: 100px;
   font-size: 40px;
 }
-.box_first {
+.email_div {
   height:60px;
   width:50%;
   margin-top:100px;
 
 }
-.boxinput {
+.email_box {
   height:60px;
   width:50%;
   margin-bottom:50px;
 
 }
-.box {
+.email_text {
+  font-size: 30px;
+  color: #ABABAB;
+  margin-left: 100px;
+
+}
+
+.password_text {
+  font-size: 30px;
+  color: #ABABAB;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+.password_box {
+  height:60px;
+  width:50%;
+  margin-bottom:50px;
+
+}
+.password_form {
+  margin-left: 100px;
+  font-size: 40px;
+}
+.password_div {
   height:100px;
   width:50%;
 }
-.emailstatediv {
+.login_emailstatediv {
   margin-left: 100px;
   margin-top: -20px;
 }
-.emailstate {
+.login_emailstate {
   height: 50px;
   font-size: 30px;
 }
 
-.resultdiv {
+.login_resultdiv {
   margin-left: 100px;
   margin-top: -20px;
 }
-.result {
+.login_result {
   height: 100px;
   font-size: 30px;
   color: red;
 }
-.logindiv {
+.login_logindiv {
   height: 100px;  
 }
 
-.login {
+.login_login {
   font-size: 30px;
   margin-left: 100px;
   background-color: #ABABAB;
@@ -130,22 +146,21 @@
   width: 15%;
 }
 
-.social {
+.login_social {
   margin-top:0px;
-  height: 200px;
+  height: 100px;
 }
-.logos {
+.login_logos {
   margin-left: 100px;
-  height: 180px;
-
+  height: 80px;
+  margin-bottom: 50px;
 }
 
-
-.signUp {
+.login_signup {
   font-size: 30px;
   margin-left: 100px;
 }
-.displayErrors input:invalid {
+.login_displayErrors input:invalid {
   border-color: red;
 
 }

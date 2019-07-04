@@ -59,41 +59,41 @@ class SignupComponent extends Component {
       return (
           <Container fluid>
             <Row>
-              <Col lg md = "6" className="background">
-                <img src={this.props.images.logo} className="logo1" ></img>
-                <h1 className="title1">{this.props.titles.title1}</h1>
-                <div className="block_first">
-                  <img src={this.props.images.logo} className="logo2"></img>
-                  <h1 className="des">{this.props.description.des1}</h1>
+              <Col lg md = "6" className="signup_background">
+                <img src={this.props.images.logo} className="signup_logo1" ></img>
+                <h1 className="signup_title1">{this.props.titles.title1}</h1>
+                <div className="signup_block_first">
+                  <img src={this.props.images.logo} className="signup_logo2"></img>
+                  <h1 className="signup_des">{this.props.description.des1}</h1>
                 </div>
-                <div className="block1">
-                  <img src={this.props.images.logo} className="logo2"></img>
-                  <h1 className="des">{this.props.description.des2}</h1>
+                <div className="signup_block1">
+                  <img src={this.props.images.logo} className="signup_logo2"></img>
+                  <h1 className="signup_des">{this.props.description.des2}</h1>
                 </div>
-                <div className="block1">
-                  <img src={this.props.images.logo} className="logo2"></img>
-                  <h1 className="des">{this.props.description.des3}</h1>
+                <div className="signup_block1">
+                  <img src={this.props.images.logo} className="signup_logo2"></img>
+                  <h1 className="signup_des">{this.props.description.des3}</h1>
                 </div>
-                <div className="block_last">
-                  <img src={this.props.images.logo} className="logo2"></img>
-                  <h1 className="des">{this.props.description.des4}</h1>
+                <div className="signup_block_last">
+                  <img src={this.props.images.logo} className="signup_logo2"></img>
+                  <h1 className="signup_des">{this.props.description.des4}</h1>
                 </div>
               </Col>
               <Col lg md = "6" style={{backgroundColor: "#EEEEEE"}}>
-                <h1 className="title2">{this.props.titles.title2}</h1>
-                <form noValidate onSubmit={this.handleSubmit} className={displayErrors ? 'displayErrors': ''}>
+                <h1 className="signup_title2">{this.props.titles.title2}</h1>
+                <form noValidate onSubmit={this.handleSubmit} className={displayErrors ? 'signup_displayErrors': ''}>
                   <div>
 
                     <div>
-                      <div className="box_first">
-                        <label className="title3">{this.props.titles.title3}</label>
+                      <div className="signup_username_div">
+                        <label className="signup_username_text">{this.props.titles.title3}</label>
                       </div>
-                      <div className="boxinput">
+                      <div className="signup_username_box">
                         <input
                           type="text"
                           name="username"
                           placeholder="  Your nickname"
-                          className="Form"
+                          className="signup_username_form"
                           value={this.state.username}
                           onChange={this.handleChange}
                           pattern="\w{4,20}"
@@ -103,15 +103,15 @@ class SignupComponent extends Component {
                     </div>
 
                     <div>
-                      <div className="box">
-                        <label className="title3">{this.props.titles.title4}</label>
+                      <div className="signup_email_div">
+                        <label className="signup_email_text">{this.props.titles.title4}</label>
                       </div>
-                      <div className="boxinput">
+                      <div className="signup_email_box">
                         <input
                           type="email"
                           name="email"
                           placeholder="  Your email address"
-                          className="Form"
+                          className="signup_email_form"
                           value={this.state.email}
                           onChange={this.handleChange}
                           required
@@ -122,59 +122,61 @@ class SignupComponent extends Component {
                     <div>
                       <Row>
                         <Col>
-                          <div className="box">
-                            <label className="title3">{this.props.titles.title5}</label>
+                          <div className="signup_pwd_div">
+                            <label className="signup_pwd_text">{this.props.titles.title5}</label>
                           </div>
-                          <div className="boxinput">
+                          <div className="signup_pwd_box">
                             <input
                               type="password"
                               name="firstpassword"
                               placeholder="  Create password"
-                              className="Form"
+                              className="signup_pwd_form"
                               value={this.state.firstpassword}
                               onChange={this.handleChange}
+                              pattern="\w{8}"
                               required
                             />
                           </div>
                         </Col>
                         <Col>
-                          <div className="box">
-                            <label className="title4">{this.props.titles.title6}</label>
+                          <div className="signup_spwd_div">
+                            <label className="signup_spwd_text">{this.props.titles.title6}</label>
                           </div>
-                          <div className="box">
+                          <div className="signup_spwd_box">
                             <input
                               type="password"
                               name="secondpassword"
                               placeholder="  Confirm password"
-                              className="Form2"
+                              className="signup_spwd_form"
                               value={this.state.secondpassword}
                               onChange={this.handleChange}
+                              pattern="\w{8}"
                               required
                             />
                           </div>                                   
                         </Col>
                       </Row>
                     </div>
-                    <label className="terms">
+                    <label className="signup_terms">
                       <input
                         type="checkbox"
                         name="terms"
                         checked={this.state.terms}
                         onChange={this.handleChange}
-                        className="checkbox"
+                        className="signup_checkbox"
                         required
                       /> {this.props.titles.title7}
                     </label>
-                    <div className="resultdiv">
-                      <h1 className="result">{this.state.result}</h1>
+                    <div className="signup_resultdiv">
+                      <h1 className="signup_result">{this.state.result}</h1>
                     </div>
-                    <div className="signupdiv">
-                      <button className="signup">{this.props.links[3].label}</button>
+                    <div className="signup_signupdiv">
+                      <button className="signup_signup">{this.props.links[3].label}</button>
                     </div>
-                    <div className="social">
-                      <label className="title6">{this.props.titles.title8}</label>
+                    <div className="signup_social">
+                      <label className="signup_title6">{this.props.titles.title8}</label>
                     </div>
-                    <div className="logos">
+                    <div className="signup_logos">
                       <a href={this.props.links[0].link}>
                         <img src={this.props.images.fblogo}></img>
                       </a>
@@ -185,7 +187,7 @@ class SignupComponent extends Component {
                   </div>
                   <div>
                     <Col>
-                      <a href={this.props.links[2].link} className="Login">{this.props.links[2].label}</a>
+                      <a href={this.props.links[2].link} className="signup_login">{this.props.links[2].label}</a>
                     </Col>
                   </div>
                 </form>
