@@ -102,7 +102,7 @@ class HumanComponent extends Component {
                                 checked={this.state.Gender === "female"}
                                 onChange={this.handleChange}
                                 className="human_gender_radio_right"
-                              /> Male
+                              /> Female
                             </label>
                           </div> 
                           <div>

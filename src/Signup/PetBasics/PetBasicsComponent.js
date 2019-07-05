@@ -6,9 +6,6 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button'
 
 
-const Checkbox = props => (
-  <input type="checkbox" {...props} />
-)
 
 class PetBasicsComponent extends Component {
   constructor() {
@@ -56,10 +53,10 @@ class PetBasicsComponent extends Component {
               <Col lg md = "6" className="petb_background">
                 <img src={this.props.images.logo} className="petb_logo1"></img>
                 <div className="petb_block_first">
-                  <img src={this.props.images.circle} className="petb_circle"></img>
                   <h1 className="petb_des">{this.props.titles.title1}</h1>
                 </div>
                 <div className="petb_block">
+                  <img src={this.props.images.circle} className="petb_circle"></img>
                   <h1 className="petb_des">{this.props.titles.title2}</h1>
                 </div>
                 <div className="petb_block">
