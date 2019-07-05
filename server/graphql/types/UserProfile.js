@@ -1,3 +1,4 @@
+// types: UserProfile
 const {
     GraphQLObjectType,
     GraphQLList,

@@ -3,13 +3,13 @@
 const { 
     GraphQLObjectType,
     GraphQLString, 
-    GraphQLList, 
+    GraphQLList,
 } = require('graphql');
 
 const { getLocations, getLocationByKeys } = require('./Location.js');
 const { getUsers, getUserByUsername, getUserByEmail, getUserWithProfile, 
     getUserWithProfileById, getUserWithProfileByUsername } = require('./User.js');
-const { getUserProfiles, getUserProfileByUserId } = require('./UserProfile.js')
+const { getUserProfiles, getUserProfileByUserId, getUserProfileByLocation } = require('./UserProfile.js')
 
 module.exports = new GraphQLObjectType({
     name: 'Query',
@@ -30,6 +30,7 @@ module.exports = new GraphQLObjectType({
             // UserProfile
             getUserProfiles,
             getUserProfileByUserId,
+            getUserProfileByLocation,
         }
     }
 });

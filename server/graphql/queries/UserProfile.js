@@ -31,7 +31,30 @@ const getUserProfileByUserId = {
     }
 }
 
+const getUserProfileByLocation = {
+    type: new GraphQLList(UserProfile),
+    args: {
+        city: {type: GraphQLString},
+        state: {type: GraphQLString},
+        country: {type: GraphQLString}
+    },
+    resolve(_, {city, state, country}) {
+        return db.location.findOne({
+            where: {
+                city: city, 
+                state: state, 
+                country: country
+            }
+        }).then(function(location){
+            return db.user_profile.findAll({
+                where: {location_id: location.id},
+            })
+        })
+    }
+}
+
 module.exports = {
     getUserProfiles,
     getUserProfileByUserId,
+    getUserProfileByLocation,
 }

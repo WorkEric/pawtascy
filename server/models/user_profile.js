@@ -1,5 +1,6 @@
 'use strict';
 
+// models: user_profile
 module.exports = (sequelize, DataTypes) => {
   const user_profile = sequelize.define('user_profile', {
     id: {

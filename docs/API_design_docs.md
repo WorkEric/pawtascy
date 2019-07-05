@@ -274,3 +274,32 @@ User Profile
   }
 }
 ```
+
+### get user profile by location
+
+```
+query {
+  getUserProfileByLocation(city:"Beijing", state:"BJ", country:"China"){
+    id,
+    gender,
+    age,
+    job,
+    user_id
+  }
+}
+
+// result
+{
+  "data": {
+    "getUserProfileByLocation": [
+      {
+        "id": "1",
+        "gender": "Male",
+        "age": "20",
+        "job": "software engineer",
+        "user_id": 1
+      }
+    ]
+  }
+}
+```

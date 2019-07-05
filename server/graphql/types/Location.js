@@ -1,3 +1,4 @@
+// types: Location
 const {
     GraphQLObjectType,
     GraphQLInputObjectType,
@@ -70,7 +71,13 @@ const Location = new GraphQLObjectType({
             //     resolve (location) {
             //         return location.updated_at
             //     }
-            // }                  
+            // },
+            // user_profiles: {
+            //     type: new GraphQLList(GraphQLString),
+            //     resolve (location) {
+            //         return location.getUserProfiles();
+            //     }
+            // }
         }
     }
 });
