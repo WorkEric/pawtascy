@@ -9,8 +9,6 @@ const {
     GraphQLString
     } = require('graphql');
 
-// const DateType = require('./util.js');
-const db = require('../../models/index.js');
 const { UserProfile } = require('./UserProfile.js');
 
  const User = new GraphQLObjectType({
@@ -77,18 +75,18 @@ const { UserProfile } = require('./UserProfile.js');
                     return user.is_active;
                 }
             },
-            // created_at: {
-            //     type: DateType,
-            //     resolve (user) {
-            //         return user.created_at
-            //     }
-            // },
-            // updated_at: {
-            //     type: DateType,
-            //     resolve (user) {
-            //         return user.updated_at
-            //     }
-            // },
+            created_at: {
+                type: GraphQLString,
+                resolve (user) {
+                    return user.created_at
+                }
+            },
+            updated_at: {
+                type: GraphQLString,
+                resolve (user) {
+                    return user.updated_at
+                }
+            },
             user_profile: {
                 type: UserProfile,
                 resolve (user) {

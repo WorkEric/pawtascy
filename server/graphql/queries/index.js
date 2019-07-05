@@ -8,8 +8,11 @@ const {
 
 const { getLocations, getLocationByKeys } = require('./Location.js');
 const { getUsers, getUserByUsername, getUserByEmail, getUserWithProfile, 
-    getUserWithProfileById, getUserWithProfileByUsername } = require('./User.js');
+    getUserWithProfileById, getUserWithProfileByUsername, getUsersByPetProfileId } = require('./User.js');
 const { getUserProfiles, getUserProfileByUserId, getUserProfileByLocation } = require('./UserProfile.js')
+const { getPetProfiles, getPetProfileById, getPetProfilesByCategory, 
+    getPetProfilesByUsername } = require('./PetProfile.js')
+const { getPetCategories, getPetCategoryById, getPetCategoriesByPetProfileId } = require('./PetCategory.js')
 
 module.exports = new GraphQLObjectType({
     name: 'Query',
@@ -26,11 +29,23 @@ module.exports = new GraphQLObjectType({
             getUserWithProfile,
             getUserWithProfileById,
             getUserWithProfileByUsername,
+            getUsersByPetProfileId,
 
             // UserProfile
             getUserProfiles,
             getUserProfileByUserId,
             getUserProfileByLocation,
+
+            // PetProfile
+            getPetProfiles,
+            getPetProfileById,
+            getPetProfilesByCategory,
+            getPetProfilesByUsername,
+
+            // PetCategory
+            getPetCategories,
+            getPetCategoryById,
+            getPetCategoriesByPetProfileId
         }
     }
 });

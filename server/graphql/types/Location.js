@@ -9,8 +9,6 @@ const {
     GraphQLList
     } = require('graphql');
 
-const DateType = require('./util.js');
-
 const InputLocation = new GraphQLInputObjectType({
     name: 'InputLocation',
     fields: {
@@ -60,18 +58,18 @@ const Location = new GraphQLObjectType({
                     return location.time_zone;
                 }
             },
-            // created_at: {
-            //     type: DateType,
-            //     resolve (location) {
-            //         return location.created_at
-            //     }
-            // },
-            // updated_at: {
-            //     type: DateType,
-            //     resolve (location) {
-            //         return location.updated_at
-            //     }
-            // },
+            created_at: {
+                type: GraphQLString,
+                resolve (location) {
+                    return location.created_at
+                }
+            },
+            updated_at: {
+                type: GraphQLString,
+                resolve (location) {
+                    return location.updated_at
+                }
+            },
             // user_profiles: {
             //     type: new GraphQLList(GraphQLString),
             //     resolve (location) {

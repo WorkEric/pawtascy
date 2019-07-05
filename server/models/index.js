@@ -15,12 +15,12 @@ const sequelize = new Sequelize(db_conf.database, db_conf.username, db_conf.pass
     // insecureAuth: true,
     dialectOptions: {
         // useUTC: true,
-        // typeCast: function (field, next) {
-        //     if (field.type === 'TIMESTAMP' || field.type === 'DATETIME' || field.type === 'DATE') {
-        //         return field.string();
-        //     }
-        //     return next();
-        // }
+        typeCast: function (field, next) {
+          if (field.type === 'TIMESTAMP' || field.type === 'DATETIME' || field.type === 'DATE') {
+              return field.string();
+          }
+          return next();
+      }
     },
     pool: {
         max: 10,

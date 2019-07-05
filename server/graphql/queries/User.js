@@ -100,11 +100,38 @@ const getUserWithProfileByUsername = {
     }
 }
 
+const getUsersByPetProfileId = {
+    type: new GraphQLList(User),
+    args: {
+        id: {type: GraphQLInt}
+    },
+    resolve (_, {id}) {
+        let where = {
+            '$petProfiles.id$': {}
+        };
+
+        if (id) {
+            where['$petProfiles.id$'][db.Sequelize.Op.eq] = id;
+        }
+
+        return db.user.findAll({
+            where,
+            include: [{
+                model: db.pet_profile,
+                as: 'petProfiles',
+                through: {}
+            }],
+            subQuery: false
+        })
+    }
+}
+
 module.exports = {
     getUsers,
     getUserByUsername,
     getUserByEmail,
     getUserWithProfile,
     getUserWithProfileById,
-    getUserWithProfileByUsername
+    getUserWithProfileByUsername,
+    getUsersByPetProfileId
 }

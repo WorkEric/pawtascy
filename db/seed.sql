@@ -40,4 +40,9 @@ VALUES
 (@pet_profile_id_1, @pet_category_id_1, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (@pet_profile_id_2, @pet_category_id_2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
+INSERT INTO user_pet_profile(user_id, pet_profile_id, created_at, updated_at)
+VALUES
+(1, 1, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+(1, 2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+
 COMMIT;

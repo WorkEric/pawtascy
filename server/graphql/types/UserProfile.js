@@ -7,9 +7,6 @@ const {
     GraphQLInt
     } = require('graphql');
 
-const Location = require('./Location.js');
-const DateType = require('./util.js');
-
 const UserProfile = new GraphQLObjectType({
     name: 'UserProfile',
     fields: () => {
@@ -62,18 +59,18 @@ const UserProfile = new GraphQLObjectType({
                     return user_profile.self_introduction;
                 }
             },    
-            // created_at: {
-            //     type: DateType,
-            //     resolve (user_profile) {
-            //         return user_profile.created_at
-            //     }
-            // },
-            // updated_at: {
-            //     type: DateType,
-            //     resolve (user_profile) {
-            //         return user_profile.updated_at
-            //     }
-            // },
+            created_at: {
+                type: GraphQLString,
+                resolve (user_profile) {
+                    return user_profile.created_at
+                }
+            },
+            updated_at: {
+                type: GraphQLString,
+                resolve (user_profile) {
+                    return user_profile.updated_at
+                }
+            },
             user_id: {
                 type: GraphQLInt,
                 resolve (user_profile) {

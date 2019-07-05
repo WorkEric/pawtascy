@@ -5,11 +5,11 @@ const {
     GraphQLList,
     GraphQLID,
     GraphQLString,
+    GraphQLInt
     } = require('graphql');
 
-const DateType = require('./util.js')
 
-module.exports = new GraphQLObjectType({
+const PetCategory = new GraphQLObjectType({
     name: 'PetCategory',
     fields: () => {
         return {
@@ -32,13 +32,13 @@ module.exports = new GraphQLObjectType({
                 }
             },
             created_at: {
-                type: DateType,
+                type: GraphQLString,
                 resolve (pet_category) {
                     return pet_category.created_at
                 }
             },
             updated_at: {
-                type: DateType,
+                type: GraphQLString,
                 resolve (pet_category) {
                     return pet_category.updated_at
                 }
@@ -46,3 +46,7 @@ module.exports = new GraphQLObjectType({
         }
     }
 })
+
+module.exports = {
+    PetCategory: PetCategory
+}

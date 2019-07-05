@@ -45,7 +45,7 @@ const getUserProfileByLocation = {
                 state: state, 
                 country: country
             }
-        }).then(function(location){
+        }).then(function(location) {
             return db.user_profile.findAll({
                 where: {location_id: location.id},
             })
