@@ -141,9 +141,7 @@ query {
     }
   }
 }
-```
 
-```
 // result
 {
   "data": {
@@ -175,6 +173,7 @@ query {
 }
 ```
 
+
 ### Find user with profile by id
 
 ```
@@ -191,9 +190,7 @@ query {
     }
   }
 }
-```
 
-```
 // result
 {
   "data": {
@@ -210,10 +207,45 @@ query {
     }
   }
 }
-
 ```
 
 
+### find user with profile by username
+
+```
+query {
+  getUserWithProfileByUsername(username: "ruiwang"){
+    id
+    username
+    email
+    user_profile {
+      id,
+      gender,
+      age,
+      job,
+      location_id
+    }
+  }
+}
+
+// result
+{
+  "data": {
+    "getUserWithProfileByUsername": {
+      "id": "1",
+      "username": "ruiwang",
+      "email": "ruiwang@gmail.com",
+      "user_profile": {
+        "id": "1",
+        "gender": "Male",
+        "age": "20",
+        "job": "software engineer",
+        "location_id": 1
+      }
+    }
+  }
+}
+```
 
 
 User Profile
