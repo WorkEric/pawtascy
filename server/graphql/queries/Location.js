@@ -1,3 +1,6 @@
+/*
+ * queries: location
+ */ 
 const { 
     GraphQLString, 
     GraphQLList, 
@@ -6,12 +9,13 @@ const {
 const db = require('../../models/index.js');
 const { Location, InputLocation } = require('../types/Location.js');
 
+// location operation
 const getLocations = {
     type: new GraphQLList(Location),
     args: {
-        city: {type: GraphQLString},
-        state: {type: GraphQLString},
-        country: {type: GraphQLString}
+        // city: {type: GraphQLString},
+        // state: {type: GraphQLString},
+        // country: {type: GraphQLString}
     },
     resolve(_, args) {
         return db.location.findAll();
@@ -36,5 +40,5 @@ const getLocationByKeys = {
 
 module.exports = {
     getLocations,
-    getLocationByKeys
+    getLocationByKeys,
 }

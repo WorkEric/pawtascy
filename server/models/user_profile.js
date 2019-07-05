@@ -1,4 +1,6 @@
 'use strict';
+
+// models: user_profile
 module.exports = (sequelize, DataTypes) => {
   const user_profile = sequelize.define('user_profile', {
     id: {
@@ -82,7 +84,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: true,
     underscored: true,
-    paranoid: true,  // 虚拟删除。启用该配置后，数据不会真实删除，而是添加一个deletedAt属性
+    // paranoid: true,  // 虚拟删除。启用该配置后，数据不会真实删除，而是添加一个deletedAt属性
     createdAt: 'created_at',
     updatedAt: 'updated_at',    
     freezeTableName: true,
@@ -99,7 +101,6 @@ module.exports = (sequelize, DataTypes) => {
     }]
   });
   user_profile.associate = function(models) {
-    // associations can be defined here
     models.user_profile.belongsTo(models.user, {foreignKey: 'user_id', targetKey: 'id'})
     models.user_profile.belongsTo(models.location, {foreignKey: 'location_id', targetKey: 'id'})
   };

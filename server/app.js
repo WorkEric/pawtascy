@@ -16,6 +16,7 @@ function startApp(port) {
     app.listen(port, () => console.log(`Running a GraphQL API server at localhost:${port}/api`));
 }
 
+// 同步模型到数据库中
 models.sequelize.sync()
     .then(() => {
         startApp(PORT);
@@ -33,6 +34,5 @@ app.use('/api', graphqlHTTP({
     pretty : true    
 }));
 
-// app.listen(4000, () => console.log('Express graphql server running on port 4000'));
 module.exports = app;
 

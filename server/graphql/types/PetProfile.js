@@ -1,17 +1,15 @@
 'use strict';
 
-
+// types: PetProfile
 const {
     GraphQLObjectType,
     GraphQLList,
     GraphQLID,
     GraphQLString,
+    GraphQLBoolean
     } = require('graphql');
 
-const DateType = require('./util.js')
-
-
-module.exports = new GraphQLObjectType({
+const PetProfile = new GraphQLObjectType({
     name: 'PetProfile',
     fields: () => {
         return {
@@ -40,7 +38,7 @@ module.exports = new GraphQLObjectType({
                 }
             },
             birthday: {
-                type: DateType,
+                type: GraphQLString,
                 resolve (pet_profile) {
                     return pet_profile.birthday;
                 }
@@ -88,17 +86,29 @@ module.exports = new GraphQLObjectType({
                 }
             },
             created_at: {
-                type: DateType,
+                type: GraphQLString,
                 resolve (pet_profile) {
                     return pet_profile.created_at
                 }
             },
             updated_at: {
-                type: DateType,
+                type: GraphQLString,
                 resolve (pet_profile) {
                     return pet_profile.updated_at
+                }
+            },
+            pet_categories: {
+                type: new GraphQLList(GraphQLString),
+                resolve (pet_profile) {
+                    return pet_profile.getPetCategories().then((category_list) => {
+                        category_list.map((category) => (category.toJSON().category))
+                    })
                 }
             }
         }
     }
 })
+
+module.exports = {
+    PetProfile: PetProfile
+}

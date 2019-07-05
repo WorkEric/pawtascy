@@ -1,15 +1,13 @@
+// types: UserProfile
 const {
     GraphQLObjectType,
     GraphQLList,
     GraphQLID,
-    GraphQLString
+    GraphQLString,
+    GraphQLInt
     } = require('graphql');
 
-const Location = require('./Location.js');
-const DateType = require('./util.js');
-
-
-module.exports = new GraphQLObjectType({
+const UserProfile = new GraphQLObjectType({
     name: 'UserProfile',
     fields: () => {
         return {
@@ -18,7 +16,7 @@ module.exports = new GraphQLObjectType({
                 resolve (user_profile) {
                     return user_profile.id;
                 }
-            },
+            },            
             gender: {
                 type: GraphQLString,
                 resolve (user_profile) {
@@ -62,23 +60,33 @@ module.exports = new GraphQLObjectType({
                 }
             },    
             created_at: {
-                type: DateType,
+                type: GraphQLString,
                 resolve (user_profile) {
                     return user_profile.created_at
                 }
             },
             updated_at: {
-                type: DateType,
+                type: GraphQLString,
                 resolve (user_profile) {
                     return user_profile.updated_at
                 }
             },
-            // location: {
-            //     type: Location,
-            //     resolve (user_profile) {
-            //         return u
-            //     }
-            // }
+            user_id: {
+                type: GraphQLInt,
+                resolve (user_profile) {
+                    return user_profile.user_id;
+                }
+            },
+            location_id: {
+                type: GraphQLInt,
+                resolve (user_profile) {
+                    return user_profile.location_id;
+                }
+            }
         }
     }
 })
+
+module.exports = {
+    UserProfile: UserProfile
+}

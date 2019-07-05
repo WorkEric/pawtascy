@@ -1,4 +1,6 @@
 'use strict';
+
+// models: user
 module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define('user', {
     id: {
@@ -71,7 +73,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: true,
     underscored: true,
-    paranoid: true,  // 虚拟删除。启用该配置后，数据不会真实删除，而是添加一个deletedAt属性
+    // paranoid: true,  // 虚拟删除。启用该配置后，数据不会真实删除，而是添加一个deletedAt属性
     createdAt: 'created_at',
     updatedAt: 'updated_at',    
     freezeTableName: true,
@@ -80,13 +82,14 @@ module.exports = (sequelize, DataTypes) => {
   });
   user.associate = function(models) {
     models.user.hasOne(models.user_profile, {foreignKey: 'user_id', sourceKey: 'id', as: 'userProfile'})
-    // models.user.belongsToMany(models.pet_profile, {
-    //   through: {
-    //     model: models.user_pet_profile,
-    //     unique: false
-    //   },
-    //   foreignKey: 'user_id',
-    // })
+    models.user.belongsToMany(models.pet_profile, {
+      through: {
+        model: models.user_pet_profile,
+        unique: false
+      },
+      foreignKey: 'user_id',
+      as: 'petProfiles'
+    })
   };
   return user;
 };

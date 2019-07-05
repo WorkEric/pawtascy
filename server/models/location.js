@@ -1,4 +1,6 @@
 'use strict';
+
+// models: location
 module.exports = (sequelize, DataTypes) => {
   const location = sequelize.define('location', {
     id: {
@@ -24,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: '',
       validate: {
         notEmpty: true,
-      }       
+      }
     },
     country: {
       type: DataTypes.STRING,
@@ -67,7 +69,7 @@ module.exports = (sequelize, DataTypes) => {
     ]
   });
   location.associate = function(models) {
-    models.location.hasMany(models.user, {foreignKey: 'location_id', sourceKey: 'id', as: 'userProfile'});
+    models.location.hasMany(models.user_profile, {foreignKey: 'location_id', sourceKey: 'id', as: 'userProfiles'});
   };
   return location;
 };
