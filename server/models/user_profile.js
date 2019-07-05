@@ -1,4 +1,5 @@
 'use strict';
+
 module.exports = (sequelize, DataTypes) => {
   const user_profile = sequelize.define('user_profile', {
     id: {
@@ -99,7 +100,6 @@ module.exports = (sequelize, DataTypes) => {
     }]
   });
   user_profile.associate = function(models) {
-    // associations can be defined here
     models.user_profile.belongsTo(models.user, {foreignKey: 'user_id', targetKey: 'id'})
     models.user_profile.belongsTo(models.location, {foreignKey: 'location_id', targetKey: 'id'})
   };

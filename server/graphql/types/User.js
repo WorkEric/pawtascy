@@ -1,3 +1,7 @@
+/* 
+ * types: user
+ */
+
 const {
     GraphQLObjectType,
     GraphQLID,
@@ -6,6 +10,8 @@ const {
     } = require('graphql');
 
 // const DateType = require('./util.js');
+const db = require('../../models/index.js');
+const { UserProfile } = require('./UserProfile.js');
 
  const User = new GraphQLObjectType({
     name: 'User',
@@ -82,7 +88,13 @@ const {
             //     resolve (user) {
             //         return user.updated_at
             //     }
-            // }
+            // },
+            user_profile: {
+                type: UserProfile,
+                resolve (user) {
+                    return user['dataValues']['userProfile'];
+                }
+            }
         }
     }
 })

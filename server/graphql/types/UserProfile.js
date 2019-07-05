@@ -2,14 +2,14 @@ const {
     GraphQLObjectType,
     GraphQLList,
     GraphQLID,
-    GraphQLString
+    GraphQLString,
+    GraphQLInt
     } = require('graphql');
 
 const Location = require('./Location.js');
 const DateType = require('./util.js');
 
-
-module.exports = new GraphQLObjectType({
+const UserProfile = new GraphQLObjectType({
     name: 'UserProfile',
     fields: () => {
         return {
@@ -18,7 +18,7 @@ module.exports = new GraphQLObjectType({
                 resolve (user_profile) {
                     return user_profile.id;
                 }
-            },
+            },            
             gender: {
                 type: GraphQLString,
                 resolve (user_profile) {
@@ -61,24 +61,34 @@ module.exports = new GraphQLObjectType({
                     return user_profile.self_introduction;
                 }
             },    
-            created_at: {
-                type: DateType,
-                resolve (user_profile) {
-                    return user_profile.created_at
-                }
-            },
-            updated_at: {
-                type: DateType,
-                resolve (user_profile) {
-                    return user_profile.updated_at
-                }
-            },
-            // location: {
-            //     type: Location,
+            // created_at: {
+            //     type: DateType,
             //     resolve (user_profile) {
-            //         return u
+            //         return user_profile.created_at
             //     }
-            // }
+            // },
+            // updated_at: {
+            //     type: DateType,
+            //     resolve (user_profile) {
+            //         return user_profile.updated_at
+            //     }
+            // },
+            user_id: {
+                type: GraphQLInt,
+                resolve (user_profile) {
+                    return user_profile.user_id;
+                }
+            },
+            location_id: {
+                type: GraphQLInt,
+                resolve (user_profile) {
+                    return user_profile.location_id;
+                }
+            }
         }
     }
 })
+
+module.exports = {
+    UserProfile: UserProfile
+}

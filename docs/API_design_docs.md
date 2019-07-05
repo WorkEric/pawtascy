@@ -88,3 +88,157 @@ mutation {
   }
 }
 ```
+
+User
+---
+
+### FindAll
+
+```
+{
+ getUsers {
+  username,
+  email,
+ }
+}
+```
+
+### Find user by Username
+
+```
+{
+ getUserByUsername(username:"ruiwang") {
+  username,
+  email,
+ }
+}
+```
+
+### Find user by email
+
+```
+{
+ getUserByEmail(email:"ruiwang@gmail.com") {
+  username,
+  email,
+ }
+}
+```
+
+
+### Fin user with profile all
+```
+query {
+  getUserWithProfile {
+    id
+    username
+    email
+    user_profile {
+      id
+      gender
+      age
+      job
+    }
+  }
+}
+```
+
+```
+// result
+{
+  "data": {
+    "getUserWithProfile": [
+      {
+        "id": "1",
+        "username": "ruiwang",
+        "email": "ruiwang@gmail.com",
+        "user_profile": {
+          "id": "1",
+          "gender": "Male",
+          "age": "20",
+          "job": "software engineer"
+        }
+      },
+      {
+        "id": "2",
+        "username": "yannie",
+        "email": "nieyan0723@gmail.com",
+        "user_profile": {
+          "id": "2",
+          "gender": "Male",
+          "age": "30",
+          "job": "test automation engineer"
+        }
+      }
+    ]
+  }
+}
+```
+
+### Find user with profile by id
+
+```
+query {
+  getUserWithProfileById(id:1) {
+    id
+    username
+    email
+    user_profile {
+      id,
+      gender,
+      age,
+      job,
+    }
+  }
+}
+```
+
+```
+// result
+{
+  "data": {
+    "getUserWithProfileById": {
+      "id": "1",
+      "username": "ruiwang",
+      "email": "ruiwang@gmail.com",
+      "user_profile": {
+        "id": "1",
+        "gender": "Male",
+        "age": "20",
+        "job": "software engineer"
+      }
+    }
+  }
+}
+
+```
+
+
+
+
+User Profile
+---
+
+### FindAll
+
+```
+{
+  getUserProfiles {
+    gender,
+    age,
+    job
+  }
+}
+```
+
+### Get user profile by user_id
+
+```
+{
+  getUserProfileByUserId(id: 1) {
+    gender,
+    age,
+    job
+  }
+}
+```
