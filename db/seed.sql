@@ -42,13 +42,8 @@ VALUES
 
 INSERT INTO user_pet_profile(user_id, pet_profile_id, created_at, updated_at)
 VALUES
-<<<<<<< HEAD
-(1, 1, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
-(1, 2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
-=======
 (@user_id_1, @pet_profile_id_1, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (@user_id_2, @pet_profile_id_2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
->>>>>>> 49415ad28ffe9f64effd362b6bcda201a8428534
 
 COMMIT;

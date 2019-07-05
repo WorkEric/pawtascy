@@ -16,6 +16,35 @@ Location
   time_zone
  }
 }
+
+// result
+{
+  "data": {
+    "getLocations": [
+      {
+        "city": "Beijing",
+        "state": "BJ",
+        "country": "China",
+        "zip_code": 100036,
+        "time_zone": "Asia/Shanghai"
+      },
+      {
+        "city": "CHENGDU",
+        "state": "SC",
+        "country": "China",
+        "zip_code": 200045,
+        "time_zone": "Asia/Shanghai"
+      },
+      {
+        "city": "aaa",
+        "state": "bbb",
+        "country": "china",
+        "zip_code": null,
+        "time_zone": "Africa/Bissau"
+      }
+    ]
+  }
+}
 ```
 
 ### find by city + state + country
@@ -101,6 +130,22 @@ User
   email,
  }
 }
+
+// result
+{
+  "data": {
+    "getUsers": [
+      {
+        "username": "ruiwang",
+        "email": "ruiwang@gmail.com"
+      },
+      {
+        "username": "yannie",
+        "email": "nieyan0723@gmail.com"
+      }
+    ]
+  }
+}
 ```
 
 ### Find user by Username
@@ -112,6 +157,16 @@ User
   email,
  }
 }
+
+// result
+{
+  "data": {
+    "getUserByUsername": {
+      "username": "ruiwang",
+      "email": "ruiwang@gmail.com"
+    }
+  }
+}
 ```
 
 ### Find user by email
@@ -122,6 +177,16 @@ User
   username,
   email,
  }
+}
+
+// result
+{
+  "data": {
+    "getUserByEmail": {
+      "username": "ruiwang",
+      "email": "ruiwang@gmail.com"
+    }
+  }
 }
 ```
 
