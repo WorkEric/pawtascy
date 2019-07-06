@@ -678,9 +678,60 @@ query {
 }
 ```
 
+Chatroom
+---
+
+### Find all chatrooms
+
+```
+{
+  getChatrooms {
+    id
+    event_id
+    title
+  }
+}
+
+// result
+{
+  "data": {
+    "getChatrooms": [
+      {
+        "id": "1",
+        "event_id": 1,
+        "title": "Cat meowing"
+      },
+      {
+        "id": "2",
+        "event_id": 2,
+        "title": "Dog barking"
+      }
+    ]
+  }
+}
+```
+
+### Find chatroom by event_id
+
+```
+{
+  getChatroomByEventId(event_id: 1) {
+    id
+    event_id
+    title
+  }
+}
 
 
-
-
-
+// result
+{
+  "data": {
+    "getChatroomByEventId": {
+      "id": "1",
+      "event_id": 1,
+      "title": "Cat meowing"
+    }
+  }
+}
+```
 

@@ -13,26 +13,26 @@ const {
 // const DateType = require('./util.js');
 const db = require('../../models/index.js');
 
- const Message = new GraphQLObjectType({
-    name: 'PostImage',
+ const PostVideo = new GraphQLObjectType({
+    name: 'PostVideo',
     fields: () => {
         return {
             id: {
                 type: GraphQLID,
-                resolve (post_image) {
-                    return post_image.id;
+                resolve (post_video) {
+                    return post_video.id;
                 }
             },
             post_id: {
                 type: GraphQLInt,
-                resolve (post_image) {
-                    return post_image.post_id;
+                resolve (post_video) {
+                    return post_video.post_id;
                 }
             },
             video_link: {
                 type: GraphQLString,
-                resolve (post_image) {
-                    return post_image.image_link;
+                resolve (post_video) {
+                    return post_video.image_link;
                 }
             },
             // created_at: {
@@ -52,5 +52,5 @@ const db = require('../../models/index.js');
 })
 
 module.exports = {
-    PostImage: PostImage
+    PostVideo: PostVideo
 }

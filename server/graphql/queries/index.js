@@ -13,6 +13,7 @@ const { getUserProfiles, getUserProfileByUserId, getUserProfileByLocation } = re
 const { getPetProfiles, getPetProfileById, getPetProfilesByCategory, 
     getPetProfilesByUsername } = require('./PetProfile.js')
 const { getPetCategories, getPetCategoryById, getPetCategoriesByPetProfileId } = require('./PetCategory.js')
+const { getChatrooms, getChatroomByEventId} = require('./Chatroom.js')
 
 module.exports = new GraphQLObjectType({
     name: 'Query',
@@ -45,7 +46,11 @@ module.exports = new GraphQLObjectType({
             // PetCategory
             getPetCategories,
             getPetCategoryById,
-            getPetCategoriesByPetProfileId
+            getPetCategoriesByPetProfileId,
+
+            // Chatroom
+            getChatrooms,
+            getChatroomByEventId,
         }
     }
 });

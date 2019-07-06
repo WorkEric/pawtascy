@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Event = sequelize.define('event', {
+  const event = sequelize.define('event', {
    id: {
      type: DataTypes.INTEGER,
      autoIncrement: true,
@@ -86,8 +86,8 @@ module.exports = (sequelize, DataTypes) => {
     charset: 'utf8',
     collate: 'utf8_general_ci',
   });
-  Event.associate = function(models) {
-    models.Event.hasOne(models.location, {foreignKey: 'location_id', sourceKey: 'id', as: 'location'})
+  event.associate = function(models) {
+     models.event.hasOne(models.location, {foreignKey: 'id'})
   };
-  return Event;
+  return event;
 };

@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Message = sequelize.define('message', {
+  const message = sequelize.define('message', {
    id: {
      type: DataTypes.INTEGER,
      autoIncrement: true,
@@ -46,9 +46,9 @@ module.exports = (sequelize, DataTypes) => {
     charset: 'utf8',
     collate: 'utf8_general_ci',
   });
-  Message.associate = function(models) {
-    models.Message.belongsTo(models.chatroom, {foreignKey: 'chatroom_id', targetKey: 'id'})
-    models.Message.belongsTo(models.user, {foreignKey: 'user_id', targetKey: 'id'})
+  message.associate = function(models) {
+    models.message.belongsTo(models.chatroom, {foreignKey: 'chatroom_id', targetKey: 'id'})
+    models.message.belongsTo(models.user, {foreignKey: 'user_id', targetKey: 'id'})
   };
-  return Message;
+  return message;
 };

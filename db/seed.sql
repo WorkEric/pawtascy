@@ -46,4 +46,18 @@ VALUES
 (@user_id_2, @pet_profile_id_2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
 
+INSERT INTO event(title, location_id, address, event_start_at, event_end_at, cover, cost, restrict_attendee_number, restrict_pets_number,is_neutered, detail, note, created_at, updated_at)
+VALUES
+('event 1', @location_id_1, 'SanJose', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(),'cover1', 'cost1', 5, 5, 0, 'detail1', 'note1', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+('event 2', @location_id_2, 'BeiJing', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(),'cover2', 'cost2', 10, 10, 1, 'detail2', 'note2',CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+
+
+set @event_id_1 = (select id from event where title='event 1');
+set @event_id_2 = (select id from event where title='event 2');
+
+INSERT INTO chatroom(event_id, title, created_at, updated_at)
+VALUES
+(@event_id_1, 'Cat meowing', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+(@event_id_2, 'Dog barking', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+
 COMMIT;
