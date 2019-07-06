@@ -345,6 +345,47 @@ query {
 }
 ```
 
+### user with pet profile
+
+**Have issue, need to figure out later**
+
+```
+query {
+  getUserPetByUsername(username:"ruiwang") {
+    id
+  	username
+    email
+    pet_profiles {
+      nick_name
+    }
+    created_at
+    updated_at
+  }
+}
+
+// result
+{
+  "data": {
+    "getUserPetByUsername": {
+      "id": null,
+      "username": null,
+      "email": null,
+      "pet_profiles": [
+        {
+          "nick_name": "little dog"
+        },
+        {
+          "nick_name": "little cat"
+        }
+      ],
+      "created_at": null,
+      "updated_at": null
+    }
+  }
+}
+```
+
+
 
 User Profile
 ---
