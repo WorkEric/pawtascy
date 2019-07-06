@@ -1,15 +1,16 @@
 /* 
  * types: user
  */
-
 const {
     GraphQLObjectType,
     GraphQLID,
     GraphQLBoolean,
-    GraphQLString
+    GraphQLString,
+    GraphQLList
     } = require('graphql');
 
 const { UserProfile } = require('./UserProfile.js');
+const { PetProfile } = require('./PetProfile.js');
 
  const User = new GraphQLObjectType({
     name: 'User',
@@ -91,6 +92,20 @@ const { UserProfile } = require('./UserProfile.js');
                 type: UserProfile,
                 resolve (user) {
                     return user['dataValues']['userProfile'];
+                }
+            },
+            pet_profiles: {
+                type: new GraphQLList(PetProfile),
+                resolve (user) {
+                    // console.log('user: ', user[0]['petProfiles'])
+                    if (!user[0]) {
+                        return []
+                    }
+                    return user[0]['petProfiles']
+                    // return user
+                    // return user.getPetProfiles().then((pet_profile_list) => {
+                    //     pet_profile_list.map((pet_profile) => (pet_profile.toJSON().pet_profile))
+                    // })
                 }
             }
         }

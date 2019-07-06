@@ -100,6 +100,25 @@ const getUserWithProfileByUsername = {
     }
 }
 
+const getUserPetByUsername = {
+    type: User,
+    args: {
+        username: {type: GraphQLString}
+    },
+    resolve (_, {username}) {
+        return db.user.findAll({
+            where: {username: username},
+            include: [{
+                model: db.pet_profile,
+                as: 'petProfiles',
+                require: true,
+                through: {}
+            }],
+            subQuery: false
+        })
+    }
+}
+
 const getUsersByPetProfileId = {
     type: new GraphQLList(User),
     args: {
@@ -126,6 +145,7 @@ const getUsersByPetProfileId = {
     }
 }
 
+
 module.exports = {
     getUsers,
     getUserByUsername,
@@ -133,5 +153,6 @@ module.exports = {
     getUserWithProfile,
     getUserWithProfileById,
     getUserWithProfileByUsername,
-    getUsersByPetProfileId
+    getUsersByPetProfileId,
+    getUserPetByUsername
 }
