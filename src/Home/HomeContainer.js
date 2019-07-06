@@ -65,7 +65,7 @@ import image1 from '../images/homepage1.jpg';
 import image2 from '../images/homepage2.jpg';
 import image3 from '../images/homepage3.jpg';
 import image4 from '../images/homepage4.jpg';
-import Footer from '../Footer/Footer.js'
+import Footer from '../Footer/Footer.js';
 
 class HomeContainer extends Component {
   render() {

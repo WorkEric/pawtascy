@@ -1,7 +1,7 @@
 .footer {
     background-color: #545871;
     color:white;
-    padding: 2% 0 5% 0;
+    padding: 2% 0 3% 0;
     font-family: Basic Sans;
 }
 .footer-col-1 {
@@ -20,4 +20,5 @@ p {
 }
 h4 {
     border-color:#EBD0CE;
+    font-size:18px !important;
 }

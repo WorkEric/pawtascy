@@ -9,6 +9,8 @@ import PetDetailsContainer from './Signup/PetDetails/PetDetailsContainer.js';
 import ConfirmationContainer from './Signup/Confirmation/ConfirmationContainer.js';
 import HumanContainer from './Signup/HumanProfile/HumanContainer.js';
 import PetBasicsContainer from './Signup/PetBasics/PetBasicsContainer.js';
+import EventsContainer from './Events/EventsContainer.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -22,6 +24,7 @@ const routing = (
             <Route path="/pet-details" component={PetDetailsContainer}/>
             <Route path="/human-profile" component={HumanContainer}/>
             <Route path="/pet-basics" component={PetBasicsContainer}/>
+            <Route path="/events" component={EventsContainer}/>
         </div>
     </Router>
 )
