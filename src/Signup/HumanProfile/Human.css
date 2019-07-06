@@ -8,16 +8,9 @@
   background-repeat: no-repeat;
   position: absolute;
   margin-top: 200px;
-  margin-left: 200px;
+  margin-left: 400px;
 }
 
-.human_title1 {
-  font-size: 50px;  
-  margin-top: 300px;
-  margin-left: 200px;
-  color: #888888;
-
-}
 
 .human_circle {
   margin-bottom: -40px;
@@ -27,18 +20,18 @@
 
   height: 150px;
   margin-top: 400px;
-  margin-left: 100px;
+  margin-left: 300px;
 
 }
 .human_block{
   height: 150px;
-  margin-left: 100px;
+  margin-left: 300px;
 
 }
 .human_block_last {
 
   height: 150px;
-  margin-left: 100px;
+  margin-left: 300px;
   margin-bottom: 300px;
 }
 
@@ -50,7 +43,7 @@
 .human_des {
   font-size: 40px;
   margin-top: 30px;
-  margin-left: 100px;
+  margin-left: 150px;
   display: inline-block;
   color: #ABABAB;
 

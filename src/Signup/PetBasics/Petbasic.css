@@ -1,0 +1,134 @@
+.petb_background {
+  background-color: #DDDDDD;
+  background-size: cover;
+
+}
+
+.petb_logo1 {	
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 400px;
+}
+
+
+.petb_circle {
+  margin-bottom: -40px;
+  position: absolute;
+
+}
+.petb_block_first {
+
+  height: 150px;
+  margin-top: 400px;
+  margin-left: 300px;
+
+}
+.petb_block{
+  height: 150px;
+  margin-left: 300px;
+
+}
+.petb_block_last {
+
+  height: 150px;
+  margin-left: 300px;
+  margin-bottom: 300px;
+}
+
+.petb_des {
+  font-size: 40px;
+  margin-top: 30px;
+  margin-left: 150px;
+  display: inline-block;
+  color: #ABABAB;
+
+}
+
+.petb_skip {
+  font-size: 40px;
+  margin-left: 500px;
+  text-decoration: underline;
+}
+
+.petb_title2 {
+  font-size: 60px;  
+  margin-top: 200px;
+  margin-left: 100px;
+  color: #888888;
+  line-height: 80px; 
+
+}
+
+.petb_title3 {
+  font-size: 40px;  
+  margin-top: 200px;
+  margin-left: 100px;
+  color: #888888;
+  line-height: 80px;  
+}
+
+.petb_dog_box {
+  display: none;
+}
+.petb_dog_img {
+  margin-left: 100px;
+  height: 200px;
+  width: 200px;
+  border: 2px solid transparent;
+
+}
+
+.petb_dog_box:checked+img {
+  opacity: .5;
+  border: 2px solid grey;
+}
+.petb_cat_box {
+  display: none;
+}
+.petb_cat_img {
+  margin-left: -4px;
+  height: 200px;
+  width: 200px;
+  border: 2px solid transparent;
+
+}
+
+.petb_cat_box:checked+img {
+  opacity: .5;
+  border: 2px solid grey;
+}
+
+.petb_other_box {
+  display: none;
+}
+.petb_other_img {
+  margin-left: -3px;
+  height: 200px;
+  width: 200px;
+  border: 2px solid transparent;
+}
+
+.petb_other_box:checked+img {
+  opacity: .5;
+  border: 2px solid grey;
+}
+
+.petb_title4 {
+  font-size: 35px;  
+  margin-top: 50px;
+  margin-left: 100px;
+  color: #888888;
+  line-height: 80px;  
+}
+
+.petb_buttons {
+  margin-left: 100px;
+  margin-top: 200px;
+  margin-bottom: 100px;
+}
+
+.petb_next {
+  margin-left: 500px;
+
+}
