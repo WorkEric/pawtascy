@@ -21,15 +21,16 @@ const routing = (
             <Route path="/confirmation" component={ ConfirmationContainer } />
             <Route path="/pet-details" component={PetDetailsContainer}/>
             <Route path="/human-profile" component={HumanContainer}/>
+            <Route path="/pet-basics" component={PetBasicsContainer}/>
         </div>
     </Router>
 )
 
 //ReactDOM.render(<HomeContainer />, document.getElementById('root'));
 
+ReactDOM.render(routing, document.getElementById('root'));
 
 //ReactDOM.render(<LoginContainer />, document.getElementById('root'));
-
 
 //ReactDOM.render(<SignupContainer />, document.getElementById('root'));
 
@@ -39,7 +40,7 @@ const routing = (
 
 //ReactDOM.render(<HumanContainer />, document.getElementById('root'));
 
-ReactDOM.render(<PetBasicsContainer />, document.getElementById('root'));
+//ReactDOM.render(<PetBasicsContainer />, document.getElementById('root'));
 
 //ReactDOM.render(<MyInfo />, document.getElementById('root'));
 // If you want your app to work offline and load faster, you can change
