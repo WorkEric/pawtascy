@@ -1,6 +1,5 @@
 
-.back-image1 {
-  height: 20px;
+.home_background {
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
@@ -8,29 +7,37 @@
   top:0px;
   left:0px;
   right: 0px;
-  width: 100%;
-  height: 100%;
+
 
 }
-.back-image2 {
-  height: 50%;
-  width: 80%;
-  margin-top: 300px;
-  margin-bottom: 300px;
+.home_logo {  
+  background-repeat: no-repeat;
+  position: absolute;
+  margin-top: 200px;
+  margin-left: 200px;
+}
+
+
+.home_title {
+  font-size: 70px;
+  margin-top: 210px;
+  margin-left: 350px;
+  display: inline-block;
+}
+
+.home_backimage2 {
+  margin-top: -800px;
+  margin-left: 600px;
 
 }
-.back-image3 {
+.home_backimage3 {
+  margin-left: -800px;
+
+}
+.home_backimage4 {
   height: 90%;
-  width: 80%;
-  margin-top: -300px;
-  margin-bottom: 300px;
-  margin-left: 100px;
-
-}
-.back-image4 {
-  height: 90%;
-  width: 80%;
-  margin-top: -300px;
+  width: 250%;
+  margin-top: 100px;
   margin-bottom: 300px;
   margin-left: 100px;
 
@@ -45,84 +52,90 @@
   }
 }
 
-.title1 {
-  margin-top:150px;
+.home_title1 {
+  margin-top:1400px;
+  font-size:70px;
+  margin-left: -800px;
+
+}
+.home_title2 {
+  margin-top:200px;
   margin-bottom: 0;
-  margin-left:50px;
+  margin-left:150px;
   font-size:70px;
 
 }
-.title2 {
-  margin-top:-400px;
+.home_title3 {
+  margin-top:200px;
   margin-bottom: 0;
-  margin-left:50px;
+  margin-left:-800px;
   font-size:70px;
 
 }
-.title3 {
-  margin-top:-400px;
-  margin-bottom: 0;
-  margin-left:50px;
-  font-size:70px;
-
-}
-.des1 {
-  margin-top:0;
+.home_des1 {
+  color: black;
+  margin-top:500px;
+  margin-left:100px;
   font-size: 70px;
   line-height: 100px;
+  width: 50%;
 
 }
-.des2 {
-  margin-top: 0;
+.home_des2 {
+  margin-top: 30px;
   margin-bottom: 200px;
-  margin-left: 50px;
-  margin-right: 50px;
-  font-size: 30px;
-  line-height: 50px; 
+  margin-left: -800px;
+  width: 90%;
+  font-size: 40px;
+  line-height: 60px; 
 }
-.des3 {
+.home_des3 {
+  margin-top: 30px;
   margin-bottom: 200px;
-  margin-left: 50px;
+  margin-left: 150px;
   margin-right: 50px;
-  font-size: 30px;
-  line-height: 50px; 
+  font-size: 40px;
+  width: 150%;
+  line-height: 60px; 
 }
-.des4 {
+.home_des4 {
+  margin-top: 30px;
   margin-bottom: 200px;
-  margin-left: 50px;
+  margin-left: -800px;
   margin-right: 50px;
-  font-size: 30px;
-  line-height: 50px; 
+  width: 130%;
+  font-size: 40px;
+  line-height: 60px; 
 }
-.button1 {
+.home_button1 {
+  font-size: 50px;  
+  margin-left: 100px;
+  margin-top: 150px;
+  height: 200px;
+
+}
+
+.home_button2 {
   font-size: 50px;  
   margin-top: -150px;
+  margin-left: -600px;
   height: 200px;
 
 }
+.home_button3 {
+  font-size: 50px;  
+  margin-top:  -100px;
+  margin-left: 200px;
 
-.button2 {
+}
+.home_button4 {
   font-size: 50px;  
   margin-top: -150px;
-  margin-left: 200px;
+  margin-left: -600px;
   height: 200px;
 
 }
-.button3 {
-  font-size: 50px;  
-  margin-top: -250px;
-  margin-left: 200px;
-  height: 200px;
-
-}
-.button4 {
-  font-size: 50px;  
-  margin-top: -250px;
-  margin-left: 200px;
-  height: 200px;
-
-}
-.pet_signup {
+.home_pet_signup {
   display:inline-block;
   width:130px;
   height:30px;
@@ -133,12 +146,12 @@
     background-color: transparent;
     box-shadow: 0px 2px 24px 0px rgba(0, 0, 0, 0.15);
     border-radius: 8px;
-    width: 752px;
+    width: 1200px;
     display: flex;
     padding: 0 40px;
     position: absolute;
-    margin-top: 150px;
-    height: 20%;
+    margin-top: 200px;
+    height: 10%;
 }
 
 .menu__right {
@@ -148,7 +161,7 @@
 
 .menu__list {
     list-style-type: none;
-    height: 400%;
+    height: 300%;
     margin: 0;
     margin-right: 40px;
 
@@ -169,8 +182,8 @@
     color: #3a3e47;
     display: inline-block;
     height: 50%;
-    height: 130px;
-    font-size: 16px;
+    height: 50px;
+    font-size: 25px;
     text-decoration: none;
     text-transform: uppercase;
     display: flex;

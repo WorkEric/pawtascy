@@ -115,14 +115,16 @@ class PetBasicsComponent extends Component {
                     <div>
                       <h1 className="petb_title4">{this.props.titles.title10}</h1>
                     </div>
-                    <div className="petb_buttons">
-                      <Button variant="outline-secondary" size="lg" onClick>
-                        Back
-                      </Button>
-                      <Button variant="secondary" size="lg" className="petb_next">
-                        Next
-                      </Button>
-                    </div>
+                    <Row style={{backgroundColor: "#FDFEFE"}}>
+                      <div className="petb_buttons">
+                        <Button variant="outline-secondary" size="lg" onClick>
+                          Back
+                        </Button>
+                        <Button variant="secondary" size="lg" className="petb_next">
+                          Next
+                        </Button>
+                      </div>
+                    </Row>
                   </div>
                 </form>
               </Col>

@@ -184,7 +184,7 @@ class PetBasicscontComponent extends Component {
                           />
                         </Col>
                       </Row>
-                      <Row>
+                      <Row style={{backgroundColor: "#FDFEFE"}}>
                         <div className="petbc_buttons">
                           <Button variant="outline-secondary" size="lg" onClick>
                             Back
