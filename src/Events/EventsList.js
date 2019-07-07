@@ -4,13 +4,64 @@ import {Container, Row, Col, Card, CardGroup, Button, CardColumns} from 'react-b
 import dogEvent from '../images/dog-event.png';
 import catEvent from '../images/cat-event.png';
 import ratEvent from '../images/rat-event.png';
+import PropTypes from 'prop-types';
 
 export default class EventsList extends Component {
+    static propTypes = {
+        searchName: PropTypes.string.isRequired
+    }
+    state = {
+        initView: true,
+        loading: false,
+        events: null,
+        errorMsg: null
+    } 
     render() {
+        const {initView,loading,events, errorMsg} = this.state;
+        if (initView) {
+            return <h1>Should List All </h1>
+        } else if (loading) {
+            return <h2> Loading...</h2>
+        } else if (errorMsg) {
+            return <h2> No such type events </h2>
+        } else {
+            return (
+                <Container>
+                    <Row> 
+                    <CardColumns>
+                        {events.map((event, index) => (
+                             <Card className="height-adjust">
+                             <Card.Img variant="top" src={event.img}/>
+                             <Card.Body>
+                             <Card.Text className="date-time">{event.date + ',' + event.time}</Card.Text>
+                                 <Card.Text className="theme">
+                                 {event.title}
+                                 </Card.Text>
+                             <Card.Text className="location-text">{event.location}</Card.Text>
+                             </Card.Body>
+                         </Card>))}
+                         </CardColumns>
+                         </Row>
+                         </Container>
+               )
+        }
+        /*
         return (
             <Container>
                 <Row> 
                 <CardColumns>
+                    {events.map((event, index) => (
+                         <Card className="height-adjust">
+                         <Card.Img variant="top" src={dogEvent}/>
+                         <Card.Body>
+                         <Card.Text className="date-time">{events.date + ',' + event.time}</Card.Text>
+                             <Card.Text className="theme">
+                             {event.title}
+                             </Card.Text>
+                         <Card.Text className="location-text">{event.location}</Card.Text>
+                         </Card.Body>
+                     </Card>
+                    ))}
                     <Card className="height-adjust">
                         <Card.Img variant="top" src={dogEvent}/>
                         <Card.Body>
@@ -75,6 +126,6 @@ export default class EventsList extends Component {
                     </CardColumns>
                 </Row>
             </Container>
-        )
+        )*/
     }
 }

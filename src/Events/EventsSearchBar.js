@@ -6,12 +6,23 @@ import "./Events.css";
 import logo from '../images/Logo-icon.png';
 import location from '../images/location.png';
 import search from '../images/search.png';
+import PropTypes from 'prop-types';
 
 
 export default class EventsSearchBar extends Component {
     state = {
         petType:'',
         location: ''
+    }
+    static propTypes = {
+        setSearchName: PropTypes.func.isRequired
+    }
+    search = () => {
+        //get the input value
+        const searchName = this.input.value.trim();
+        if(searchName) {
+            this.props.setSearchName(searchName)
+        }
     }
     render() {
         return (
@@ -22,12 +33,12 @@ export default class EventsSearchBar extends Component {
                 <div className='search-bar'>
                     <img src={logo} className='event-logo'/>&nbsp;
                     <div class="input-group input-group-lg">
-                        <input type="text" className="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder=' Search for Pet Type  ' value={this.state.petType}/> &nbsp;&nbsp;
+                        <input type="text" className="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder=' Search for Pet Type  ' ref={input => this.input = input}/> &nbsp;&nbsp;
                     </div>  
                     <div class="input-group input-group-lg">
                         <input type="text" className="form-control location" aria-label="Large" aria-describedby="inputGroup-sizing-sm" style={{backgroundImage: `url(${location})`}} placeholder='    San Franscisco  ' value={this.state.location}/>&nbsp;&nbsp;
                     </div> 
-                    <img src={search} className='search-button' />
+                    <img src={search} className='search-button' onClick={this.search}/>
                 </div>
                 <Row className='filter-bar'>
                     <Col className="pet-texts" xs={12} lg={8}> Your pets are ready for FUN</Col>

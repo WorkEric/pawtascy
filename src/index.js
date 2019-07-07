@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import HomeContainer from './Home/HomeContainer';
 import LoginContainer from './Login/LoginContainer';
 import SignupContainer from './Signup/SignupContainer';
@@ -10,9 +11,11 @@ import ConfirmationContainer from './Signup/Confirmation/ConfirmationContainer.j
 import HumanContainer from './Signup/HumanProfile/HumanContainer.js';
 import PetBasicsContainer from './Signup/PetBasics/PetBasicsContainer.js';
 import EventsContainer from './Events/EventsContainer.js';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 import * as serviceWorker from './serviceWorker';
+
+
 
 const routing = (
     <Router>
