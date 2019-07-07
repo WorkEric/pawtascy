@@ -8,6 +8,7 @@ const {
 
 const db = require('../../models/index.js');
 const { User } = require('../types/User.js');
+const { user_profile_obj, pet_profile_obj, location_obj } = require('./util.js')
 
 const createUser = {
     type: User,
@@ -29,7 +30,7 @@ const createUser = {
         country: { type: GraphQLString },
         zip_code: { type: GraphQLInt },
 
-        pet_categories: { type: GraphQLString },
+        categories: { type: new GraphQLList(GraphQLString) },
         nick_name: { type: GraphQLString },
         pet_avatar: { type: GraphQLString },
         breed: { type: GraphQLString },
@@ -53,6 +54,7 @@ const createUser = {
             let user_id = user.toJSON().id;
             let promises = []
 
+            // location and user_profile
             promises.push(db.location.findOne({
                 where: {
                     city: args.city,
@@ -60,46 +62,32 @@ const createUser = {
                     country: args.country
                 }
             }).then((location) => {
-                (location) ? db.user_profile.create({
-                    gender: args.gender,
-                    age: args.age,
-                    job: args.job,
-                    avatar: args.avatar,
-                    self_introduction: args.self_introduction,
-                    user_id: user_id,
-                    location_id: location.id
-                }) : db.location.create({
-                    city: args.city,
-                    state: args.state,
-                    country: args.country,
-                    zip_code: args.zip_code,
-                    time_zone: 'America/Los_Angeles',
-                }).then(location => {
-                    return db.user_profile.create({
-                        gender: args.gender,
-                        age: args.age,
-                        job: args.job,
-                        avatar: args.avatar,
-                        self_introduction: args.self_introduction,
-                        user_id: user_id,
-                        location_id: location.id
-                    })
+                (location) ? db.user_profile.create(user_profile_obj(
+                    args.gender, args.age, args.job, args.avatar, 
+                    args.self_introduction,user_id, location.id
+                )) : db.location.create(location_obj(
+                    args.city, args.state, args.country, args.zip_code, 'America/Los_Angeles'
+                )).then(location => {
+                    return db.user_profile.create(user_profile_obj(
+                        args.gender, args.age, args.job, args.avatar, 
+                        args.self_introduction,user_id, location.id
+                    ))
                 })
             }))
 
             promises.push(
-                db.pet_profile.create({
-                    nick_name: args.nick_name,
-                    avatar: args.pet_avatar,
-                    breed: args.breed,
-                    birthday: args.birthday,
-                    gender: args.pet_gender,
-                    is_neutered: args.is_neutered,
-                    weight: args.weight,
-                    character: args.character,
-                    dislike: args.dislike,
-                    health: args.health,
-                    description: args.description
+                db.pet_profile.create(pet_profile_obj(
+                    args.nick_name, args.pet_avatar, args.breed, args.birthday, args.pet_gender,
+                    args.is_neutered, args.weight, args.character, args.dislike, args.health, args.description
+                )).then(pet_profile => {
+                    let inner_promises = []
+                    // add user and pet_profile relation in user_pet_profile
+                    inner_promises.push(user.addPetProfiles(pet_profile))
+                    // pet_profile, pet_category and pet_profile_category
+                    inner_promises.push(args.categories.map(category => db.pet_category.findOne({where: {name:category}})
+                        .then(pet_category_obj => pet_category_obj ? pet_profile.addPetCategories(pet_category_obj) : db.pet_category.create({name: category})
+                            .then(pet_category_obj => pet_profile.addPetCategories(pet_category_obj)))))
+                    return inner_promises
                 })
             )
 
