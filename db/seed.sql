@@ -60,4 +60,14 @@ VALUES
 (@event_id_1, 'Cat meowing', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (@event_id_2, 'Dog barking', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
+INSERT INTO event_feedback(event_id, user_id, rating, comment,created_at, updated_at)
+VALUES
+(@event_id_1, @user_id_1, 5, 'Very good', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+(@event_id_2, @user_id_2, 4, 'Very Enjoy', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+
+INSERT INTO event_topic(topic, order_number, created_at, updated_at)
+VALUES
+('Birthday Party', 'A1', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+('Meet New Friends', 'B2', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+
 COMMIT;

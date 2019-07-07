@@ -735,3 +735,287 @@ Chatroom
 }
 ```
 
+Event
+---
+
+### Find all events
+```
+{
+  getEvents {
+    id
+    title
+		event_start_at
+    location_id
+    address
+    restrict_pets_number
+    restrict_attendee_number
+    is_neutered
+    detail
+    note
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEvents": [
+      {
+        "id": "1",
+        "title": "event 1",
+        "event_start_at": "2019-07-05 22:00:16",
+        "location_id": 1,
+        "address": "SanJose",
+        "restrict_pets_number": 5,
+        "restrict_attendee_number": 5,
+        "is_neutered": false,
+        "detail": "detail1",
+        "note": "note1"
+      },
+      {
+        "id": "2",
+        "title": "event 2",
+        "event_start_at": "2019-07-05 22:00:16",
+        "location_id": 2,
+        "address": "BeiJing",
+        "restrict_pets_number": 10,
+        "restrict_attendee_number": 10,
+        "is_neutered": true,
+        "detail": "detail2",
+        "note": "note2"
+      }
+    ]
+  }
+```
+### Find event by id
+```
+{
+  getEventById(id: 1) {
+    id
+    title
+    event_start_at
+    location_id
+    address
+    restrict_pets_number
+    restrict_attendee_number
+    is_neutered
+    detail
+    note
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventById": {
+      "id": "1",
+      "title": "event 1",
+      "event_start_at": "2019-07-05 22:00:16",
+      "location_id": 1,
+      "address": "SanJose",
+      "restrict_pets_number": 5,
+      "restrict_attendee_number": 5,
+      "is_neutered": false,
+      "detail": "detail1",
+      "note": "note1"
+    }
+  }
+}
+```
+
+Event Feedback
+---
+
+### Find Event feedback by id
+```
+{
+  getEventFeedbacks {
+    id
+    user_id
+    event_id
+    rating
+    comment
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventFeedbacks": [
+      {
+        "id": "5",
+        "user_id": 3,
+        "event_id": 3,
+        "rating": 5,
+        "comment": "Very good"
+      },
+      {
+        "id": "6",
+        "user_id": 4,
+        "event_id": 4,
+        "rating": 4,
+        "comment": "Very Enjoy"
+      }
+    ]
+  }
+}
+```
+### Find Event feedback by id
+```
+{
+  getEventFeedbackById(id:5) {
+    id
+    user_id
+    event_id
+    rating
+    comment
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventFeedbackById": {
+      "id": "5",
+      "user_id": 3,
+      "event_id": 3,
+      "rating": 5,
+      "comment": "Very good"
+    }
+  }
+}
+```
+### Find Event feedback by user id
+```
+{
+  getEventFeedbackByUserId(user_id:3) {
+    id
+    user_id
+    event_id
+    rating
+    comment
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventFeedbackByUserId": {
+      "id": "5",
+      "user_id": 3,
+      "event_id": 3,
+      "rating": 5,
+      "comment": "Very good"
+    }
+  }
+}
+```
+### Find Event feedback by event id
+```
+{
+  getEventFeedbackByEventId(event_id:3) {
+    id
+    user_id
+    event_id
+    rating
+    comment
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventFeedbackByEventId": {
+      "id": "5",
+      "user_id": 3,
+      "event_id": 3,
+      "rating": 5,
+      "comment": "Very good"
+    }
+  }
+}
+```
+
+Event Topic
+---
+
+### Get all event topics
+```
+{
+  getEventTopics {
+    id
+    topic
+    order_number
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventTopics": [
+      {
+        "id": "1",
+        "topic": "Birthday Party",
+        "order_number": "A1"
+      },
+      {
+        "id": "2",
+        "topic": "Meet New Friends",
+        "order_number": "B2"
+      }
+    ]
+  }
+}
+```
+
+### Get event topic by id
+```
+{
+  getEventTopicById (id:1) {
+    id
+    topic
+    order_number
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventTopicById": {
+      "id": "1",
+      "topic": "Birthday Party",
+      "order_number": "A1"
+    }
+  }
+}
+```
+
+### Get event topic by order number
+```
+{
+  getEventTopicByOrderNumber (order_number:"A1") {
+    id
+    topic
+    order_number
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventTopicByOrderNumber": {
+      "id": "1",
+      "topic": "Birthday Party",
+      "order_number": "A1"
+    }
+  }
+}
+```

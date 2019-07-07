@@ -10,7 +10,6 @@ const {
     GraphQLString
     } = require('graphql');
 
-// const DateType = require('./util.js');
 const db = require('../../models/index.js');
 
  const PostVideo = new GraphQLObjectType({

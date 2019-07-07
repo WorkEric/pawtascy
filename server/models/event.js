@@ -79,7 +79,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     timestamps: true,
     underscored: true,
-    paranoid: true,  // 虚拟删除。启用该配置后，数据不会真实删除，而是添加一个deletedAt属性
+    // paranoid: true,  // 虚拟删除。启用该配置后，数据不会真实删除，而是添加一个deletedAt属性
     createdAt: 'created_at',
     updatedAt: 'updated_at',    
     freezeTableName: true,

@@ -10,7 +10,6 @@ const {
     GraphQLString
     } = require('graphql');
 
-// const DateType = require('./util.js');
 const db = require('../../models/index.js');
 
  const Event = new GraphQLObjectType({
@@ -42,7 +41,7 @@ const db = require('../../models/index.js');
                 }
             },
             event_start_at: {
-                type: DateType,
+                type: GraphQLString,
                 resolve (event) {
                     return event.event_start_at;
                 }
