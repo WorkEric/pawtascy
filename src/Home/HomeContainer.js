@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import HomeComponent from './HomeComponent';
 import logo from '../images/logo1.svg';
-import image1 from '../images/homepage1.jpg';
+import image1 from '../images/bg.png';
 import image2 from '../images/homepage2.jpg';
 import image3 from '../images/homepage3.jpg';
 import image4 from '../images/homepage4.jpg';
 import Footer from '../Footer/Footer.js';
+import Header from '../Header/Header.js';
 
 class HomeContainer extends Component {
   render() {
@@ -49,7 +50,8 @@ class HomeContainer extends Component {
 
     }
     return (
-      <div className="container center">
+      <div>
+        <Header />
         <HomeComponent links={links} sep_links={sep_links} titles={titles} description={description} images={images}/>
         <Footer />
       </div>

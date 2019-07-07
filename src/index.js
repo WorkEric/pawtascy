@@ -32,11 +32,12 @@ const routing = (
             <Route path="/human-profile" component={HumanContainer}/>
             <Route path="/pet-basics" component={PetBasicsContainer}/>
             <Route path="/events" component={EventsContainer}/>
+            <Route path="/pet-basics-cont" component={PetBasicscontContainer} />
         </div>
     </Router>
 )
 
-ReactDOM.render(<HomeContainer />, document.getElementById('root'));
+ReactDOM.render(routing, document.getElementById('root'));
 
 //ReactDOM.render(routing, document.getElementById('root'));
 
