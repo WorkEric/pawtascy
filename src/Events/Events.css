@@ -1,0 +1,73 @@
+.background {
+    width: 100%;
+    height: 350px;
+    background-repeat: no-repeat;
+    background-size: 100% 350px;
+}
+.slogan {
+    float: right;
+    color:#EBD0CE;
+    font-size: 32px;
+    padding: 3% 5% 0 0;
+}
+.event-logo {
+    width:36px;
+}
+.search-bar {
+    margin-top:-32px;
+    padding: 20px;
+    width:50%;
+    margin: -38px auto 16px auto;
+    background-color:#EBD0CE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.location {
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    padding-left: 40px;
+    background-position: left center;
+}
+.search-button {
+    width:40px;
+}
+.filter-bar {
+    padding: 0 3% 2% 3%;
+}
+.button-style {
+    margin-right:1%;
+   
+}
+#dropdown-basic {
+    background: #EBD0CE;
+    color:#545871;
+    border-radius: 50px;
+    padding: 5px 10px;
+    border: 1px solid  #EBD0CE;
+}
+#dropdown-basic:hover, #dropdown-basic:active, #dropdown-basic:visited, #dropdown-basic:focus{
+    border:2px solid antiquewhite !important;
+    background: #EBD0CE;
+    color:#545871;
+    border-radius: 50px;
+    padding: 5px 10px;
+    box-shadow:none !important;
+}
+.pet-texts {
+    font-size:26px;
+    font-family: Basic Sans;
+}
+.height-adjust {
+    min-height: 410px;
+}
+.date-time {
+    color:#B8817D
+}
+.theme {
+    color:#636780;
+}
+.location-text {
+    color:#636780;
+    font-weight: 400;
+}

@@ -1,0 +1,12 @@
+.company-name {
+    font-size: 32px !important;
+    color: #545871 !important;
+}
+.header {
+    padding: 0.5% 3% 0.5% 5% !important;
+    font-weight: 500;
+}
+.logo-image {
+    width:52px;
+    height:52px;
+}
