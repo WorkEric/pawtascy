@@ -24,7 +24,7 @@ const createLocation = {
 const updateLocation = {
     type: Location,
     args: {
-        id: { type: new GraphQLNonNull(GraphQLString) },
+        id: { type: new GraphQLNonNull(GraphQLInt) },
         city: { type: GraphQLString },
         state: { type: GraphQLString },
         country: { type: GraphQLString }

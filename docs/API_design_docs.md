@@ -1,6 +1,8 @@
 # API design docs
 
 
+## Query
+
 Location
 ---
 
@@ -719,8 +721,89 @@ query {
 }
 ```
 
+<br>
 
+## Mutation
 
+Location
+---
+
+create
+
+```
+mutation {
+  createLocation (city:"ddd", state:"test", country: "china") {
+    city
+    state
+    country
+  }
+}
+
+// result
+{
+  "data": {
+    "createLocation": {
+      "city": "ddd",
+      "state": "test",
+      "country": "china"
+    }
+  }
+}
+```
+
+update 
+
+```
+mutation {
+  updateLocation (id:3, city:"ddd") {
+    city
+    state
+    country
+  }
+}
+
+// result
+{
+  "data": {
+    "updateLocation": {
+      "city": "ddd",
+      "state": "bbb",
+      "country": "china"
+    }
+  }
+}
+```
+
+User
+---
+
+create
+
+```
+mutation {
+  createUser (username: "test1", email: "test1@gmail.com", password: "123456", city:"b", state:"b", country: "c", gender:"male", nick_name: "dogs1", birthday: "2019-06-30 16:37:30") {
+		username
+    email
+    password
+  }
+}
+
+// result
+{
+  "data": {
+    "createUser": {
+      "username": "test1",
+      "email": "test1@gmail.com",
+      "password": "123456"
+    }
+  }
+}
+```
+
+update
+
+```
+```
 
 
 

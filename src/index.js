@@ -10,8 +10,12 @@ import PetDetailsContainer from './Signup/PetDetails/PetDetailsContainer.js';
 import ConfirmationContainer from './Signup/Confirmation/ConfirmationContainer.js';
 import HumanContainer from './Signup/HumanProfile/HumanContainer.js';
 import PetBasicsContainer from './Signup/PetBasics/PetBasicsContainer.js';
+import PetBasicscontContainer from './Signup/PetBasics_cont/PetBasicscontContainer.js';
+
 import EventsContainer from './Events/EventsContainer.js';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 import * as serviceWorker from './serviceWorker';
 
@@ -32,9 +36,9 @@ const routing = (
     </Router>
 )
 
-//ReactDOM.render(<HomeContainer />, document.getElementById('root'));
+ReactDOM.render(<HomeContainer />, document.getElementById('root'));
 
-ReactDOM.render(routing, document.getElementById('root'));
+//ReactDOM.render(routing, document.getElementById('root'));
 
 //ReactDOM.render(<LoginContainer />, document.getElementById('root'));
 
@@ -47,6 +51,8 @@ ReactDOM.render(routing, document.getElementById('root'));
 //ReactDOM.render(<HumanContainer />, document.getElementById('root'));
 
 //ReactDOM.render(<PetBasicsContainer />, document.getElementById('root'));
+
+//ReactDOM.render(<PetBasicscontContainer />, document.getElementById('root'));
 
 //ReactDOM.render(<MyInfo />, document.getElementById('root'));
 // If you want your app to work offline and load faster, you can change
