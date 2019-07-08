@@ -4,65 +4,60 @@
 
 }
 
-.petbc_logo1 {	
+.petbc_logo1 {  
   background-repeat: no-repeat;
   position: absolute;
-  margin-top: 200px;
-  margin-left: 400px;
+  margin-top: 100px;
+  margin-left: 100px;
+  width: 10%;
 }
 
 
 .petbc_circle {
-  margin-bottom: -40px;
   position: absolute;
+  width: 10%;
+  margin-top: 100px;
 
 }
 .petbc_block_first {
-
-  height: 150px;
-  margin-top: 400px;
-  margin-left: 300px;
+  height: 100px;
+  margin-top: 120px;
+  margin-left:20px;
 
 }
 .petbc_block{
-  height: 150px;
-  margin-left: 300px;
+  height: 100px;
+  margin-left: 20px;
 
 }
 .petbc_block_last {
-
-  height: 150px;
-  margin-left: 300px;
-  margin-bottom: 300px;
+  height: 100px;
+  margin-left: 20px;
+  margin-bottom: 0px;
 }
 
 .petbc_des {
-  font-size: 40px;
-  margin-top: 30px;
-  margin-left: 150px;
+  font-size: 25px;
+  margin-top: 110px;
+  margin-left: 100px;
   display: inline-block;
   color: #ABABAB;
 
 }
 
-.petbc_skip {
-  font-size: 40px;
-  margin-left: 500px;
-  text-decoration: underline;
-}
 
 .petbc_title2 {
-  font-size: 60px;  
-  margin-top: 200px;
+  font-size: 30px;  
+  margin-top: 100px;
   margin-left: 100px;
   color: #888888;
-  line-height: 80px; 
+  line-height: 50px; 
 
 }
 .petbc_name_text {
-  font-size: 30px;
+  font-size: 20px;
   color: #888888;
-  margin-top: 125px;
+  margin-top: 50px;
   margin-left: 50px;
 
 }
@@ -70,15 +65,15 @@
 .petbc_name_box {
   margin-top: 20px;
   margin-left: 50px;
-  height: 50px;
-  font-size: 30px;
+  height: 30px;
+  font-size: 15px;
 
 }
 
 .petbc_breed_text {
-  font-size: 30px;
+  font-size: 20px;
   color: #888888;
-  margin-top: 80px;
+  margin-top: 20px;
   margin-left: 50px;
 
 }
@@ -86,59 +81,59 @@
 .petbc_breed_box {
   margin-top: 20px;
   margin-left: 50px;
-  height: 50px;
-  font-size: 30px;
+  height: 30px;
+  font-size: 15px;
 
 }
 
 .petbc_gender_div {
   margin-left: 50px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 .petbc_gender_title {
-  font-size: 30px;
+  font-size: 20px;
   color: #888888;
 
 }
 
 .petbc_gender_text {
-  font-size: 30px;
+  font-size: 20px;
   color: #888888;
   margin-top: 20px;
 
 }
 .petbc_gender_radio_left {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   margin-left: 10px;
 }
 .petbc_gender_radio_right {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   margin-left: 50px;
 }
 
 .petbc_photo_div {
-  margin-top: 120px;
+  margin-top: 50px;
   margin-left: 50px;
 
 }
 .petbc_photo_text {
-  font-size: 30px;
+  font-size: 20px;
   color: #888888;
   display: inline-block;
 }
 
 .petbc_photo_upload {
-  font-size: 30px;
-  margin-top: 30px;
+  font-size: 15px;
+  margin-top: 20px;
 
 }
 
 .petbc_birth_text {
-  font-size: 30px;
+  font-size: 20px;
   color: #888888;
-  margin-top: 75px;
+  margin-top: 20px;
   margin-left: 50px;
 
 }
@@ -146,51 +141,51 @@
 .petbc_birth_box {
   margin-top: 20px;
   margin-left: 50px;
-  height: 50px;
-  font-size: 30px;
+  height: 30px;
+  font-size: 15px;
 }
 
 .petbc_neuter_div {
   margin-left: 50px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .petbc_neuter_title {
-  font-size: 30px;
+  font-size: 20px;
   color: #888888;
 }
 
 .petbc_neuter_text {
-  font-size: 30px;
+  font-size: 20px;
   color: #888888;
   margin-top: 20px;
 }
 .petbc_neuter_radio_left {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   margin-left: 10px;
 }
 .petbc_neuter_radio_right {
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   margin-left: 50px;
 }
 
 .petbc_weight_title {
   margin-left: 50px;
-  font-size: 30px;
+  font-size: 20px;
   color: #888888;
   margin-top: 50px;  
 }
 
 .petbc_buttons {
-  margin-left: 100px;
-  margin-top: 200px;
-  margin-bottom: 100px;
+  margin-left: 50px;
+  margin-top: 50px;
+
 }
 
 .petbc_next {
-  margin-top: -80px;
-  margin-left: 800px;
+  margin-top: -70px;
+  margin-left: 500px;
 
 }

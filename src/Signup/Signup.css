@@ -1,201 +1,191 @@
 .signup_background {
-	background-color: #DDDDDD;
-	background-size: cover;
+  background-color: #DDDDDD;
+  background-size: cover;
 
 }
 .signup_logo1 {
   background-repeat: no-repeat;
   position: absolute;
 
-  margin-top: 200px;
-  margin-left: 200px;
+  margin-top: 20px;
+  margin-left: 100px;
+  width: 10%;
 
 
 }
 .signup_logo2 {
-  margin-bottom: -40px;
+  margin-top: -15px;
   position: absolute;
+  width: 8%;
 }
 
 .signup_title1 {
-  font-size: 50px;  
-  margin-top: 300px;
-  margin-left: 200px;
+  font-size: 30px;  
+  margin-top: 120px;
+  margin-left: 100px;
   color: #888888;
 
 }
 
 .signup_title2 {
-  font-size: 80px;  
-  margin-top: 200px;
-  margin-left: 200px;
+  font-size: 30px;  
+  margin-top: 100px;
+  margin-left: 50px;
   color: #888888;
-  line-height: 80px; 
+  line-height: 40px; 
 
 }
 
 
 .signup_title6 {
-  font-size: 40px;
+  font-size: 20px;
   color: #888888;
   margin-left: 100px;
 
 }
 
 .signup_block_first {
-  margin-top: 200px;
-  height: 200px;  
-  margin-left: 100px;
+  margin-top: 100px;
+  height: 70px;  
+  margin-left: 40px;
 
 }
 .signup_block1{
-  height: 200px;
-  margin-left: 100px;
+  height: 70px;
+  margin-left: 40px;
 
 }
 .signup_block_last {
 
-  height: 200px;  
+  height: 60px;  
   margin-bottom: 400px;
-  margin-left: 100px;
+  margin-left: 40px;
 
 }
 .signup_des {
-  font-size: 30px;
-  margin-top: 30px;
-  margin-left: 100px;
+  font-size: 20px;
+  margin-left: 60px;
   display: inline-block;
   color: #ABABAB;
 
 }
-.signup_des1 {
-  font-size: 30px;
-  color: #ABABAB;
-}
-.signup_Form {
-  margin-left: 100px;
-  height: 60px;
-  font-size: 30px;
-
-}
-
 
 .signup_username_div {
-  height:60px;
+  height:30px;
   width:50%;
-  margin-top:100px;
+  margin-top:50px;
 
 }
 
-
 .signup_username_text {
-  font-size: 30px;
+  font-size: 15px;
   color: #ABABAB;
-  margin-left: 100px;
+  margin-left: 50px;
   height: auto;
 }
 
 
 .signup_username_box {
-  height:60px;
+  height:20px;
   width:50%;
   margin-bottom:50px;
 
 }
 
 .signup_username_form {
-  margin-left: 100px;
-  height: 60px;
-  font-size: 30px;
+  margin-left: 50px;
+  height: 30px;
+  font-size: 15px;
 
 }
 
 .signup_email_div {
-  height:60px;
+  height:30px;
   width:50%;
 
 }
 
 .signup_email_text {
-  font-size: 30px;
+  font-size: 15px;
   color: #ABABAB;
-  margin-left: 100px;
+  margin-left: 50px;
   height: auto;
 }
 
 .signup_email_box {
-  height:60px;
+  height:20px;
   width:50%;
   margin-bottom:50px;
 
 }
 .signup_email_form {
-  margin-left: 100px;
-  height: 60px;
-  font-size: 30px;
+  margin-left: 50px;
+  height: 30px;
+  font-size: 15px;
 
 }
 
 .signup_pwd_div {
-  height:60px;
+  height:30px;
   width:50%;
 
 }
 
 .signup_pwd_text {
-  font-size: 30px;
+  font-size: 15px;
   color: #ABABAB;
-  margin-left: 100px;
+  margin-left: 50px;
   height: auto;
 }
 
 .signup_pwd_box {
-  height:60px;
+  height:20px;
   width:50%;
   margin-bottom:50px;
 
 }
 .signup_pwd_form {
-  margin-left: 100px;
-  height: 60px;
-  font-size: 30px;
+  margin-left: 50px;
+  height: 30px;
+  font-size: 15px;
 
 }
 
 .signup_spwd_div {
-  height:60px;
+  height:30px;
   width:50%;
 
 }
 
 .signup_spwd_text {
-  font-size: 30px;
+  font-size: 15px;
   color: #ABABAB;
-  margin-left: 100px;
-  height: auto;
+  margin-left: 50px;
+  width:100px;
+
 }
 
 .signup_spwd_box {
-  height:60px;
+  height:20px;
   width:50%;
   margin-bottom:50px;
 
 }
 .signup_spwd_form {
-  margin-left: 100px;
-  height: 60px;
-  font-size: 30px;
+  margin-left: 50px;
+  height: 30px;
+  font-size: 15px;
 
 }
 .signup_checkbox {
   width: 30px;
-  height: 30px;
+  height: 20px;
 
 }
 .signup_terms {
   margin-top:0px;
-  margin-left: 100px;
-  font-size: 30px;
+  margin-left: 50px;
+  font-size: 15px;
   color: #888888;
 }
 
@@ -209,43 +199,52 @@
 .signup_result {
   margin-top: 20px;
   height: 10px;
-  font-size: 30px;
+  font-size: 15px;
   color: red;
 }
 .signup_signupdiv {
   margin-top: 10px;
-  height: 100px;  
+  height: 30px;  
 }
 
-
 .signup_signup {
-  font-size: 30px;
-  margin-left: 100px;
-  margin-bottom: 50px;
+  font-size: 15px;
+  margin-left: 50px;
   margin-top: 50px;
   background-color: #ABABAB;
-  padding: 14px 20px;
+  padding: 14px 15px;
   border: none;
   cursor: pointer;
   width: 15%;
+
 }
 
 .signup_social {
-  margin-top:50px;
-  height: 100px;
+  margin-top:80px;
+  margin-left: -50px;
+  height: 50px;
 }
 
 .signup_logos {
   margin-top: 0px;
-  margin-bottom: 50px;
-  margin-left: 100px;
+  margin-left: 50px;
 }
 
 .signup_login {
-  font-size: 30px;
-  margin-left: 100px;
-  height: 100px;
-  margin-bottom: 100px;
+  font-size: 15px;
+  margin-left: 50px;
+  height: 50px;
+  margin-bottom: 50px;
+}
+
+.signup_fblogo {
+  width: 8%;
+
+}
+
+.signup_glogo {
+  width: 10%;
+
 }
 .signup_displayErrors input:invalid {
   border-color: red;

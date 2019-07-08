@@ -65,9 +65,6 @@ class PetBasicsComponent extends Component {
                 <div className="petb_block_last">
                   <h1 className="petb_des">{this.props.titles.title4}</h1>
                 </div>
-                <div>
-                  <a href={this.props.links[0].link} className="petb_skip">{this.props.links[0].label}</a>
-                </div>
               </Col>
               <Col  lg md = "6" style={{backgroundColor: "#EEEEEE"}}>
                 <h1 className="petb_title2">{this.props.titles.title5}</h1>

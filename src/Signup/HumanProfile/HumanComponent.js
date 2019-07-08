@@ -67,9 +67,6 @@ class HumanComponent extends Component {
                 <div className="human_block_last">
                   <h1 className="human_des">{this.props.titles.title4}</h1>
                 </div>
-                <div>
-                  <a href={this.props.links[0].link} className="human_skip">{this.props.links[0].label}</a>
-                </div>
               </Col>
               <Col  lg md = "8" style={{backgroundColor: "#EEEEEE"}}>
                 <h1 className="human_title2">{this.props.titles.title5}</h1>

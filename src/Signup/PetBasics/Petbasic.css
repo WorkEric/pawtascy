@@ -4,77 +4,75 @@
 
 }
 
-.petb_logo1 {	
+.petb_logo1 { 
   background-repeat: no-repeat;
   position: absolute;
-  margin-top: 200px;
-  margin-left: 400px;
+  margin-top: 100px;
+  margin-left: 100px;
+  width: 10%;
 }
 
 
 .petb_circle {
-  margin-bottom: -40px;
   position: absolute;
+  width: 10%;
+  margin-top: 100px;
 
 }
 .petb_block_first {
 
-  height: 150px;
-  margin-top: 400px;
-  margin-left: 300px;
+  height: 100px;
+  margin-top: 120px;
+  margin-left:20px;
+
 
 }
 .petb_block{
-  height: 150px;
-  margin-left: 300px;
+  height: 100px;
+  margin-left: 20px;
 
 }
 .petb_block_last {
 
-  height: 150px;
-  margin-left: 300px;
-  margin-bottom: 300px;
+  height: 100px;
+  margin-left: 20px;
+  margin-bottom: 0px;
 }
 
 .petb_des {
-  font-size: 40px;
-  margin-top: 30px;
-  margin-left: 150px;
+  font-size: 25px;
+  margin-top: 110px;
+  margin-left: 100px;
   display: inline-block;
   color: #ABABAB;
 
 }
 
-.petb_skip {
-  font-size: 40px;
-  margin-left: 500px;
-  text-decoration: underline;
-}
 
 .petb_title2 {
-  font-size: 60px;  
-  margin-top: 200px;
+  font-size: 30px;  
+  margin-top: 100px;
   margin-left: 100px;
   color: #888888;
-  line-height: 80px; 
+  line-height: 50px; 
 
 }
 
 .petb_title3 {
-  font-size: 40px;  
-  margin-top: 200px;
-  margin-left: 100px;
+  font-size: 20px;  
+  margin-top: 50px;
+  margin-left: 50px;
   color: #888888;
-  line-height: 80px;  
+  line-height: 50px;  
 }
 
 .petb_dog_box {
   display: none;
 }
 .petb_dog_img {
-  margin-left: 100px;
-  height: 200px;
-  width: 200px;
+  margin-left: 50px;
+  height: 100px;
+  width: 100px;
   border: 2px solid transparent;
 
 }
@@ -88,8 +86,8 @@
 }
 .petb_cat_img {
   margin-left: -4px;
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
   border: 2px solid transparent;
 
 }
@@ -104,8 +102,8 @@
 }
 .petb_other_img {
   margin-left: -3px;
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
   border: 2px solid transparent;
 }
 
@@ -115,20 +113,20 @@
 }
 
 .petb_title4 {
-  font-size: 35px;  
+  font-size: 20px;  
   margin-top: 50px;
-  margin-left: 100px;
+  margin-left: 50px;
   color: #888888;
-  line-height: 80px;  
+  line-height: 50px;  
 }
 
 .petb_buttons {
-  margin-left: 100px;
-  margin-top: 200px;
-  margin-bottom: 100px;
+  margin-left: 50px;
+  margin-top: 50px;
+
 }
 .petb_next {
-  margin-top: -80px;
-  margin-left: 800px;
+  margin-top: -70px;
+  margin-left: 500px;
 
 }
