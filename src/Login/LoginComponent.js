@@ -119,10 +119,10 @@ class LoginComponent extends Component {
                     </div>
                     <div className="login_logos">
                       <a href={this.props.links[0].link}>
-                        <img src={this.props.images.fblogo}></img>
+                        <img src={this.props.images.fblogo} className="login_fblogo"></img>
                       </a>
                       <a href={this.props.links[1].link}>
-                        <img src={this.props.images.googlelogo}></img>
+                        <img src={this.props.images.googlelogo} className="login_glogo"></img>
                       </a>
 
                     </div>

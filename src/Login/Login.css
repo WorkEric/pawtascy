@@ -6,63 +6,62 @@
 .login_logo1 {
   background-repeat: no-repeat;
   position: absolute;
-  margin-top: 200px;
-  margin-left: 200px;
-
+  margin-top: 100px;
+  margin-left: 100px;
+  width: 10%;
 
 }
 .login_title1 {
-  font-size: 50px;  
-  margin-top: 300px;
-  margin-left: 200px;
+  font-size: 30px;  
+  margin-top: 120px;
+  margin-left: 180px;
   color: #888888;
-
 }
 
 .login_title2 {
-  font-size: 80px;  
-  margin-top: 200px;
-  margin-left: 100px;
+  font-size: 30px;  
+  margin-top: 100px;
+  margin-left: 50px;
   color: #888888;
-  line-height: 80px; 
+  line-height: 40px; 
 
 }
 
 
 .login_title5 {
-  font-size: 40px;
+  font-size: 20px;
   color: #888888;
   margin-left: 100px;
 
 }
 .login_block_first {
-  margin-top: 200px;
-  height: 200px;  
-  margin-left: 100px;
+  margin-top: 100px;
+  height: 70px;  
+  margin-left: 40px;
 }
 
 .login_block1{
+  height: 70px;
+  margin-left: 40px;
 
-  height: 200px;
-  margin-left: 100px;
 
 }
 
 .login_block_last {
 
-  height: 200px;  
-  margin-bottom: 200px;
-  margin-left: 100px;
+  height: 60px;  
+  margin-bottom: 400px;
+  margin-left: 40px;
 }
 .login_logo2 {
-  margin-bottom: -40px;
+  margin-top: -15px;
   position: absolute;
+  width: 8%;
 }
 
 .login_des {
-  font-size: 30px;
-  margin-top: 30px;
-  margin-left: 100px;
+  font-size: 20px;
+  margin-left: 60px;
   display: inline-block;
   color: #ABABAB;
 
@@ -72,93 +71,109 @@
   color: #ABABAB;
 }
 .email_form {
-  margin-left: 100px;
-  font-size: 40px;
+  margin-left: 50px;
+  height: 30px;
+  font-size: 15px;
 }
 .email_div {
-  height:60px;
+  height:30px;
   width:50%;
-  margin-top:100px;
+  margin-top:50px;
 
 }
 .email_box {
-  height:60px;
+  height:20px;
   width:50%;
   margin-bottom:50px;
 
 }
 .email_text {
-  font-size: 30px;
+  font-size: 15px;
   color: #ABABAB;
-  margin-left: 100px;
-
+  margin-left: 50px;
+  height: auto;
 }
 
 .password_text {
-  font-size: 30px;
+  font-size: 15px;
   color: #ABABAB;
-  margin-left: 100px;
-  margin-top: 50px;
+  margin-left: 50px;
+  height: auto;
 }
 .password_box {
-  height:60px;
+  height:20px;
   width:50%;
   margin-bottom:50px;
 
 }
 .password_form {
-  margin-left: 100px;
-  font-size: 40px;
+  margin-left: 50px;
+  height: 30px;
+  font-size: 15px;
 }
 .password_div {
-  height:100px;
+  height:30px;
   width:50%;
 }
 .login_emailstatediv {
-  margin-left: 100px;
+  margin-left: 50px;
   margin-top: -20px;
 }
 .login_emailstate {
-  height: 50px;
-  font-size: 30px;
+  height: 30px;
+  font-size: 15px;
 }
 
 .login_resultdiv {
-  margin-left: 100px;
+  margin-left: 50px;
   margin-top: -20px;
 }
 .login_result {
-  height: 100px;
-  font-size: 30px;
+  height: 30px;
+  font-size: 15px;
   color: red;
 }
 .login_logindiv {
-  height: 100px;  
+  height: 30px;  
 }
 
 .login_login {
-  font-size: 30px;
-  margin-left: 100px;
+  font-size: 15px;
+  margin-left: 50px;
+  margin-top: 50px;
   background-color: #ABABAB;
-  padding: 14px 20px;
+  padding: 14px 15px;
   border: none;
   cursor: pointer;
   width: 15%;
 }
 
 .login_social {
-  margin-top:0px;
-  height: 100px;
+  margin-top:80px;
+  margin-left: -50px;
+  height: 50px;
 }
 .login_logos {
-  margin-left: 100px;
-  height: 80px;
-  margin-bottom: 50px;
+  margin-top: 0px;
+  margin-left: 50px;
+  width: 8%;
 }
 
 .login_signup {
-  font-size: 30px;
-  margin-left: 100px;
+  font-size: 15px;
+  margin-left: 50px;
+  height: 50px;
+  margin-bottom: 50px;
+}
+
+.login_fblogo {
+  width: 8%;
+
+}
+
+.login_glogo {
+  width: 10%;
+
 }
 .login_displayErrors input:invalid {
   border-color: red;
