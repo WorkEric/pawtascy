@@ -81,7 +81,7 @@ module.exports = (sequelize, DataTypes) => {
     collate: 'utf8_general_ci',    
   });
   user.associate = function(models) {
-    models.user.hasOne(models.user_profile, {foreignKey: 'user_id', sourceKey: 'id', as: 'userProfile'})
+    models.user.hasOne(models.user_profile, {foreignKey: 'user_id', sourceKey: 'id', as: 'userProfile'});
     models.user.belongsToMany(models.pet_profile, {
       through: {
         model: models.user_pet_profile,
@@ -89,7 +89,23 @@ module.exports = (sequelize, DataTypes) => {
       },
       foreignKey: 'user_id',
       as: 'petProfiles'
-    })
+    });
+    models.user.belongsToMany(models.event, {
+      through: {
+        model: models.user_event,
+        unique: false
+      },
+      foreignKey: 'event_id',
+      as: 'userEventEvents'
+    });
+    models.user.belongsToMany(models.event, {
+      through: {
+        model: models.event_feedback,
+        unique: false
+      },
+      foreignKey: 'event_id',
+      as: 'eventFeedbackEvents'
+    })     
   };
   return user;
 };

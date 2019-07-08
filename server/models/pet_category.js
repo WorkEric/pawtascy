@@ -31,6 +31,14 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'pet_category_id',
       as: 'petProfiles'
     })
+    models.event.belongsToMany(models.event, {
+      through: {
+        model: models.event_pet_category,
+        unique: false
+      },
+      foreignKey: 'event_id',
+      as: 'eventPetCategoryEvents'
+    })     
   };
   return pet_category;
 };
