@@ -3,6 +3,7 @@ import './Login.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { request } from 'graphql-request'
 
 class LoginComponent extends Component {
   constructor() {
@@ -36,12 +37,18 @@ class LoginComponent extends Component {
       return;
     }
     this.setState({ displayErrors: false });
-    
-    /// post to database
-    fetch('/api/form-submit-url',{ 
-      method: 'GET',
-      body: data,
-    });
+
+
+    const url = 'http://127.0.0.1:9000/api'
+    const query = `{
+      getUserByEmail(email:"ruiwang@gmail.com") {
+       username,
+       email,
+      }
+     }`
+    request(url, query).then(data =>
+      console.log(data)
+    )
 
   }
 
