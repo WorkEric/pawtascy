@@ -1,32 +1,155 @@
 .home-container {
-  padding: 0 !important;
-  margin: 0 !important;
+  margin-right:0 !important;
+  overflow-x: hidden !important;
 }
-.home_backimage2, .home_backimage3,.home_backimage4  {
+.home_backimage4  {
   width:100%;
 }
-.home_title1, .home_title2, .home_title3  {
-  font-size:24px;
+.sitter, .share-moments-image {
+  width: 100%;
+  max-height: 500px;
+  padding:0;
+}
+.sitter-image, .dog-cat-image {
+  width: 100%;
+  height: 100%;
+}
+.play-together, .find-sitter-title, .share-happiness  {
+  font-size:36px;
+  color:#545871;
+  font-weight: bold;
+}
+.play {
+  padding: 5% 3% 3% 10%;
+}
+.share-moments {
+  padding: 5% 3% 3% 10%;
+  background-color: #F7ECEB;
+}
+.animals {
+  display: flex;
+  justify-content: center;
+  margin:auto;
+  padding:5% 3%;
+}
+.animal-image {
+  width: 75%;
+  height: 75%;
+}
+.play-content, .find-sitter-content, .share-moments-content {
+  margin-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  line-height: 36px; 
+  font-weight: 500;
+  color: #9597A6
+}
 
+.find-sitter {
+  background-color: #EEEEEE;
+  padding: 4% 6%;
 }
-.home_des1 {
-  color: black;
-  font-size: 30px;
-  line-height: 100px;
-}
-.home_des2, .home_des3, .home_des4 {
-  margin-top: 30px;
-  font-size: 24px;
-  line-height: 60px; 
+.events-button, .find-sitter-button, .share-moments-button {
+  background-color:#545871;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 2% 5%;
+  margin-top: 6%;
 }
 
-.home_button1, .home_button2, .home_button3, .home_button4 {
+.home_button2, .home_button3, .home_button4 {
   font-size: 30px;  
-  height: 100px;
 }
 
 .home-background {
   width: 100%;
-  height: auto;
+  height: 100%;
+}
+.about-us {
+  padding: 2% 10%;
+  background-color: #545871;
+  justify-content: center;
+}
+.about-pawtascy {
+  color:#EBD0CE;
+  font-family: Henriette;
+  margin-bottom: 8%;
+}
+.card-item {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-right: 50px !important;
+}
+.card-image {
+  margin-top:-40px;
+  width: 80px;
+}
+.card-title {
+  color: #545871;
+  font-weight: bold;
+  font-size: 32px;
+}
+.card-content {
+  color: #545871;
+  font-size: 16px;
+  font-weight: 400;
+  padding-bottom:2%;
+}
+@media only screen and (min-width: 992px) and (max-width: 1280px) {
+  .sitter {
+    width: 100%;
+    height: 450px;
+  } 
+  .share-moments-image {
+    width: 100%;
+    height: 500px;
+  } 
 }
 
+@media only screen and (max-width:991px){
+  .home-background {
+    width: 100%;
+    height: 100%;
+  }
+  .sitter, .share-moments-image {
+    width: 100%;
+    height: 300px;
+  } 
+}
+
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .home-background {
+    width: 100%;
+    height:80%;
+  }
+  .sitter, .share-moments-image {
+    width: 100%;
+    height: 500px;
+  } 
+}
+
+/* Mobile Layout: 320px. */
+@media only screen and (max-width: 767px) {
+  .home-background {
+    width: 100%;
+    height:50%;
+  }
+  .sitter, .share-moments-image {
+    width: 100%;
+    height: 350px;
+    order: 2;
+  }
+  .play, .share-moments {
+    padding: 7% 10% 3% 10%;
+  }
+  .find-sitter {
+    order: 1;
+    padding: 7% 10% 3% 10%;
+  }
+  .card-item {
+    margin: 10% 0!important;
+  }
+}
