@@ -69,40 +69,45 @@ class ConfirmationComponent extends Component {
                 </ul>
               </Col>
               <Col lg={7} md={6} className="right-top">
-                <h1 className="all-set">Okay, {this.state.name} all set!</h1>
-                <Container className="information-area">
-                        <Row className="pet-image"> <Image src={this.state.portfolioImage} alt="pet image" roundedCircle className="portfolio-image"/> </Row>
-                        <Row className="pet-name">{this.state.name}</Row>
-                        <Row className="info-holder">
-                            <Col className="info-item">
-                                <Image src={Male} className="male-icon middle-space" alt="male icon"/>
-                                <text> {this.state.gender.toUpperCase()} </text>
-                            </Col>
-                            <Col className="info-item">
-                                <text className="middle-space"> {this.state.age} </text>
-                                <text> YEARS OLD</text>
-                            </Col>
-                            <Col className="info-item">
-                                <img className="check-icon middle-space" src={Check} />
-                                <text> SPAYED</text>
-                            </Col>
-                            <Col className="info-item">
-                                <text className="middle-space"> {this.state.weight} </text>
-                                <text> POUNDS</text>
-                            </Col>
-                        </Row>
-                        <Row className="favorite-things">
-                            <text className="favorite-title"> FAVORITE THINGS </text>
-                            <text className="favorite-content">{this.state.favoriteThings}</text>
-                        </Row>
-                </Container>
-                <Row className="morePets">Got more pets? Lucky you!&nbsp; <span className="span-text"> Add another pet profile</span></Row>
+                <Row className="pets-conf-top">
+                  <h1 className="all-set">Okay, {this.state.name} all set!</h1>
+                  <Container className="information-area">
+                          <Row className="pet-image"> <Image src={this.state.portfolioImage} alt="pet image" roundedCircle className="portfolio-image"/> </Row>
+                          <Row className="pet-name">{this.state.name}</Row>
+                          <Row className="info-holder">
+                              <Col className="info-item">
+                                  <Image src={Male} className="male-icon middle-space" alt="male icon"/>
+                                  <text> {this.state.gender.toUpperCase()} </text>
+                              </Col>
+                              <Col className="info-item">
+                                  <text className="middle-space"> {this.state.age} </text>
+                                  <text> YEARS OLD</text>
+                              </Col>
+                              <Col className="info-item">
+                                  <img className="check-icon middle-space" src={Check} />
+                                  <text> SPAYED</text>
+                              </Col>
+                              <Col className="info-item">
+                                  <text className="middle-space"> {this.state.weight} </text>
+                                  <text> POUNDS</text>
+                              </Col>
+                          </Row>
+                          <Row className="favorite-things">
+                              <text className="favorite-title"> FAVORITE THINGS </text>
+                              <text className="favorite-content">{this.state.favoriteThings}</text>
+                          </Row>
+                  </Container>
+                  {/*
+                  <h1 className="more-pets">Got more pets? Lucky you!&nbsp; <span className="span-text"> Add another pet profile</span></h1>
+                  */}
+                  </Row>
+                
                 <Row className="back-next">
-                  <Button variant="outline-secondary" size="lg">
+                  <Button variant="outline-secondary" className="back-button" size="lg">
                     Back
                   </Button>
-                  <Button variant="secondary" size="lg">
-                    Next
+                  <Button variant="secondary" className="complete" size="lg">
+                    Complete
                   </Button>
                 </Row>
               </Col>
