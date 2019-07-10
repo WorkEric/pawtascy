@@ -98,6 +98,28 @@ const createUser = {
     }
 }
 
+const updateUser = {
+    type: User,
+    args: {
+        id: { type: new GraphQLNonNull(GraphQLInt) },
+        email: { type: GraphQLString },
+        first_name: { type: GraphQLString },
+        last_name: { type: GraphQLString },
+        password: { type: GraphQLString },
+    },
+    resolve (_, args) {
+        let id = args.id;
+        delete args.id;
+        return db.user.update(
+            args,
+            { where: { id } }
+        ).then(() => {
+            return db.user.findOne({ where: { id } })
+        });
+    }
+};
+
 module.exports = {
-    createUser
+    createUser,
+    updateUser
 };

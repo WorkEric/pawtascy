@@ -777,16 +777,25 @@ mutation {
 User
 ---
 
-create
+Business: When new user sign up account
+
+- user, user_profile
+- location
+- pet_profile, pet_category
+- user_pet_proifle
 
 ```
 mutation {
-  createUser (username: "test1", email: "test1@gmail.com", password: "123456", city:"b", state:"b", country: "c", gender:"male", nick_name: "dogs1", birthday: "2019-06-30 16:37:30") {
+  createUser (username: "test1", email: "test1@gmail.com", password: "123456", 
+    city:"b", state:"b", country: "b", 
+    gender:"male", nick_name: "dogs1", birthday: "2019-06-30 16:37:30",
+  	categories: ["bird", "horse"]) {
 		username
     email
     password
   }
 }
+
 
 // result
 {
@@ -800,11 +809,105 @@ mutation {
 }
 ```
 
-update
+update user information
+
 
 ```
+mutation {
+  updateUser (id: 1, first_name: "rui1", password:"12345") {
+		username
+    first_name
+    email
+    password
+  }
+}
+
+
+// result
+{
+  "data": {
+    "updateUser": {
+      "username": "ruiwang",
+      "first_name": "rui1",
+      "email": "ruiwang@gmail.com",
+      "password": "12345"
+    }
+  }
+}
 ```
 
+UserProfile
+---
 
+update user_profile information
 
+```
+mutation {
+  updateUserProfile (user_id: 1, age: "28") {
+    user_id,
+    age
+    job
+  }
+}
+
+// result
+{
+  "data": {
+    "updateUserProfile": {
+      "user_id": 1,
+      "age": "28",
+      "job": "software engineer"
+    }
+  }
+}
+```
+
+PetProfile
+---
+
+create pet_profile
+
+```
+mutation {
+  createPetProfile (user_id: 1, nick_name: "test2", categories:["suger", "handsome"]) {
+    is_neutered
+    nick_name
+  }
+}
+
+// result
+{
+  "data": {
+    "createPetProfile": {
+      "is_neutered": false,
+      "nick_name": "test2"
+    }
+  }
+}
+```
+
+update pet_profile
+
+- categories
+	- if category exist, update 
+	- if category not exist, create a one
+
+```
+mutation {
+  updatePetProfile (id: 28, nick_name: "test3", categories:["suger", "good"]) {
+    is_neutered
+    nick_name
+  }
+}
+
+// result
+{
+  "data": {
+    "updatePetProfile": {
+      "is_neutered": false,
+      "nick_name": "test3"
+    }
+  }
+}
+```
 
