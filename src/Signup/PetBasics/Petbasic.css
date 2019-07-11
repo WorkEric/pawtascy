@@ -1,40 +1,17 @@
 .petb_background {
   background-color: #DDDDDD;
   background-size: cover;
-
-}
-
-.petb_logo1 { 
-  background-repeat: no-repeat;
-  position: absolute;
-  margin-top: 100px;
-  margin-left: 100px;
-  width: 10%;
-}
-
-
-.petb_circle {
-  position: absolute;
-  width: 10%;
-  margin-top: 100px;
-
 }
 .petb_block_first {
-
-  height: 100px;
   margin-top: 120px;
   margin-left:20px;
-
-
 }
 .petb_block{
-  height: 100px;
   margin-left: 20px;
 
 }
 .petb_block_last {
 
-  height: 100px;
   margin-left: 20px;
   margin-bottom: 0px;
 }
@@ -117,16 +94,26 @@
   margin-top: 50px;
   margin-left: 50px;
   color: #888888;
-  line-height: 50px;  
+  line-height: 40px;  
 }
-
-.petb_buttons {
-  margin-left: 50px;
-  margin-top: 50px;
-
+.basics-back-next {
+  height: 14vh;
+  position: absolute;
+  width:100%;
+  bottom: 0;
+  background-color: white;
+  padding:4% 8%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around
 }
-.petb_next {
-  margin-top: -70px;
-  margin-left: 500px;
-
+@media only screen and (max-width: 767px) {
+  .left-nav {
+    display: none;
+  }
+  .basics-back-next {
+    width: 100vw;
+    bottom: 0;
+    position: static
+  }
 }

@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react';
 import ConfirmationComponent from './ConfirmationComponent';
 import Logo from '../../images/Logo-icon.png';
@@ -15,3 +16,4 @@ class ConfirmationContainer extends Component {
 }
 
 export default ConfirmationContainer;
+*/

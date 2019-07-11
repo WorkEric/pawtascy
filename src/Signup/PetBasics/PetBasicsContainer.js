@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react';
 import PetBasicsComponent from './PetBasicsComponent';
 import logo from '../../images/logo1.svg';
@@ -15,11 +16,6 @@ class PetBasicsContainer extends Component {
       other: other,
 
   	}
-  	let links = [
-      {label: 'Skip these steps',link:'#Home'},
-      {label: 'Next',link:'#PetBasic'},
-      {label: 'Back', link:'#Human'},
-  	]
 
   	let titles = {
   		title1: "Human profile",
@@ -43,3 +39,4 @@ class PetBasicsContainer extends Component {
 }
 
 export default PetBasicsContainer;
+*/

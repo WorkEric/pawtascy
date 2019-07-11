@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react';
 import HumanComponent from './HumanComponent';
 import logo from '../../images/logo1.svg';
@@ -39,3 +40,4 @@ class HumanContainer extends Component {
 }
 
 export default HumanContainer;
+*/

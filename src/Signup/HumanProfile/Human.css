@@ -173,13 +173,11 @@
   font-size: 15px;
   margin-bottom: 20px;
 }
-
-.human_next {
-  font-size: 20px;
-  color: #888888;
-  margin-top: 20px;
-  margin-left: 100px;
-  height: 30px;
-  width: 100px;
-  margin-bottom: 100px;
+.human-back-next {
+  height: 14vh;
+  position: absolute;
+  width:100%;
+  bottom: 0;
+  background-color: white;
+  padding:4% 8%;
 }

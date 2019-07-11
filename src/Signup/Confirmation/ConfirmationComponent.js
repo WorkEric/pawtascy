@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import './Confirmation.css';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button'
+import {Container, Row, Col, Button, Image} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
+
 import image from '../../images/Sugar.png';
-import Image from 'react-bootstrap/Image';
 import Male from '../../images/male.png';
 import Check from '../../images/check.png';
+import './Confirmation.css';
 
 
 class ConfirmationComponent extends Component {
@@ -51,24 +49,19 @@ class ConfirmationComponent extends Component {
   }
 
   render() {
+    {/*
       const leftNav = this.props.description.map(function(des) {
         return (
           <ol>
-            {/*<img src={this.props.images.circle} className="logo2" />*/}
+            <img src={this.props.images.circle} className="logo2" />
             <h1 className="left-nav-item">{des}</h1>
           </ol>
         )
       });
+    */}
       return (
-          <Container fluid className="detail-component">
-            <Row>
-              <Col lg={5} md={6} className="left-nav">
-                 <img src={this.props.logo} className="logo" />
-                 <ul>
-                   { leftNav }
-                </ul>
-              </Col>
-              <Col lg={7} md={6} className="right-top">
+        
+        <Col lg={7} md={6} className="right-top">
                 <Row className="pets-conf-top">
                   <h1 className="all-set">Okay, {this.state.name} all set!</h1>
                   <Container className="information-area">
@@ -97,22 +90,21 @@ class ConfirmationComponent extends Component {
                               <text className="favorite-content">{this.state.favoriteThings}</text>
                           </Row>
                   </Container>
-                  {/*
-                  <h1 className="more-pets">Got more pets? Lucky you!&nbsp; <span className="span-text"> Add another pet profile</span></h1>
-                  */}
+                  
+                  {/*<h1 className="more-pets">Got more pets? Lucky you!&nbsp; <span className="span-text"> Add another pet profile</span></h1>*/}
+                  
                   </Row>
                 
                 <Row className="back-next">
-                  <Button variant="outline-secondary" className="back-button" size="lg">
+                  <Link to="/pet-details"><Button variant="outline-secondary" className="back-button" size="lg">
                     Back
-                  </Button>
+                  </Button></Link>
                   <Button variant="secondary" className="complete" size="lg">
-                    Complete
+                    Done
                   </Button>
                 </Row>
               </Col>
-            </Row>
-          </Container>
+              
       )
   }
 }

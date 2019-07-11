@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react';
 import PetBasicscontComponent from './PetBasicscontComponent';
 import logo from '../../images/logo1.svg';
@@ -39,3 +40,4 @@ class PetBasicscontContainer extends Component {
 }
 
 export default PetBasicscontContainer;
+*/

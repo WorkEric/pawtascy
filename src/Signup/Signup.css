@@ -250,3 +250,8 @@
   border-color: red;
 
 }
+
+/* SignupInfo css */
+.left-nav-item {
+  font-size: 32px !important;
+}

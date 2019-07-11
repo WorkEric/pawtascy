@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './Human.css';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import {Col, Button, Row} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 class HumanComponent extends Component {
   constructor() {
@@ -49,27 +48,8 @@ class HumanComponent extends Component {
   render() {
       const { displayErrors } = this.state;
       return (
-        <div>
-          <Container fluid>
-            <Row>
-              <Col lg md = "4" className="human_background">
-                <img src={this.props.images.logo} className="human_logo1"></img>
-                <div className="human_block_first">
-                  <img src={this.props.images.circle} className="human_circle"></img>
-                  <h1 className="human_des">{this.props.titles.title1}</h1>
-                </div>
-                <div className="human_block">
-                  <h1 className="human_des">{this.props.titles.title2}</h1>
-                </div>
-                <div className="human_block">
-                  <h1 className="human_des">{this.props.titles.title3}</h1>
-                </div>
-                <div className="human_block_last">
-                  <h1 className="human_des">{this.props.titles.title4}</h1>
-                </div>
-              </Col>
-              <Col  lg md = "8" style={{backgroundColor: "#EEEEEE"}}>
-                <h1 className="human_title2">{this.props.titles.title5}</h1>
+              <Col  lg md = "7" style={{backgroundColor: "#EEEEEE", height:"100vh"}}>
+                <h1 className="human_title2">Hello! Please tell us a little bit about yourself.</h1>
                 <form onSubmit={this.handleSubmit}>
                   <div>
                     <div>
@@ -80,7 +60,7 @@ class HumanComponent extends Component {
                             <input type="file" onChange={this.fileChangedHandler} className="human_photo_upload"></input>
                           </div>
                           <div className="human_gender_div">
-                            <h1 className="human_gender_title">{this.props.titles.title7}</h1>
+                            <h1 className="human_gender_title">Gender</h1>
                             <label className="human_gender_text">
                               <input
                                 type="radio"
@@ -103,7 +83,7 @@ class HumanComponent extends Component {
                             </label>
                           </div> 
                           <div>
-                            <h1 className="human_city_title">{this.props.titles.title9}</h1>
+                            <h1 className="human_city_title">City</h1>
                           </div>
                           <div>
                             <input
@@ -118,7 +98,7 @@ class HumanComponent extends Component {
                         </Col>
                         <Col debug lg md = "3">
                           <div className="human_age_div">
-                            <h1 className="human_age_title">{this.props.titles.title6}</h1>
+                            <h1 className="human_age_title">Age Range</h1>
                             <select
                                 value={this.state.Age}
                                 onChange={this.handleChange}
@@ -133,7 +113,7 @@ class HumanComponent extends Component {
                             </select>
                           </div>
                           <div>
-                            <h1 className="human_job_title">{this.props.titles.title8}</h1>
+                            <h1 className="human_job_title">Job Type</h1>
                           </div>
                           <div>
                             <input
@@ -147,7 +127,7 @@ class HumanComponent extends Component {
                           </div> 
                           <Row>
                             <Col lg md = "1">
-                              <h1 className="human_state_title">{this.props.titles.title10}</h1>
+                              <h1 className="human_state_title">State</h1>
                               <select
                                   value={this.state.State}
                                   onChange={this.handleChange}
@@ -163,7 +143,7 @@ class HumanComponent extends Component {
                             </Col>
 
                             <Col lg md = "1">
-                              <h1 className="human_zip_title">{this.props.titles.title11}</h1>
+                              <h1 className="human_zip_title">Zip</h1>
                               <input
                                 type="text"
                                 name="Zip"
@@ -178,7 +158,7 @@ class HumanComponent extends Component {
                       </Row>
                       <Row>
                         <Col lg md = "6">
-                          <h1 className="human_intro_title">{this.props.titles.title12}</h1>
+                          <h1 className="human_intro_title">Self-Introduction (Optional)</h1>
                           <textarea
                             name="Intro"
                             value={this.state.Intro}
@@ -187,20 +167,17 @@ class HumanComponent extends Component {
                           />
                         </Col>
                       </Row>
-                      <Row>
-                        <Col lg md = "3">
-                        </Col>
-                        <Col lg md = "3">
-                          <button className="human_next">next</button>
-                        </Col>
-                      </Row>
+                      <Row className="human-back-next">
+                          <Link to="/pet-basics">
+                            <Button className="human-next-button" variant="secondary" size="lg">
+                            Next
+                          </Button>
+                          </Link>  
+                    </Row>
                     </div>
                   </div>
                 </form>
               </Col>
-            </Row>
-          </Container>
-        </div>
       )
   }
 }

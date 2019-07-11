@@ -7,7 +7,7 @@ import HomeContainer from './Home/HomeContainer';
 import LoginContainer from './Login/LoginContainer';
 import SignupContainer from './Signup/SignupContainer';
 import PetDetailsContainer from './Signup/PetDetails/PetDetailsContainer.js';
-import ConfirmationContainer from './Signup/Confirmation/ConfirmationContainer.js';
+import SignupInfoContainer from './Signup/SignupInfoContainer.js';
 import HumanContainer from './Signup/HumanProfile/HumanContainer.js';
 import PetBasicsContainer from './Signup/PetBasics/PetBasicsContainer.js';
 import PetBasicscontContainer from './Signup/PetBasics_cont/PetBasicscontContainer.js';
@@ -27,12 +27,11 @@ const routing = (
             <Route  exact path="/" component={ HomeContainer } />
             <Route path="/login" component={ LoginContainer  } />
             <Route path="/signup" component={ SignupContainer } />
-            <Route path="/confirmation" component={ ConfirmationContainer } />
-            <Route path="/pet-details" component={PetDetailsContainer}/>
-            <Route path="/human-profile" component={HumanContainer}/>
-            <Route path="/pet-basics" component={PetBasicsContainer}/>
+            <Route path="/human-profile" component={ SignupInfoContainer } />
+            {/*<Route path="/pet-details" component={PetDetailsContainer}/>*/}
+            {/*<Route path="/human-profile" component={HumanContainer}/>*/}
             <Route path="/events" component={EventsContainer}/>
-            <Route path="/pet-basics-cont" component={PetBasicscontContainer} />
+            {/*<Route path="/pet-basics-cont" component={PetBasicscontContainer} />*/}
         </div>
     </Router>
 )

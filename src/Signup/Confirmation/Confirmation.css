@@ -1,16 +1,13 @@
 
 .detail-component {
     margin:0 !important;
-    height: 100vh !important;
+
 }
 .all-set {
     font-size: 50px;  
     padding-top: 20px;
     color: #888888;
     margin: 0 auto 50px auto;
-}
-.left-nav {
-    height: 100vh !important;
 }
 .left-nav-item {
     font-size: 32px !important;
@@ -24,6 +21,11 @@
     position: absolute;
     width:100%;
     bottom: 0;
+    background-color: white;
+    padding:4% 8%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around
 }
 .information-area {
     background-color: white;

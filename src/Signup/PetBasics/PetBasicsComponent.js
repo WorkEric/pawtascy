@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import './Petbasic.css';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom';
+
+import Dog from '../../images/dog.jpg';
+import Cat from '../../images/cat.jpg';
+import Other from '../../images/other.jpg';
 
 
 
@@ -46,32 +50,16 @@ class PetBasicsComponent extends Component {
 
   render() {
       const { displayErrors } = this.state;
+      let images = {
+        dog: Dog,
+        cat: Cat,
+        other: Other
+      } 
       return (
-        <div>
-          <Container fluid>
-            <Row>
-              <Col lg md = "6" className="petb_background">
-                <img src={this.props.images.logo} className="petb_logo1"></img>
-                <div className="petb_block_first">
-                  <h1 className="petb_des">{this.props.titles.title1}</h1>
-                </div>
-                <div className="petb_block">
-                  <img src={this.props.images.circle} className="petb_circle"></img>
-                  <h1 className="petb_des">{this.props.titles.title2}</h1>
-                </div>
-                <div className="petb_block">
-                  <h1 className="petb_des">{this.props.titles.title3}</h1>
-                </div>
-                <div className="petb_block_last">
-                  <h1 className="petb_des">{this.props.titles.title4}</h1>
-                </div>
-              </Col>
-              <Col  lg md = "6" style={{backgroundColor: "#EEEEEE"}}>
-                <h1 className="petb_title2">{this.props.titles.title5}</h1>
-                <h1 className="petb_title3">{this.props.titles.title6}</h1>
+              <Col  lg = "7" md = "6" style={{backgroundColor: "#EEEEEE", height:"100vh"}} >
+                <h1 className="petb_title2">Nice to meet you. Tell us all about your furry, feathery and scaley friends.</h1>
+                <h1 className="petb_title3">What type of pet do you have?</h1>
                 <form onSubmit={this.handleSubmit}>
-                  <div>
-                    <div>
                         <label>
                           <input
                             type="radio"
@@ -82,7 +70,7 @@ class PetBasicsComponent extends Component {
                             onChange={this.handleChange}
 
                           />
-                          <img className="petb_dog_img" src={this.props.images.dog}></img>
+                          <img className="petb_dog_img" src={images.dog}></img>
                         </label>
                         <label>
                           <input
@@ -94,7 +82,7 @@ class PetBasicsComponent extends Component {
                             onChange={this.handleChange}
 
                           />
-                          <img className="petb_cat_img" src={this.props.images.cat}></img>
+                          <img className="petb_cat_img" src={images.cat}></img>
                         </label>
                         <label>
                           <input
@@ -106,28 +94,19 @@ class PetBasicsComponent extends Component {
                             onChange={this.handleChange}
 
                           />
-                          <img className="petb_other_img" src={this.props.images.other}></img>
+                          <img className="petb_other_img" src={images.other}></img>
                         </label>
-                    </div>
-                    <div>
-                      <h1 className="petb_title4">{this.props.titles.title10}</h1>
-                    </div>
-                    <Row style={{backgroundColor: "#FDFEFE"}}>
-                      <div className="petb_buttons">
-                        <Button variant="outline-secondary" size="lg" onClick>
+                    </form>
+                    {/*<div className="petb_title4">Have multiple pets? That's awesome. You can create additional pet profiles for the whole family later.</div>*/}
+                    <Row className="basics-back-next">
+                        <Link to="/human-profile"><Button variant="outline-secondary" size="lg" onClick>
                           Back
-                        </Button>
-                        <Button variant="secondary" size="lg" className="petb_next">
+                        </Button></Link>
+                        <Link to="/pet-basics-2"><Button variant="secondary" size="lg">
                           Next
-                        </Button>
-                      </div>
+                        </Button></Link>
                     </Row>
-                  </div>
-                </form>
               </Col>
-            </Row>
-          </Container>
-        </div>
       )
   }
 }

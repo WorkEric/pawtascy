@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './Petbasicscont.css';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
+import {Link} from 'react-router-dom';
 
 
 
@@ -50,35 +50,13 @@ class PetBasicscontComponent extends Component {
   render() {
       const { displayErrors } = this.state;
       return (
-        <div>
-          <Container fluid>
-            <Row>
-              <Col lg md = "6" className="petbc_background">
-                <img src={this.props.images.logo} className="petbc_logo1"></img>
-                <div className="petbc_block_first">
-                  <h1 className="petbc_des">{this.props.titles.title1}</h1>
-                </div>
-                <div className="petbc_block">
-                  <img src={this.props.images.circle} className="petbc_circle"></img>
-                  <h1 className="petbc_des">{this.props.titles.title2}</h1>
-                </div>
-                <div className="petbc_block">
-                  <h1 className="petbc_des">{this.props.titles.title3}</h1>
-                </div>
-                <div className="petbc_block_last">
-                  <h1 className="petbc_des">{this.props.titles.title4}</h1>
-                </div>
-              </Col>
-
-              <Col  lg md = "8" style={{backgroundColor: "#EEEEEE"}}>
-                <h1 className="petbc_title2">{this.props.titles.title5}</h1>
+              <Col  lg md = "7" style={{backgroundColor: "#EEEEEE", height:"100vh"}}>
+                <h1 className="petbc_title2">Give us the basics about your lovely buddy.</h1>
                 <form onSubmit={this.handleSubmit}>
-                  <div>
-                    <div>
                       <Row>
                         <Col lg md = "3">
                           <div>
-                            <h1 className="petbc_name_text">{this.props.titles.title6}</h1>
+                            <h1 className="petbc_name_text">Name</h1>
                           </div>
                           <div>
                             <input
@@ -91,7 +69,7 @@ class PetBasicscontComponent extends Component {
                             />
                           </div>
                           <div>
-                            <h1 className="petbc_breed_text">{this.props.titles.title7}</h1>
+                            <h1 className="petbc_breed_text">Breed</h1>
                           </div>
                           <div>
                             <input
@@ -104,7 +82,7 @@ class PetBasicscontComponent extends Component {
                             />
                           </div>                          
                           <div className="petbc_gender_div">
-                            <h1 className="petbc_gender_title">{this.props.titles.title8}</h1>
+                            <h1 className="petbc_gender_title">Birthday</h1>
                             <label className="petbc_gender_text">
                               <input
                                 type="radio"
@@ -133,7 +111,7 @@ class PetBasicscontComponent extends Component {
                             <input type="file" onChange={this.fileChangedHandler} className="petbc_photo_upload"></input>
                           </div>
                           <div>
-                            <h1 className="petbc_birth_text">{this.props.titles.title8}</h1>
+                            <h1 className="petbc_birth_text">Gender</h1>
                           </div> 
                           <div>
                             <input
@@ -146,7 +124,7 @@ class PetBasicscontComponent extends Component {
                             />
                           </div>       
                           <div className="petbc_neuter_div">
-                            <h1 className="petbc_neuter_title">{this.props.titles.title10}</h1>
+                            <h1 className="petbc_neuter_title">Spayed or neutered</h1>
                             <label className="petbc_neuter_text">
                               <input
                                 type="radio"
@@ -172,7 +150,7 @@ class PetBasicscontComponent extends Component {
                       </Row>
                       <Row>
                         <Col lg md = "6">
-                          <h1 className="petbc_weight_title">{this.props.titles.title11}</h1>
+                          <h1 className="petbc_weight_title">Weight</h1>
                           <textarea
                             name="Intro"
                             value={this.state.Intro}
@@ -181,24 +159,16 @@ class PetBasicscontComponent extends Component {
                           />
                         </Col>
                       </Row>
-                      <Row style={{backgroundColor: "#FDFEFE"}}>
-                        <div className="petbc_buttons">
-                          <Button variant="outline-secondary" size="lg" onClick>
+                      <Row className="basics-back-next">
+                          <Link to="/pet-basics"><Button variant="outline-secondary" size="lg">
                             Back
-                          </Button>
-                          <Button variant="secondary" size="lg" className="petbc_next">
+                          </Button></Link>
+                          <Link to="/pet-details"><Button variant="secondary" size="lg">
                             Next
-                          </Button>
-                        </div>
+                          </Button></Link>
                       </Row>
-                    </div>
-                  </div>
                 </form>
               </Col>
-
-            </Row>
-          </Container>
-        </div>
       )
   }
 }

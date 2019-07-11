@@ -1,3 +1,4 @@
+/*
 import React, { Component } from 'react';
 import PetDetailsComponent from './PetDetailsComponent';
 import logo from '../../images/Logo-icon.png';
@@ -32,3 +33,4 @@ class PetDetailsContainer extends Component {
 }
 
 export default PetDetailsContainer;
+*/
