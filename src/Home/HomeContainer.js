@@ -51,7 +51,7 @@ class HomeContainer extends Component {
     ]
     return (
       <div>
-        <Header />
+        {/*<Header />*/}
         <HomeComponent sep_links={sep_links} titles={titles} description={description} images={images} cards={cards}/>
         <Footer />
       </div>

@@ -16,7 +16,7 @@ export default class EventsContainer extends Component {
     render() {
         return (
             <div>
-                <Header/>
+                {/*<Header/>*/}
                 <EventsSearchBar setSearchName={this.setSearchName} />
                 <EventsList searchName={this.state.searchName}/>
                 <Footer />
