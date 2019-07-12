@@ -41,7 +41,7 @@
     "dev": "run-p server start",
     "prod": "run-p server start"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "http://localhost:3000",
   "eslintConfig": {
     "extends": "react-app"
   },
