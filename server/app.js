@@ -1,8 +1,10 @@
+const path = require('path');
 const compression = require('compression');
 const express = require('express');
 const bodyParser = require('body-parser-graphql');
 const cors = require('cors');
 const graphqlHTTP = require('express-graphql');
+const passport = require('passport')
 
 const schema = require('./schema.js');
 const models = require('./models/index.js')
@@ -16,6 +18,9 @@ app.use(compression());
 app.use(bodyParser.graphql());
 
 // load passport strategies
+// app.use(passport.initialize());
+// const { localSignUpStrategy } = require('./passport/signup_passport');
+// passport.use('local-signup', localSignUpStrategy);
 
 // view engine setup: static file
 app.use(express.static(path.join(__dirname, 'static')));
