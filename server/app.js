@@ -10,7 +10,6 @@ const schema = require('./schema.js');
 const models = require('./models/index.js')
 
 const PORT = process.env.NODE_ENV === 'production' ? 5000 : 9000;
-const path = require('path');
 
 
 // Create an express server
