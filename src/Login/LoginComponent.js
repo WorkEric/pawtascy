@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './Login.css';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { request } from 'graphql-request'
+import PropTypes from 'prop-types';
+import './Login.css';
 
 class LoginComponent extends Component {
-  constructor() {
+  /* constructor() {
     super();
     this.state = {
       email: "",
@@ -50,10 +50,12 @@ class LoginComponent extends Component {
       console.log(data)
     )
 
-  }
+  }*/
+  
 
   render() {
-      const { displayErrors } = this.state;
+      //const { displayErrors } = this.state;
+      let {onSubmit, onChange, errors, user} = this.props;
       return (
         <div>
           <Container fluid>
@@ -76,7 +78,7 @@ class LoginComponent extends Component {
             </Col>
             <Col lg md = "6" style={{backgroundColor: "#EEEEEE"}}>
               <h1 className="login_title2">{this.props.titles.title2}</h1>
-                <form  noValidate onSubmit={this.handleSubmit} className={displayErrors ? 'login_displayErrors': ''}>
+                <form  noValidate onSubmit={onSubmit} className={errors ? 'login_displayErrors': ''}>
                   <div>
                     <div>
                       <div className="email_div">
@@ -88,8 +90,8 @@ class LoginComponent extends Component {
                           name="email"
                           placeholder="  Your email address"
                           className="email_form"
-                          value={this.state.email}
-                          onChange={this.handleChange}
+                          //value={this.state.email}
+                          onChange={onChange}
                         />
                       </div>
                     </div>
@@ -103,12 +105,12 @@ class LoginComponent extends Component {
                           name="password"
                           placeholder="  Your password"
                           className="password_form"
-                          value={this.state.password}
-                          onChange={this.handleChange}
+                          //value={this.state.password}
+                          onChange={onChange}
                         />
                       </div>
                       <div className="login_resultdiv">
-                        <h1 className="login_result">{this.state.result}</h1>
+                        <h1 className="login_result">{errors.summary}</h1>
                       </div>
                       <div className="login_logindiv">
                         <button className="login_login">{this.props.links[3].label}</button>
@@ -140,6 +142,11 @@ class LoginComponent extends Component {
       )
   }
 }
-
+LoginComponent.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  errors: PropTypes.func.isRequired,
+  user: PropTypes.func.isRequired,
+};
 
 export default LoginComponent;
