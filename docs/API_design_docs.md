@@ -721,6 +721,331 @@ query {
 }
 ```
 
+
+Event
+---
+
+### Find all events
+```
+{
+  getEvents {
+    id
+    title
+		event_start_at
+    location_id
+    address
+    restrict_pets_number
+    restrict_attendee_number
+    is_neutered
+    detail
+    note
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEvents": [
+      {
+        "id": "1",
+        "title": "event 1",
+        "event_start_at": "2019-07-10 21:23:29",
+        "location_id": 1,
+        "address": "SanJose",
+        "restrict_pets_number": 5,
+        "restrict_attendee_number": 5,
+        "is_neutered": false,
+        "detail": "detail1",
+        "note": "note1"
+      },
+      {
+        "id": "2",
+        "title": "event 2",
+        "event_start_at": "2019-07-10 21:23:29",
+        "location_id": 2,
+        "address": "BeiJing",
+        "restrict_pets_number": 10,
+        "restrict_attendee_number": 10,
+        "is_neutered": true,
+        "detail": "detail2",
+        "note": "note2"
+      }
+    ]
+  }
+}
+```
+### Find event by id
+```
+{
+  getEventById(id: 1) {
+    id
+    title
+    event_start_at
+    location_id
+    address
+    restrict_pets_number
+    restrict_attendee_number
+    is_neutered
+    detail
+    note
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventById": {
+      "id": "1",
+      "title": "event 1",
+      "event_start_at": "2019-07-10 21:23:29",
+      "location_id": 1,
+      "address": "SanJose",
+      "restrict_pets_number": 5,
+      "restrict_attendee_number": 5,
+      "is_neutered": false,
+      "detail": "detail1",
+      "note": "note1"
+    }
+  }
+}
+```
+
+### Find event by location id
+```
+{
+  getEventByLocationId(location_id: 1) {
+    id
+    title
+    event_start_at
+    location_id
+    address
+    restrict_pets_number
+    restrict_attendee_number
+    is_neutered
+    detail
+    note
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventByLocationId": {
+      "id": "1",
+      "title": "event 1",
+      "event_start_at": "2019-07-10 21:23:29",
+      "location_id": 1,
+      "address": "SanJose",
+      "restrict_pets_number": 5,
+      "restrict_attendee_number": 5,
+      "is_neutered": false,
+      "detail": "detail1",
+      "note": "note1"
+    }
+  }
+}
+```
+
+Event Feedback
+---
+
+### Find Event feedback by id
+```
+{
+  getEventFeedbacks {
+    id
+    user_id
+    event_id
+    rating
+    comment
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventFeedbacks": [
+      {
+        "id": "1",
+        "user_id": 1,
+        "event_id": 1,
+        "rating": 5,
+        "comment": "Very good"
+      },
+      {
+        "id": "2",
+        "user_id": 2,
+        "event_id": 2,
+        "rating": 4,
+        "comment": "Very Enjoy"
+      }
+    ]
+  }
+}
+```
+### Find Event feedback by id
+```
+{
+  getEventFeedbackById(id:1) {
+    id
+    user_id
+    event_id
+    rating
+    comment
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventFeedbackById": {
+      "id": "1",
+      "user_id": 1,
+      "event_id": 1,
+      "rating": 5,
+      "comment": "Very good"
+    }
+  }
+}
+```
+### Find Event feedback by user id
+```
+{
+  getEventFeedbackByUserId(user_id:1) {
+    id
+    user_id
+    event_id
+    rating
+    comment
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventFeedbackByUserId": {
+      "id": "1",
+      "user_id": 1,
+      "event_id": 1,
+      "rating": 5,
+      "comment": "Very good"
+    }
+  }
+}
+```
+### Find Event feedback by event id
+```
+{
+  getEventFeedbackByEventId(event_id:1) {
+    id
+    user_id
+    event_id
+    rating
+    comment
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventFeedbackByEventId": {
+      "id": "1",
+      "user_id": 1,
+      "event_id": 1,
+      "rating": 5,
+      "comment": "Very good"
+    }
+  }
+}
+```
+
+Event Topic
+---
+
+### Get all event topics
+```
+{
+  getEventTopics {
+    id
+    topic
+    order_number
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventTopics": [
+      {
+        "id": "1",
+        "topic": "Birthday Party",
+        "order_number": "A1"
+      },
+      {
+        "id": "2",
+        "topic": "Meet New Friends",
+        "order_number": "B2"
+      }
+    ]
+  }
+}
+```
+
+### Get event topic by id
+```
+{
+  getEventTopicById (id:1) {
+    id
+    topic
+    order_number
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventTopicById": {
+      "id": "1",
+      "topic": "Birthday Party",
+      "order_number": "A1"
+    }
+  }
+}
+```
+
+### Get event topic by order number
+```
+{
+  getEventTopicByOrderNumber (order_number:"A1") {
+    id
+    topic
+    order_number
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventTopicByOrderNumber": {
+      "id": "1",
+      "topic": "Birthday Party",
+      "order_number": "A1"
+    }
+  }
+}
+```
+
+
 <br>
 
 ## Mutation
@@ -911,3 +1236,212 @@ mutation {
 }
 ```
 
+EventTopic
+---
+
+create event_topic
+
+```
+mutation {
+  createEventTopic(topic: "Test  create", order_number: "c1") {
+    id
+    topic
+    order_number
+    created_at
+    updated_at
+  }
+}
+
+// result
+{
+  "data": {
+    "createEventTopic": {
+      "id": "3",
+      "topic": "Test  create",
+      "order_number": "c1",
+      "created_at": "1562900712769",
+      "updated_at": "1562900712769"
+    }
+  }
+}
+```
+
+update event_topic
+
+```
+mutation {
+  updateEventTopic (id: 3, topic: "test update", order_number: "D3") {
+    id
+    topic
+    order_number
+    created_at
+    updated_at
+  }
+}
+
+// result
+{
+  "data": {
+    "updateEventTopic": {
+      "id": "3",
+      "topic": "test update",
+      "order_number": "D3",
+      "created_at": "2019-07-12 03:05:12",
+      "updated_at": "2019-07-12 03:27:22"
+    }
+  }
+}
+```
+
+Event
+---
+
+create event
+
+```
+mutation {
+  createEvent(title: "Test create event", location_id: 1, address: "Mountain View", event_start_at: "2019-07-10 21:23:29", cover: "cover3", cost: "cost3", restrict_attendee_number: 3, restrict_pets_number: 4, is_neutered: true, detail: "detail3", note: "note3") {
+    id
+    title
+    location_id
+    address
+    event_start_at
+    cover
+    cost
+    restrict_attendee_number
+    restrict_pets_number
+    is_neutered
+    detail
+    note
+    created_at
+    updated_at
+  }
+}
+
+
+// result
+{
+  "data": {
+    "createEvent": {
+      "id": "4",
+      "title": "Test create event",
+      "location_id": 1,
+      "address": "Mountain View",
+      "event_start_at": "1562819009000",
+      "cover": "cover3",
+      "cost": "cost3",
+      "restrict_attendee_number": 3,
+      "restrict_pets_number": 4,
+      "is_neutered": true,
+      "detail": "detail3",
+      "note": "note3",
+      "created_at": "1562903288763",
+      "updated_at": "1562903288763"
+    }
+  }
+}
+```
+
+update event
+
+```
+mutation {
+  updateEvent(id: 2, title: "Test create event", location_id: 1, address: "Mountain View", event_start_at: "2019-07-10 21:23:29", cover: "cover3", cost: "cost3", restrict_attendee_number: 3, restrict_pets_number: 4, is_neutered: true, detail: "detail3", note: "note3") {
+    id
+    title
+    location_id
+    address
+    event_start_at
+    cover
+    cost
+    restrict_attendee_number
+    restrict_pets_number
+    is_neutered
+    detail
+    note
+    created_at
+    updated_at
+  }
+}
+
+
+// result
+{
+  "data": {
+    "updateEvent": {
+      "id": "2",
+      "title": "Test create event",
+      "location_id": 1,
+      "address": "Mountain View",
+      "event_start_at": "2019-07-11 04:23:29",
+      "cover": "cover3",
+      "cost": "cost3",
+      "restrict_attendee_number": 3,
+      "restrict_pets_number": 4,
+      "is_neutered": true,
+      "detail": "detail3",
+      "note": "note3",
+      "created_at": "2019-07-10 21:23:29",
+      "updated_at": "2019-07-12 03:51:01"
+    }
+  }
+}
+```
+
+EventFeedback
+---
+
+create event_feedback
+
+```
+mutation {
+  createEventFeedback(event_id: 1, user_id: 2, rating: 5, comment: "test create event feedback") {
+    id
+    event_id
+    user_id
+    rating
+    comment
+  }
+}
+
+// result
+{
+  "data": {
+    "createEventFeedback": {
+      "id": "5",
+      "event_id": 1,
+      "user_id": 2,
+      "rating": 5,
+      "comment": "test create event feedback"
+    }
+  }
+}
+```
+
+update event_feedback
+
+```
+mutation {
+  updateEventFeedback(id: 1, event_id: 1, user_id: 2, rating: 5, comment: "test update event feedback") {
+    id
+    event_id
+    user_id
+    rating
+    comment
+  }
+}
+
+
+// result
+{
+  "data": {
+    "updateEventFeedback": {
+      "id": "1",
+      "event_id": 1,
+      "user_id": 2,
+      "rating": 5,
+      "comment": "test update event feedback"
+    }
+  }
+}
+```

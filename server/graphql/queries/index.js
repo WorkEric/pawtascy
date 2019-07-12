@@ -14,6 +14,9 @@ const { getUserProfiles, getUserProfileByUserId, getUserProfileByLocation } = re
 const { getPetProfiles, getPetProfileById, getPetProfilesByCategory, 
     getPetProfilesByUsername } = require('./PetProfile.js')
 const { getPetCategories, getPetCategoryById, getPetCategoriesByPetProfileId } = require('./PetCategory.js')
+const { getEvents, getEventById, getEventByLocationId} = require('./Event.js')
+const { getEventFeedbacks, getEventFeedbackById, getEventFeedbackByUserId, getEventFeedbackByEventId, } = require('./EventFeedback.js')
+const { getEventTopics, getEventTopicById, getEventTopicByOrderNumber,} = require('./EventTopic.js')
 
 module.exports = new GraphQLObjectType({
     name: 'Query',
@@ -47,7 +50,23 @@ module.exports = new GraphQLObjectType({
             // PetCategory
             getPetCategories,
             getPetCategoryById,
-            getPetCategoriesByPetProfileId
+            getPetCategoriesByPetProfileId,
+
+            //Event
+            getEvents,
+            getEventById,
+            getEventByLocationId,
+
+            //EventFeedback
+            getEventFeedbacks,
+            getEventFeedbackById,
+            getEventFeedbackByUserId,
+            getEventFeedbackByEventId,
+
+            //EventTopic
+            getEventTopics,
+            getEventTopicById,
+            getEventTopicByOrderNumber,
         }
     }
 });
