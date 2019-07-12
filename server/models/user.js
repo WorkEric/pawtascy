@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
-    salt: {
+    salt: {  // not need, handle by bcrypt
       type: DataTypes.STRING,
       field: 'salt',
     },
