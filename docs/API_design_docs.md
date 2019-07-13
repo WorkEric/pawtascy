@@ -1,5 +1,49 @@
 # API design docs
 
+## auth
+
+signup
+
+```
+mutation {
+  createUser (username: "t6", email: "t6@gmail.com", password: "123456", 
+    city:"b", state:"b", country: "b", 
+    gender:"male", nick_name: "dogs1", birthday: "2019-06-30 16:37:30",
+  	categories: ["bird", "horse"]) {
+		username
+    email
+    password
+  }
+}
+
+
+// result
+{
+  "data": {
+    "createUser": {
+      "username": "t6",
+      "email": "t6@gmail.com",
+      "password": "$2b$10$dKaoIdAcq9OL6ZHGAMZljuadPeBg.yQmZ.9Nq4KUrOVwejVKK.Ete"
+    }
+  }
+}
+```
+
+login
+
+```
+mutation {
+  login(email: "t6@gmail.com", password: "123456")
+}
+
+// result
+{
+  "data": {
+    "login": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NjUsImVtYWlsIjoidDZAZ21haWwuY29tIiwiaWF0IjoxNTYyOTc5MTI0LCJleHAiOjE1NjMwNjU1MjR9.ybDisSQlcTJTL5hYad-OD1Fbg4j-NJlvE5qXJk0eZYc"
+  }
+}
+```
+
 
 ## Query
 

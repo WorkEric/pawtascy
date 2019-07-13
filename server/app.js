@@ -5,6 +5,8 @@ const bodyParser = require('body-parser-graphql');
 const cors = require('cors');
 const graphqlHTTP = require('express-graphql');
 const passport = require('passport')
+const jwt = require('express-jwt')
+// const jsonwebtoken = require('jsonwebtoken')
 
 const schema = require('./schema.js');
 const models = require('./models/index.js')
@@ -25,6 +27,12 @@ app.use(bodyParser.graphql());
 // view engine setup: static file
 app.use(express.static(path.join(__dirname, 'static')));
 
+
+const auth = jwt({
+    secret: 'test',
+    credentialsRequired: false
+})
+
 // Cors region
 app.use(cors())
 
@@ -41,11 +49,14 @@ models.sequelize.sync()
     });
 
 // Create GraphQL endpoint: api
-app.use('/api', graphqlHTTP({
+app.use('/api', bodyParser.graphql(), auth, graphqlHTTP(req => ({
     schema: schema,
     graphiql: process.env.NODE_ENV !== 'production',
-    pretty : true    
-}));
+    pretty : true,
+    context: {
+        user: req.user
+    }
+})));
 
 app.use(function(req, res, next) {
     res.status(404);

@@ -1,5 +1,6 @@
 const { GraphQLObjectType } = require('graphql');
 
+const { login } = require('./Auth');
 const { createLocation, updateLocation } = require('./Location.js');
 const { createUser, updateUser } = require('./User.js');
 const { updateUserProfile } = require('./UserProfile.js');
@@ -13,6 +14,8 @@ module.exports = new GraphQLObjectType({
     name: 'Mutation',
     fields() {
         return {
+            login,
+
             // location
             createLocation,
             updateLocation,
