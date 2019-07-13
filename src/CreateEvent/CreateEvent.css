@@ -1,0 +1,87 @@
+.create-event-page {
+    padding: 5% 10% 3% 14%;
+    background-color: #EEEEEE;
+}
+.top-tag {
+    text-align: center;
+    background-color: #EBD0CE;
+    border-radius: 40px;
+    padding: 15px 0;
+    color: white;
+    font-weight: bold;
+}
+.info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.top-form, .bottom-form {
+    margin: 2% 2% 2% 0;
+    background-color: white;
+    padding: 30px 20px;
+    color: #B8817D;
+    border-radius: 10px;
+    text-align: center;
+}
+.icon-image {
+    width: 40px;
+    height: 40px;
+}
+.four-icons {
+    padding: 0 25%;
+    margin-top: 15px;
+    margin-bottom: 30px;
+}
+.title-input {
+    margin: 15px auto 30px auto;
+    width: 60%;
+}
+.title-input::placeholder {
+    color: #9597A6
+}
+.time {
+    margin-top: 15px;
+    padding: 0 10%
+}
+.date {
+    margin-top: 15px;
+    padding: 0 10%;
+    margin-bottom: 30px;
+}
+.yes-icon {
+    width:40px;
+    height: 40px;
+}
+.no-icon {
+    width:45px;
+    height: 45px;
+}
+.create-event-button {
+    border-radius: 50px;
+    font-size: 25px !important;
+}
+.attendees-format, .cost-format {
+    width: 50%;
+    margin: 15px auto 30px auto;
+}
+.description-format, .requirements-format {
+    width: 80%;
+    margin: 15px auto 30px auto;
+    border-radius: 10px;
+}
+.file-format {
+    width: 50%;
+    margin: 15px auto 30px auto;
+}
+.summary-form {
+    margin: 2% 2% 2% 0;
+    background-color: white;
+    padding: 30px 70px;
+    color: #B8817D;
+    border-radius: 10px;
+    justify-content: flex-start;
+    line-height: 40px;
+}
+.tag-format {
+    font-weight: bold;
+}

@@ -7,6 +7,7 @@ import HomeContainer from '../Home/HomeContainer';
 import EventsContainer from '../Events/EventsContainer';
 import Signup from '../Signup/SignupContainer';
 import Login from '../Login/LoginContainer';
+import CreateEventContainer from '../CreateEvent/CreateEventContainer';
 class Header extends Component {
     render() {
         return (
@@ -28,6 +29,7 @@ class Header extends Component {
             </Navbar>
             <Route path='/' exact component={HomeContainer}/>
             <Route path='/events' component={EventsContainer}/>
+            <Route path='/create-event' component={CreateEventContainer}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/login' component={Login}/>
             </div>
