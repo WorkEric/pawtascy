@@ -30,7 +30,6 @@ const localSignUpStrategy = new PassportLocalStrategy({
             })
         })
     })
-    console.log('11111: ', userData)
     return userData;
 });
 
