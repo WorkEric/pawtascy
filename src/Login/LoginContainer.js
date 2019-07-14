@@ -46,9 +46,10 @@ class LoginContainer extends Component {
 			.then(response => {
 				const token = response.login;
 				Auth.authenticateUser(token, email)
-
+				this.props.history.push('/');
 			}).catch(error => {
 				console.log('error: ', error)
+				this.props.history.push('/');
 			})
 
 	}
@@ -107,8 +108,5 @@ class LoginContainer extends Component {
     );
   }
 }
-// LoginContainer.contextTypes = {
-// 	router: PropTypes.object.isRequired
-// }
 
 export default LoginContainer;
