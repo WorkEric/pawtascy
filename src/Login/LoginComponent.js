@@ -145,8 +145,8 @@ class LoginComponent extends Component {
 LoginComponent.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  errors: PropTypes.func.isRequired,
-  user: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
 };
 
 export default LoginComponent;
