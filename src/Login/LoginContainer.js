@@ -31,20 +31,25 @@ class LoginContainer extends Component {
 		const email = this.state.user.email;
 		const password = this.state.user.password;
 
-		console.log('email:', email);
-		console.log('password', password);
-
 		//Post login data
 		const url = 'http://127.0.0.1:9000/api'
-		const query = `mutation {
-			login(email: "t6@gmail.com", password: "1356")
+		const query = `mutation login($email: String!, $password: String!){
+			login(email: $email, password: $password)
 		}
 		`
-		request(url, query).then(data =>
-			console.log('login response: ', data)
+		const variables = {
+			email: email,
+			password: password
+		}
 
-		)
-		// Post login data.
+		request(url, query, variables)
+			.then(response => {
+				const token = response.login;
+				Auth.authenticateUser(token, email)
+
+			}).catch(error => {
+				console.log('error: ', error)
+			})
 
 	}
 
