@@ -42,23 +42,11 @@ class LoginContainer extends Component {
 			.then(response => {
 				console.log(response);
 				const token = response.login;
-				Auth.authenticateUser(token, email);
-				this.setState({ error: {}});
-				
-				this.props.history.push("/");
-				
+				Auth.authenticateUser(token, email)
+				this.props.history.push('/');
 			}).catch(error => {
-				console.log('message: ', error.message);
-				let end = 0
-				for (let i = 0; i < error.message.length; i++) {
-					if (error.message.charAt(i) === ':') {
-						end = i;
-						break;
-					}	
-				}
-				console.log("error.....", error.message.slice(0, end))
-				const message =  error.message.slice(0, end)
-				this.setState({message});			 
+				console.log('error: ', error)
+				this.props.history.push('/');
 			})
 
 	}
@@ -117,8 +105,5 @@ class LoginContainer extends Component {
     );
   }
 }
-// LoginContainer.contextTypes = {
-// 	router: PropTypes.object.isRequired
-// }
 
 export default LoginContainer;
