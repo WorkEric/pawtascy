@@ -45,8 +45,17 @@ class LoginContainer extends Component {
 				Auth.authenticateUser(token, email)
 				this.props.history.push('/');
 			}).catch(error => {
-				console.log('error: ', error)
-				this.props.history.push('/');
+				console.log('message: ', error.message);
+				let end = 0
+				for (let i = 0; i < error.message.length; i++) {
+					if (error.message.charAt(i) === ':') {
+						end = i;
+						break;
+					}	
+				}
+				console.log("error.....", error.message.slice(0, end))
+				const message =  error.message.slice(0, end)
+				this.setState({message});	
 			})
 
 	}
