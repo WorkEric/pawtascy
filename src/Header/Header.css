@@ -10,3 +10,12 @@
     width:52px;
     height:52px;
 }
+#dropdown-basic-button {
+    background-color: white;
+    color:rgba(0,0,0,.5);
+    border: none;
+    font-weight: bold;
+}
+#dropdown-basic-button.active > a:hover, #dropdown-basic-button.active > a:focus{
+    border: none;
+}

@@ -55,7 +55,7 @@ class LoginComponent extends Component {
 
   render() {
       //const { displayErrors } = this.state;
-      let {onSubmit, onChange, errors, user} = this.props;
+      let {onSubmit, onChange, error, user} = this.props;
       return (
         <div>
           <Container fluid>
@@ -78,7 +78,7 @@ class LoginComponent extends Component {
             </Col>
             <Col lg md = "6" style={{backgroundColor: "#EEEEEE"}}>
               <h1 className="login_title2">{this.props.titles.title2}</h1>
-                <form  noValidate onSubmit={onSubmit} className={errors ? 'login_displayErrors': ''}>
+                <form  noValidate onSubmit={onSubmit} className={error ? 'login_displayErrors': ''}>
                   <div>
                     <div>
                       <div className="email_div">
@@ -110,7 +110,7 @@ class LoginComponent extends Component {
                         />
                       </div>
                       <div className="login_resultdiv">
-                        <h1 className="login_result">{errors.summary}</h1>
+                        <h1 className="login_result">{error}</h1>
                       </div>
                       <div className="login_logindiv">
                         <button className="login_login">{this.props.links[3].label}</button>
@@ -145,7 +145,7 @@ class LoginComponent extends Component {
 LoginComponent.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
+  error: PropTypes.string.isRequired,
   user: PropTypes.object.isRequired,
 };
 

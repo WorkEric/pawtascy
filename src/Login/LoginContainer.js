@@ -1,35 +1,31 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { request } from 'graphql-request'
+// using ES6 modules
+
 
 import LoginComponent from './LoginComponent';
 import Auth from '../Auth/Auth';
 import logo from '../images/logo1.svg';
 import fblogo from '../images/fblogo.svg';
 import googlelogo from '../images/googlelogo.svg';
-
 class LoginContainer extends Component {
 	//Login Redesign
+	
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			errors: {
-				summary: '',
-				email: '',
-				password: ''
-			},
+			message:'',
 			user: {
 				email: '',
 				password:''
 			}
 		}
 	};
-
+	
 	processForm = (event) => {
 		event.preventDefault();
-
 		const email = this.state.user.email;
-		const password = this.state.user.password;
+		const password = this.state.user.password;  
 
 		//Post login data
 		const url = 'http://127.0.0.1:9000/api'
@@ -44,11 +40,25 @@ class LoginContainer extends Component {
 
 		request(url, query, variables)
 			.then(response => {
+				console.log(response);
 				const token = response.login;
-				Auth.authenticateUser(token, email)
-
+				Auth.authenticateUser(token, email);
+				this.setState({ error: {}});
+				
+				this.props.history.push("/");
+				
 			}).catch(error => {
-				console.log('error: ', error)
+				console.log('message: ', error.message);
+				let end = 0
+				for (let i = 0; i < error.message.length; i++) {
+					if (error.message.charAt(i) === ':') {
+						end = i;
+						break;
+					}	
+				}
+				console.log("error.....", error.message.slice(0, end))
+				const message =  error.message.slice(0, end)
+				this.setState({message});			 
 			})
 
 	}
@@ -101,7 +111,7 @@ class LoginContainer extends Component {
 					images={images}
 					onSubmit = {this.processForm}
 					onChange = {this.changeUser}
-					errors = {this.state.errors}
+					error = {this.state.message}
 					user = {this.state.user} />
 			</div>
     );
