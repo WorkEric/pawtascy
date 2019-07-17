@@ -9,7 +9,16 @@ import Progress from '../images/progress-icon.png';
 import './CreateEvent.css'
 
 export default class CostAndOthers extends Component {
+    continue = e => {
+        e.preventDefault();
+        this.props.nextStep();
+    }
+    back = e => {
+        e.preventDefault();
+        this.props.prevStep();
+    }
     render() {
+        const {values: {petType, title, tags, startDate, endDate, startTime, endTime, address, isNeutered, numberOfAttendess, cost, description, specialRequirements, image}} = this.props;
         return (
             <Container fluid className="create-event-page">
                 <Row>
@@ -28,19 +37,19 @@ export default class CostAndOthers extends Component {
                         <Col lg={1} className="tag-format">Type:</Col><Col> <img src={CatIcon} className="icon-image"/> </Col>
                     </Row>
                     <Row>
-                        <Col lg={1} className="tag-format">Title:</Col><Col> Mimi's Birthday Party - Celebrate Mimi's 4 years old birthday! </Col>
+                        <Col lg={1} className="tag-format">Title:</Col><Col>{title}</Col>
                     </Row>
                     <Row>
                         <Col lg={1} className="tag-format">Tag:</Col><Col> Birthday Party </Col>
                     </Row>
                     <Row>
-                        <Col lg={1} className="tag-format">Date:</Col><Col> Sun. June 2, 2019 </Col>
+                        <Col lg={1} className="tag-format">Date:</Col><Col> {startDate} - {endDate} </Col>
                     </Row>
                     <Row>
-                        <Col lg={1} className="tag-format">Time:</Col><Col> 6:00 PM </Col>
+                        <Col lg={1} className="tag-format">Time:</Col><Col> {startTime} - {endTime} </Col>
                     </Row>
                     <Row>
-                        <Col lg={1} className="tag-format">Address:</Col><Col> Sunnyvale CA94086 </Col>
+                        <Col lg={1} className="tag-format">Address:</Col><Col> {address} </Col>
                     </Row>
                 </Container>
                 <Container className="summary-form">
@@ -49,26 +58,26 @@ export default class CostAndOthers extends Component {
                         <Col lg={4} className="tag-format">Number of people with pets:</Col><Col> no limit </Col>
                     </Row>
                     <Row>
-                        <Col lg={3} className="tag-format">Cost per person:</Col><Col> no cost </Col>
+                        <Col lg={3} className="tag-format">Cost per person:</Col><Col> {cost} </Col>
                     </Row>
                     <Row>
                         <Col lg={2} className="tag-format">Description:</Col>
-                        <Col lg={10}> My Mimi will be 4 years old on June 2nd. I will hold a birthday party in Park. Welcome to join us. We will have a good time</Col>
+                        <Col lg={10}> {description}</Col>
                     </Row>
                     <Row>
                         <Col lg={2} className="tag-format">Note:</Col>
-                        <Col lg={10}> Please make sure you will attend on time. If you cannot make it, please let me know before the party.</Col>
+                        <Col lg={10}> {specialRequirements} </Col>
                     </Row>
                     <Row>
                         <Col lg={2} className="tag-format">Image:</Col><Col> <img src={CatEventCreate} style={{marginTop:"2%", marginBottom: "3%", width:"300px"}}/> </Col>
                     </Row>
                 </Container>
                 <Row style={{display:"flex", justifyContent:"space-around", padding:"0 20%"}}>
-                    <Link to="/"><Button variant="outline-secondary" className="create-event-button" size="lg">
+                    <Button variant="outline-secondary" className="create-event-button" size="lg" onClick={this.prevStep}>
                         Back
-                    </Button></Link>
+                    </Button>
                     <Link to="/"><Button variant="secondary" className="create-event-button"  size="lg">
-                        Next
+                        Complete
                     </Button></Link>
                 </Row>
             </Container>

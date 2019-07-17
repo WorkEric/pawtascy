@@ -27,6 +27,7 @@ class Header extends Component {
                         <NavLink className="nav-link" to="/events">Events</NavLink>
                         <NavLink className="nav-link" to="/create-event">+Create Events</NavLink>
                         {
+
                             Auth.isUserAuthenticated() ?
                             (
                                 <DropdownButton id="dropdown-basic-button" title={Auth.getEmail()} className="login-dropdown">
