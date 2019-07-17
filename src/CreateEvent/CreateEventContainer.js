@@ -38,6 +38,19 @@ export default class CreateEventContainer extends Component {
     handleChange = input => e => {
         this.setState ({[input]: e.target.value});
     }
+    clearForm = () => {
+        this.setState({
+            petType: 'dog',
+            title: '',
+            tags:'',
+            startDate: '',
+            endDate: '',
+            startTime:'',
+            endTime:'',
+            address: '',
+            isNeutered: false,
+        })
+    }
 
     render() {
         const {step} = this.state;
@@ -46,25 +59,35 @@ export default class CreateEventContainer extends Component {
         switch (step) {
             case 1: 
                 return (
-                    <GeneralInfo 
-                    nextStep = {this.nextStep}
-                    handleChange = {this.handleChange}
-                    values = {values}/>
+                    <div>
+                        <GeneralInfo 
+                            nextStep = {this.nextStep}
+                            handleChange = {this.handleChange}
+                            clearForm = {this.clearForm}
+                            values = {values}/>
+                        <Footer />
+                    </div>
                 )
             case 2: 
                 return (
-                    <CostAndOthers 
-                    nextStep = {this.nextStep}
-                    prevStep = {this.prevStep}
-                    handleChange = {this.handleChange}
-                    values = {values}/>
+                    <div>
+                        <CostAndOthers 
+                            nextStep = {this.nextStep}
+                            prevStep = {this.prevStep}
+                            handleChange = {this.handleChange}
+                            values = {values}/>
+                        <Footer />
+                    </div>
                 )
             case 3: 
                 return (
-                    < EventSummary
-                    nextStep = {this.nextStep}
-                    prevStep = {this.prevStep}
-                    values = {values}/>
+                    <div>
+                        < EventSummary
+                            nextStep = {this.nextStep}
+                            prevStep = {this.prevStep}
+                            values = {values}/>
+                        <Footer />
+                    </div>
                 )
         }
     }

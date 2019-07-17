@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
-import {Container, Row, Col, Button} from 'react-bootstrap';
+import {Container, Row, Col, Button, Form} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import DogIcon from '../images/dog-icon.png';
-import CatIcon from '../images/cat-icon.png';
-import BirdIcon from '../images/bird-icon.png';
-import RatIcon from '../images/rat-icon.png';
 import Yes from '../images/yes.png';
 import No from '../images/no.png';
 import Progress from '../images/progress-icon.png';
@@ -15,6 +12,11 @@ export default class GeneralInfo extends Component {
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
+    }
+    clear = e => {
+        e.preventDefault();
+        this.props.clearForm();
+
     }
     render() {
         const {values, handleChange} = this.props;
@@ -31,11 +33,43 @@ export default class GeneralInfo extends Component {
                     <Row>
                         <Col lg={12}> What is your type of pet? </Col>
                     </Row>
-                    <Row className="four-icons">
-                        <Col lg ={3} xs={6}> <img src={DogIcon} className="icon-image"/> </Col>
-                        <Col lg ={3} xs={6}> <img src={CatIcon} className="icon-image"/> </Col>
-                        <Col lg ={3} xs={6}> <img src={BirdIcon} className="icon-image"/> </Col>   
-                        <Col lg ={3} xs={6}> <img src={RatIcon} className="icon-image"/> </Col>  
+                    <Row>
+                        <Form.Group as={Col}>
+                            <Row style={{justifyContent:"space-around", padding:"15px 20% 30px 20%"}}>
+                                <Form.Check
+                                type="radio"
+                                label="Dog"
+                                name="formHorizontalRadios"
+                                value="Dog"
+                                checked = {values.petType === 'Dog'}
+                                onChange={handleChange('petType')}
+                                />
+                                <Form.Check
+                                type="radio"
+                                label="Cat"
+                                name="formHorizontalRadios"
+                                value="Cat"
+                                checked = {values.petType === 'Cat'}
+                                onChange={handleChange('petType')}
+                                />
+                                <Form.Check
+                                type="radio"
+                                label="Rat"
+                                name="formHorizontalRadios"
+                                value="Rat"
+                                checked = {values.petType === 'Rat'}
+                                onChange={handleChange('petType')}
+                                />
+                                <Form.Check
+                                type="radio"
+                                label="Bird"
+                                name="formHorizontalRadios"
+                                value="Bird"
+                                checked = {values.petType === 'Bird'}
+                                onChange={handleChange('petType')}
+                                />
+                            </Row>
+                        </Form.Group>
                     </Row>
                     <Row>
                         <Col lg={12}> What is the Title of Your Event?</Col>
@@ -45,9 +79,9 @@ export default class GeneralInfo extends Component {
                             <input value={values.title} className="title-input" name="title-input" placeholder="Birthday party, Beach Meet up, Breeding Experience Talk…." onChange={handleChange('title')}/>
                         </Col>
                     </Row>
-                    <Row>
+                    {/*<Row>
                         <Col lg={12}> What is the Tags of your Event? </Col>
-                    </Row>
+                    </Row>*/}
                 </Container> 
                 <Container className="bottom-form">
                     <Row>
@@ -55,18 +89,18 @@ export default class GeneralInfo extends Component {
                     </Row>
                     <Row className="time">
                         <Col lg ={6} xs={12}>
-                            Start Time &nbsp;&nbsp; <input value={values.startTime} name="start-time" onChange={handleChange('startTime')}/>
+                            Start Time &nbsp;&nbsp; <input value={values.startTime} name="start-time" type="time" onChange={handleChange('startTime')}/>
                         </Col>
                         <Col lg ={6} xs={12}>
-                            End Time &nbsp;&nbsp;<input value={values.endTime} name="end-time" onChange={handleChange('endTime')}/>
+                            End Time &nbsp;&nbsp;<input value={values.endTime} name="end-time" type="time" onChange={handleChange('endTime')}/>
                         </Col>
                     </Row>
                     <Row className="date">
                         <Col lg ={6} xs={12}>
-                            Start Date &nbsp;&nbsp;&nbsp;<input value={values.startDate} name="start-date" onChange={handleChange('startDate')}/>
+                            Start Date &nbsp;&nbsp;&nbsp;<input value={values.startDate} type="date" name="start-date" onChange={handleChange('startDate')}/>
                         </Col>
                         <Col lg ={6} xs={12}>
-                            End Date &nbsp;&nbsp;<input value={values.endDate} name="end-date" onChange={handleChange('endDate')}/>
+                            End Date &nbsp;&nbsp;<input value={values.endDate} name="end-date" type="date" onChange={handleChange('endDate')}/>
                         </Col>
                     </Row>
                     <Row>
@@ -86,9 +120,9 @@ export default class GeneralInfo extends Component {
                     </Row>
                 </Container> 
                 <Row style={{display:"flex", justifyContent:"space-around", padding:"0 20%"}}>
-                  <Link to="/"><Button variant="outline-secondary" className="create-event-button" size="lg">
+                  <Button variant="outline-secondary" className="create-event-button" size="lg" onClick={this.clear}>
                     Clear
-                  </Button></Link>
+                  </Button>
                   <Button variant="secondary" className="create-event-button"  size="lg" onClick={this.continue}>
                     Next
                   </Button>
@@ -97,3 +131,9 @@ export default class GeneralInfo extends Component {
         )
     }
 }
+GeneralInfo.propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    nextStep: PropTypes.func.isRequired,
+    clearForm: PropTypes.func.isRequired,
+    values: PropTypes.object.isRequired,
+};

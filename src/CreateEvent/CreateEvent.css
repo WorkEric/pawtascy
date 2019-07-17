@@ -57,6 +57,9 @@
     height: 45px;
 }
 .create-event-button {
+    display: flex;
+    justify-content: center;
+    text-align: center;
     border-radius: 50px;
     font-size: 25px !important;
 }
@@ -84,4 +87,10 @@
 }
 .tag-format {
     font-weight: bold;
+}
+input[type=date] {
+    color:#9597A6
+}
+input[type=time] {
+    color:#9597A6
 }

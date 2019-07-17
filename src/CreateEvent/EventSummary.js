@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import {Container, Row, Col, Form,Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-import CatIcon from '../images/cat-icon.png';
 import CatEventCreate from '../images/cat-event-create.png';
 import Edit from '../images/edit.png';
 import Progress from '../images/progress-icon.png';
 import './CreateEvent.css'
 
-export default class CostAndOthers extends Component {
+export default class EventSummary extends Component {
     continue = e => {
         e.preventDefault();
         this.props.nextStep();
@@ -16,6 +16,11 @@ export default class CostAndOthers extends Component {
     back = e => {
         e.preventDefault();
         this.props.prevStep();
+    }
+    componentDidMount() {
+        this.onSubmit = e => {
+            e.preventDefault();  
+        }
     }
     render() {
         const {values: {petType, title, tags, startDate, endDate, startTime, endTime, address, isNeutered, numberOfAttendess, cost, description, specialRequirements, image}} = this.props;
@@ -34,14 +39,14 @@ export default class CostAndOthers extends Component {
                 <Container className="summary-form">
                     <img src={Edit} style={{float:"right", width:"30px"}}/>
                     <Row>
-                        <Col lg={1} className="tag-format">Type:</Col><Col> <img src={CatIcon} className="icon-image"/> </Col>
+                        <Col lg={1} className="tag-format">Type:</Col><Col> {petType} </Col>
                     </Row>
                     <Row>
                         <Col lg={1} className="tag-format">Title:</Col><Col>{title}</Col>
                     </Row>
-                    <Row>
+                    {/*<Row>
                         <Col lg={1} className="tag-format">Tag:</Col><Col> Birthday Party </Col>
-                    </Row>
+                    </Row>*/}
                     <Row>
                         <Col lg={1} className="tag-format">Date:</Col><Col> {startDate} - {endDate} </Col>
                     </Row>
@@ -55,7 +60,7 @@ export default class CostAndOthers extends Component {
                 <Container className="summary-form">
                     <img src={Edit} style={{float:"right", width:"30px"}}/>
                     <Row>
-                        <Col lg={4} className="tag-format">Number of people with pets:</Col><Col> no limit </Col>
+                        <Col lg={4} className="tag-format">Number of people with pets:</Col><Col> {numberOfAttendess} </Col>
                     </Row>
                     <Row>
                         <Col lg={3} className="tag-format">Cost per person:</Col><Col> {cost} </Col>
@@ -73,14 +78,19 @@ export default class CostAndOthers extends Component {
                     </Row>
                 </Container>
                 <Row style={{display:"flex", justifyContent:"space-around", padding:"0 20%"}}>
-                    <Button variant="outline-secondary" className="create-event-button" size="lg" onClick={this.prevStep}>
+                    <Button variant="outline-secondary" className="create-event-button" size="lg" onClick={this.back}>
                         Back
                     </Button>
-                    <Link to="/"><Button variant="secondary" className="create-event-button"  size="lg">
+                    <Button variant="secondary" className="create-event-button" size="lg" onClick={this.onSubmit}>
                         Complete
-                    </Button></Link>
+                    </Button>
                 </Row>
             </Container>
         )
     }
 }
+EventSummary.propTypes = {
+    handleChange: PropTypes.func.isRequired,
+    prevStep: PropTypes.func.isRequired,
+    values: PropTypes.object.isRequired,
+};

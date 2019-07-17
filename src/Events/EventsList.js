@@ -28,11 +28,13 @@ export default class EventsList extends Component {
             initView: false,
             loading:true
         })
+        const city = searchName.split(',')[0];
+        const state = searchName.split(',')[1].trim();
         //send request
         //Post login data
         const url = 'http://127.0.0.1:9000/api'
         const query = `{
-                getEventByLocationId(location_id: 1) {
+                getEventByLocationId(city) {
                   id
                   title
                   event_start_at
