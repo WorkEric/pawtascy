@@ -11,7 +11,6 @@ import PetDetailsContainer from './Signup/PetDetails/PetDetailsContainer.js';
 import SignupInfoContainer from './Signup/SignupInfoContainer.js';
 import HumanContainer from './Signup/HumanProfile/HumanContainer.js';
 import PetBasicsContainer from './Signup/PetBasics/PetBasicsContainer.js';
-import Header_loggedin from './Header/Header_loggedin.js';
 import PetBasicscontContainer from './Signup/PetBasics_cont/PetBasicscontContainer.js';
 import Header from './Header/Header.js';
 
