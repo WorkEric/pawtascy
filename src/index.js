@@ -32,14 +32,7 @@ const App = () => (
         </Router>
     </ApolloProvider>
   )
-const Apptest = () => (
-    <ApolloProvider client={client}>
-        {console.log(client)}
-         <Router>
-            <Header_loggedin />
-        </Router>
-    </ApolloProvider>
-  )
+
 
 /*
 const routing = (
@@ -57,9 +50,9 @@ const routing = (
     </Router>
 )
 */
-//ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 
-ReactDOM.render(<Apptest />, document.getElementById('root'));
+//ReactDOM.render(<Apptest />, document.getElementById('root'));
 
 //ReactDOM.render(routing, document.getElementById('root'));
 
