@@ -4,7 +4,6 @@ import ApolloClient from "apollo-boost";
 import {ApolloProvider} from 'react-apollo';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import HomeContainer from './Home/HomeContainer';
 import LoginContainer from './Login/LoginContainer';
 import SignupContainer from './Signup/SignupContainer';
@@ -12,6 +11,7 @@ import PetDetailsContainer from './Signup/PetDetails/PetDetailsContainer.js';
 import SignupInfoContainer from './Signup/SignupInfoContainer.js';
 import HumanContainer from './Signup/HumanProfile/HumanContainer.js';
 import PetBasicsContainer from './Signup/PetBasics/PetBasicsContainer.js';
+import Header_loggedin from './Header/Header_loggedin.js';
 import PetBasicscontContainer from './Signup/PetBasics_cont/PetBasicscontContainer.js';
 import Header from './Header/Header.js';
 
@@ -32,6 +32,14 @@ const App = () => (
         </Router>
     </ApolloProvider>
   )
+const Apptest = () => (
+    <ApolloProvider client={client}>
+        {console.log(client)}
+         <Router>
+            <Header_loggedin />
+        </Router>
+    </ApolloProvider>
+  )
 
 /*
 const routing = (
@@ -49,7 +57,9 @@ const routing = (
     </Router>
 )
 */
-ReactDOM.render(<App />, document.getElementById('root'));
+//ReactDOM.render(<App />, document.getElementById('root'));
+
+ReactDOM.render(<Apptest />, document.getElementById('root'));
 
 //ReactDOM.render(routing, document.getElementById('root'));
 
