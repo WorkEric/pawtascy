@@ -31,7 +31,10 @@ const login = {
             email: user.email
         }, 'test', {expiresIn: '1d'})
         result.user_id = user.id
-        return JSON.stringify(result)
+        return jsonwebtoken.sign({
+            id: user.id,
+            email: user.email
+        }, 'test', {expiresIn: '1d'})
     }
 }
 
