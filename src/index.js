@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ApolloClient from "apollo-boost";
 import {ApolloProvider} from 'react-apollo';
-import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Route, Link, Switch,BrowserRouter as Router } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import HomeContainer from './Home/HomeContainer';
 import LoginContainer from './Login/LoginContainer';
@@ -12,7 +12,7 @@ import SignupInfoContainer from './Signup/SignupInfoContainer.js';
 import HumanContainer from './Signup/HumanProfile/HumanContainer.js';
 import PetBasicsContainer from './Signup/PetBasics/PetBasicsContainer.js';
 import PetBasicscontContainer from './Signup/PetBasics_cont/PetBasicscontContainer.js';
-import Header from './Header/Header.js';
+import Header from './Header/Header';
 
 import EventsContainer from './Events/EventsContainer.js';
 import './index.css';
@@ -26,8 +26,8 @@ const client = new ApolloClient({
 const App = () => (
     <ApolloProvider client={client}>
         {console.log(client)}
-         <Router>
-            <Header />
+        <Router>
+            <Header/>
         </Router>
     </ApolloProvider>
   )

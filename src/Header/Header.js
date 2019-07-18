@@ -11,6 +11,7 @@ import CreateEventContainer from '../CreateEvent/CreateEventContainer';
 import UserComponent from '../Usertemplate/UserComponent.js';
 import DashComponent from '../Usertemplate/DashComponent.js';
 import Auth from '../Auth/Auth';
+import EventDetails from '../Events/EventDetails';
 class Header extends Component {
     constructor(props){
         super(props);
@@ -38,6 +39,7 @@ class Header extends Component {
                 <DropdownButton id="dropdown-basic-button" title={Auth.getEmail()} className="login-dropdown">
                     <Dropdown.Item><Link to="/user">My Profile</Link></Dropdown.Item>
                     <Dropdown.Item><Link to="/dashboard">Edit Profile</Link></Dropdown.Item>
+                    {/*<Dropdown.Item><Link to="/eventdetail">Event Detail Template</Link></Dropdown.Item>*/}
                     <Dropdown.Item onClick={this.logOut}>Log out</Dropdown.Item>
                 </DropdownButton>)
         }
@@ -62,8 +64,6 @@ class Header extends Component {
                         <NavLink className="nav-link" to="/feeds">Feeds</NavLink>
                         <NavLink className="nav-link" to="/events">Events</NavLink>
                         <NavLink className="nav-link" to="/create-event">+Create Events</NavLink>
-                        <Route path='/user' component={UserComponent}/>
-                        <Route path='/dashboard' component={DashComponent}/>
                         {this.rederLoginInfo()}
                     </Nav>
                 </Navbar.Collapse>
@@ -74,6 +74,9 @@ class Header extends Component {
                 <Route path='/create-event' component={CreateEventContainer}/>
                 <Route path='/signup' component={Signup}/>
                 <Route path='/login' component={Login}/>
+                <Route path='/user' component={UserComponent}/>
+                <Route path='/dashboard' component={DashComponent}/>
+                <Route path='/eventdetail/:id' component={EventDetails} />
             </Switch>
             </div>
         );

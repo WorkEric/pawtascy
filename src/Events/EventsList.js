@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 import { Query } from "react-apollo";
 import { request } from 'graphql-request';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 
 import dogEvent from '../images/dog-event.png';
@@ -23,31 +24,43 @@ export default class EventsList extends Component {
     };
     componentWillReceiveProps(newProps) { //assign a new search name, should do request
         const {searchName} = newProps;
-        console.log("lalallala")
         //update
         this.setState ({
             initView: false,
             loading:true
         })
-        const city = searchName.split(',')[0];
+        const city = searchName.split(',')[0].trim();
+        console.log(city);
         const state = searchName.split(',')[1].trim();
+        console.log(state);
+        const country = searchName.split(',')[2].trim();
+        console.log(country);
         //send request
         //Post login data
         const url = 'http://127.0.0.1:9000/api'
-        const query = `{
-                getEventByLocationId(city) {
-                  id
-                  title
-                  event_start_at
-                  location_id
-                  address
-                  cover
+        const query = `query getEventByCity($city: String!, $state:String!, $country:String!) {
+                getEventByCity(city: $city, state:$state, country:$country) {
+                    id
+                    title
+                    event_start_at
+                    location_id
+                    address
+                    restrict_pets_number
+                    restrict_attendee_number
+                    is_neutered
+                    detail
+                    note
                 }
-        }`
-        request(url, query)
+          }`
+        const variables = {
+            city:city,
+            state:state,
+            country:country
+        }
+        request(url, query, variables)
             .then(response => {
-                console.log(response.getEventByLocationId);
-				this.setState({loading: false, events: response.getEventByLocationId})
+                console.log(response.getEventByCity);
+				this.setState({loading: false, events: response.getEventByCity})
 			})
             .catch (
                 error => {
@@ -103,6 +116,7 @@ export default class EventsList extends Component {
     */
     render() {
         const {initView,loading,events, errorMsg} = this.state;
+        console.log(events);
         const {searchName} = this.props;
         console.log(searchName);
         const GET_EVENTS = gql `
@@ -122,12 +136,13 @@ export default class EventsList extends Component {
                     if (loading) return "loading ...";
                     if (error) return `Error! ${error.message}`;
                     return (
+                        <div>
                         <Container>
                             <Row> 
                             <CardColumns>
                                 {data.getEvents.map((event) => (
-                                    <Card className="height-adjust" key={data.id}>
-                                        <Card.Img variant="top" src={event.cover}/>
+                                    <Card className="height-adjust" key={event.id}>
+                                        <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Img variant="top" src={event.cover}/></Link>
                                         <Card.Body>
                                         <Card.Text className="date-time">{event.event_start_at}</Card.Text>
                                             <Card.Text className="theme">
@@ -139,6 +154,7 @@ export default class EventsList extends Component {
                                 </CardColumns>
                                 </Row>
                          </Container>
+                         </div>
                       );
                 }}
             </Query>)
@@ -152,9 +168,9 @@ export default class EventsList extends Component {
                 <Container>
                     <Row> 
                     <CardColumns>
-                        {events.map((event, index) => (
-                             <Card className="height-adjust">
-                             <Card.Img variant="top" src={event.img}/>
+                        {events.map((event) => (
+                             <Card className="height-adjust" key={event.id}>
+                             <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Img variant="top" src={event.img}/></Link>
                              <Card.Body>
                              <Card.Text className="date-time">{event.date + ',' + event.time}</Card.Text>
                                  <Card.Text className="theme">
