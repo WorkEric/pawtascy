@@ -765,6 +765,32 @@ query {
 }
 ```
 
+### Get Pet categories by event id 
+
+```
+{
+  getPetCategoriesByEventId(event_id: 1) {
+    id
+    name
+    created_at
+    updated_at
+  }
+}
+
+// result
+{
+  "data": {
+    "getPetCategoriesByEventId": [
+      {
+        "id": "1",
+        "name": "dog",
+        "created_at": "2019-07-10 21:23:29",
+        "updated_at": "2019-07-10 21:23:29"
+      }
+    ]
+  }
+}
+```
 
 Event
 ---
@@ -852,6 +878,94 @@ Event
       "detail": "detail1",
       "note": "note1"
     }
+  }
+}
+```
+
+### Find event by city
+```
+{
+  getEventByCity(city: "Beijing", state: "BJ", country: "China") {
+    id
+    title
+    event_start_at
+    location_id
+    address
+    restrict_pets_number
+    restrict_attendee_number
+    is_neutered
+    detail
+    note
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getEventByCity": [
+      {
+        "id": "1",
+        "title": "event 1",
+        "event_start_at": "2019-07-10 21:23:29",
+        "location_id": 1,
+        "address": "SanJose",
+        "restrict_pets_number": 5,
+        "restrict_attendee_number": 5,
+        "is_neutered": false,
+        "detail": "detail1",
+        "note": "note1"
+      },
+      {
+        "id": "2",
+        "title": "Test create event",
+        "event_start_at": "2019-07-11 04:23:29",
+        "location_id": 1,
+        "address": "Mountain View",
+        "restrict_pets_number": 4,
+        "restrict_attendee_number": 3,
+        "is_neutered": true,
+        "detail": "detail3",
+        "note": "note3"
+      },
+    ]
+  }
+}
+```
+### Find event by  user id
+```
+{
+  getEventByUserId(user_id: 1){
+    id
+    title
+    event_start_at
+    location_id
+    address
+    restrict_pets_number
+    restrict_attendee_number
+    is_neutered
+    detail
+    note
+  }
+}
+
+// result
+{
+  "data": {
+    "getEventByUserId": [
+      {
+        "id": "1",
+        "title": "event 1",
+        "event_start_at": "2019-07-10 21:23:29",
+        "location_id": 1,
+        "address": "SanJose",
+        "restrict_pets_number": 5,
+        "restrict_attendee_number": 5,
+        "is_neutered": false,
+        "detail": "detail1",
+        "note": "note1"
+      }
+    ]
   }
 }
 ```

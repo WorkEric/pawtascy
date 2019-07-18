@@ -69,4 +69,14 @@ VALUES
 ('Birthday Party', 'A1', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 ('Meet New Friends', 'B2', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
+INSERT INTO user_event(user_id, event_id, role, created_at, updated_at)
+VALUES
+(@user_id_1, @event_id_1, 'Admin', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+(@user_id_2, @event_id_2, 'normal', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+
+INSERT INTO event_pet_category(event_id, pet_category_id, created_at, updated_at)
+VALUES
+(@event_id_1, @pet_category_id_1, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
+(@event_id_2, @pet_category_id_2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+
 COMMIT;

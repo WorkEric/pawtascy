@@ -93,7 +93,7 @@ module.exports = (sequelize, DataTypes) => {
         model: models.user_event,
         unique: false
       },
-      foreignKey: 'user_id',
+      foreignKey: 'event_id',
       as: 'userEventUsers'
     })
     models.event.belongsToMany(models.user, {
@@ -101,7 +101,7 @@ module.exports = (sequelize, DataTypes) => {
         model: models.event_feedback,
         unique: false
       },
-      foreignKey: 'user_id',
+      foreignKey: 'event_id',
       as: 'eventFeedbackUsers'
     })
     models.event.belongsToMany(models.event_topic, {
@@ -109,7 +109,7 @@ module.exports = (sequelize, DataTypes) => {
         model: models.event_information_topic,
         unique: false
       },
-      foreignKey: 'event_topic_id',
+      foreignKey: 'event_id',
       as: 'eventInformationTopicEventTopics'
     })    
     models.event.belongsToMany(models.pet_category, {
@@ -117,7 +117,7 @@ module.exports = (sequelize, DataTypes) => {
         model: models.event_pet_category,
         unique: false
       },
-      foreignKey: 'pet_category_id',
+      foreignKey: 'event_id',
       as: 'eventPetCategoryPetCategories'
     })     
   };

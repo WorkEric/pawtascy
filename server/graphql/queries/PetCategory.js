@@ -56,8 +56,37 @@ const getPetCategoriesByPetProfileId = {
     }
 }
 
+const getPetCategoriesByEventId = {
+    type: new GraphQLList(PetCategory),
+    args: {
+        event_id: {type: GraphQLInt}
+    },
+    resolve (_, {event_id}) {
+        let where = {
+            '$eventPetCategoryEvents.id$': {}
+        };
+
+        if (event_id) {
+            where['$eventPetCategoryEvents.id$'][db.Sequelize.Op.eq] = event_id;
+        }
+
+        return db.pet_category.findAll({
+            where,
+            include: [{
+                model: db.event,
+                as: 'eventPetCategoryEvents',
+                through: {}
+            }],
+            subQuery: false
+        })
+    }
+}
+
+
+
 module.exports = {
     getPetCategories,
     getPetCategoryById,
     getPetCategoriesByPetProfileId,
+    getPetCategoriesByEventId,
 }

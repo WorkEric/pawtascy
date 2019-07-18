@@ -13,8 +13,8 @@ const { getUsers, getUserByUsername, getUserByEmail, getUserWithProfile,
 const { getUserProfiles, getUserProfileByUserId, getUserProfileByLocation } = require('./UserProfile.js')
 const { getPetProfiles, getPetProfileById, getPetProfilesByCategory, 
     getPetProfilesByUsername } = require('./PetProfile.js')
-const { getPetCategories, getPetCategoryById, getPetCategoriesByPetProfileId } = require('./PetCategory.js')
-const { getEvents, getEventById, getEventByLocationId} = require('./Event.js')
+const { getPetCategories, getPetCategoryById, getPetCategoriesByPetProfileId, getPetCategoriesByEventId } = require('./PetCategory.js')
+const { getEvents, getEventById, getEventByLocationId, getEventByCity, getEventByUserId} = require('./Event.js')
 const { getEventFeedbacks, getEventFeedbackById, getEventFeedbackByUserId, getEventFeedbackByEventId, } = require('./EventFeedback.js')
 const { getEventTopics, getEventTopicById, getEventTopicByOrderNumber,} = require('./EventTopic.js')
 
@@ -51,11 +51,14 @@ module.exports = new GraphQLObjectType({
             getPetCategories,
             getPetCategoryById,
             getPetCategoriesByPetProfileId,
+            getPetCategoriesByEventId,
 
             //Event
             getEvents,
             getEventById,
             getEventByLocationId,
+            getEventByCity,
+            getEventByUserId,
 
             //EventFeedback
             getEventFeedbacks,
