@@ -2,12 +2,14 @@ import React, {Component} from 'react';
 import "./Header.css"
 import logo from '../images/Logo-icon.png';
 import {Navbar, Nav, Image, DropdownButton, Dropdown} from 'react-bootstrap';
-import {NavLink, Route, Switch, withRouter} from 'react-router-dom';
+import {NavLink, Route, Switch, withRouter, Link} from 'react-router-dom';
 import HomeContainer from '../Home/HomeContainer';
 import EventsContainer from '../Events/EventsContainer';
 import Signup from '../Signup/SignupContainer';
 import Login from '../Login/LoginContainer';
 import CreateEventContainer from '../CreateEvent/CreateEventContainer';
+import UserComponent from '../Usertemplate/UserComponent.js';
+import DashComponent from '../Usertemplate/DashComponent.js';
 import Auth from '../Auth/Auth';
 class Header extends Component {
     constructor(props){
@@ -34,6 +36,8 @@ class Header extends Component {
         if(this.state.isUserAuthenticated){
             return(
                 <DropdownButton id="dropdown-basic-button" title={Auth.getEmail()} className="login-dropdown">
+                    <Dropdown.Item><Link to="/user">My Profile</Link></Dropdown.Item>
+                    <Dropdown.Item><Link to="/dashboard">Edit Profile</Link></Dropdown.Item>
                     <Dropdown.Item onClick={this.logOut}>Log out</Dropdown.Item>
                 </DropdownButton>)
         }
@@ -58,6 +62,8 @@ class Header extends Component {
                         <NavLink className="nav-link" to="/feeds">Feeds</NavLink>
                         <NavLink className="nav-link" to="/events">Events</NavLink>
                         <NavLink className="nav-link" to="/create-event">+Create Events</NavLink>
+                        <Route path='/user' component={UserComponent}/>
+                        <Route path='/dashboard' component={DashComponent}/>
                         {this.rederLoginInfo()}
                     </Nav>
                 </Navbar.Collapse>
