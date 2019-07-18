@@ -43,9 +43,10 @@ class LoginContainer extends Component {
 				console.log(response);
 				const token = response.login;
 				Auth.authenticateUser(token, email)
-				this.props.history.push('/');
+				this.props.history.push('/',{needUpate:true});
+				//window.location.reload();
 			}).catch(error => {
-				console.log('message: ', error.message);
+				console.log('message: ', error.message)
 				let end = 0
 				for (let i = 0; i < error.message.length; i++) {
 					if (error.message.charAt(i) === ':') {

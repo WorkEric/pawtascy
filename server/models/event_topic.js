@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
         model: models.event_information_topic,
         unique: false
       },
-      foreignKey: 'event_id',
+      foreignKey: 'event_topic_id',
       as: 'eventInformationTopicEvents'
     })  
   };

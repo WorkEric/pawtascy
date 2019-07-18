@@ -95,7 +95,7 @@ module.exports = (sequelize, DataTypes) => {
         model: models.user_event,
         unique: false
       },
-      foreignKey: 'event_id',
+      foreignKey: 'user_id',
       as: 'userEventEvents'
     });
     models.user.belongsToMany(models.event, {
@@ -103,7 +103,7 @@ module.exports = (sequelize, DataTypes) => {
         model: models.event_feedback,
         unique: false
       },
-      foreignKey: 'event_id',
+      foreignKey: 'user_id',
       as: 'eventFeedbackEvents'
     })     
   };
