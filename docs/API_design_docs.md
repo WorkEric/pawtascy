@@ -970,6 +970,44 @@ Event
 }
 ```
 
+### Find event by  user email
+```
+{
+  getEventByUserEmail(email: "nieyan0723@gmail.com"){
+    id
+    title
+    event_start_at
+    location_id
+    address
+    restrict_pets_number
+    restrict_attendee_number
+    is_neutered
+    detail
+    note
+  }
+}
+
+// result
+{
+  "data": {
+    "getEventByUserEmail": [
+      {
+        "id": "3",
+        "title": "event 3",
+        "event_start_at": "2019-07-10 23:58:40",
+        "location_id": 1,
+        "address": "SanJose",
+        "restrict_pets_number": 5,
+        "restrict_attendee_number": 5,
+        "is_neutered": false,
+        "detail": "detail1",
+        "note": "note1"
+      }
+    ]
+  }
+}
+```
+
 ### Find event by location id
 ```
 {
@@ -1458,46 +1496,24 @@ create event
 
 ```
 mutation {
-  createEvent(title: "Test create event", location_id: 1, address: "Mountain View", event_start_at: "2019-07-10 21:23:29", cover: "cover3", cost: "cost3", restrict_attendee_number: 3, restrict_pets_number: 4, is_neutered: true, detail: "detail3", note: "note3") {
+  createEvent(email: "nieyan0723@gmail.com", pet_category_name: "dog", city: "Beijing", state: "BJ", country: "China", zip_code: 6516, address: "asdasdas", title: "graohaosidaoisdjoa", event_start_at: "2019-7-20", event_end_at: "2019-9-9", cover: "test1", cost: "0", restrict_attendee_number: 2, restrict_pets_number: 2, is_neutered: true, detail: "abc1", note: "abc") {
     id
     title
+    event_start_at
     location_id
     address
-    event_start_at
-    cover
-    cost
-    restrict_attendee_number
     restrict_pets_number
+    restrict_attendee_number
     is_neutered
     detail
     note
-    created_at
-    updated_at
   }
 }
+
 
 
 // result
-{
-  "data": {
-    "createEvent": {
-      "id": "4",
-      "title": "Test create event",
-      "location_id": 1,
-      "address": "Mountain View",
-      "event_start_at": "1562819009000",
-      "cover": "cover3",
-      "cost": "cost3",
-      "restrict_attendee_number": 3,
-      "restrict_pets_number": 4,
-      "is_neutered": true,
-      "detail": "detail3",
-      "note": "note3",
-      "created_at": "1562903288763",
-      "updated_at": "1562903288763"
-    }
-  }
-}
+TBD
 ```
 
 update event

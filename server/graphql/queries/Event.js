@@ -93,6 +93,36 @@ const getEventByUserId = {
     }
 }
 
+const getEventByUserEmail = {
+    type: new GraphQLList(Event),
+    args: {
+        email: {type: GraphQLString}
+    },
+    resolve (_, {email}) {
+        let where = {
+            '$userEventUsers.id$': {}
+        };
+        return db.user.findOne({
+            where: {
+                email: email
+            }
+        }).then(user =>{
+            if (email) {
+                where['$userEventUsers.id$'][db.Sequelize.Op.eq] = user.id;
+            }     
+           return db.event.findAll({
+                where,
+                include: [{
+                    model: db.user,
+                    as: 'userEventUsers',
+                    through: {}
+                }],
+            subQuery: false
+            })
+        })
+    }
+}
+
 
 module.exports = {
     getEvents,
@@ -100,4 +130,5 @@ module.exports = {
     getEventByLocationId,
     getEventByCity,
     getEventByUserId,
+    getEventByUserEmail,
 }
