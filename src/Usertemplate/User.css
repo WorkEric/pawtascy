@@ -1,0 +1,305 @@
+
+.userpet_div {
+	margin-top:50px;
+
+}
+.user_photo {
+	width: 60px;
+	height: 60px;
+
+}
+
+.user_name {
+	font-size: 20px;
+
+	margin-left: 20px;
+	display: inline-block;
+
+}
+
+.user_dashboard {
+	font-size: 15px;
+
+}
+.pet_div {
+	margin-left: -80px;
+
+}
+.pet_name {
+	font-size: 10px;
+
+}
+.pet_photo {
+	width: 30px;
+	height: 30px;
+
+}
+.user_background {
+  background-color: #DDDDDD;
+  background-size: cover;
+
+}
+
+.user_edit_profile {
+	margin-top: 50px;
+
+}
+.user_event_div {
+	margin-top: 50px;
+}
+
+.user_events_text_first {
+	font-size: 15px;
+	display: inline-block;
+
+}
+.user_events_text {
+	font-size: 15px;
+	display: inline-block;
+	margin-left: 50px;
+}
+
+.user_nav_link {
+	font-size: 20px;
+	color: #ABABAB;
+	margin-left: 80px;
+	margin-bottom: 20px;
+
+}
+.user_nav_link_active {
+	color: grey !important; 
+
+
+}
+.post_item_entire {
+	margin-left: 50px;
+	margin-bottom: 160px;
+	width: 800px;
+	height: flex;
+
+}
+
+.post_item {
+
+  display: flex;
+  margin-right: 50px !important;
+  text-align: left;
+}
+
+
+.post_user_photo {
+	width: 50px;
+	height: 50px;
+	float: left;
+
+
+}
+
+.post_user_name {
+	font-size: 20px;
+	margin-left: 60px;
+
+}
+
+.post_content {
+	margin-top: 50px;
+	font-size:20px;
+
+}
+.user_post_image {
+	margin-left: 80px;
+	width: 600px;
+	height: 600px;
+
+}
+
+.btn-first {
+  background-color: #DDDDDD;
+  border-color: #ABABAB;
+  margin-left: 80px;
+}
+
+.btn-second {
+  background-color: #DDDDDD;
+  border-color: #ABABAB;
+  margin-left: 100px;
+}
+.btn-third {
+  background-color: #DDDDDD;
+  border-color: #ABABAB;
+  margin-left: 100px;
+}
+.post_buttons {
+	margin-top: 50px;
+	margin-bottom: 50px;
+	display: inline-block;
+}
+.user_event_image {
+	width:300px;
+	height: 200px;
+
+}
+
+.user_event_time {
+	font-size: 25px;
+	display: inline-block;
+}
+
+.user_event_content {
+	font-size:20px;
+	display: inline-block;
+}
+.user_event_location {
+	font-size:20px;
+	display: inline-block;
+}
+.event_item_entire {
+	margin-left: 50px;
+	margin-bottom: 60px;
+	width: 800px;
+	height: flex;
+
+}
+
+.event_item {
+
+  display: flex;
+  margin-right: 50px !important;
+  text-align: left;
+}
+.post_paws_logo {
+	width:20%;
+}
+.post_paws {
+	font-size: 15px;
+	display: inline-block;
+}
+.dash-left-nav-div {
+	margin-top: 80px;
+	margin-bottom: 80px;
+
+}
+
+.dash-left-nav {
+	font-size:20px;
+	line-height: 10px;
+	color: pink;
+}
+
+.dash-left-nav-col {
+
+	border-right: 1px solid black;
+}
+
+
+.dash-human-div {
+
+
+}
+
+.dash-human-change-photo-text {
+	font-size: 15px;
+	display: inline-block;
+
+}
+
+.dash-human-change-photo-click {
+	font-size: 15px;
+}
+
+.dash-humanname-title {
+	margin-top: 20px;
+	font-size: 20px;
+	margin-left: 20px;
+	display: inline-block;
+
+}
+
+
+.dash-humanname-box {
+	font-size:15px;
+	display: inline-block;
+	margin-left: 20px;
+
+}
+
+.dash-humancity-title {
+	margin-top: 20px;
+	font-size: 20px;
+	margin-left: 20px;
+	display: inline-block;
+
+}
+
+
+.dash-humancity-box {
+	font-size:15px;
+	display: inline-block;
+	margin-left: 20px;
+
+}
+.dash-humangender-title {
+	font-size: 20px;
+	margin-left: 20px;
+	margin-top: 20px;
+}
+
+.dash-humangender-text {
+	font-size: 15px;
+
+}
+
+.dash-humangender-left {
+	margin-left: 20px;
+
+}
+
+.dash-humangender-right {
+	margin-left: 20px;
+	
+}
+
+.dash-humanage-box {
+	font-size:15px;
+	display: inline-block;
+	margin-left: 20px;
+
+}
+
+.dash-humanage-title {
+	margin-top: 20px;
+	font-size: 20px;
+	margin-left: 20px;
+	display: inline-block;
+
+}
+.dash-humanjob-box {
+	margin-top: 20px;
+	font-size:15px;
+	display: inline-block;
+	margin-left: 20px;
+
+}
+
+.dash-humanjob-title {
+	margin-top: 20px;
+	font-size: 20px;
+	margin-left: 20px;
+	display: inline-block;
+
+}
+.dash-humanintro-box {
+	margin-top: 20px;
+	font-size:15px;
+	display: inline-block;
+	margin-left: 20px;
+
+}
+
+.dash-humanintro-title {
+	margin-top: 20px;
+	font-size: 20px;
+	margin-left: 20px;
+	display: inline-block;
+
+}

@@ -19,6 +19,7 @@ export default class EventsSearchBar extends Component {
     }
     search = () => {
         //get the input value
+        console.log("dsacsff")
         const searchName = this.input.value.trim();
         if(searchName) {
             this.props.setSearchName(searchName)
@@ -32,11 +33,11 @@ export default class EventsSearchBar extends Component {
                 </div>
                 <div className='search-bar'>
                     <img src={logo} className='event-logo'/>&nbsp;
-                    <div class="input-group input-group-lg">
+                    {/*<div class="input-group input-group-lg">
                         <input type="text" className="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder=' Search for Pet Type  ' ref={input => this.input = input}/> &nbsp;&nbsp;
-                    </div>  
-                    <div class="input-group input-group-lg">
-                        <input type="text" className="form-control location" aria-label="Large" aria-describedby="inputGroup-sizing-sm" style={{backgroundImage: `url(${location})`}} placeholder='    San Franscisco  ' value={this.state.location}/>&nbsp;&nbsp;
+                        </div>  */}
+                    <div className="input-group input-group-lg">
+                        <input type="text" className="form-control location" aria-label="Large" aria-describedby="inputGroup-sizing-sm" style={{backgroundImage: `url(${location})`}} placeholder='    San Franscisco  ' ref={input => this.input = input}/>&nbsp;&nbsp;
                     </div> 
                     <img src={search} className='search-button' onClick={this.search}/>
                 </div>

@@ -11,7 +11,7 @@ export default class EventsContainer extends Component {
        searchName:'' 
     }
     setSearchName = (searchName) => {
-        this.searchName = searchName
+        this.setState({searchName})
     }
     render() {
         return (

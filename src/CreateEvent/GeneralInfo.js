@@ -12,7 +12,12 @@ import Progress from '../images/progress-icon.png';
 import './CreateEvent.css'
 
 export default class GeneralInfo extends Component {
+    continue = e => {
+        e.preventDefault();
+        this.props.nextStep();
+    }
     render() {
+        const {values, handleChange} = this.props;
         return (
             <Container fluid className="create-event-page">
                 <Row>
@@ -37,7 +42,7 @@ export default class GeneralInfo extends Component {
                     </Row>
                     <Row>
                         <Col lg={12}>
-                            <input value="" className="title-input" name="title-input" placeholder="Birthday party, Beach Meet up, Breeding Experience Talk…."/>
+                            <input value={values.title} className="title-input" name="title-input" placeholder="Birthday party, Beach Meet up, Breeding Experience Talk…." onChange={handleChange('title')}/>
                         </Col>
                     </Row>
                     <Row>
@@ -50,18 +55,18 @@ export default class GeneralInfo extends Component {
                     </Row>
                     <Row className="time">
                         <Col lg ={6} xs={12}>
-                            Start Time &nbsp;&nbsp; <input value="" name="start-time"/>
+                            Start Time &nbsp;&nbsp; <input value={values.startTime} name="start-time" onChange={handleChange('startTime')}/>
                         </Col>
                         <Col lg ={6} xs={12}>
-                            End Time &nbsp;&nbsp;<input value="" name="end-time"/>
+                            End Time &nbsp;&nbsp;<input value={values.endTime} name="end-time" onChange={handleChange('endTime')}/>
                         </Col>
                     </Row>
                     <Row className="date">
                         <Col lg ={6} xs={12}>
-                            Start Date &nbsp;&nbsp;&nbsp;<input value="" name="start-date"/>
+                            Start Date &nbsp;&nbsp;&nbsp;<input value={values.startDate} name="start-date" onChange={handleChange('startDate')}/>
                         </Col>
                         <Col lg ={6} xs={12}>
-                            End Date &nbsp;&nbsp;<input value="" name="end-date"/>
+                            End Date &nbsp;&nbsp;<input value={values.endDate} name="end-date" onChange={handleChange('endDate')}/>
                         </Col>
                     </Row>
                     <Row>
@@ -69,7 +74,7 @@ export default class GeneralInfo extends Component {
                     </Row>
                     <Row>
                         <Col lg ={12}>
-                            Address &nbsp;&nbsp;&nbsp;<input value="" name="address" style={{width:"50%",margin:"15px 0 30px 0"}}/>
+                            Address &nbsp;&nbsp;&nbsp;<input value={values.address} name="address" style={{width:"50%",margin:"15px 0 30px 0"}} onChange={handleChange('address')}/>
                         </Col>
                     </Row>
                     <Row>
@@ -84,9 +89,9 @@ export default class GeneralInfo extends Component {
                   <Link to="/"><Button variant="outline-secondary" className="create-event-button" size="lg">
                     Clear
                   </Button></Link>
-                  <Link to="/"><Button variant="secondary" className="create-event-button"  size="lg">
+                  <Button variant="secondary" className="create-event-button"  size="lg" onClick={this.continue}>
                     Next
-                  </Button></Link>
+                  </Button>
                 </Row>
             </Container>
         )

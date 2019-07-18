@@ -4,7 +4,6 @@ import ApolloClient from "apollo-boost";
 import {ApolloProvider} from 'react-apollo';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import HomeContainer from './Home/HomeContainer';
 import LoginContainer from './Login/LoginContainer';
 import SignupContainer from './Signup/SignupContainer';
@@ -33,6 +32,7 @@ const App = () => (
     </ApolloProvider>
   )
 
+
 /*
 const routing = (
     <Router>
@@ -50,6 +50,8 @@ const routing = (
 )
 */
 ReactDOM.render(<App />, document.getElementById('root'));
+
+//ReactDOM.render(<Apptest />, document.getElementById('root'));
 
 //ReactDOM.render(routing, document.getElementById('root'));
 

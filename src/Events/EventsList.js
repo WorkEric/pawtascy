@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Container, Row, Card, CardColumns} from 'react-bootstrap';
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
+import { request } from 'graphql-request'
+
 
 import dogEvent from '../images/dog-event.png';
 import catEvent from '../images/cat-event.png';
@@ -17,7 +19,42 @@ export default class EventsList extends Component {
         loading: false,
         events: null,
         errorMsg: null
-    };/*
+    };
+    componentWillReceiveProps(newProps) { //assign a new search name, should do request
+        const {searchName} = newProps;
+        console.log("lalallala")
+        //update
+        this.setState ({
+            initView: false,
+            loading:true
+        })
+        //send request
+        //Post login data
+        const url = 'http://127.0.0.1:9000/api'
+        const query = `{
+                getEventByLocationId(location_id: 1) {
+                  id
+                  title
+                  event_start_at
+                  location_id
+                  address
+                  cover
+                }
+        }`
+        request(url, query)
+            .then(response => {
+                console.log(response.getEventByLocationId);
+				this.setState({loading: false, events: response.getEventByLocationId})
+			})
+            .catch (
+                error => {
+                    this.setState({loading: false, errorMsg: error.message})
+                    console.log(error)
+                }
+            )
+        
+    }
+    /*
     componentDidMount() {
         const GET_EVENTS = gql `
         {
@@ -63,6 +100,8 @@ export default class EventsList extends Component {
     */
     render() {
         const {initView,loading,events, errorMsg} = this.state;
+        const {searchName} = this.props;
+        console.log(searchName);
         const GET_EVENTS = gql `
         {
             getEvents {
@@ -106,6 +145,7 @@ export default class EventsList extends Component {
             return <h2> No such type events </h2>
         } else {
             return (
+        
                 <Container>
                     <Row> 
                     <CardColumns>
@@ -123,6 +163,7 @@ export default class EventsList extends Component {
                          </CardColumns>
                          </Row>
                          </Container>
+                        
                )
         }
         /*
