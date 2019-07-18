@@ -31,13 +31,13 @@ export default class EventSummary extends Component {
                     <Col lg={1} style={{margin: "auto 0"}}> <img src={Progress}/> </Col>
                     <Col lg={3} className="top-tag"> Cost and Others </Col>
                     <Col lg={1} style={{margin: "auto 0"}}> <img src={Progress}/> </Col>
-                    <Col lg={3} className="top-tag"> Review </Col>
+                    <Col lg={3} className="top-tag" style={{backgroundColor:"#B8817D"}}> Review </Col>
                 </Row>
                 <Row> 
                     <Col style={{textAlign:"center", margin:"30px auto 0 auto", color:"#B8817D"}}><h3>Event Summary</h3></Col>
                 </Row>
                 <Container className="summary-form">
-                    <img src={Edit} style={{float:"right", width:"30px"}}/>
+                    {/*<img src={Edit} style={{float:"right", width:"30px"}}/>*/}
                     <Row>
                         <Col lg={1} className="tag-format">Type:</Col><Col> {petType} </Col>
                     </Row>
@@ -54,16 +54,19 @@ export default class EventSummary extends Component {
                         <Col lg={1} className="tag-format">Time:</Col><Col> {startTime} - {endTime} </Col>
                     </Row>
                     <Row>
-                        <Col lg={1} className="tag-format">Address:</Col><Col> {address} </Col>
+                        <Col lg={2} className="tag-format">Address:</Col><Col> {address} </Col>
+                    </Row>
+                    <Row>
+                        <Col lg={2} className="tag-format">isNeutered:</Col><Col> {isNeutered} </Col>
                     </Row>
                 </Container>
                 <Container className="summary-form">
-                    <img src={Edit} style={{float:"right", width:"30px"}}/>
+                    {/*<img src={Edit} style={{float:"right", width:"30px"}}/>*/}
                     <Row>
                         <Col lg={4} className="tag-format">Number of people with pets:</Col><Col> {numberOfAttendess} </Col>
                     </Row>
                     <Row>
-                        <Col lg={3} className="tag-format">Cost per person:</Col><Col> {cost} </Col>
+                        <Col lg={3} className="tag-format">Cost per person:</Col><Col> ${cost} </Col>
                     </Row>
                     <Row>
                         <Col lg={2} className="tag-format">Description:</Col>

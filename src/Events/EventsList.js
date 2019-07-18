@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import {Container, Row, Card, CardColumns} from 'react-bootstrap';
 import gql from "graphql-tag";
 import { Query } from "react-apollo";
-import { request } from 'graphql-request'
+import { request } from 'graphql-request';
+import PropTypes from 'prop-types';
 
 
 import dogEvent from '../images/dog-event.png';
 import catEvent from '../images/cat-event.png';
 import ratEvent from '../images/rat-event.png';
-import PropTypes from 'prop-types';
+import EventDetails from './EventDetails';
 
 export default class EventsList extends Component {
     static propTypes = {

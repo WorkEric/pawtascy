@@ -1,3 +1,15 @@
+BEGIN;
+
+CREATE DATABASE pawtascy CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+CREATE USER ''@'%' IDENTIFIED BY '***';
+
+GRANT ALL PRIVILEGES ON pawtascy.* TO ''@'%';
+
+FLUSH PRIVILEGES;
+
+COMMIT;
+
 -- delete a user
 set @user_id = (select id from user where username='test1');
 SET FOREIGN_KEY_CHECKS = 0;

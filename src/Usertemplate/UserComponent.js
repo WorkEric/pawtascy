@@ -7,7 +7,6 @@ import {Container, Row, Col, Image, Button, CardDeck, Card} from 'react-bootstra
 import {NavLink, Link, Route, Switch, Redirect} from 'react-router-dom';
 import {Navbar, Nav} from 'react-bootstrap';
 import PostsComponent from './PostsComponent.js';
-import DashComponent from './DashComponent.js'
 import HostEventsComponent from './HostEventsComponent.js';
 import JoinEventsComponent from './JoinEventsComponent.js';
 
@@ -59,8 +58,8 @@ class UserComponent extends Component {
     		      <Col lg={3} md={3}>
     		      	<div className="userpet_div">
     			      	<div>
-    			      		<img src={user.userphoto} className="user_photo"></img><h1 className="user_name">{user.username}</h1>
-    			      	</div>
+    			      		<img src={user.userphoto} className="user_photo"></img><h1 className="user_name">{user.username}</h1>&nbsp;&nbsp;&nbsp;&nbsp;
+                  </div>
     			      	<div className="pet_div">
     			      		<ul>
     			      			{pets_list}
@@ -92,7 +91,6 @@ class UserComponent extends Component {
                     <Route path='/user/posts' component={PostsComponent}/>  
                     <Route path='/user/hosted_events' component={HostEventsComponent}/>
                     <Route path='/user/joined_events' component={JoinEventsComponent}/>
-                    <Route path='/user/dashboard' component={DashComponent}/>
                     <Redirect to='/user/posts'/>
                   </Switch>
     		    </Row>

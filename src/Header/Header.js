@@ -2,15 +2,15 @@ import React, {Component} from 'react';
 import "./Header.css"
 import logo from '../images/Logo-icon.png';
 import {Navbar, Nav, Image, DropdownButton, Dropdown} from 'react-bootstrap';
-import {NavLink, Route, Switch, Link} from 'react-router-dom';
+import {NavLink, Route, Link, Switch} from 'react-router-dom';
 import HomeContainer from '../Home/HomeContainer';
 import EventsContainer from '../Events/EventsContainer';
 import Signup from '../Signup/SignupContainer';
 import Login from '../Login/LoginContainer';
 import CreateEventContainer from '../CreateEvent/CreateEventContainer';
-import Header_loggedin from './Header_loggedin';
+import UserComponent from '../Usertemplate/UserComponent.js';
+import DashComponent from '../Usertemplate/DashComponent.js';
 import Auth from '../Auth/Auth';
-import UserComponent from '../Usertemplate/UserComponent';
 class Header extends Component {
     logOut = () => {
         Auth.deauthenticateUser();
@@ -25,7 +25,7 @@ class Header extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto right-nav">
                         <NavLink className="nav-link" to="/">Home</NavLink>
-                        <NavLink className="nav-link" to="/feeds">Feeds</NavLink>
+                        {/* <NavLink className="nav-link" to="/feeds">Feeds</NavLink> */}
                         <NavLink className="nav-link" to="/events">Events</NavLink>
                         <NavLink className="nav-link" to="/create-event">+Create Events</NavLink>
                         {
@@ -33,8 +33,10 @@ class Header extends Component {
                             Auth.isUserAuthenticated() ?
                             (
                                 <DropdownButton id="dropdown-basic-button" title={Auth.getEmail()} className="login-dropdown">
-                                    <Dropdown.Item ><Link to="/user">My Profile</Link></Dropdown.Item>
+                                    <Dropdown.Item><Link to="/user">My Profile</Link></Dropdown.Item>
+                                    <Dropdown.Item><Link to="/dashboard">Edit Profile</Link></Dropdown.Item>
                                     <Dropdown.Item onClick={this.logOut}>Log out</Dropdown.Item>
+
                                 </DropdownButton>
                             )
                             :(
@@ -55,6 +57,7 @@ class Header extends Component {
                 <Route path='/signup' component={Signup}/>
                 <Route path='/login' component={Login}/>
                 <Route path='/user' component={UserComponent}/>
+                <Route path='/dashboard' component={DashComponent}/>
             </Switch>
             </div>
         );

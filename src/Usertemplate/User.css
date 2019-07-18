@@ -16,6 +16,11 @@
 	display: inline-block;
 
 }
+
+.user_dashboard {
+	font-size: 15px;
+
+}
 .pet_div {
 	margin-left: -80px;
 

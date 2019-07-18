@@ -8,6 +8,7 @@ const {
 
 const db = require('../../models/index.js');
 const { User } = require('../types/User.js');
+
 const login = {
     type: GraphQLString,
     args: {
@@ -24,6 +25,12 @@ const login = {
         if (!valid) {
             throw new Error('Incorrect password')
         }
+        const result = {}
+        result.token = jsonwebtoken.sign({
+            id: user.id,
+            email: user.email
+        }, 'test', {expiresIn: '1d'})
+        result.user_id = user.id
         return jsonwebtoken.sign({
             id: user.id,
             email: user.email

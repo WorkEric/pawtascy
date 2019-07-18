@@ -7,7 +7,7 @@ import Footer from '../Footer/Footer';
 export default class CreateEventContainer extends Component {
     state = {
         step: 1,
-        petType: '',
+        petType: 'Dog',
         title: '',
         tags:'',
         startDate: '',
@@ -15,7 +15,7 @@ export default class CreateEventContainer extends Component {
         startTime:'',
         endTime:'',
         address: '',
-        isNeutered: false,
+        isNeutered: 'No',
         numberOfAttendess:'',
         cost: '',
         description: '',
@@ -40,7 +40,7 @@ export default class CreateEventContainer extends Component {
     }
     clearForm = () => {
         this.setState({
-            petType: 'dog',
+            petType: 'Dog',
             title: '',
             tags:'',
             startDate: '',
@@ -48,7 +48,7 @@ export default class CreateEventContainer extends Component {
             startTime:'',
             endTime:'',
             address: '',
-            isNeutered: false,
+            isNeutered: 'No',
         })
     }
 

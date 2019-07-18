@@ -21,7 +21,7 @@ export default class CostAndOthers extends Component {
                 <Row>
                     <Col lg={3} className="top-tag"> General Information </Col>
                     <Col lg={1} style={{margin: "auto 0"}}> <img src={Progress}/> </Col>
-                    <Col lg={3} className="top-tag"> Cost and Others </Col>
+                    <Col lg={3} className="top-tag" style={{backgroundColor:"#B8817D"}}> Cost and Others </Col>
                     <Col lg={1} style={{margin: "auto 0"}}> <img src={Progress}/> </Col>
                     <Col lg={3} className="top-tag"> Review </Col>
                 </Row>
@@ -39,7 +39,7 @@ export default class CostAndOthers extends Component {
                         </Form.Group>
                         <Form.Group controlId="costPerPerson">
                             <Form.Label>How much the cost for each attendee?</Form.Label>
-                            <Form.Control type="text" placeholder="No cost" className="cost-format" value={values.cost} onChange={handleChange('cost')}/>
+                            <Form.Control type="number" placeholder="No cost" className="cost-format" value={values.cost} onChange={handleChange('cost')}/>
                         </Form.Group>
                     </Container>
                     <Container className="bottom-form">

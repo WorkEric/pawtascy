@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 import {Container, Row, Col, Button, Form} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import Yes from '../images/yes.png';
-import No from '../images/no.png';
 import Progress from '../images/progress-icon.png';
 import './CreateEvent.css'
 
@@ -23,7 +20,7 @@ export default class GeneralInfo extends Component {
         return (
             <Container fluid className="create-event-page">
                 <Row>
-                    <Col lg={3} className="top-tag"> General Information </Col>
+                    <Col lg={3} className="top-tag" style={{backgroundColor:"#B8817D"}}> General Information </Col>
                     <Col lg={1} style={{margin: "auto 0"}}> <img src={Progress}/> </Col>
                     <Col lg={3} className="top-tag"> Cost and Others </Col>
                     <Col lg={1} style={{margin: "auto 0"}}> <img src={Progress}/> </Col>
@@ -39,7 +36,7 @@ export default class GeneralInfo extends Component {
                                 <Form.Check
                                 type="radio"
                                 label="Dog"
-                                name="formHorizontalRadios"
+                                name="petTypeRadios"
                                 value="Dog"
                                 checked = {values.petType === 'Dog'}
                                 onChange={handleChange('petType')}
@@ -47,7 +44,7 @@ export default class GeneralInfo extends Component {
                                 <Form.Check
                                 type="radio"
                                 label="Cat"
-                                name="formHorizontalRadios"
+                                name="petTypeRadios"
                                 value="Cat"
                                 checked = {values.petType === 'Cat'}
                                 onChange={handleChange('petType')}
@@ -55,7 +52,7 @@ export default class GeneralInfo extends Component {
                                 <Form.Check
                                 type="radio"
                                 label="Rat"
-                                name="formHorizontalRadios"
+                                name="petTypeRadios"
                                 value="Rat"
                                 checked = {values.petType === 'Rat'}
                                 onChange={handleChange('petType')}
@@ -63,7 +60,7 @@ export default class GeneralInfo extends Component {
                                 <Form.Check
                                 type="radio"
                                 label="Bird"
-                                name="formHorizontalRadios"
+                                name="petTypeRadios"
                                 value="Bird"
                                 checked = {values.petType === 'Bird'}
                                 onChange={handleChange('petType')}
@@ -114,9 +111,27 @@ export default class GeneralInfo extends Component {
                     <Row>
                         <Col lg={12}> Do you require all the attending pets must be neutered? </Col>
                     </Row>
-                    <Row style={{padding:"15px 40% 15px 40%"}}>
-                        <Col lg={6} sm={2}> <img src={Yes} className="yes-icon" /></Col>
-                        <Col lg={6} sm={2}><img src={No} className="no-icon"/> </Col>
+                    <Row>
+                        <Form.Group as={Col}>
+                            <Row style={{justifyContent:"space-around", padding:"15px 20% 30px 20%"}}>
+                                <Form.Check
+                                type="radio"
+                                label="Yes"
+                                name="isNeuteredRadios"
+                                value="Yes"
+                                checked = {values.isNeutered === 'Yes'}
+                                onChange={handleChange('isNeutered')}
+                                />
+                                <Form.Check
+                                type="radio"
+                                label="No"
+                                name="isNeuteredRadios"
+                                value="No"
+                                checked = {values.isNeutered === 'No'}
+                                onChange={handleChange('isNeutered')}
+                                />
+                            </Row>
+                        </Form.Group>
                     </Row>
                 </Container> 
                 <Row style={{display:"flex", justifyContent:"space-around", padding:"0 20%"}}>
