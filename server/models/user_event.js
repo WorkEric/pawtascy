@@ -38,9 +38,7 @@ module.exports = (sequelize, DataTypes) => {
      type: DataTypes.STRING,
      field: 'role',
      allowNull: false,
-     validate: {
-       notEmpty: true,
-     }
+     defaultValue: '',
    },
   }, {
     timestamps: true,

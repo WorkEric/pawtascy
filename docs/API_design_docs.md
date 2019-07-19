@@ -1496,7 +1496,7 @@ create event
 
 ```
 mutation {
-  createEvent(email: "nieyan0723@gmail.com", pet_category_name: "dog", city: "Beijing", state: "BJ", country: "China", zip_code: 6516, address: "asdasdas", title: "graohaosidaoisdjoa", event_start_at: "2019-7-20", event_end_at: "2019-9-9", cover: "test1", cost: "0", restrict_attendee_number: 2, restrict_pets_number: 2, is_neutered: true, detail: "abc1", note: "abc") {
+  createEvent(email: "nieyan0723@gmail.com", categories: ["Pickachu"], city: "SunnyVale", state: "CA", country: "USA", zip_code: 6516, address: "main Street", title: "Rob the best", event_start_at: "2019-7-20", event_end_at: "2019-9-9", cover: "test1", cost: "0", restrict_attendee_number: 2, restrict_pets_number: 2, is_neutered: true, detail: "abc1", note: "abc") {
     id
     title
     event_start_at
@@ -1512,8 +1512,24 @@ mutation {
 
 
 
+
 // result
-TBD
+{
+  "data": {
+    "createEvent": {
+      "id": "63",
+      "title": "Rob the best",
+      "event_start_at": "1563606000000",
+      "location_id": 24,
+      "address": "main Street",
+      "restrict_pets_number": 2,
+      "restrict_attendee_number": 2,
+      "is_neutered": true,
+      "detail": "abc1",
+      "note": "abc"
+    }
+  }
+}
 ```
 
 update event

@@ -10,6 +10,7 @@ module.exports = {
       },
       user_id: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
         allowNull: false,
         validate: {
             notEmpty: true,
@@ -23,6 +24,7 @@ module.exports = {
       },
       event_id: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
         allowNull: false,
         validate: {
             notEmpty: true,
@@ -36,10 +38,10 @@ module.exports = {
       },
       role: {
         type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: true,
-        }
+        allowNull: true,
+        // validate: {
+        //     notEmpty: true,
+        // }
       },
       created_at: {
         allowNull: false,

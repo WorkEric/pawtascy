@@ -2,7 +2,8 @@ const {
     GraphQLNonNull,
     GraphQLString,
     GraphQLInt,
-    GraphQLBoolean
+    GraphQLBoolean,
+    GraphQLList
     } = require('graphql');
 
 const { Event } = require('../types/Event.js');
@@ -14,7 +15,7 @@ const createEvent = {
     args: {
         email: { type: GraphQLString },
         
-        pet_category_name: { type: GraphQLString },
+        categories: { type: new GraphQLList(GraphQLString) },
 
         city: { type: GraphQLString },
         state: { type: GraphQLString },
@@ -34,52 +35,68 @@ const createEvent = {
         note: {type: GraphQLString },
     },
     async resolve(_, args) {
-        let promises = []
-        let location_id = []
-        let event = []
-        // location 
-        promises.push(db.location.findOne({
-            where: {
-                city: args.city,
-                state: args.state,
-              country: args.country
-            }
-        }).then((location) => {
-            (location) ? location_id = location.id: db.location.create(location_obj(
-                args.city, args.state, args.country, args.zip_code, 'America/Los_Angeles'
-                ))
-            }).then(() => {
-                return db.event.create({
-                    title: args.title,
-                    location_id: location_id,
-                    address: args.address,
-                    event_start_at: args.event_start_at,
-                    event_end_at: args.event_end_at,
-                    cover: args.cover,
-                    cost: args.cost,
-                    restrict_attendee_number: args.restrict_attendee_number,
-                    restrict_pets_number: args.restrict_pets_number,
-                    is_neutered: args.is_neutered,
-                    detail: args.detail,
-                    note: args.note,
-                    })
-                })         
-        )
-            // promises.push(
-            //     db.pet_profile.create(pet_profile_obj(
-            //         args.nick_name, args.pet_avatar, args.breed, args.birthday, args.pet_gender,
-            //         args.is_neutered, args.weight, args.character, args.dislike, args.health, args.description
-            //     )).then(pet_profile => {
-            //         let inner_promises = []
-            //         // add user and pet_profile relation in user_pet_profile
-            //         inner_promises.push(user.addPetProfiles(pet_profile))
-            //         // pet_profile, pet_category and pet_profile_category
-            //         inner_promises.push(args.categories.map(category => db.pet_category.findOne({where: {name:category}})
-            //             .then(pet_category_obj => pet_category_obj ? pet_profile.addPetCategories(pet_category_obj) : db.pet_category.create({name: category})
-            //                 .then(pet_category_obj => pet_profile.addPetCategories(pet_category_obj)))))
-            //         return inner_promises
-            //     })
-            // )       
+        return db.event.create({
+            title: args.title,
+            location_id: '1',
+            address: args.address,
+            event_start_at: args.event_start_at,
+            event_end_at: args.event_end_at,
+            cover: args.cover,
+            cost: args.cost,
+            restrict_attendee_number: args.restrict_attendee_number,
+            restrict_pets_number: args.restrict_pets_number,
+            is_neutered: args.is_neutered,
+            detail: args.detail,
+            note: args.note,
+        }).then(event =>{
+            let promises = []
+            let new_location_id=[]
+
+            //Update location_id
+            promises.push(
+                db.location.findOne({
+                        where: {
+                            city: args.city,
+                            state: args.state,
+                          country: args.country
+                        }
+                    }).then((location) => {
+                        return (location) ? event.update(
+                            { location_id: location.id },
+                            { where: { _id: event.id } }
+                          ) : db.location.create(location_obj(
+                            args.city, args.state, args.country, args.zip_code, 'America/Los_Angeles'
+                            ))
+                        }).then(location =>{
+                           return event.update(
+                                { location_id: location.id },
+                                { where: { _id: event.id } }
+                              )
+                        })
+            )
+
+            //Add event_pet_category
+            promises.push(
+                args.categories.map(category => db.pet_category.findOne({where: {name:category}})
+                    .then(pet_category_obj => pet_category_obj ? event.addEventPetCategoryPetCategories(pet_category_obj): db.pet_category.create({name: category})
+                        .then(pet_category_obj => event.addEventPetCategoryPetCategories(pet_category_obj)))
+                )
+            )
+            //Add user_event
+            promises.push(
+                db.user.findOne({
+                    where: {
+                        email: args.email
+                    }
+                }).then((user) => {
+                    return  event.addUserEventUsers(user)
+                })
+            )
+
+            return Promise.all(promises).then(() => {
+                return event;
+            })     
+       })
     }
 };
 

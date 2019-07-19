@@ -10,6 +10,7 @@ module.exports = {
       },
       event_id: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
         allowNull: false,
         validate: {
             notEmpty: true,
@@ -23,6 +24,7 @@ module.exports = {
       },
       event_topic_id: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
         allowNull: false,
         validate: {
             notEmpty: true,

@@ -7,10 +7,14 @@ const {
     GraphQLID,
     GraphQLBoolean,
     GraphQLInt,
-    GraphQLString
+    GraphQLString,
+    GraphQLList
     } = require('graphql');
 
 const db = require('../../models/index.js');
+
+const { User } = require('./User.js');
+const { PetCategory } = require('./PetCategory.js');
 
  const Event = new GraphQLObjectType({
     name: 'Event',
@@ -98,6 +102,21 @@ const db = require('../../models/index.js');
                 type: GraphQLString,
                 resolve (event) {
                     return event.updated_at
+                }
+            },
+            pet_categories: {
+                type: new GraphQLList(GraphQLString),
+                resolve (event) {
+                    console.log(event.getPetCategories())
+                    return event.getPetCategories().then((category_list) => {
+                        category_list.map((category) => (category.toJSON().category))
+                    })
+                }
+            },
+            users: {
+                type: User,
+                resolve (event) {
+                    return event['dataValues']['user'];
                 }
             },
         }

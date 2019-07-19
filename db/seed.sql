@@ -79,4 +79,6 @@ VALUES
 (@event_id_1, @pet_category_id_1, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP()),
 (@event_id_2, @pet_category_id_2, CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
+SET FOREIGN_KEY_CHECKS=0
+
 COMMIT;
