@@ -10,6 +10,7 @@ import Login from '../Login/LoginContainer';
 import CreateEventContainer from '../CreateEvent/CreateEventContainer';
 import UserComponent from '../Usertemplate/UserComponent.js';
 import DashComponent from '../Usertemplate/DashComponent.js';
+import PetProComponent from '../Usertemplate/PetProComponent.js';
 import Auth from '../Auth/Auth';
 import EventDetails from '../Events/EventDetails';
 class Header extends Component {
@@ -77,6 +78,7 @@ class Header extends Component {
                 <Route path='/user' component={UserComponent}/>
                 <Route path='/dashboard' component={DashComponent}/>
                 <Route path='/eventdetail/:id' component={EventDetails} />
+                <Route path='/pet/:username' component={PetProComponent} />
             </Switch>
             </div>
         );

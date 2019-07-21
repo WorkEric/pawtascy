@@ -22,7 +22,7 @@
 
 }
 .pet_div {
-	margin-left: -80px;
+	margin-left: 20px;
 
 }
 .pet_name {
@@ -180,11 +180,6 @@
 
 }
 
-.dash-left-nav {
-	font-size:20px;
-	line-height: 10px;
-	color: pink;
-}
 
 .dash-left-nav-col {
 
@@ -302,4 +297,73 @@
 	margin-left: 20px;
 	display: inline-block;
 
+}
+.dash-human-submit {
+	margin-left: 20px;
+	margin-top: 50px;
+	font-size: 15px;
+
+}
+
+.dash_nav_link {
+	font-size: 20px;
+	color: pink;
+
+}
+.dash_nav_link_active {
+	color: grey !important; 
+
+
+}
+
+.petpro_petphoto {
+	width: 60px;
+	height: 60px;
+	margin-top: 20px;
+
+}
+
+.petpro_whole {
+	background-color: #DDDDDD;
+
+}
+
+.petpro_div {
+	margin-top: 20px;
+	margin-left: 20px;
+
+}
+.pet_detail {
+	margin-top: 20px;
+
+}
+.pet_des_block {
+	display: inline-block;
+	margin-left: 30px;
+	background-color: #EBD0CE;
+	width: 100px;
+	height: 100px;
+
+}
+.pet_des_title {
+	font-size: 20px;
+	margin-top: 20px;
+	margin-left: 20px;
+	color: #555872;
+	
+}
+
+.pet_des_content {
+	font-size: 20px;
+	margin-top: 20px;
+	margin-left: 20px;
+	color: #6C6A7F;
+	
+}
+
+.petpro_carddeck {
+	width: 700px;
+	margin-top: 100px;
+	margin-left: 100px;
+	margin-bottom: 100px
 }
