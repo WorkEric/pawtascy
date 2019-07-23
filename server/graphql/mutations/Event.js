@@ -51,7 +51,7 @@ const createEvent = {
         }).then(event =>{
             let promises = []
             let new_location_id=[]
-
+            let event_id = event.id
             //Update location_id
             promises.push(
                 db.location.findOne({
@@ -94,11 +94,38 @@ const createEvent = {
             )
 
             return Promise.all(promises).then(() => {
+                db.user_event.update(
+                    {role :'host'},
+                    {where: { event_id:event_id } }
+                )
                 return event;
             })     
        })
     }
 };
+
+
+const joinEvent = {
+    type: Event,
+    args: {
+        email: { type: GraphQLString },
+
+        event_id: {type: GraphQLInt },
+    },resolve(_, args) {
+        return db.user.findOne({
+            where: {
+                email: args.email
+            }
+        }).then((user)=>{
+          return db.user_event.create({
+                user_id:user.id,
+                event_id: args.event_id,
+                role: 'attendee',
+            })
+        })
+    }
+}
+
 
 const updateEvent = {
     type: Event,
@@ -130,5 +157,6 @@ const updateEvent = {
 
 module.exports = {
     createEvent,
-    updateEvent
+    updateEvent,
+    joinEvent
 }

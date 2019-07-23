@@ -1532,6 +1532,25 @@ mutation {
 }
 ```
 
+join event
+
+```
+mutation {
+  joinEvent(email: "nieyan0723@gmail.com", event_id: 68) {
+    id
+  }
+}
+
+// result  return the id of user_event record
+{
+  "data": {
+    "joinEvent": {
+      "id": "25"
+    }
+  }
+}
+```
+
 update event
 
 ```

@@ -6,7 +6,7 @@ const { createUser, updateUser } = require('./User.js');
 const { updateUserProfile } = require('./UserProfile.js');
 const { createPetProfile, updatePetProfile } = require('./PetProfile.js');
 const { createEventTopic, updateEventTopic} = require('./EventTopic.js');
-const { createEvent, updateEvent} = require('./Event.js');
+const { createEvent, updateEvent, joinEvent} = require('./Event.js');
 const { createEventFeedback, updateEventFeedback} = require('./EventFeedback.js');
 
 
@@ -37,6 +37,7 @@ module.exports = new GraphQLObjectType({
             //event
             createEvent,
             updateEvent,
+            joinEvent,
 
             
             //event_feedback
