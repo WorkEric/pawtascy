@@ -1,26 +1,19 @@
 import React, {Component} from 'react';
 import {Container, Row, Col, Form,Button} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import CatEventCreate from '../images/cat-event-create.png';
-import Edit from '../images/edit.png';
 import Progress from '../images/progress-icon.png';
 import './CreateEvent.css'
 
 export default class EventSummary extends Component {
-    continue = e => {
-        e.preventDefault();
-        this.props.nextStep();
-    }
     back = e => {
         e.preventDefault();
         this.props.prevStep();
     }
-    componentDidMount() {
-        this.onSubmit = e => {
-            e.preventDefault();  
-        }
+    submit = e => {
+        e.preventDefault();  
+        this.props.submitData();
     }
     render() {
         const {values: {petType, title, tags, startDate, endDate, startTime, endTime, address, isNeutered, numberOfAttendess, cost, description, specialRequirements, image}} = this.props;
@@ -84,7 +77,7 @@ export default class EventSummary extends Component {
                     <Button variant="outline-secondary" className="create-event-button" size="lg" onClick={this.back}>
                         Back
                     </Button>
-                    <Button variant="secondary" className="create-event-button" size="lg" onClick={this.onSubmit}>
+                    <Button variant="secondary" className="create-event-button" size="lg" onClick={this.submit}>
                         Complete
                     </Button>
                 </Row>
@@ -93,7 +86,7 @@ export default class EventSummary extends Component {
     }
 }
 EventSummary.propTypes = {
-    handleChange: PropTypes.func.isRequired,
     prevStep: PropTypes.func.isRequired,
+    submitData:PropTypes.func.isRequired,
     values: PropTypes.object.isRequired,
 };

@@ -6,12 +6,6 @@ import { request } from 'graphql-request';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 
-
-import dogEvent from '../images/dog-event.png';
-import catEvent from '../images/cat-event.png';
-import ratEvent from '../images/rat-event.png';
-import EventDetails from './EventDetails';
-
 export default class EventsList extends Component {
     static propTypes = {
         searchName: PropTypes.string.isRequired
@@ -70,50 +64,7 @@ export default class EventsList extends Component {
             )
         
     }
-    /*
-    componentDidMount() {
-        const GET_EVENTS = gql `
-        {
-            getEvents {
-                id,
-                title,
-                location_id,
-                address,
-                event_start_at,
-                cover
-            }
-        }
-    `;
-        const Events = ({}) => {
-            <Query query = {GET_EVENTS}>
-                {({loading, error, data}) => {
-                    if (loading) return "loading ...";
-                    if (error) return `Error! ${error.message}`;
-                    return (
-                        <Container>
-                            <Row> 
-                            <CardColumns>
-                                {data.events.map((event) => (
-                                    <Card className="height-adjust" key={id}>
-                                        <Card.Img variant="top" src={event.cover}/>
-                                        <Card.Body>
-                                        <Card.Text className="date-time">{event.event_start_at}</Card.Text>
-                                            <Card.Text className="theme">
-                                            {event.title}
-                                            </Card.Text>
-                                        <Card.Text className="location-text">{event.address}</Card.Text>
-                                        </Card.Body>
-                                    </Card>))}
-                                </CardColumns>
-                                </Row>
-                         </Container>
-                      );
-                }}
-            </Query>
-        }
-        
-    }
-    */
+    
     render() {
         const {initView,loading,events, errorMsg} = this.state;
         console.log(events);

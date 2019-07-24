@@ -19,7 +19,6 @@ export default class EventsSearchBar extends Component {
     }
     search = () => {
         //get the input value
-        console.log("dsacsff")
         const searchName = this.input.value.trim();
         if(searchName) {
             this.props.setSearchName(searchName)

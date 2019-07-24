@@ -105,7 +105,20 @@ export default class GeneralInfo extends Component {
                     </Row>
                     <Row>
                         <Col lg ={12}>
-                            Address &nbsp;&nbsp;&nbsp;<input value={values.address} name="address" style={{width:"50%",margin:"15px 0 30px 0"}} onChange={handleChange('address')}/>
+                            Address &nbsp;&nbsp;&nbsp;<input value={values.address} type="text" name="address" style={{width:"50%",margin:"15px 0 30px 0"}} onChange={handleChange('address')}/>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col>
+                            City &nbsp;&nbsp;&nbsp;<input value={values.city} type="text" name="city" style={{width:"50%",margin:"15px 0 30px 0"}} onChange={handleChange('city')}/>
+                        </Col>
+                        <Col>
+                            State &nbsp;&nbsp;&nbsp;<input value={values.state} type="text" name="state" style={{width:"50%",margin:"15px 0 30px 0"}} onChange={handleChange('state')}/>
+                        </Col>
+                        <Col>
+                            Country &nbsp;&nbsp;&nbsp;<input value={values.country} type="text" name="country" style={{width:"50%",margin:"15px 0 30px 0"}} onChange={handleChange('country')}/>
+                        </Col><Col>
+                            Zip Code &nbsp;&nbsp;&nbsp;<input value={values.zipCode} type="number" name="zipCode" style={{width:"50%",margin:"15px 0 30px 0"}} onChange={handleChange('zipCode')}/>
                         </Col>
                     </Row>
                     <Row>

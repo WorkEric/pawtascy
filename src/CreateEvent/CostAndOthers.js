@@ -27,19 +27,13 @@ export default class CostAndOthers extends Component {
                 </Row>
                 <Form>
                     <Container className="bottom-form">
-                        <Form.Group controlId="attendeesNnumber" onChange={handleChange('numberOfAttendess')} value={values.numberOfAttendess} >
+                        <Form.Group controlId="attendeesNnumber">
                             <Form.Label>How many people (with pets) do you expect for the Event?</Form.Label>
-                            <Form.Control as="select" className="attendees-format">
-                            <option value="No Limit">No Limit</option>
-                            <option value="1-10">1-10</option>
-                            <option value="11-20">11-20</option>
-                            <option value="21-40">21-40</option>
-                            <option value="21-40">above 40</option>
-                            </Form.Control>
+                            <Form.Control type="number" placeholder="0" className="cost-format" value={values.numberOfAttendess} onChange={handleChange('numberOfAttendess')}/>
                         </Form.Group>
                         <Form.Group controlId="costPerPerson">
                             <Form.Label>How much the cost for each attendee?</Form.Label>
-                            <Form.Control type="number" placeholder="No cost" className="cost-format" value={values.cost} onChange={handleChange('cost')}/>
+                            <Form.Control type="number" placeholder="0" className="cost-format" value={values.cost} onChange={handleChange('cost')}/>
                         </Form.Group>
                     </Container>
                     <Container className="bottom-form">
