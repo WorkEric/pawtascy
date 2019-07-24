@@ -215,6 +215,34 @@ User
 }
 ```
 
+### Find host user by event id 
+
+```
+{
+  getHostUserbyEventId(id:76) {
+    id
+    username
+    email
+    first_name
+    last_name
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getHostUserbyEventId": {
+      "id": "2",
+      "username": "yannie",
+      "email": "nieyan0723@gmail.com",
+      "first_name": "yan",
+      "last_name": "nie"
+    }
+  }
+}
+```
+
 ### Find user by email
 
 ```
