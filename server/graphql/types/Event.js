@@ -118,7 +118,7 @@ const { PetCategory } = require('./PetCategory.js');
                 resolve (event) {
                     return event['dataValues']['user'];
                 }
-            },
+            },            
         }
     }
 })

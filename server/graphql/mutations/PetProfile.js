@@ -58,7 +58,7 @@ const updatePetProfile = {
         pet_avatar: { type: GraphQLString },
         breed: { type: GraphQLString },
         birthday: { type: GraphQLString },
-        pet_gender: { type: GraphQLString },
+        gender: { type: GraphQLString },
         is_neutered: { type: GraphQLBoolean },
         weight: {type: GraphQLString },
         character: { type: GraphQLString },

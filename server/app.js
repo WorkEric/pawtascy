@@ -11,7 +11,7 @@ const jwt = require('express-jwt')
 const schema = require('./schema.js');
 const models = require('./models/index.js')
 
-const PORT = process.env.NODE_ENV === 'production' ? 5000 : 9000;
+const PORT = process.env.NODE_ENV === 'production' ? 5000 : 5001;
 
 
 // Create an express server
@@ -25,7 +25,7 @@ app.use(bodyParser.graphql());
 // passport.use('local-signup', localSignUpStrategy);
 
 // view engine setup: static file
-app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(path.join(__dirname, '..','build')));
 
 
 const auth = jwt({

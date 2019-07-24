@@ -145,7 +145,6 @@ const getUsersByPetProfileId = {
     }
 }
 
-
 module.exports = {
     getUsers,
     getUserByUsername,

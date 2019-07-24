@@ -10,6 +10,7 @@ const {
 
 const db = require('../../models/index.js');
 const { Event } = require('../types/Event.js');
+const { User } = require('../types/User.js');
 
 // location operation
 const getEvents = {
