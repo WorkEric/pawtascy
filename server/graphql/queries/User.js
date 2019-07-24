@@ -145,6 +145,50 @@ const getUsersByPetProfileId = {
     }
 }
 
+const getHostUserbyEventId = {
+    type: User,
+    args:{
+        id: {type: GraphQLInt}
+    },
+    resolve (_, {id}) {
+        return db.user_event.findOne({
+            where:{event_id: id,
+                   role:'host'
+            }
+        }).then((user_event_record) =>{
+            return db.user.findOne({
+                where:{id: user_event_record.user_id,
+                }              
+            })
+        })
+    }
+}
+
+const getAttendeeUsersbyEventId = {
+    type: new GraphQLList(User),
+    args:{
+        id: {type: GraphQLInt}
+    },
+    resolve (_, {id}) {
+        return db.user_event.findAll({
+            where:{event_id: id,
+                   role:'attendee'
+            }
+        }).then((user_event_records) =>{
+            var result =[]
+            user_event_records.forEach(function(record){
+                var user = db.user.findOne({
+                    where:{id: record.user_id,
+                    }              
+                })
+                result.push(user)
+            })
+            return result
+        })
+    }
+}
+
+
 
 module.exports = {
     getUsers,
@@ -154,5 +198,7 @@ module.exports = {
     getUserWithProfileById,
     getUserWithProfileByUsername,
     getUsersByPetProfileId,
-    getUserPetByUsername
+    getUserPetByUsername,
+    getHostUserbyEventId,
+    getAttendeeUsersbyEventId
 }
