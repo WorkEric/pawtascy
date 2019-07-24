@@ -11,7 +11,7 @@ const jwt = require('express-jwt')
 const schema = require('./schema.js');
 const models = require('./models/index.js')
 
-const PORT = process.env.NODE_ENV === 'production' ? 5000 : 5001;
+const PORT = process.env.NODE_ENV === 'production' ? 5000 : 9000;
 
 
 // Create an express server
