@@ -1,5 +1,5 @@
 // const passport = require('passport');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const validator = require('validator');
 const {
     GraphQLNonNull,
@@ -47,8 +47,8 @@ const createUser = {
         description: { type: GraphQLString }
     },
     async resolve(_, args) {
-        const salt = await  bcrypt.genSalt()
-        args.password = await bcrypt.hash(args.password, salt)
+        // const salt = await  bcrypt.genSalt()
+        // args.password = await bcrypt.hash(args.password, salt)
         return db.user.create({
             username: args.username,
             email: args.email,

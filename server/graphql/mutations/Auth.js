@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt')
+// const bcrypt = require('bcrypt')
 const jsonwebtoken = require('jsonwebtoken')
 
 const {
@@ -20,11 +20,11 @@ const login = {
         if (!user) {
             throw new Error('No user with that email')
         }
-        const valid = await bcrypt.compare(args.password, user.password)
+        // const valid = await bcrypt.compare(args.password, user.password)
 
-        if (!valid) {
-            throw new Error('Incorrect password')
-        }
+        // if (!valid) {
+        //     throw new Error('Incorrect password')
+        // }
         const result = {}
         result.token = jsonwebtoken.sign({
             id: user.id,

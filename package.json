@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "apollo-boost": "^0.4.3",
-    "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
     "body-parser-graphql": "^1.1.0",
     "bootstrap": "^4.3.1",
@@ -45,7 +44,7 @@
     "dev": "run-p server start",
     "prod": "run-p server start"
   },
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:9000",
   "eslintConfig": {
     "extends": "react-app"
   },
