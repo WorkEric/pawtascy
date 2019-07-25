@@ -8,18 +8,32 @@ import {Link} from 'react-router-dom';
 
 
 class PetBasicscontComponent extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      Name: "",
+      Age: this.props.location.state.Age,
+      Gender: this.props.location.state.Gender,
+      City: this.props.location.state.City,
+      State: this.props.location.state.State,
+      Zip: this.props.location.state.Zip,
+      Intro: this.props.location.state.Intro,
+      Job: this.props.location.state.Job,
+      photofile: this.props.location.state.photofile,
+      username: this.props.location.state.username,
+      email: this.props.location.state.email,
+      password: this.props.location.state.password,
+      Pet: this.props.location.state.Pet,
+      Petname: "",
+      Petphoto: null,
       Breed: "",
-      Birthday: "",
-      Gender: "male",
+      Petage: "",
+      Petgender: "",
       Neuter: "",
       Weight: "",
     }
+      
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+  
   }
 
   handleChange(event) {
@@ -28,31 +42,19 @@ class PetBasicscontComponent extends Component {
 
 
   }
-
-  handleSubmit(event) {
-    // check if email exist, if password valid, if two password match, and if terms is checked
-    event.preventDefault();
-    const data = new FormData(event.target);
-
-    /// post to database
-    fetch('/api/form-submit-url',{ 
-      method: 'POST',
-      body: data,
-    });
+  fileUploadHandler(event) {
+    const file = event.target.files[0]
+    this.setState({Petphoto:file})
 
   }
 
-  handleClick() {
-
-
-  }
 
   render() {
       const { displayErrors } = this.state;
       return (
               <Col  lg md = "7" style={{backgroundColor: "#EEEEEE", height:"100vh"}}>
                 <h1 className="petbc_title2">Give us the basics about your lovely buddy.</h1>
-                <form onSubmit={this.handleSubmit}>
+                <form>
                       <Row>
                         <Col lg md = "3">
                           <div>
@@ -61,7 +63,7 @@ class PetBasicscontComponent extends Component {
                           <div>
                             <input
                               type="text"
-                              name="Name"
+                              name="Petname"
                               placeholder="   Pet's name"
                               className="petbc_name_box"
                               value={this.state.Name}
@@ -82,13 +84,13 @@ class PetBasicscontComponent extends Component {
                             />
                           </div>                          
                           <div className="petbc_gender_div">
-                            <h1 className="petbc_gender_title">Birthday</h1>
+                            <h1 className="petbc_gender_title">Gender</h1>
                             <label className="petbc_gender_text">
                               <input
                                 type="radio"
-                                name="Gender"
+                                name="Petgender"
                                 value="male"
-                                checked={this.state.Gender === "male"}
+                                checked={this.state.Petgender === "male"}
                                 onChange={this.handleChange}
                                 className="petbc_gender_radio_left"
                               /> Male
@@ -96,9 +98,9 @@ class PetBasicscontComponent extends Component {
                             <label className="petbc_gender_text">
                               <input
                                 type="radio"
-                                name="Gender"
+                                name="Petgender"
                                 value="female"
-                                checked={this.state.Gender === "female"}
+                                checked={this.state.Petgender === "female"}
                                 onChange={this.handleChange}
                                 className="petbc_gender_radio_right"
                               /> Female
@@ -111,18 +113,18 @@ class PetBasicscontComponent extends Component {
                             <input type="file" onChange={this.fileChangedHandler} className="petbc_photo_upload"></input>
                           </div>
                           <div>
-                            <h1 className="petbc_birth_text">Gender</h1>
+                            <h1 className="petbc_birth_text">Age</h1>
                           </div> 
                           <div>
                             <input
                               type="text"
-                              name="Birth"
-                              placeholder="   DD/MM/YY"
+                              name="Petage"
+                              placeholder=" How old"
                               className="petbc_birth_box"
-                              value={this.state.Birthday}
+                              value={this.state.Petage}
                               onChange={this.handleChange}
                             />
-                          </div>       
+                          </div>
                           <div className="petbc_neuter_div">
                             <h1 className="petbc_neuter_title">Spayed or neutered</h1>
                             <label className="petbc_neuter_text">
@@ -151,19 +153,21 @@ class PetBasicscontComponent extends Component {
                       <Row>
                         <Col lg md = "6">
                           <h1 className="petbc_weight_title">Weight</h1>
-                          <textarea
-                            name="Intro"
-                            value={this.state.Intro}
-                            onChange={this.handleChange}
-                            className="human_intro_box"
-                          />
+                            <input
+                              type="text"
+                              name="Weight"
+                              placeholder="  enter weight in pounds"
+                              className="petbc_weight_box"
+                              value={this.state.Weight}
+                              onChange={this.handleChange}
+                            />
                         </Col>
                       </Row>
                       <Row className="basics-back-next">
-                          <Link to="/pet-basics"><Button variant="outline-secondary" size="lg">
+                          <Link to={{pathname: "/petbasics", state: this.state}}><Button variant="outline-secondary" size="lg">
                             Back
                           </Button></Link>
-                          <Link to="/pet-details"><Button variant="secondary" size="lg">
+                          <Link to={{pathname: "/petdetails", state: this.state}}><Button variant="secondary" size="lg">
                             Next
                           </Button></Link>
                       </Row>

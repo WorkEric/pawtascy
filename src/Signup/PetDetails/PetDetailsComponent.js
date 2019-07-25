@@ -10,45 +10,45 @@ class PetDetailsComponent extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      Age: this.props.location.state.Age,
+      Gender: this.props.location.state.Gender,
+      City: this.props.location.state.City,
+      State: this.props.location.state.State,
+      Zip: this.props.location.state.Zip,
+      Intro: this.props.location.state.Intro,
+      Job: this.props.location.state.Job,
+      photofile: this.props.location.state.photofile,
+      username: this.props.location.state.username,
+      email: this.props.location.state.email,
+      password: this.props.location.state.password,
+      Pet: this.props.location.state.Pet,
+      Petname: this.props.location.state.Petname,
+      Petphoto: this.props.location.state.Petphoto,
+      Breed: this.props.location.state.Breed,
+      Petage: this.props.location.state.Petage,
+      Petgender: this.props.location.state.Petgender,
+      Neuter: this.props.location.state.Neuter,
+      Weight: this.props.location.state.Weight,
       favoriteThings: "",
       dislikes: "",
       healthConditions: "",
       chracteristics: "",
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSubmit(event) {
-    // check if email exist, if password valid, if two password match, and if terms is checked
-    event.preventDefault();
-    const data = new FormData(event.target);
-    if (!event.target.checkValidity()){
-      this.setState({ displayErrors: true });
-      this.setState({result:"please correct errors above"})
-      return;
-    }
-    this.setState({ displayErrors: false });
-    /// post to database
-    fetch('/api/form-submit-url',{ 
-      method: 'POST',
-      body: data,
-    });
-
-  };
 
   handleChange(event) {
     const target = event.target;
     const value = target.value;
     const name = target.name;
     this.setState({[name]: value})
-    console.log(this.state);
   }
 
   render() {
       return (
-              <Col lg={7} md={6} style={{backgroundColor: "#EEEEEE"}}>
-                <Form className="form" noValidate onSubmit={this.handleSubmit}>
+              <Col style={{backgroundColor: "#EEEEEE"}}>
+                <Form className="form">
                   <h1 className="thanks">Thanks! Now give us all the details</h1>
                   <Form.Group controlId="favoriteThings" className="form-items">
                     <Form.Label className="item-text">Favorite Things</Form.Label>
@@ -68,10 +68,10 @@ class PetDetailsComponent extends Component {
                   </Form.Group>
                 </Form>
                 <Row className="detail-back-next">
-                  <Link to="/pet-basics-2"><Button variant="outline-secondary" size="lg">
+                  <Link to={{pathname: "/petbasicscont", state: this.state}}><Button variant="outline-secondary" size="lg">
                     Back
                   </Button></Link>
-                  <Link to="/confirmation"><Button variant="secondary" size="lg">
+                  <Link to={{pathname: "/confirmation", state: this.state}}><Button variant="secondary" size="lg">
                     Next
                   </Button></Link>
                 </Row>
