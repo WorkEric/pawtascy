@@ -11,6 +11,11 @@ import CreateEventContainer from '../CreateEvent/CreateEventContainer';
 import UserComponent from '../Usertemplate/UserComponent.js';
 import DashComponent from '../Usertemplate/DashComponent.js';
 import PetProComponent from '../Usertemplate/PetProComponent.js';
+import HumanProfile from '../Signup/HumanProfile/HumanComponent';
+import PetProfileBasics from '../Signup/PetBasics/PetBasicsComponent';
+import PetProfileBasicscont from '../Signup/PetBasics_cont/PetBasicscontComponent';
+import PetProfileDetails from '../Signup/PetDetails/PetDetailsComponent';
+import Confirmation from '../Signup/Confirmation/ConfirmationComponent';
 import Auth from '../Auth/Auth';
 import EventDetails from '../Events/EventDetails';
 class Header extends Component {
@@ -74,6 +79,11 @@ class Header extends Component {
                 <Route path='/events' component={EventsContainer}/>
                 <Route path='/create-event' component={CreateEventContainer}/>
                 <Route path='/signup' component={Signup}/>
+                <Route path='/humanprofile' component={HumanProfile}/>
+                <Route path='/petbasics' component={PetProfileBasics}/>
+                <Route path='/petbasicscont' component={PetProfileBasicscont}/> 
+                <Route path='/petdetails' component={PetProfileDetails}/> 
+                <Route path='/confirmation' component={Confirmation}/> 
                 <Route path='/login' component={Login}/>
                 <Route path='/user' component={UserComponent}/>
                 <Route path='/dashboard' component={DashComponent}/>
