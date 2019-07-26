@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Row, Col, Form,Button} from 'react-bootstrap';
+import {Container, Row, Col, Form,Button, Modal} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 import CatEventCreate from '../images/cat-event-create.png';
@@ -16,7 +16,7 @@ export default class EventSummary extends Component {
         this.props.submitData();
     }
     render() {
-        const {values: {petType, title, tags, startDate, endDate, startTime, endTime, address, isNeutered, numberOfAttendess, cost, description, specialRequirements, image}} = this.props;
+        const {values: {petType, title, tags, startDate, endDate, startTime, endTime, address, isNeutered, numberOfAttendess, cost, description, specialRequirements, image, show, successAlert}} = this.props;
         return (
             <Container fluid className="create-event-page">
                 <Row>
@@ -80,6 +80,19 @@ export default class EventSummary extends Component {
                     <Button variant="secondary" className="create-event-button" size="lg" onClick={this.submit}>
                         Complete
                     </Button>
+                </Row>
+                <Row>
+                    <Modal
+                        show={show}
+                        dialogClassName="modal-90w"
+                        aria-labelledby="example-custom-modal-styling-title"
+                    >
+                        <Modal.Header>
+                        <Modal.Title id="example-custom-modal-styling-title">
+                            {successAlert}
+                        </Modal.Title>
+                        </Modal.Header>
+                    </Modal>
                 </Row>
             </Container>
         )
