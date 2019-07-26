@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Container, Row, Col, Button, Image} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 import image from '../../images/Sugar.png';
 import Male from '../../images/male.png';
@@ -8,6 +8,7 @@ import Female from '../../images/female.png';
 import Check from '../../images/check.png';
 //import Cross from '../../images/cross.png';
 import './Confirmation.css';
+import { request } from 'graphql-request';
 
 
 class ConfirmationComponent extends Component {
@@ -37,84 +38,128 @@ class ConfirmationComponent extends Component {
       dislikes: this.props.location.state.dislikes,
       healthConditions: this.props.location.state.healthConditions,
       chracteristics: this.props.location.state.chracteristics,
+      redirectTo: false,
     }
 
-    console.log(this.state)
+    console.log(this.state.Gender)
+    this.handleClick = this.handleClick.bind(this)
   }
 
-  handleSubmit(event) {
+  handleClick(event) {
     // check if email exist, if password valid, if two password match, and if terms is checked
     event.preventDefault();
+    const url = 'http://127.0.0.1:9000/api';
+    let zipcode = parseInt(this.state.Zip);
+    let birthday = "2019-06-30";
+    var neuter = false;
+    if (this.state.Neuter.toUpperCase() === "YES") {
+      neuter = true
+    }
+    var mutation = `mutation {
+      createUser(
+        username:\"${ this.state.username }\",
+        email:\"${ this.state.email }\",
+        password:\"${ this.state.password }\",
+        age:\"${ this.state.Age }\",
+        gender:\"${ this.state.Gender }\",
+        self_introduction:\"${ this.state.Intro }\",
+        job:\"${ this.state.Job }\",
+        avatar:\"${ this.state.photofile }\",
+        city:\"${ this.state.City }\",
+        state:\"${ this.state.State }\",
+        country: "USA",
+        zip_code:${zipcode},
+        categories:\[\"${this.state.Pet}\"\],
+        nick_name:\"${ this.state.Petname }\",
+        pet_avatar:\"${ this.state.Petphoto }\",
+        breed:\"${ this.state.Breed }\",
+        birthday:\"${ birthday }\",
+        pet_gender:\"${ this.state.Petgender }\",
+        is_neutered:${ neuter },
+        weight:\"${ this.state.Weight }\",
+        character: \"${ this.state.chracteristics }\",
+        dislike: \"${ this.state.dislikes }\",
+        health: \"${ this.state.healthConditions }\",
+        description: \"${ this.state.favoriteThings }\",
+
+      ) 
+      {
+        id
+        username
+
+      }
+    }`    
+
+
+
+    request(url,mutation)
+    .then(response => {
+        console.log(response);
+        this.setState({redirectTo: true});
+      })
+    .catch(error => {
+        console.log(error)
+        window.alert("error")
+      });
 
   }
 
-
-  handleChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
-    this.setState({[name]: value})
-    console.log(this.state);
-  }
 
   render() {
-    {/*
-      const leftNav = this.props.description.map(function(des) {
+      if (this.state.redirectTo) {
         return (
-          <ol>
-            <img src={this.props.images.circle} className="logo2" />
-            <h1 className="left-nav-item">{des}</h1>
-          </ol>
+          <Redirect to={ {pathname: "/login", state: this.state}} />
         )
-      });
-    */}
-      return (
-        
-        <Col className="right-top">
-                <Row className="pets-conf-top">
-                  <h1 className="all-set">Okay, {this.state.name} all set!</h1>
-                  <Container className="information-area">
-                          <Row className="pet-image"> <Image src={this.state.portfolioImage} alt="pet image" roundedCircle className="portfolio-image"/> </Row>
-                          <Row className="pet-name">{this.state.Petname}</Row>
-                          <Row className="info-holder">
-                              <Col className="info-item">
-                                  <Image src={Female} className="male-icon middle-space" alt="male icon"/>
-                                  <text> {this.state.Petgender.toUpperCase()} </text>
-                              </Col>
-                              <Col className="info-item">
-                                  <text className="middle-space"> {this.state.Petage} </text>
-                                  <text> YEARS OLD</text>
-                              </Col>
-                              <Col className="info-item">
-                                  <img className="check-icon middle-space" src={Check} />
-                                  <text> SPAYED</text>
-                              </Col>
-                              <Col className="info-item">
-                                  <text className="middle-space"> {this.state.Weight} </text>
-                                  <text> POUNDS</text>
-                              </Col>
-                          </Row>
-                          <Row className="favorite-things">
-                              <text className="favorite-title"> FAVORITE THINGS </text>
-                              <text className="favorite-content">{this.state.favoriteThings}</text>
-                          </Row>
-                  </Container>
+      }
+
+      else {
+        return (
+          <Col className="right-top">
+                  <Row className="pets-conf-top">
+                    <h1 className="all-set">Okay, {this.state.name} all set!</h1>
+                    <Container className="information-area">
+                            <Row className="pet-image"> <Image src={this.state.portfolioImage} alt="pet image" roundedCircle className="portfolio-image"/> </Row>
+                            <Row className="pet-name">{this.state.Petname}</Row>
+                            <Row className="info-holder">
+                                <Col className="info-item">
+                                    <Image src={Female} className="male-icon middle-space" alt="male icon"/>
+                                    <text> {this.state.Petgender.toUpperCase()} </text>
+                                </Col>
+                                <Col className="info-item">
+                                    <text className="middle-space"> {this.state.Petage} </text>
+                                    <text> YEARS OLD</text>
+                                </Col>
+                                <Col className="info-item">
+                                    <img className="check-icon middle-space" src={Check} />
+                                    <text> SPAYED</text>
+                                </Col>
+                                <Col className="info-item">
+                                    <text className="middle-space"> {this.state.Weight} </text>
+                                    <text> POUNDS</text>
+                                </Col>
+                            </Row>
+                            <Row className="favorite-things">
+                                <text className="favorite-title"> FAVORITE THINGS </text>
+                                <text className="favorite-content">{this.state.favoriteThings}</text>
+                            </Row>
+                    </Container>
+                    
+                    {/*<h1 className="more-pets">Got more pets? Lucky you!&nbsp; <span className="span-text"> Add another pet profile</span></h1>*/}
+                    
+                    </Row>
                   
-                  {/*<h1 className="more-pets">Got more pets? Lucky you!&nbsp; <span className="span-text"> Add another pet profile</span></h1>*/}
-                  
+                  <Row className="back-next">
+                    <Link to={{pathname: "/petdetails", state: this.state}}><Button variant="outline-secondary" className="back-button" size="lg">
+                      Back
+                    </Button></Link>
+                    <Button onClick={this.handleClick} variant="secondary" className="complete" size="lg">
+                      Done
+                    </Button>
                   </Row>
+                </Col>
                 
-                <Row className="back-next">
-                  <Link to={{pathname: "/petdetails", state: this.state}}><Button variant="outline-secondary" className="back-button" size="lg">
-                    Back
-                  </Button></Link>
-                  <Button variant="secondary" className="complete" size="lg">
-                    Done
-                  </Button>
-                </Row>
-              </Col>
-              
-      )
+        )
+    }
   }
 }
 

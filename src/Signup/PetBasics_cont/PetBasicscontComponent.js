@@ -31,9 +31,9 @@ class PetBasicscontComponent extends Component {
       Neuter: "",
       Weight: "",
     }
-      
+    console.log(this.state.Gender)
     this.handleChange = this.handleChange.bind(this)
-  
+    this.fileChangedHandler = this.fileChangedHandler.bind(this)
   }
 
   handleChange(event) {
@@ -42,7 +42,7 @@ class PetBasicscontComponent extends Component {
 
 
   }
-  fileUploadHandler(event) {
+  fileChangedHandler(event) {
     const file = event.target.files[0]
     this.setState({Petphoto:file})
 
