@@ -19,26 +19,36 @@ class DashHuman extends Component {
       Age: "",
       Job: "",
       Intro: "",
-      photo: null,
+      photo: "",
       username: "",
 
     }
-
+    const photo_prefix = 'https://pawtascy.s3-us-west-1.amazonaws.com/'
     const email = Auth.getEmail()
     const url = 'http://127.0.0.1:9000/api'
     const query = `{
-      getUserByEmail(email:\"${ email }\" ) {
-       username,
+      getUserWithProfileByEmail(email:\"${ email }\" ) {
+        id
+        username
+        email
+        user_profile {
+          id,
+          gender,
+          avatar,
+          age,
+          job,
+        }
       }
     }`    
 
     request(url,query)
-    .then(response => {
-      this.setState({ 
-        username: response.getUserByEmail.username,
- //       userphoto: response.getUserByEmail.user_profile,
-      });
-    })
+      .then(response => {
+        const avatar =  photo_prefix + response.getUserWithProfileByEmail.user_profile.avatar
+        this.setState({ 
+          username: response.getUserWithProfileByEmail.username,
+          photo: avatar
+        });
+      })
 
 
     this.handlehumanfileUpload = this.handlehumanfileUpload.bind(this)

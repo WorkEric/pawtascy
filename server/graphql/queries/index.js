@@ -9,7 +9,8 @@ const {
 const { getLocations, getLocationByKeys } = require('./Location.js');
 const { getUsers, getUserByUsername, getUserByEmail, getUserWithProfile, 
     getUserWithProfileById, getUserWithProfileByUsername, getUserPetByUsername,
-    getUsersByPetProfileId, getHostUserbyEventId, getAttendeeUsersbyEventId } = require('./User.js');
+    getUsersByPetProfileId, getHostUserbyEventId, getAttendeeUsersbyEventId,
+    getUserWithProfileByEmail } = require('./User.js');
 const { getUserProfiles, getUserProfileByUserId, getUserProfileByLocation } = require('./UserProfile.js')
 const { getPetProfiles, getPetProfileById, getPetProfilesByCategory, 
     getPetProfilesByUsername } = require('./PetProfile.js')
@@ -35,6 +36,7 @@ module.exports = new GraphQLObjectType({
             getUserWithProfileById,
             getUserWithProfileByUsername,
             getUserPetByUsername,
+            getUserWithProfileByEmail,
             getUsersByPetProfileId,
             getHostUserbyEventId,
             getAttendeeUsersbyEventId,
