@@ -49,6 +49,10 @@ const createUser = {
     async resolve(_, args) {
         // const salt = await  bcrypt.genSalt()
         // args.password = await bcrypt.hash(args.password, salt)
+
+        console.log('typeof avatar: ', typeof(args.avatar));
+        console.log('avatar: ', args.avatar);
+
         return db.user.create({
             username: args.username,
             email: args.email,
