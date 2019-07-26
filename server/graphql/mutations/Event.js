@@ -68,7 +68,7 @@ const createEvent = {
                             args.city, args.state, args.country, args.zip_code, 'America/Los_Angeles'
                             )).then(location =>{
                            return event.update(
-                                { location_id: event.location_id },
+                                { location_id: location.id },
                                 { where: { _id: event.id } }
                               )
                         })
