@@ -19,7 +19,7 @@ class DashHuman extends Component {
       Age: "",
       Job: "",
       Intro: "",
-      photo: "",
+      photo: "https://pawtascy.s3-us-west-1.amazonaws.com/u1.png",
       username: "",
 
     }
@@ -43,6 +43,7 @@ class DashHuman extends Component {
 
     request(url,query)
       .then(response => {
+        console.log('photo: ', response.getUserWithProfileByEmail.user_profile)
         const avatar =  photo_prefix + response.getUserWithProfileByEmail.user_profile.avatar
         this.setState({ 
           username: response.getUserWithProfileByEmail.username,
