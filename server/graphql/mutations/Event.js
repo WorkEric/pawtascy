@@ -66,13 +66,13 @@ const createEvent = {
                             { where: { _id: event.id } }
                           ) : db.location.create(location_obj(
                             args.city, args.state, args.country, args.zip_code, 'America/Los_Angeles'
-                            ))
-                        }).then(location =>{
+                            )).then(location =>{
                            return event.update(
-                                { location_id: location.id },
+                                { location_id: event.location_id },
                                 { where: { _id: event.id } }
                               )
                         })
+                    })
             )
 
             //Add event_pet_category
