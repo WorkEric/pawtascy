@@ -21,17 +21,16 @@ class HumanComponent extends Component {
 
     }
     this.handleChange = this.handleChange.bind(this)
-    this.fileUploadHandler = this.fileUploadHandler.bind(this)
+    this.fileChangedHandler = this.fileChangedHandler.bind(this)
   }
 
   handleChange(event) {
     const {name,value,type,checked} = event.target
     type === "checkbox" ? this.setState({ [name]:checked}) : this.setState({[name]:value})
 
-
   }
 
-  fileUploadHandler(event) {
+  fileChangedHandler(event) {
     const file = event.target.files[0]
     this.setState({photofile:file})
 
@@ -50,7 +49,7 @@ class HumanComponent extends Component {
                     <Col lg md = "3">
                       <div className="human_photo_div">
                         <h1 className="human_photo_text">Upload Your Photo</h1>
-                        <input type="file" onChange={this.fileChangedHandler} className="human_photo_upload"></input>
+                        <input type="file" onChange={this.fileChangedHandler} className="human_photo_upload" accept="image/png,image/jpg"></input>
                       </div>
                       <div className="human_gender_div">
                         <h1 className="human_gender_title">Gender</h1>

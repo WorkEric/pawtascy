@@ -34,6 +34,7 @@ class PetDetailsComponent extends Component {
       healthConditions: "",
       chracteristics: "",
     }
+    console.log(this.state.Gender)
     this.handleChange = this.handleChange.bind(this);
   }
 

@@ -33,7 +33,6 @@ class SignupComponent extends Component {
   handleSubmit(event) {
     // check if email exist, if password valid, if two password match, and if terms is checked
     event.preventDefault();
-    const url = 'http://127.0.0.1:9000/api'
     const {firstpassword, secondpassword, terms} = this.state;
     if (firstpassword !== secondpassword) {
       alert("Passwords don't match")
