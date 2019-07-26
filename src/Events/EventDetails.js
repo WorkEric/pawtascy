@@ -1,14 +1,21 @@
 import React, {Component} from 'react';
-import {Row, Col, Container, Image, Button} from 'react-bootstrap';
+import {Row, Col, Container, Image, Button, Modal} from 'react-bootstrap';
 import {request} from 'graphql-request';
 
 import Dog from '../images/dog-event.png';
 import LocationIcon from '../images/location-icon.png';
 import Footer from '../Footer/Footer';
 import Auth from '../Auth/Auth';
-
+import userphoto from '../images/userphoto.jpg';
 
 export default class EventDetails extends Component {
+    state = {
+        show: false,
+        error:'',
+    };
+    close = () => {
+        this.setState({show:false});
+    }
     joinEvent = (e) => {
         e.preventDefault();
         const email = Auth.getEmail();
@@ -30,7 +37,13 @@ export default class EventDetails extends Component {
             .then(response => {
                 console.log(response);
             }).catch(error => {
-                console.log('message: ', error.message)
+                console.log('message: ', error.message);
+                const errorMessage = error.message.split(":")[0].trim();
+                console.log(errorMessage);
+                if (errorMessage == "Variable \"$email\" of non-null type \"String!\" must not be null.") {
+                    this.setState({show:true, setShow:true})
+                    this.setState({error: "Please sign in before joining the event"})
+                }
             })
     }
 
@@ -38,7 +51,7 @@ export default class EventDetails extends Component {
 
     render() {
         const event = this.props.location.state.event;
-        console.log('event', event)
+        console.log('event', event);
         return (
             <div>
             <Container fluid style={{padding:"20px 10%"}}>
@@ -86,6 +99,43 @@ export default class EventDetails extends Component {
     Most attendees on past trips are in the 25-40 age range.<br/>
                          </p>
                     </Col>
+                </Row>
+                <Row style={{display:"flex", flexDirection:"column", padding:"10px 20px 30px 20px"}}>
+                    <Col lg={9} xs={12}>
+                        <h3>Attendees</h3>
+                    </Col>
+                </Row>
+                <Row style={{display:"flex", flexDirection:"row", padding:"10px 320px 30px 10px"}}>
+                    <Col lg={3} xs={6} style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+                        <img src={userphoto} style={{zIndex: "10", width:"120px", height:"auto"}}/>
+                        <p>Blair </p>
+                    </Col>
+                    <Col lg={3} xs={6} style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+                        <img src={userphoto} style={{width:"120px", height:"auto"}}/>
+                        <p>Blair </p>
+                    </Col>
+                    <Col lg={3} xs={6} style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+                        <img src={userphoto} style={{width:"120px", height:"auto"}}/>
+                        <p>Blair </p>
+                    </Col>
+                    <Col lg={3} xs={6} style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
+                        <img src={userphoto} style={{width:"120px", height:"auto"}}/>
+                        <p>Blair </p>
+                    </Col>
+                </Row>
+                <Row>
+                    <Modal
+                        show={this.state.show}
+                        onHide={this.close}
+                        dialogClassName="modal-90w"
+                        aria-labelledby="example-custom-modal-styling-title"
+                    >
+                        <Modal.Header closeButton>
+                        <Modal.Title id="example-custom-modal-styling-title">
+                            {this.state.error}
+                        </Modal.Title>
+                        </Modal.Header>
+                    </Modal>
                 </Row>
             </Container>
             <Footer/>

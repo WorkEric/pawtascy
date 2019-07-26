@@ -26,9 +26,10 @@ export default class CreateEventContainer extends Component {
         cost: '',
         description: '',
         specialRequirements: '',
-        image: ''
+        image: '',
+        show:false,
+        successAlert:''
     }
-
     nextStep = () => {
         const {step} = this.state;
         this.setState({
@@ -150,7 +151,11 @@ export default class CreateEventContainer extends Component {
         request(url, query, variables)
             .then(response => {
                 console.log(response);
-                window.alert("Your event created!")
+                this.setState({show:true});
+                this.setState({successAlert: "You have created event successfully!"});
+                setTimeout (()=>{
+                    this.props.history.push('/');
+                }, 2000)
             }).catch(error => {
                 console.log(error)
                 window.alert("error")
@@ -159,8 +164,8 @@ export default class CreateEventContainer extends Component {
 
     render() {
         const {step} = this.state;
-        const {petType, title, tags, startDate, endDate, startTime, endTime, address, city, state, country, zipCode, isNeutered, numberOfAttendess, cost, description, specialRequirements, image} = this.state;
-        const values = {petType, title, tags, startDate, endDate, startTime, endTime, address, city, state, country, zipCode, isNeutered, numberOfAttendess, cost, description, specialRequirements, image};
+        const {petType, title, tags, startDate, endDate, startTime, endTime, address, city, state, country, zipCode, isNeutered, numberOfAttendess, cost, description, specialRequirements, image, show, successAlert} = this.state;
+        const values = {petType, title, tags, startDate, endDate, startTime, endTime, address, city, state, country, zipCode, isNeutered, numberOfAttendess, cost, description, specialRequirements, image, show,successAlert};
         switch (step) {
             case 1: 
                 return (
