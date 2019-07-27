@@ -47,7 +47,8 @@ export default class CostAndOthers extends Component {
                         </Form.Group>
                         <Form.Group controlId="eventImage">
                             <Form.Label>Upload an image for your event</Form.Label>
-                            <Form.Control type="file" className="file-format" value={values.image} onChange={handleImageChange('eventImage')} />
+                            {/* {<Form.Control type="file" className="file-format" value={values.cover} onChange={handleImageChange('eventImage')} /> */}
+                            <Form.Control type="file" className="file-format" onChange={handleImageChange} />
                         </Form.Group>
                     </Container>
                     <Row style={{display:"flex", justifyContent:"space-around", padding:"0 20%"}}>

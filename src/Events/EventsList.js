@@ -124,11 +124,11 @@ export default class EventsList extends Component {
                              <Card className="height-adjust" key={event.id}>
                              <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Img variant="top" src={event.img}/></Link>
                              <Card.Body>
-                             <Card.Text className="date-time">{event.date + ',' + event.time}</Card.Text>
+                             <Card.Text className="date-time">{event.event_start_at}</Card.Text>
                              <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Text className="theme">
                                  {event.title}
                                  </Card.Text></Link>
-                             <Card.Text className="location-text">{event.location}</Card.Text>
+                             <Card.Text className="location-text">{event.address}</Card.Text>
                              </Card.Body>
                          </Card>))}
                          </CardColumns>
