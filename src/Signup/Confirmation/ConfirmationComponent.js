@@ -8,7 +8,7 @@ import Female from '../../images/female.png';
 import Check from '../../images/check.png';
 //import Cross from '../../images/cross.png';
 import './Confirmation.css';
-import { request } from 'graphql-request';
+import { request, GraphQLClient } from 'graphql-request';
 
 
 class ConfirmationComponent extends Component {
@@ -64,7 +64,7 @@ class ConfirmationComponent extends Component {
         gender:\"${ this.state.Gender }\",
         self_introduction:\"${ this.state.Intro }\",
         job:\"${ this.state.Job }\",
-        avatar:\"${ this.state.photofile }\",
+        avatar:\"${ this.state.photofile.name }\",
         city:\"${ this.state.City }\",
         state:\"${ this.state.State }\",
         country: "USA",
@@ -88,19 +88,17 @@ class ConfirmationComponent extends Component {
         username
 
       }
-    }`    
-
-
+    }`
 
     request(url,mutation)
-    .then(response => {
-        console.log(response);
-        this.setState({redirectTo: true});
-      })
-    .catch(error => {
-        console.log(error)
-        window.alert("error")
-      });
+      .then(response => {
+          console.log(response);
+          this.setState({redirectTo: true});
+        })
+      .catch(error => {
+          console.log(error)
+          window.alert("error")
+        });
 
   }
 

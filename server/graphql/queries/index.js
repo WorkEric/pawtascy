@@ -9,12 +9,14 @@ const {
 const { getLocations, getLocationByKeys } = require('./Location.js');
 const { getUsers, getUserByUsername, getUserByEmail, getUserWithProfile, 
     getUserWithProfileById, getUserWithProfileByUsername, getUserPetByUsername,
-    getUsersByPetProfileId, getHostUserbyEventId, getAttendeeUsersbyEventId } = require('./User.js');
+    getUsersByPetProfileId, getHostUserbyEventId, getAttendeeUsersbyEventId,
+    getUserWithProfileByEmail } = require('./User.js');
 const { getUserProfiles, getUserProfileByUserId, getUserProfileByLocation } = require('./UserProfile.js')
 const { getPetProfiles, getPetProfileById, getPetProfilesByCategory, 
     getPetProfilesByUsername } = require('./PetProfile.js')
 const { getPetCategories, getPetCategoryById, getPetCategoriesByPetProfileId, getPetCategoriesByEventId } = require('./PetCategory.js')
-const { getEvents, getEventById, getEventByLocationId, getEventByCity, getEventByUserId, getEventByUserEmail } = require('./Event.js')
+const { getEvents, getEventById, getEventByLocationId, getEventByCity, getEventByUserId, 
+    getEventByUserEmail, getHostEventsByUserId, getAttendeeEventsByUserId } = require('./Event.js')
 const { getEventFeedbacks, getEventFeedbackById, getEventFeedbackByUserId, getEventFeedbackByEventId, } = require('./EventFeedback.js')
 const { getEventTopics, getEventTopicById, getEventTopicByOrderNumber,} = require('./EventTopic.js')
 
@@ -34,6 +36,7 @@ module.exports = new GraphQLObjectType({
             getUserWithProfileById,
             getUserWithProfileByUsername,
             getUserPetByUsername,
+            getUserWithProfileByEmail,
             getUsersByPetProfileId,
             getHostUserbyEventId,
             getAttendeeUsersbyEventId,
@@ -62,6 +65,8 @@ module.exports = new GraphQLObjectType({
             getEventByCity,
             getEventByUserId,
             getEventByUserEmail,
+            getHostEventsByUserId,
+            getAttendeeEventsByUserId,
 
             //EventFeedback
             getEventFeedbacks,

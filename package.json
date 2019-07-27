@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "apollo-boost": "^0.4.3",
+    "aws-sdk": "^2.500.0",
     "body-parser": "^1.19.0",
     "body-parser-graphql": "^1.1.0",
     "bootstrap": "^4.3.1",
@@ -36,7 +37,7 @@
     "validator": "^11.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "nodemon --exec babel-node server/app.js --ignore client",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

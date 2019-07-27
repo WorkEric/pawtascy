@@ -100,6 +100,24 @@ const getUserWithProfileByUsername = {
     }
 }
 
+const getUserWithProfileByEmail = {
+    type: User,
+    args: {
+        email: {type: GraphQLString}
+    },
+    resolve(_, {email}) {
+        return db.user.findOne({
+            where: {email:email},
+            include: {
+                model: db.user_profile,
+                as: 'userProfile',
+                require: true
+            },
+            subQuery: false
+        })
+    }
+}
+
 const getUserPetByUsername = {
     type: User,
     args: {
@@ -197,6 +215,7 @@ module.exports = {
     getUserWithProfile,
     getUserWithProfileById,
     getUserWithProfileByUsername,
+    getUserWithProfileByEmail,
     getUsersByPetProfileId,
     getUserPetByUsername,
     getHostUserbyEventId,

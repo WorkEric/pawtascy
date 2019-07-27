@@ -265,7 +265,7 @@ User
 ```
 
 
-### Fin user with profile all
+### Find user with profile all
 ```
 query {
   getUserWithProfile {
@@ -418,6 +418,74 @@ query {
   }
 }
 ```
+
+### Get Host event by User_id
+
+
+```
+query {
+  getHostEventsByUserId(id:1) {
+		title
+    address
+    cost
+    created_at
+    updated_at
+  }
+}
+
+// result
+{
+  "data": {
+    "getHostEventsByUserId": [
+      {
+        "title": "event 1",
+        "address": "SanJose",
+        "cost": "cost1",
+        "created_at": "2019-07-17 04:01:17",
+        "updated_at": "2019-07-17 04:01:17"
+      }
+    ]
+  }
+}
+```
+
+### Get attendee events by user_id
+
+```
+query {
+  getAttendeeEventsByUserId(id:2) {
+		title
+    address
+    cost
+    created_at
+    updated_at
+  }
+}
+
+
+// result
+{
+  "data": {
+    "getAttendeeEventsByUserId": [
+      {
+        "title": "event 2",
+        "address": "BeiJing",
+        "cost": "cost2",
+        "created_at": "2019-07-17 04:01:17",
+        "updated_at": "2019-07-17 04:01:17"
+      },
+      {
+        "title": "event 1",
+        "address": "SanJose",
+        "cost": "cost1",
+        "created_at": "2019-07-17 04:01:17",
+        "updated_at": "2019-07-17 04:01:17"
+      }
+    ]
+  }
+}
+```
+
 
 ### user with pet profile
 
