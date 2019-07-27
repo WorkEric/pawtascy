@@ -52,10 +52,8 @@ class DashHuman extends Component {
       }
     })
     .catch(error => {
-      console.log(error)
       window.alert(error)
     });
-
 
     this.handlehumanfileUpload = this.handlehumanfileUpload.bind(this)
     this.handlehumanSubmit = this.handlehumanSubmit.bind(this)
@@ -144,7 +142,6 @@ class DashHuman extends Component {
                   className = "dash-humanname-box"
                   value = {this.state.firstname}
                   onChange = {this.handlehumanChange}
-
                 />
             </div>
             <div>
@@ -156,7 +153,6 @@ class DashHuman extends Component {
                   className = "dash-humanname-box"
                   value = {this.state.lastname}
                   onChange = {this.handlehumanChange}
-
                 />
             </div>          
             <div>
@@ -172,26 +168,28 @@ class DashHuman extends Component {
             </div>
             <div>
               <h1 className="dash-humangender-title">Gender</h1>
-              <label className="dash-humangender-text">
-                <input
-                  type="radio"
-                  name="Gender"
-                  value="male"
-                  checked={this.state.Gender === "male"}
-                  onChange={this.handlehumanChange}
-                  className="dash-humangender-left"
-                /> Male
-              </label>
-              <label className="dash-humangender-text">
-                <input
-                  type="radio"
-                  name="Gender"
-                  value="female"
-                  checked={this.state.Gender === "female"}
-                  onChange={this.handlehumanChange}
-                  className="dash-humangender-right"
-                /> Female
-              </label>
+              <div className="dash-humanradio-div">
+                <label className="dash-humangender-text">
+                  <input
+                    type="radio"
+                    name="Gender"
+                    value="male"
+                    checked={this.state.Gender === "male"}
+                    onChange={this.handlehumanChange}
+                    className="dash-humangender-left"
+                  /> Male
+                </label>
+                <label className="dash-humangender-text">
+                  <input
+                    type="radio"
+                    name="Gender"
+                    value="female"
+                    checked={this.state.Gender === "female"}
+                    onChange={this.handlehumanChange}
+                    className="dash-humangender-right"
+                  /> Female
+                </label>
+              </div>
             </div> 
             <div>
               <h1 className="dash-humanage-title">Age range</h1>

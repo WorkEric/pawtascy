@@ -11,7 +11,7 @@
 
 .user_name {
 	font-size: 20px;
-
+	color: #9597A6;
 	margin-left: 20px;
 	display: inline-block;
 
@@ -167,7 +167,6 @@
 }
 
 .event_item {
-
   display: flex;
   margin-right: 50px !important;
   text-align: left;
@@ -204,18 +203,21 @@
 .dash-human-change-photo-text {
 	font-size: 15px;
 	display: inline-block;
+	color: #9597A6;
 
 }
 
 .dash-human-change-photo-click {
 	font-size: 15px;
+	color: #9597A6;
 }
 
 .dash-humanname-title {
-	margin-top: 20px;
+	margin-top: 30px;
 	font-size: 20px;
 	margin-left: 20px;
 	display: inline-block;
+	color: #9597A6;
 
 }
 
@@ -223,16 +225,17 @@
 .dash-humanname-box {
 	font-size:15px;
 	display: inline-block;
-	margin-left: 20px;
+	margin-left: 100px;
 	width: 50%;
 
 }
 
 .dash-humancity-title {
-	margin-top: 20px;
+	margin-top: 30px;
 	font-size: 20px;
 	margin-left: 20px;
 	display: inline-block;
+	color: #9597A6;
 
 }
 
@@ -241,18 +244,24 @@
 	font-size:15px;
 	width: 50%;
 	display: inline-block;
-	margin-left: 77px;
+	margin-left: 160px;
 
 }
 .dash-humangender-title {
 	font-size: 20px;
 	margin-left: 20px;
-	margin-top: 20px;
+	margin-top: 30px;
+	display: inline-block;
+	color: #9597A6;
 }
 
 .dash-humangender-text {
 	font-size: 15px;
-
+	color: #9597A6;
+}
+.dash-humanradio-div {
+	display: inline-block;
+	margin-left: 110px;
 }
 
 .dash-humangender-left {
@@ -262,44 +271,49 @@
 
 .dash-humangender-right {
 	margin-left: 20px;
-	
+
 }
 
 .dash-humanage-box {
 	font-size:15px;
 	display: inline-block;
-	margin-left: 20px;
+	margin-left: 105px;
 	width: 50%;
 
 }
 
 .dash-humanage-title {
-	margin-top: 20px;
+	margin-top: 30px;
 	font-size: 20px;
 	margin-left: 20px;
 	display: inline-block;
+	color: #9597A6;
 
 }
 .dash-humanjob-box {
 	margin-top: 20px;
 	font-size:15px;
-	margin-left: 10px;
-	width: 100%;
+	margin-left: 50px;
+	width: 70%;
+	display: inline-block;
 
 }
 
 .dash-humanjob-title {
-	margin-top: 20px;
+	margin-top: 30px;
 	font-size: 20px;
 	margin-left: 20px;
 	display: inline-block;
+	color: #9597A6;
+	width: 100px;
 
 }
 .dash-humanintro-box {
 	margin-top: 20px;
 	font-size:15px;
-	margin-left: 10px;
-	width: 100%;
+	margin-left: 50px;
+	width: 70%;
+	display: inline-block;
 
 }
 
@@ -308,10 +322,12 @@
 	font-size: 20px;
 	margin-left: 20px;
 	display: inline-block;
+	color: #9597A6;
+	width: 100px;
 
 }
 .dash-human-submit {
-	margin-left: 70px;
+	margin-left: 550px;
 	margin-top: 50px;
 	font-size: 15px;
 	margin-bottom: 40px;
@@ -337,17 +353,18 @@
 }
 
 .dash-pet-title {
-	margin-top: 20px;
+	margin-top: 30px;
 	font-size: 20px;
 	margin-left: 20px;
 	display: inline-block;
+	color: #9597A6;
 
 }
 .dash-petname-box {
 	font-size:15px;
 	display: inline-block;
 	margin-left: 20px;
-	width: 50%;
+	width: 60%;
 
 }
 
@@ -355,42 +372,42 @@
 	font-size:15px;
 	display: inline-block;
 	margin-left: 40px;
-	width: 50%;
+	width: 60%;
 
 }
 .dash-petweight-box {
 	font-size:15px;
 	display: inline-block;
 	margin-left: 50px;
-	width: 50%;
+	width: 60%;
 
 }
 .dash-petbreed-box {
 	font-size:15px;
 	display: inline-block;
 	margin-left: 60px;
-	width: 50%;
+	width: 60%;
 
 }
 .dash-petlikes-box {
 	font-size:15px;
 	display: inline-block;
 	margin-left: 67px;
-	width: 50%;
+	width: 60%;
 
 }
 .dash-petdislikes-box {
 	font-size:15px;
 	display: inline-block;
 	margin-left: 45px;
-	width: 50%;
+	width: 60%;
 
 }
 .dash-pethealth-box {
 	font-size:15px;
 	display: inline-block;
 	margin-left: 55px;
-	width: 50%;
+	width: 60%;
 
 }
 .dash-petchara-div {
@@ -400,7 +417,7 @@
 }
 .dash-petchara-box {
 	font-size:15px;
-	width: 500px;
+	width: 545px;
 	height: 100px;
 
 }

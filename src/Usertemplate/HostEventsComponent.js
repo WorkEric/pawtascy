@@ -32,7 +32,7 @@ class HostEventsComponent extends Component {
             title,
             event_start_at,
             id,
-          }
+          
 
         }`
         request(url,query_events)
