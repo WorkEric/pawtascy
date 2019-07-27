@@ -11,7 +11,10 @@ import userphoto from '../images/userphoto.jpg';
 export default class EventDetails extends Component {
     state = {
         show: false,
-        error:'',
+        messageModal:'',
+        attendeesList:[],
+        host:'',
+        joined:false
     };
     close = () => {
         this.setState({show:false});
@@ -36,22 +39,89 @@ export default class EventDetails extends Component {
         request(url, query, variables)
             .then(response => {
                 console.log(response);
+                this.setState({show:true, setShow:true});
+                this.setState({messageModal: "You have successfully joined"})
             }).catch(error => {
                 console.log('message: ', error.message);
                 const errorMessage = error.message.split(":")[0].trim();
                 console.log(errorMessage);
                 if (errorMessage == "Variable \"$email\" of non-null type \"String!\" must not be null.") {
                     this.setState({show:true, setShow:true})
-                    this.setState({error: "Please sign in before joining the event"})
+                    this.setState({messageModal: "Please sign in before joining the event"})
                 }
             })
     }
+    componentWillMount() {
+        const eventId = this.props.location.state.event.id * 1;
+        const email = Auth.getEmail();
+
+        let username = '';
+
+        const url = 'http://127.0.0.1:9000/api'
+        const queryUsername = `query getUserByEmail($email: String!) {
+            getUserByEmail(email: $email) {
+                username,
+                }
+            }`
+        const variables = {
+            id:eventId,
+            email: email,
+        }
+        request(url, queryUsername, variables, username)
+            .then(response => {
+                console.log("host email", response.getUserByEmail.username);
+                username = response.getUserByEmail.username;
+            })
+            .catch (
+                error => {
+                    console.log(error)
+                }
+            )
+
+            const queryHost = `query getHostUserbyEventId($id: Int!) {
+                getHostUserbyEventId(id: $id) {
+                    username, 
+                        }
+                }`
+            request(url, queryHost, variables)
+                .then(response => {
+                    this.setState({host: response.getHostUserbyEventId.username})
+                })
+                .catch (
+                    error => {
+                        console.log(error)
+                    }
+                )
+
+        const query = `query getAttendeeUsersbyEventId($id: Int!) {
+                        getAttendeeUsersbyEventId(id: $id) {
+                            username,
+                                }
+                        }`
+        request(url, query, variables, username)
+            .then(response => {
+                console.log(response.getAttendeeUsersbyEventId);
+                this.setState({attendeesList: response.getAttendeeUsersbyEventId})
+                this.state.attendeesList.forEach((attendeename) => {
+                    if (attendeename.username == username) {
+                        this.setState({joined: true})
+                    }
+                })
+			})
+            .catch (
+                error => {
+                    console.log(error)
+                }
+            )
+    }
+       
 
 
 
     render() {
         const event = this.props.location.state.event;
         console.log('event', event);
+        const {attendeesList,joined, host} = this.state;
         return (
             <div>
             <Container fluid style={{padding:"20px 10%"}}>
@@ -63,10 +133,10 @@ export default class EventDetails extends Component {
                         <Row style={{display:"flex", flexDirection:"Column", padding:"0 20px"}}>
                             <h1 style={{color:"#545871", fontSize:"36px"}}> {event.title} </h1>
                             <p style={{color:"#B8817D", fontSize:"22px", fontWeight:"bold"}}> {event.event_start_at} </p>
-                            <p style={{color:"#636780", fontSize:"20px", fontWeight:"regular"}}> <span><Image src={LocationIcon}/> </span> Half Moon Bay - CA </p>
-                            <p style={{color:"#636780", fontSize:"20px", fontWeight:"regular"}}> Hosted by Blair </p>
+                            <p style={{color:"#636780", fontSize:"20px", fontWeight:"regular"}}> <span><Image src={LocationIcon}/> </span> {event.address} </p>
+                            <p style={{color:"#636780", fontSize:"20px", fontWeight:"regular"}}> Hosted by {host} </p>
 
-                            <Button variant="primary" size="sm" style={{backgroundColor:"#B8817D", border:"none", width:"100px"}} onClick={this.joinEvent}> Join </Button>
+                            <Button variant="primary" size="sm" style={joined ? {backgroundColor:"grey", border:"none", width:"100px"} :  {backgroundColor:"#B8817D", border:"none", width:"100px"}} onClick={this.joinEvent} disabled={joined}> {joined ? "Joined" : "Join"} </Button>
                         </Row>
                     </Col>
                 </Row>
@@ -105,23 +175,14 @@ export default class EventDetails extends Component {
                         <h3>Attendees</h3>
                     </Col>
                 </Row>
+
                 <Row style={{display:"flex", flexDirection:"row", padding:"10px 320px 30px 10px"}}>
-                    <Col lg={3} xs={6} style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-                        <img src={userphoto} style={{zIndex: "10", width:"120px", height:"auto"}}/>
-                        <p>Blair </p>
-                    </Col>
-                    <Col lg={3} xs={6} style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-                        <img src={userphoto} style={{width:"120px", height:"auto"}}/>
-                        <p>Blair </p>
-                    </Col>
-                    <Col lg={3} xs={6} style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-                        <img src={userphoto} style={{width:"120px", height:"auto"}}/>
-                        <p>Blair </p>
-                    </Col>
-                    <Col lg={3} xs={6} style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-                        <img src={userphoto} style={{width:"120px", height:"auto"}}/>
-                        <p>Blair </p>
-                    </Col>
+                    {attendeesList.map((attendee) => (
+                        <Col lg={3} xs={6} style={{display:"flex", flexDirection:"column", alignItems:"center"}} key={attendee.username}> 
+                            <img src={userphoto} style={{zIndex: "10", width:"120px", height:"auto"}}/>
+                            <p>{attendee.username} </p>
+                        </Col>
+                        ))}
                 </Row>
                 <Row>
                     <Modal
@@ -132,7 +193,7 @@ export default class EventDetails extends Component {
                     >
                         <Modal.Header closeButton>
                         <Modal.Title id="example-custom-modal-styling-title">
-                            {this.state.error}
+                            {this.state.messageModal}
                         </Modal.Title>
                         </Modal.Header>
                     </Modal>
