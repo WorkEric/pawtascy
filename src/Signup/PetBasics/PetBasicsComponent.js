@@ -29,6 +29,7 @@ class PetBasicsComponent extends Component {
       Pet: "",
 
     }
+    console.log(this.state.Gender)
     this.handleChange = this.handleChange.bind(this)
   
   }

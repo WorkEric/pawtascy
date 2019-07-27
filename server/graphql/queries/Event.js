@@ -124,6 +124,58 @@ const getEventByUserEmail = {
     }
 }
 
+const getHostEventsByUserId = {
+    type: new GraphQLList(Event),
+    args: {
+        id: { type: GraphQLInt }
+    },
+    resolve (_, { id }) {
+        return db.user_event.findAll({
+            where: {
+                user_id: id,
+                role: 'host'
+            }
+        }).then( user_event_records => {
+            var results = [];
+            user_event_records.forEach(record => {
+                var event = db.event.findOne({
+                    where: {
+                        id: record.event_id
+                    }
+                })
+                results.push(event)
+            })
+            return results
+        })
+    }
+}
+
+const getAttendeeEventsByUserId = {
+    type: new GraphQLList(Event),
+    args: {
+        id: { type: GraphQLInt }
+    },
+    resolve (_, { id }) {
+        return db.user_event.findAll({
+            where: {
+                user_id: id,
+                role: 'attendee'
+            }
+        }).then(user_event_records => {
+            var results = [];
+            user_event_records.forEach(record => {
+                var event = db.event.findOne({
+                    where: {
+                        id: record.event_id
+                    }
+                })
+                results.push(event)
+            })
+            return results
+        })
+    }
+}
+
 
 module.exports = {
     getEvents,
@@ -132,4 +184,6 @@ module.exports = {
     getEventByCity,
     getEventByUserId,
     getEventByUserEmail,
+    getHostEventsByUserId,
+    getAttendeeEventsByUserId
 }
