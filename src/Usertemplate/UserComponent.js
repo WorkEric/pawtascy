@@ -31,7 +31,9 @@ class UserComponent extends Component {
        username,
        id,
        user_profile {
-        avatar
+        avatar,
+        id,
+
        }
       }
     }` 
@@ -60,21 +62,29 @@ class UserComponent extends Component {
           })
 
         })
-        const query_events = `{
-          getEventByUserId(user_id: ${this.state.userid}) {
-            address,
-            title,
-            event_start_at,
+        const query_hostevents = `{
+          getHostEventsByUserId(id: ${this.state.userid}) {
             id,
           }
 
         }`
-        request(url,query_events)
+        request(url,query_hostevents)
         .then(response => {
           this.setState({
-            user_hostevents: response.getEventByUserId
+            user_hostevents: response.getHostEventsByUserId
           })
-        })     
+        })
+        const query_joinevents = `{
+          getAttendeeEventsByUserId(id: ${this.state.userid}) {
+            id,   
+          }
+        }`
+        request(url,query_joinevents)
+        .then(response => {
+          this.setState({
+            user_joinevents: response.getAttendeeEventsByUserId
+          })
+        })        
     });
   }
 
@@ -94,7 +104,7 @@ class UserComponent extends Component {
                 userid = this.state.userid;
                 userphoto = this.state.userphoto;
                 petname = this.state.pets[0].nick_name;
-                petphoto = this.state.pets[0].avatar;
+                petphoto = "https://pawtascy.s3-us-west-1.amazonaws.com/" + this.state.pets[0].avatar;
                 petlink = `/pet/${username}`;
                 usernum_hostevents = this.state.user_hostevents.length;
                 usernum_joinevents = this.state.user_joinevents.length;
