@@ -32,6 +32,7 @@ class UserComponent extends Component {
        id,
        user_profile {
         avatar,
+        id,
 
        }
       }
@@ -39,6 +40,7 @@ class UserComponent extends Component {
     request(url,query)
     .then(response => {
       const res = response.getUserByEmail;
+      console.log(res.user_profile);
       if (res.user_profile) {
         this.setState({ 
           username: res.username,
@@ -67,18 +69,29 @@ class UserComponent extends Component {
           })
 
         })
-        const query_events = `{
-          getEventByUserId(user_id: ${this.state.userid}) {
-            id
+        const query_hostevents = `{
+          getHostEventsByUserId(id: ${this.state.userid}) {
+            id,
           }
 
         }`
-        request(url,query_events)
+        request(url,query_hostevents)
         .then(response => {
           this.setState({
-            user_hostevents: response.getEventByUserId
+            user_hostevents: response.getHostEventsByUserId
           })
-        })     
+        })
+        const query_joinevents = `{
+          getAttendeeEventsByUserId(id: ${this.state.userid}) {
+            id,   
+          }
+        }`
+        request(url,query_joinevents)
+        .then(response => {
+          this.setState({
+            user_joinevents: response.getAttendeeEventsByUserId
+          })
+        })        
     });
   }
 

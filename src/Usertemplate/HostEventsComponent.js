@@ -32,8 +32,7 @@ class HostEventsComponent extends Component {
             title,
             event_start_at,
             id,
-          
-
+          }
         }`
         request(url,query_events)
         .then(response => {
@@ -50,7 +49,6 @@ class HostEventsComponent extends Component {
   render() {
 
     let events = this.state.user_hostevents
-    console.log(events)
   	return (
       <div>
         <Container>

@@ -31,7 +31,7 @@ class HumanComponent extends Component {
   }
 
   fileChangedHandler(event) {
-    const file = event.target.files[0]
+    const file = URL.createObjectURL(event.target.files[0])
     this.setState({photofile:file})
 
   }

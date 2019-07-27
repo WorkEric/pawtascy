@@ -40,8 +40,7 @@ class ConfirmationComponent extends Component {
       chracteristics: this.props.location.state.chracteristics,
       redirectTo: false,
     }
-
-    console.log(this.state.Gender)
+    
     this.handleClick = this.handleClick.bind(this)
   }
 
@@ -94,6 +93,7 @@ class ConfirmationComponent extends Component {
       .then(response => {
           console.log(response);
           this.setState({redirectTo: true});
+          window.alert("You have successfully signed up!");
         })
       .catch(error => {
           console.log(error)
@@ -111,6 +111,28 @@ class ConfirmationComponent extends Component {
       }
 
       else {
+        var genderimage;
+        if (this.state.Petgender.toUpperCase() === 'MALE') {
+          genderimage = Male;
+        } 
+        else {
+          genderimage = Female;
+
+        }
+        var spayed;
+        var spayedimage;
+        if (this.state.Neuter.toUpperCase() === "YES") {
+          spayed = 'SPAYED';
+          spayedimage = Check;
+        }
+        else {
+          spayed = 'NOT SPAYED';
+          spayedimage = Check;
+
+        }
+
+
+
         return (
           <Col className="right-top">
                   <Row className="pets-conf-top">
@@ -120,7 +142,7 @@ class ConfirmationComponent extends Component {
                             <Row className="pet-name">{this.state.Petname}</Row>
                             <Row className="info-holder">
                                 <Col className="info-item">
-                                    <Image src={Female} className="male-icon middle-space" alt="male icon"/>
+                                    <Image src={genderimage} className="male-icon middle-space" alt="male icon"/>
                                     <text> {this.state.Petgender.toUpperCase()} </text>
                                 </Col>
                                 <Col className="info-item">
