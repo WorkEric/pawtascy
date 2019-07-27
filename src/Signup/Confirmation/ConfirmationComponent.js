@@ -71,7 +71,7 @@ class ConfirmationComponent extends Component {
         zip_code:${zipcode},
         categories:\[\"${this.state.Pet}\"\],
         nick_name:\"${ this.state.Petname }\",
-        pet_avatar:\"${ this.state.Petphoto }\",
+        pet_avatar:\"${ this.state.Petphoto.name }\",
         breed:\"${ this.state.Breed }\",
         birthday:\"${ birthday }\",
         pet_gender:\"${ this.state.Petgender }\",

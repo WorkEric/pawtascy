@@ -27,31 +27,24 @@ class UserComponent extends Component {
     const email = Auth.getEmail()
     const url = 'http://127.0.0.1:9000/api'
     const query = `{
-      getUserByEmail(email:\"${ email }\" ) {
+      getUserWithProfileByEmail(email:\"${ email }\" ) {
        username,
        id,
        user_profile {
-        avatar,
-
+        avatar
        }
       }
-    }`    
+    }` 
+    
     request(url,query)
     .then(response => {
-      const res = response.getUserByEmail;
-      if (res.user_profile) {
-        this.setState({ 
-          username: res.username,
-          userphoto: res.userprofile.avatar,
-          userid: res.id,
-        })
-      }
-      else {
-        this.setState({ 
-          username: res.username,
-          userid: res.id,
-        });
-      }
+      const res = response.getUserWithProfileByEmail;
+      const user_avatar = "https://pawtascy.s3-us-west-1.amazonaws.com/" + res.user_profile.avatar
+      this.setState({ 
+        username: res.username,
+        userphoto: user_avatar,
+        userid: res.id,
+      })
     })
     .then(data => {
         const query_pet = `{
@@ -69,7 +62,10 @@ class UserComponent extends Component {
         })
         const query_events = `{
           getEventByUserId(user_id: ${this.state.userid}) {
-            id
+            address,
+            title,
+            event_start_at,
+            id,
           }
 
         }`
