@@ -4,9 +4,8 @@
 
 }
 .user_photo {
-	width: 60px;
-	height: 60px;
-
+	width: 80px;
+  	border-radius: 50%;
 }
 
 .user_name {
@@ -40,29 +39,61 @@
 
 }
 
+.user_profile_photo {
+	margin-left: 50px;
+	width: 120px;
+  	border-radius: 50%;
+  	display: inline-block;
+
+}
+.user_profile_name {
+	font-size: 20px;
+	color: #9597A6;
+	margin-top: 5px;
+	margin-left: 0px;
+	display: inline-block;
+
+}
+
+.pet_profile_name {
+	font-size: 10px;
+	margin-top: 10px;
+  	margin-left: -25px;
+
+}
+
+.pet_profile_photo {
+	width: 50px;
+  	border-radius: 50%;
+  	margin-left: -25px;
+  	margin-top: 10px;
+
+}
 .user_edit_profile {
 	margin-top: 50px;
 
 }
 .user_event_div {
-	margin-top: 50px;
+	margin-top: 120px;
+
 }
 
 .user_events_text_first {
-	font-size: 15px;
+	font-size: 20px;
 	display: inline-block;
-
+	color: #9597A6;
 }
 .user_events_text {
-	font-size: 15px;
+	font-size: 20px;
 	display: inline-block;
 	margin-left: 50px;
+	color: #9597A6;
 }
 
 .user_nav_link {
 	font-size: 20px;
 	color: #ABABAB;
-	margin-left: 80px;
+	margin-left: 200px;
 	margin-bottom: 20px;
 
 }

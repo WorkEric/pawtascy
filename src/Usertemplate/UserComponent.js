@@ -108,18 +108,23 @@ class UserComponent extends Component {
                 <div>
                   <Container className="user_background">
                     <Row className="user_profile_header">
-                      <Col lg={3} md={3}>
+                      <Col lg={2} md={2}>
+                        <div className="userpet_div">
+                            <img src={userphoto} className="user_profile_photo"></img>
+                        </div>
+                      </Col>
+                      <Col lg={2} md={2}>
                         <div className="userpet_div">
                           <div>
-                            <img src={userphoto} className="user_photo"></img><h1 className="user_name">{username}</h1>&nbsp;&nbsp;&nbsp;&nbsp;
+                            <h1 className="user_profile_name">{username}</h1>&nbsp;&nbsp;&nbsp;&nbsp;
                           </div>
                           <div className="pet_div">
-                            <h1 className="pet_name">{petname}</h1>
-                            <Link to={petlink}><img src={petphoto} className="pet_photo" /></Link>
+                            <Link to={petlink}><img src={petphoto} className="pet_profile_photo" /></Link>
+                            <h1 className="pet_profile_name">{petname}</h1>
                           </div>
                         </div>
                       </Col>
-                      <Col lg={7} md={7}>
+                      <Col lg={6} md={6}>
                         <div className="user_event_div">
                           <h1 className="user_events_text_first">{usernum_hostevents+" Hosting Events"}</h1>
                           <h1 className="user_events_text">{usernum_joinevents+" Joined Events"}</h1>
