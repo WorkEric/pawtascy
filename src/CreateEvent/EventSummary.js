@@ -17,6 +17,7 @@ export default class EventSummary extends Component {
     }
     render() {
         const {values: {petType, title, tags, startDate, endDate, startTime, endTime, address, isNeutered, numberOfAttendess, cost, description, specialRequirements, image, show, successAlert}} = this.props;
+        console.log(image)
         return (
             <Container fluid className="create-event-page">
                 <Row>
@@ -70,7 +71,7 @@ export default class EventSummary extends Component {
                         <Col lg={10}> {specialRequirements} </Col>
                     </Row>
                     <Row>
-                        <Col lg={2} className="tag-format">Image:</Col><Col> <img src={CatEventCreate} style={{marginTop:"2%", marginBottom: "3%", width:"300px"}}/> </Col>
+                        <Col lg={2} className="tag-format">Image:</Col><Col> <img src={image} style={{marginTop:"2%", marginBottom: "3%", width:"300px"}}/> </Col>
                     </Row>
                 </Container>
                 <Row style={{display:"flex", justifyContent:"space-around", padding:"0 20%"}}>

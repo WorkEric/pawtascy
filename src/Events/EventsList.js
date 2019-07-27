@@ -30,7 +30,7 @@ export default class EventsList extends Component {
         const country = searchName.split(',')[2].trim();
         console.log(country);
         //send request
-        //Post login data
+        //Get events data
         const url = 'http://127.0.0.1:9000/api'
         const query = `query getEventByCity($city: String!, $state:String!, $country:String!) {
                 getEventByCity(city: $city, state:$state, country:$country) {
@@ -93,14 +93,15 @@ export default class EventsList extends Component {
                             <CardColumns>
                                 {data.getEvents.map((event) => (
                                     <Card className="height-adjust" key={event.id}>
-                                        <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Img variant="top" src={event.cover}/></Link>
-                                        <Card.Body>
-                                        <Card.Text className="date-time">{event.event_start_at}</Card.Text>
-                                            <Card.Text className="theme">
-                                            {event.title}
-                                            </Card.Text>
-                                        <Card.Text className="location-text">{event.address}</Card.Text>
-                                        </Card.Body>
+                                        <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Img variant="top" src={event.cover}/>
+                                            <Card.Body>
+                                            <Card.Text className="date-time">{event.event_start_at}</Card.Text>
+                                                <Card.Text className="theme">
+                                                {event.title}
+                                                </Card.Text>
+                                            <Card.Text className="location-text">{event.address}</Card.Text>
+                                            </Card.Body>
+                                        </Link>
                                     </Card>))}
                                 </CardColumns>
                                 </Row>
@@ -124,9 +125,9 @@ export default class EventsList extends Component {
                              <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Img variant="top" src={event.img}/></Link>
                              <Card.Body>
                              <Card.Text className="date-time">{event.date + ',' + event.time}</Card.Text>
-                                 <Card.Text className="theme">
+                             <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Text className="theme">
                                  {event.title}
-                                 </Card.Text>
+                                 </Card.Text></Link>
                              <Card.Text className="location-text">{event.location}</Card.Text>
                              </Card.Body>
                          </Card>))}

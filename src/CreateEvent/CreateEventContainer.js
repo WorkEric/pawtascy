@@ -46,6 +46,17 @@ export default class CreateEventContainer extends Component {
     handleChange = input => e => {
         this.setState ({[input]: e.target.value});
     }
+    handleImageChange = input => e => {
+        console.log(e.target.files[0]);
+        let reader = new FileReader();
+        reader.onloadend = (e) => {
+            this.setState({
+                [input]: e.target.result
+            });
+            console.log(e.target.result);
+        }
+        reader.readAsDataURL(e.target.files[0])
+    }
     clearForm = () => {
         this.setState({
             petType: 'Dog',
@@ -165,7 +176,7 @@ export default class CreateEventContainer extends Component {
     render() {
         const {step} = this.state;
         const {petType, title, tags, startDate, endDate, startTime, endTime, address, city, state, country, zipCode, isNeutered, numberOfAttendess, cost, description, specialRequirements, image, show, successAlert} = this.state;
-        const values = {petType, title, tags, startDate, endDate, startTime, endTime, address, city, state, country, zipCode, isNeutered, numberOfAttendess, cost, description, specialRequirements, image, show,successAlert};
+        const values = {petType, title, tags, startDate, endDate, startTime, endTime, image, address, city, state, country, zipCode, isNeutered, numberOfAttendess, cost, description, specialRequirements, image, show,successAlert};
         switch (step) {
             case 1: 
                 return (
@@ -185,6 +196,7 @@ export default class CreateEventContainer extends Component {
                             nextStep = {this.nextStep}
                             prevStep = {this.prevStep}
                             handleChange = {this.handleChange}
+                            handleImageChange = {this.handleImageChange}
                             values = {values}/>
                         <Footer />
                     </div>

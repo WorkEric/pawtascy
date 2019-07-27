@@ -15,7 +15,7 @@ export default class CostAndOthers extends Component {
         this.props.prevStep();
     }
     render() {
-        const {values, handleChange} = this.props;
+        const {values, handleChange, handleImageChange} = this.props; 
         return (
             <Container fluid className="create-event-page">
                 <Row>
@@ -45,9 +45,9 @@ export default class CostAndOthers extends Component {
                             <Form.Label>Do you have any special requirements that all the attendees need to pay attention to?</Form.Label>
                             <Form.Control as="textarea" rows="5" className="requirements-format"  value={values.specialRequirements} onChange={handleChange('specialRequirements')}/>
                         </Form.Group>
-                        <Form.Group controlId="">
+                        <Form.Group controlId="eventImage">
                             <Form.Label>Upload an image for your event</Form.Label>
-                            <Form.Control type="file" onChange={(e) => console.log(e.target.files[0])} className="file-format" value={values.image}/>
+                            <Form.Control type="file" className="file-format" value={values.image} onChange={handleImageChange('eventImage')} />
                         </Form.Group>
                     </Container>
                     <Row style={{display:"flex", justifyContent:"space-around", padding:"0 20%"}}>
@@ -65,6 +65,7 @@ export default class CostAndOthers extends Component {
 }
 CostAndOthers.propTypes = {
     handleChange: PropTypes.func.isRequired,
+    handleImageChange:PropTypes.func.isRequired,
     nextStep: PropTypes.func.isRequired,
     prevStep: PropTypes.func.isRequired,
     values: PropTypes.object.isRequired,
