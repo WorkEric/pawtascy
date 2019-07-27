@@ -1,63 +1,71 @@
 import React, { Component } from 'react';
 import {Container, Row, Col, Image, Button, CardDeck, Card} from 'react-bootstrap';
 import {Link, Route} from 'react-router-dom';
-import catimage from '../images/catimage.jpg';
 import { request } from 'graphql-request';
-
+import Auth from '../Auth/Auth';
 
 class HostEventsComponent extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
-      userid: props.match.params.id,
+      userid: "",
       user_hostevents: [],
     }
-
+    const email = Auth.getEmail()
     const url = 'http://127.0.0.1:9000/api'
-    const query_events = `{
-      getEventByUserId(user_id: ${this.state.userid}) {
-        id
+    const query = `{
+      getUserByEmail(email:\"${ email }\" ) {
+       id,
       }
-
-    }`
-
-    request(url,query_events)
+    }`    
+    request(url,query)
     .then(response => {
-      this.setState({
-        user_hostevents: response.getEventByUserId
+      const res = response.getUserByEmail;
+      this.setState({ 
+        userid: res.id,
       })
-    })  
+    })
+    .then(data => {
+        const query_events = `{
+          getHostEventsByUserId(id: ${this.state.userid}) {
+            address,
+            title,
+            event_start_at,
+            id,
+          }
 
+        }`
+        request(url,query_events)
+        .then(response => {
+          this.setState({
+            user_hostevents: response.getHostEventsByUserId
+          })
+        })    
+    });
 
   }
 
 
 
   render() {
-    // let events = [
-    //     {time: "Sat, June 8, 6:00PM", location: "Sunnyvale CA, 94086", content: "Mimi's birthday - joined us to celebrate my babe cat's 3-year birthday party", image:catimage},
-    //     {time: "Sat, June 8, 6:00PM", location: "Sunnyvale CA, 94086", content: "Mimi's birthday - joined us to celebrate my babe cat's 3-year birthday party", image:catimage},
 
-    // ] 
     let events = this.state.user_hostevents
-
+    console.log(events)
   	return (
       <div>
         <Container>
           <Row>
-              {events.map((event, index) => (
-                <CardDeck className="event_item_entire">
-                  <Card key={index} className="event_item">
+              {events.map((event) => (
+                <CardDeck className="event_item_entire" key={event.id}>
+                  <Card className="event_item">
                     <Card.Body>
-                      <Image src={event.image} className="user_event_image"/>
-                      <Card.Title className="user_event_time">{event.time}</Card.Title>
-                      <Card.Text className="user_event_content">
-                      {event.content}
-                      </Card.Text>
-                      <div>
-                        <Card.Title className="user_event_content">
-                        {event.location}
-                        </Card.Title>
+                      <div className= "user_event_div">
+                        <Link to={{ pathname:`/eventdetail/${event.id}`, state: {event}}}><Image src={event.image} className="user_event_image" /></Link>
+                      </div>
+                      <div className= "user_event_div">
+                        <Card.Title className="user_event_time">{event.event_start_at}</Card.Title>
+                        <Card.Text className="user_event_content">{event.title}</Card.Text>
+                        <Card.Title className="user_event_content">{event.address}</Card.Title>
                       </div>
                     </Card.Body>
                   </Card>

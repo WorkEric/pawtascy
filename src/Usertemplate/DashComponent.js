@@ -42,12 +42,12 @@ class DashHuman extends Component {
       const res = response.getUserByEmail;
       if (res.user_profile) {
         this.setState({ 
-          username: response.getUserByEmail.username,
-          photo: response.getUserByEmail.userprofile.avatar,
+          username: res.username,
+          photo: res.userprofile.avatar,
         })
       }
       else {
-        this.setState({username: response.getUserByEmail.username,})
+        this.setState({username: res.username,})
 
       }
     })

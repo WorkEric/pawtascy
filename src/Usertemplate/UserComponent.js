@@ -30,15 +30,28 @@ class UserComponent extends Component {
       getUserByEmail(email:\"${ email }\" ) {
        username,
        id,
+       user_profile {
+        avatar,
+
+       }
       }
     }`    
-
     request(url,query)
     .then(response => {
-      this.setState({ 
-        username: response.getUserByEmail.username,
-        userid: response.getUserByEmail.id,
-      });
+      const res = response.getUserByEmail;
+      if (res.user_profile) {
+        this.setState({ 
+          username: res.username,
+          userphoto: res.userprofile.avatar,
+          userid: res.id,
+        })
+      }
+      else {
+        this.setState({ 
+          username: res.username,
+          userid: res.id,
+        });
+      }
     })
     .then(data => {
         const query_pet = `{
@@ -54,20 +67,6 @@ class UserComponent extends Component {
           })
 
         })
-
-        const query_id = `{
-          getUserProfileByUserId(id: ${this.state.userid}) {
-            avatar,
-          }
-
-        }`
-        request(url,query_id)
-        .then(response => {
-          this.setState({
-            userphoto: response.getUserProfileByUserId.avatar
-          })
-        })
-
         const query_events = `{
           getEventByUserId(user_id: ${this.state.userid}) {
             id
@@ -135,16 +134,16 @@ class UserComponent extends Component {
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="ml-auto right-nav">
                                     {/* <NavLink className="user_nav_link" to="/user/posts" activeClassName='user_nav_link_active'>Posts</NavLink> */}
-                                    <NavLink className="user_nav_link" to={`/user/hosted_events/${this.state.userid}`} activeClassName='user_nav_link_active'>Hosting Events</NavLink>
+                                    <NavLink className="user_nav_link" to="/user/hosted_events" activeClassName='user_nav_link_active'>Hosting Events</NavLink>
                                     <NavLink className="user_nav_link" to="/user/joined_events" activeClassName='user_nav_link_active'>Joined Events</NavLink>
                                 </Nav>
                             </Navbar.Collapse>
                           </Navbar>
                           <Switch>
                             {/* <Route path='/user/posts' component={PostsComponent}/> */}
-                            <Route path='/user/hosted_events/:id' component={HostEventsComponent}/>
+                            <Route path='/user/hosted_events' component={HostEventsComponent}/>
                             <Route path='/user/joined_events' component={JoinEventsComponent}/>
-                            <Redirect to='/user/hosted_events/' />
+                            <Redirect to='/user/hosted_events' />
                           </Switch>
                     </Row>
                   </Container>          

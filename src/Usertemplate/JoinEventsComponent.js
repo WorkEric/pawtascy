@@ -1,39 +1,68 @@
 import React, { Component } from 'react';
 import {Container, Row, Col, Image, Button, CardDeck, Card} from 'react-bootstrap';
 import {Link, Route} from 'react-router-dom';
-import dogimage from '../images/dog-event.png';
+import Auth from '../Auth/Auth';
+import { request } from 'graphql-request';
 
 class JoinEventsComponent extends Component {
   constructor() {
     super();
+    this.state = {
+      userid: "",
+      user_joinevents: [],
+    }
+    const email = Auth.getEmail()
+    const url = 'http://127.0.0.1:9000/api'
+    const query = `{
+      getUserByEmail(email:\"${ email }\" ) {
+       id,
+      }
+    }`    
+    request(url,query)
+    .then(response => {
+      const res = response.getUserByEmail;
+      this.setState({ 
+        userid: res.id,
+      })
+    })
+    .then(data => {
+        const query_events = `{
+          getAttendeeEventsByUserId(id: ${this.state.userid}) {
+            address,
+            title,
+            event_start_at,
+            id,
+          }
 
+        }`
+        request(url,query_events)
+        .then(response => {
+          this.setState({
+            user_joinevents: response.getAttendeeEventsByUserId
+          })
+        })    
+    });
   }
 
 
 
   render() {
-    let events = [
-        {time: "Sat, June 1, 4:00PM", location: "Half Moon Bay CA", content: "Beach Run - Dogs swim & play around", image:dogimage},
-        {time: "Sat, June 1, 4:00PM", location: "Half Moon Bay CA", content: "Beach Run - Dogs swim & play around", image:dogimage},
-
-    ] 
+    let events = this.state.user_joinevents
     return (
       <div>
         <Container>
           <Row>
-              {events.map((event, index) => (
-                <CardDeck className="event_item_entire">
-                  <Card key={index} className="event_item">
+              {events.map((event) => (
+                <CardDeck className="event_item_entire" key={event.id}>
+                  <Card className="event_item">
                     <Card.Body>
-                      <Image src={event.image} className="user_event_image"/>
-                      <Card.Title className="user_event_time">{event.time}</Card.Title>
-                      <Card.Text className="user_event_content">
-                      {event.content}
-                      </Card.Text>
-                      <div>
-                        <Card.Title className="user_event_content">
-                        {event.location}
-                        </Card.Title>
+                      <div className= "user_event_div">
+                        <Link to={{ pathname:`/eventdetail/${event.id}`, state: {event}}}><Image src={event.image} className="user_event_image" /></Link>
+                      </div>
+                      <div className= "user_event_div">
+                        <Card.Title className="user_event_time">{event.event_start_at}</Card.Title>
+                        <Card.Text className="user_event_content">{event.title}</Card.Text>
+                        <Card.Title className="user_event_content">{event.address}</Card.Title>
                       </div>
                     </Card.Body>
                   </Card>
