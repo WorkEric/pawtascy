@@ -26,9 +26,10 @@ export default class CreateEventContainer extends Component {
         cost: '',
         description: '',
         specialRequirements: '',
-        image: '',
+        coverUrl: '',
         show:false,
-        successAlert:''
+        successAlert:'',
+        cover:''
     }
     nextStep = () => {
         const {step} = this.state;
@@ -46,16 +47,26 @@ export default class CreateEventContainer extends Component {
     handleChange = input => e => {
         this.setState ({[input]: e.target.value});
     }
-    handleImageChange = input => e => {
-        console.log(e.target.files[0]);
-        let reader = new FileReader();
-        reader.onloadend = (e) => {
-            this.setState({
-                [input]: e.target.result
-            });
-            console.log(e.target.result);
-        }
-        reader.readAsDataURL(e.target.files[0])
+    // handleImageChange = input => e => {
+        
+    //     // const {cover} = this.state;
+    //     // console.log(e.target.files[0]);
+    //     // let reader = new FileReader();
+    //     // reader.onloadend = (e) => {
+    //     //     this.setState({
+    //     //         [input]: e.target.result
+    //     //     });
+    //     //     console.log(e.target.result);
+    //     //     console.log("cover", this.state.cover);
+    //     // }
+    //     // reader.readAsDataURL(e.target.files[0])
+    // }
+    handleImageChange = (e) => {
+        this.setState({
+            cover: e.target.files[0].name,
+            coverUrl: URL.createObjectURL(e.target.files[0]),
+          });
+          console.log(this.state.cover);
     }
     clearForm = () => {
         this.setState({
@@ -85,7 +96,7 @@ export default class CreateEventContainer extends Component {
             const title = this.state.title;
             const event_start_at = this.state.startDate + "," + this.state.startTime;
             const event_end_at = this.state.endDate + "," + this.state.endTime;
-            const cover = '';
+            const cover = this.state.cover;
             const cost = "$" + this.state.cost;
             const restrict_attendee_number = 11;
             const is_neutered = this.state.isNeutered === 'Yes' ? true : false;
@@ -175,8 +186,8 @@ export default class CreateEventContainer extends Component {
 
     render() {
         const {step} = this.state;
-        const {petType, title, tags, startDate, endDate, startTime, endTime, address, city, state, country, zipCode, isNeutered, numberOfAttendess, cost, description, specialRequirements, image, show, successAlert} = this.state;
-        const values = {petType, title, tags, startDate, endDate, startTime, endTime, image, address, city, state, country, zipCode, isNeutered, numberOfAttendess, cost, description, specialRequirements, image, show,successAlert};
+        const {petType, title, tags, startDate, endDate, startTime, endTime, address, city, state, country, zipCode, isNeutered, numberOfAttendess, cost, description, specialRequirements, coverUrl, show, successAlert} = this.state;
+        const values = {petType, title, tags, startDate, endDate, startTime, endTime, coverUrl, address, city, state, country, zipCode, isNeutered, numberOfAttendess, cost, description, specialRequirements, coverUrl, show,successAlert};
         switch (step) {
             case 1: 
                 return (

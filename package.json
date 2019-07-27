@@ -37,7 +37,7 @@
     "validator": "^11.1.0"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node server/app.js --ignore client",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
