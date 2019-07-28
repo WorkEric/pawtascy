@@ -44,6 +44,7 @@ export default class EventsList extends Component {
                     is_neutered
                     detail
                     note
+                    cover
                 }
           }`
         const variables = {
@@ -93,7 +94,7 @@ export default class EventsList extends Component {
                             <CardColumns>
                                 {data.getEvents.map((event) => (
                                     <Card className="height-adjust" key={event.id}>
-                                        <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Img variant="top" src={event.cover}/>
+                                        <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Img variant="top" src={"https://pawtascy.s3-us-west-1.amazonaws.com/" + `${event.cover}`}/>
                                             <Card.Body>
                                             <Card.Text className="date-time">{event.event_start_at}</Card.Text>
                                                 <Card.Text className="theme">

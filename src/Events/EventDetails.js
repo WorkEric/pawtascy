@@ -127,7 +127,7 @@ export default class EventDetails extends Component {
             <Container fluid style={{padding:"20px 10%"}}>
                 <Row>
                     <Col lg={4} md={6} xs={12}>
-                        <Image src={Dog} style={{width:"100%"}}/>
+                        <Image src={"https://pawtascy.s3-us-west-1.amazonaws.com/" + `${event.cover}`} style={{width:"100%"}}/>
                     </Col>
                     <Col lg={8} md={6} xs={12}>
                         <Row style={{display:"flex", flexDirection:"Column", padding:"0 20px"}}>
