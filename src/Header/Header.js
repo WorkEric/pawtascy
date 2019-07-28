@@ -67,7 +67,7 @@ class Header extends Component {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto right-nav">
                         <NavLink className="nav-link" to="/">Home</NavLink>
-                        <NavLink className="nav-link" to="/feeds">Feeds</NavLink>
+                        {/* <NavLink className="nav-link" to="/feeds">Feeds</NavLink> */}
                         <NavLink className="nav-link" to="/events">Events</NavLink>
                         <NavLink className="nav-link" to="/create-event">+Create Events</NavLink>
                         {this.rederLoginInfo()}
