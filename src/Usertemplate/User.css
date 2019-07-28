@@ -260,7 +260,7 @@
 	display: inline-block;
 	margin-left: 100px;
 	width: 50%;
-
+	color: grey;
 }
 
 .dash-humancity-title {
@@ -278,7 +278,7 @@
 	width: 50%;
 	display: inline-block;
 	margin-left: 160px;
-
+	color: grey;
 }
 .dash-humangender-title {
 	font-size: 20px;
@@ -312,7 +312,7 @@
 	display: inline-block;
 	margin-left: 105px;
 	width: 50%;
-
+	color: grey;
 }
 
 .dash-humanage-title {
@@ -329,7 +329,7 @@
 	margin-left: 50px;
 	width: 70%;
 	display: inline-block;
-
+	color: grey;
 }
 
 .dash-humanjob-title {
@@ -347,7 +347,7 @@
 	margin-left: 50px;
 	width: 70%;
 	display: inline-block;
-
+	color: grey;
 }
 
 .dash-humanintro-title {
@@ -398,6 +398,7 @@
 	display: inline-block;
 	margin-left: 20px;
 	width: 60%;
+	color: grey;
 
 }
 
@@ -406,6 +407,7 @@
 	display: inline-block;
 	margin-left: 40px;
 	width: 60%;
+	color: grey;
 
 }
 .dash-petweight-box {
@@ -413,35 +415,35 @@
 	display: inline-block;
 	margin-left: 50px;
 	width: 60%;
-
+	color: grey;
 }
 .dash-petbreed-box {
 	font-size:15px;
 	display: inline-block;
 	margin-left: 60px;
 	width: 60%;
-
+	color: grey;
 }
 .dash-petlikes-box {
 	font-size:15px;
 	display: inline-block;
 	margin-left: 67px;
 	width: 60%;
-
+	color: grey;
 }
 .dash-petdislikes-box {
 	font-size:15px;
 	display: inline-block;
 	margin-left: 45px;
 	width: 60%;
-
+	color: grey;
 }
 .dash-pethealth-box {
 	font-size:15px;
 	display: inline-block;
 	margin-left: 55px;
 	width: 60%;
-
+	color: grey;
 }
 .dash-petchara-div {
 	margin-top: 20px;
@@ -452,7 +454,7 @@
 	font-size:15px;
 	width: 545px;
 	height: 100px;
-
+	color: grey;
 }
 .petpro_whole {
 	background-color: #DDDDDD;

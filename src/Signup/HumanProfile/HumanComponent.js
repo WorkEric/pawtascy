@@ -44,12 +44,9 @@ class HumanComponent extends Component {
   render() {
       const { displayErrors } = this.state;
       return (
-        <div>
-          <Col  lg md = "7" style={{backgroundColor: "#EEEEEE", height:"100vh"}}>
+          <Col  lg md = "7" style={{backgroundColor: "#EEEEEE"}}>
             <h1 className="human_title2">Hello! Please tell us a little bit about yourself.</h1>
             <form>
-              <div>
-                <div>
                   <Row>
                     <Col lg md = "3">
                       <div className="human_photo_div">
@@ -171,12 +168,10 @@ class HumanComponent extends Component {
                         Next
                       </Button>
                       </Link>
-                </Row>
-                </div>
-              </div>
+                  </Row>
             </form>
           </Col>
-        </div>
+
       )
   }
 }

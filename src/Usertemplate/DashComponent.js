@@ -50,7 +50,6 @@ class DashHuman extends Component {
     .then(response => {
       const res = response.getUserWithProfileByEmail;
       const user_avatar = "https://pawtascy.s3-us-west-1.amazonaws.com/" + res.user_profile.avatar
-      console.log(response)
       this.setState({ 
         username: res.username,
         photo: user_avatar,
@@ -282,7 +281,8 @@ class DashPet extends Component {
       Health: "",
       Chara: "",
       username: "",
-      pets: null,
+      Petid: "",
+      Petname: "",
     }
 
 
@@ -304,16 +304,35 @@ class DashPet extends Component {
     .then(data => {
         const query_pet = `{
           getPetProfilesByUsername(username: \"${ this.state.username }\") {
-          nick_name,
-          avatar,
-          id,
+            id
+            nick_name
+            avatar
+            breed
+            birthday
+            gender
+            weight
+            character
+            is_neutered
+            dislike
+            health
+            description
           }
         }`
         request(url,query_pet)
         .then(response => {
-          console.log(response.getPetProfilesByUsername)
+          const pets = response.getPetProfilesByUsername
           this.setState({
-            pets: response.getPetProfilesByUsername
+            Petid: pets[0].id,
+            Petphotoname: pets[0].avatar,
+            Birthday: pets[0].birthday,
+            Weight: pets[0].weight,
+            Breed: pets[0].breed,
+            Likes: pets[0].description,
+            Dislikes: pets[0].dislike,
+            Health: pets[0].health,
+            Chara: pets[0].character,
+            Petname: pets[0].nick_name,
+
           })
 
         })
@@ -346,7 +365,7 @@ class DashPet extends Component {
 
     const mutation = `mutation {
       updatePetProfile (
-        id: ${ this.state.pets[0].id },
+        id: ${ this.state.Petid },
         pet_avatar: \"${this.state.Petphotoname}\",
         breed: \"${this.state.Breed}\",
         description: \"${this.state.Likes}\",
@@ -373,17 +392,18 @@ class DashPet extends Component {
   }
 
   render () {
-
+    console.log(this.state.Petphotoname)
     var petname = "";
     var petphoto = null;
     if (this.state.Petphotoname) {
-      petphoto = this.state.Petphoto;
-      petname = this.state.pets[0].nick_name;
+      petphoto = "https://pawtascy.s3-us-west-1.amazonaws.com/"+this.state.Petphotoname;
+      petname = this.state.Petname;
     }
     else{
-      if (this.state.pets) {
-        petname = this.state.pets[0].nick_name;
-        petphoto = "https://pawtascy.s3-us-west-1.amazonaws.com/" + this.state.pets[0].avatar;
+      if (this.state.Petid) {
+        petname = this.state.Petname;
+        petphoto = "https://pawtascy.s3-us-west-1.amazonaws.com/" + this.state.Petphotoname;
+        console.log(petphoto)
       }
     }
     return (
@@ -400,7 +420,7 @@ class DashPet extends Component {
                 <input
                   type="text"
                   name="Birthday"
-                  placeholder = ""
+                  placeholder = {this.state.Birthday}
                   className = "dash-petbirth-box"
                   value = {this.state.Birthday}
                   onChange = {this.handlepetChange}
@@ -411,7 +431,7 @@ class DashPet extends Component {
                 <input
                   type="text"
                   name="Weight"
-                  placeholder = ""
+                  placeholder = {this.state.Weight}
                   className = "dash-petweight-box"
                   value = {this.state.Weight}
                   onChange = {this.handlepetChange}
@@ -422,6 +442,7 @@ class DashPet extends Component {
                 <input
                   type="text"
                   name="Breed"
+                  placeholder = {this.state.Breed}
                   value={this.state.Breed}
                   onChange={this.handlepetChange}
                   className="dash-petbreed-box"
@@ -433,6 +454,7 @@ class DashPet extends Component {
                 <input
                   type="text"
                   name="Likes"
+                  placeholder = {this.state.Likes}
                   value={this.state.Likes}
                   onChange={this.handlepetChange}
                   className="dash-petlikes-box"
@@ -443,6 +465,7 @@ class DashPet extends Component {
                 <input
                   type="text"
                   name="Dislikes"
+                  placeholder = {this.state.Dislikes}
                   value={this.state.Dislikes}
                   onChange={this.handlepetChange}
                   className="dash-petdislikes-box"
@@ -453,6 +476,7 @@ class DashPet extends Component {
                 <input
                   type="text"
                   name="Health"
+                  placeholder = {this.state.Health}
                   value={this.state.Health}
                   onChange={this.handlepetChange}
                   className="dash-pethealth-box"
@@ -463,6 +487,7 @@ class DashPet extends Component {
               <div className="dash-petchara-div">
                 <textarea
                   name="Chara"
+                  placeholder = {this.state.Chara}
                   value={this.state.Chara}
                   onChange={this.handlepetChange}
                   className="dash-petchara-box"

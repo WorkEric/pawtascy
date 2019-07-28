@@ -56,7 +56,7 @@ class SignupComponent extends Component {
 
       if (this.state.redirectTo === true) {
         return (
-          <div>
+          <div className="remove-tab">
             <Redirect to={ {pathname: "/humanprofile", state: this.state}} />
           </div>
         )
