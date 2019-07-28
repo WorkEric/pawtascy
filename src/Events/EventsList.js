@@ -23,7 +23,7 @@ export default class EventsList extends Component {
             initView: false,
             loading:true
         })
-        const city = searchName.split(',')[0].trim();
+        const city = searchName.split(',')[0];
         console.log(city);
         const state = searchName.split(',')[1].trim();
         console.log(state);
@@ -80,6 +80,8 @@ export default class EventsList extends Component {
                 address,
                 event_start_at,
                 cover
+                detail
+                note
             }
         }`
         if (initView) {
@@ -123,7 +125,7 @@ export default class EventsList extends Component {
                     <CardColumns>
                         {events.map((event) => (
                              <Card className="height-adjust" key={event.id}>
-                             <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Img variant="top" src={event.img}/></Link>
+                             <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Img variant="top" src={"https://pawtascy.s3-us-west-1.amazonaws.com/" + `${event.cover}`}/></Link>
                              <Card.Body>
                              <Card.Text className="date-time">{event.event_start_at}</Card.Text>
                              <Link to={ { pathname:`/eventdetail/${event.id}`, state:{event}}}><Card.Text className="theme">
@@ -138,87 +140,5 @@ export default class EventsList extends Component {
                         
                )
         }
-        /*
-        return (
-            <Container>
-                <Row> 
-                <CardColumns>
-                    {events.map((event, index) => (
-                         <Card className="height-adjust">
-                         <Card.Img variant="top" src={dogEvent}/>
-                         <Card.Body>
-                         <Card.Text className="date-time">{events.date + ',' + event.time}</Card.Text>
-                             <Card.Text className="theme">
-                             {event.title}
-                             </Card.Text>
-                         <Card.Text className="location-text">{event.location}</Card.Text>
-                         </Card.Body>
-                     </Card>
-                    ))}
-                    <Card className="height-adjust">
-                        <Card.Img variant="top" src={dogEvent}/>
-                        <Card.Body>
-                        <Card.Text className="date-time">SAT, JUNE 1, 4:00PM</Card.Text>
-                            <Card.Text className="theme">
-                            Beach Run - Dogs swim & play around
-                            </Card.Text>
-                        <Card.Text className="location-text">Half Moon Bay - CA</Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card className="height-adjust">
-                        <Card.Img variant="top" src={dogEvent}/>
-                        <Card.Body>
-                        <Card.Text className="date-time"> SAT, JUNE 1, 4:00PM</Card.Text>
-                            <Card.Text className="theme">
-                            Beach Run - Dogs swim & play around
-                            </Card.Text>
-                        <Card.Text className="location-text">Half Moon Bay - CA</Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card className="height-adjust">
-                        <Card.Img variant="top" src={dogEvent}/>
-                        <Card.Body>
-                        <Card.Text className="date-time">SAT, JUNE 1, 4:00PM</Card.Text>
-                            <Card.Text className="theme">
-                            Beach Run - Dogs swim & play around
-                            </Card.Text>
-                        <Card.Text className="location-text">Half Moon Bay - CA</Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card className="height-adjust">
-                        <Card.Img variant="top" src={dogEvent}/>
-                        <Card.Body>
-                        <Card.Text className="date-time">SAT, JUNE 1, 4:00PM</Card.Text>
-                            <Card.Text className="theme">
-                            Beach Run - Dogs swim & play around
-                            </Card.Text>
-                        <Card.Text className="location-text">  Half Moon Bay - CA</Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card className="height-adjust">
-                        <Card.Img variant="top" src={catEvent}/>
-                        <Card.Body>
-                            <Card.Text className="date-time">SAT, JUNE 8, 6:00PM</Card.Text>
-                            <Card.Text className="theme">
-                            Mimi’s Birthday - join us to celebrate my babe cat’s 3-year birthday party
-                            </Card.Text>
-                            <Card.Text className="location-text">Sunnyvale  CA, 94086</Card.Text>
-                        </Card.Body>
-                    </Card>
-                    <Card className="height-adjust">
-                        <Card.Img variant="top" src={ratEvent} />
-                        <Card.Body>
-                            <Card.Text className="date-time">SUN, JUNE 9, 7:00PM</Card.Text>
-                            <Card.Text className="theme">
-                            Baby Rates Breeding Talk - share funny experience of breeding  our lovely rats
-                            </Card.Text>
-                            <Card.Text className="location-text">Mountain View  CA - Google </Card.Text>
-                        </Card.Body>
-                    </Card>
-                    
-                    </CardColumns>
-                </Row>
-            </Container>
-        )*/
     }
 }

@@ -13,6 +13,7 @@ export default class EventDetails extends Component {
         show: false,
         messageModal:'',
         attendeesList:[],
+        attendeesWholeList: [],
         host:'',
         joined:false
     };
@@ -102,10 +103,37 @@ export default class EventDetails extends Component {
             .then(response => {
                 console.log(response.getAttendeeUsersbyEventId);
                 this.setState({attendeesList: response.getAttendeeUsersbyEventId})
+                var promises = []
                 this.state.attendeesList.forEach((attendeename) => {
+                    var obj = {}
                     if (attendeename.username == username) {
                         this.setState({joined: true})
                     }
+                    const usernameVariables = {
+                        username: attendeename.username
+                    }
+                    const getUserProfileQuery = `query getUserWithProfileByUsername($username: String!){
+                            getUserWithProfileByUsername(username: $username) {
+                                id
+                                username
+                                email
+                                user_profile {
+                                    avatar
+                                }
+                            }
+                        }`
+                    promises.push(request(url, getUserProfileQuery, usernameVariables)
+                        .then(response => {
+                            obj['username'] = attendeename.username
+                            obj['avatar'] = response.getUserWithProfileByUsername.user_profile.avatar
+                            console.log('usernameVariables: ', response.getUserWithProfileByUsername.user_profile.avatar)
+                            return obj
+                        }))
+                })
+
+                Promise.all(promises).then((results) => {
+                    console.log('results: ', results)
+                    this.setState({ attendeesWholeList: results })
                 })
 			})
             .catch (
@@ -121,7 +149,7 @@ export default class EventDetails extends Component {
     render() {
         const event = this.props.location.state.event;
         console.log('event', event);
-        const {attendeesList,joined, host} = this.state;
+        const {attendeesWholeList, joined, host} = this.state;
         return (
             <div>
             <Container fluid style={{padding:"20px 10%"}}>
@@ -145,29 +173,17 @@ export default class EventDetails extends Component {
                 <Row style={{padding:"30px 20px 0 20px", lineHeight:"30px", display:"inline-block"}}>
                     <Col lg={9} xs={12}>
                         <h3>Details</h3>
-                        <p style={{color:"#545871", fontSize:"18px", fontWeight:"400", marginTop:"10px"}}>YOSEMITE ## THIS WEEKEND ## 2 Night or 3 Night camping option.<br/>
-
-                            One of the most beautiful places in America: World famous. Iconic Half Dome. 
-                            Incredible waterfalls. Mountains. Giant trees. It is a special place. If you’ve never been and 
-                            want to know what the big deal is — this is your chance!<br/>
-
-                            Join us for a weekend of hiking, camping, and hanging out! This weekend is pretty much 
-                            going  to have perfect weather: high in 70’s and sunny. Yosemite got record snowfall this 
-                            winter -  that melting snow creates amazing, giant roaring waterfalls! This is the right time 
-                            to go!<br/>
-
-                            READ RSVP INSTRUCTIONS BELOW.
-                            Most attendees on past trips are in the 25-40 age range.
+                        <p style={{color:"#545871", fontSize:"18px", fontWeight:"400", marginTop:"10px"}}>
+                            { event.detail }
                         </p>                
                     </Col>
                 </Row>
                 <Row style={{display:"flex", flexDirection:"column", padding:"10px 20px 30px 20px"}}>
                     <Col lg={9} xs={12}>
                         <h3>Notice</h3>
-                        <p style={{color:"#545871", fontSize:"18px", fontWeight:"400", marginTop:"10px"}}>YOSEMITE ## THIS WEEKEND ## 2 Night or 3 Night camping option.<br/>
-    READ RSVP INSTRUCTIONS BELOW.
-    Most attendees on past trips are in the 25-40 age range.<br/>
-                         </p>
+                        <p style={{color:"#545871", fontSize:"18px", fontWeight:"400", marginTop:"10px"}}>
+                            { event.note }
+                        </p>
                     </Col>
                 </Row>
                 <Row style={{display:"flex", flexDirection:"column", padding:"10px 20px 30px 20px"}}>
@@ -177,9 +193,9 @@ export default class EventDetails extends Component {
                 </Row>
 
                 <Row style={{display:"flex", flexDirection:"row", padding:"10px 320px 30px 10px"}}>
-                    {attendeesList.map((attendee) => (
+                    {attendeesWholeList.map((attendee) => (
                         <Col lg={3} xs={6} style={{display:"flex", flexDirection:"column", alignItems:"center"}} key={attendee.username}> 
-                            <img src={userphoto} style={{zIndex: "10", width:"120px", height:"auto"}}/>
+                            <img src={"https://pawtascy.s3-us-west-1.amazonaws.com/" + `${attendee.avatar}`} style={{zIndex: "10", width:"120px", height:"auto"}}/>
                             <p>{attendee.username} </p>
                         </Col>
                         ))}
