@@ -19,12 +19,14 @@ class PetBasicscontComponent extends Component {
       Intro: this.props.location.state.Intro,
       Job: this.props.location.state.Job,
       photofile: this.props.location.state.photofile,
+      photofilename: this.props.location.state.photofilename,
       username: this.props.location.state.username,
       email: this.props.location.state.email,
       password: this.props.location.state.password,
       Pet: this.props.location.state.Pet,
       Petname: "",
       Petphoto: null,
+      Petphotoname: "",
       Breed: "",
       Petage: "",
       Petgender: "",
@@ -43,7 +45,11 @@ class PetBasicscontComponent extends Component {
   }
   fileChangedHandler(event) {
     const file = URL.createObjectURL(event.target.files[0])
-    this.setState({Petphoto:file})
+    const filename = event.target.files[0].name
+    this.setState({
+      Petphotoname: filename,
+      Petphoto:file,
+    })
 
   }
 
