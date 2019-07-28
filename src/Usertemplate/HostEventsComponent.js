@@ -73,10 +73,10 @@ class HostEventsComponent extends Component {
     let eventsimage = this.state.user_hostevents_image
     var i;
     for (i = 0; i < eventsimage.length; i++) {
-      events[i]['image'] = "https://pawtascy.s3-us-west-1.amazonaws.com/" + eventsimage[i];
+      events[i]['cover'] = eventsimage[i];
     }
 
-  	return (
+    return (
       <div>
         <Container>
           <Row>
@@ -85,7 +85,7 @@ class HostEventsComponent extends Component {
                   <Card className="event_item">
                     <Card.Body>
                       <div className= "user_event_div">
-                        <Link to={{ pathname:`/eventdetail/${event.id}`, state: {event}}}><Image src={event.image} className="user_event_image" /></Link>
+                        <Link to={{ pathname:`/eventdetail/${event.id}`, state: {event}}}><Image src={"https://pawtascy.s3-us-west-1.amazonaws.com/" + `${event.cover}`} className="user_event_image" /></Link>
                       </div>
                       <div className= "user_event_div">
                         <Card.Title className="user_event_time">{event.event_start_at}</Card.Title>
@@ -103,7 +103,7 @@ class HostEventsComponent extends Component {
 
 
 
-  	);
+    );
 
 
   }
