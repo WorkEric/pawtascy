@@ -23,6 +23,7 @@ class PetBasicsComponent extends Component {
       Intro: this.props.location.state.Intro,
       Job: this.props.location.state.Job,
       photofile: this.props.location.state.photofile,
+      photofilename: this.props.location.state.photofilename,
       username: this.props.location.state.username,
       email: this.props.location.state.email,
       password: this.props.location.state.password,

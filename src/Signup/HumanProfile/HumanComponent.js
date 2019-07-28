@@ -15,6 +15,7 @@ class HumanComponent extends Component {
       Job: "",
       Intro: "",
       photofile: null,
+      photofilename: "",
       username: this.props.location.state.username,
       email: this.props.location.state.email,
       password: this.props.location.state.firstpassword,
@@ -32,7 +33,11 @@ class HumanComponent extends Component {
 
   fileChangedHandler(event) {
     const file = URL.createObjectURL(event.target.files[0])
-    this.setState({photofile:file})
+    const filename = event.target.files[0].name
+    this.setState({
+      photofilename:filename,
+      photofile:file,
+    })
 
   }
 

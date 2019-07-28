@@ -47,9 +47,9 @@ class PetComponent extends Component {
     request(url,query_pet)
     .then(response => {
       const data = response.getPetProfilesByUsername[0]
-      console.log(data)
+      const Petphoto = "https://pawtascy.s3-us-west-1.amazonaws.com/"+data.avatar
       this.setState({
-        petphoto: data.avatar, 
+        petphoto: Petphoto, 
         petname: data.nick_name,
         gender: data.gender,
         birthday: data.birthday,

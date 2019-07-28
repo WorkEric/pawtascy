@@ -23,12 +23,14 @@ class ConfirmationComponent extends Component {
       Intro: this.props.location.state.Intro,
       Job: this.props.location.state.Job,
       photofile: this.props.location.state.photofile,
+      photofilename: this.props.location.state.photofilename,
       username: this.props.location.state.username,
       email: this.props.location.state.email,
       password: this.props.location.state.password,
       Pet: this.props.location.state.Pet,
       Petname: this.props.location.state.Petname,
       Petphoto: this.props.location.state.Petphoto,
+      Petphotoname: this.props.location.state.Petphotoname,
       Breed: this.props.location.state.Breed,
       Petage: this.props.location.state.Petage,
       Petgender: this.props.location.state.Petgender,
@@ -63,14 +65,14 @@ class ConfirmationComponent extends Component {
         gender:\"${ this.state.Gender }\",
         self_introduction:\"${ this.state.Intro }\",
         job:\"${ this.state.Job }\",
-        avatar:\"${ this.state.photofile.name }\",
+        avatar:\"${ this.state.photofilename }\",
         city:\"${ this.state.City }\",
         state:\"${ this.state.State }\",
         country: "USA",
         zip_code:${zipcode},
         categories:\[\"${this.state.Pet}\"\],
         nick_name:\"${ this.state.Petname }\",
-        pet_avatar:\"${ this.state.Petphoto.name }\",
+        pet_avatar:\"${ this.state.Petphotoname }\",
         breed:\"${ this.state.Breed }\",
         birthday:\"${ birthday }\",
         pet_gender:\"${ this.state.Petgender }\",
@@ -132,13 +134,12 @@ class ConfirmationComponent extends Component {
         }
 
 
-
         return (
           <Col className="right-top">
                   <Row className="pets-conf-top">
                     <h1 className="all-set">Okay, {this.state.name} all set!</h1>
                     <Container className="information-area">
-                            <Row className="pet-image"> <Image src={this.state.portfolioImage} alt="pet image" roundedCircle className="portfolio-image"/> </Row>
+                            <Row className="pet-image"> <Image src={this.state.Petphoto} alt="pet image" roundedCircle className="portfolio-image"/> </Row>
                             <Row className="pet-name">{this.state.Petname}</Row>
                             <Row className="info-holder">
                                 <Col className="info-item">

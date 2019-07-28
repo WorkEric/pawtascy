@@ -15,11 +15,12 @@ class DashHuman extends Component {
       Firstname: "",
       Lastname: "",
       City:"",
-      Gender: "male",
+      Gender: "",
       Age: "",
       Job: "",
       Intro: "",
       photo: null,
+      photoname: "",
       username: "",
       userid: "",
 
@@ -28,28 +29,40 @@ class DashHuman extends Component {
     const email = Auth.getEmail()
     const url = 'http://127.0.0.1:9000/api'
     const query = `{
-      getUserByEmail(email:\"${ email }\" ) {
+      getUserWithProfileByEmail(email:\"${ email }\" ) {
         username,
+        first_name,
+        last_name,
+
         user_profile {
           avatar,
-
+          id,
+          address,
+          age,
+          gender,
+          job,
+          self_introduction,
         }
       }
     }`    
 
     request(url,query)
     .then(response => {
-      const res = response.getUserByEmail;
-      if (res.user_profile) {
-        this.setState({ 
-          username: res.username,
-          photo: res.userprofile.avatar,
-        })
-      }
-      else {
-        this.setState({username: res.username,})
-
-      }
+      const res = response.getUserWithProfileByEmail;
+      const user_avatar = "https://pawtascy.s3-us-west-1.amazonaws.com/" + res.user_profile.avatar
+      console.log(response)
+      this.setState({ 
+        username: res.username,
+        photo: user_avatar,
+        photoname: res.user_profile.avatar,
+        Firstname: res.first_name,
+        Lastname: res.last_name,
+        Gender: res.user_profile.gender,
+        City: res.user_profile.address,
+        Job: res.user_profile.job,
+        Intro: res.user_profile.self_introduction,
+        Age: res.user_profile.age,
+      })
     })
     .catch(error => {
       window.alert(error)
@@ -63,8 +76,12 @@ class DashHuman extends Component {
 
 
   handlehumanfileUpload(event) {
-    const file = event.target.files[0]
-    this.setState({photo:file})
+    const file = URL.createObjectURL(event.target.files[0])
+    const filename = event.target.files[0].name
+    this.setState({
+      photoname: filename,
+      photo:file,
+    })
 
   }
 
@@ -88,12 +105,29 @@ class DashHuman extends Component {
       });
     })
     .then(data => {
+      const mutation_user = `mutation {
+        updateUser (
+          id: ${this.state.userid},
+          first_name: \"${this.state.Firstname}\",
+          last_name: \"${this.state.Lastname}\",
+        )
+        {
+          username,
+          first_name,
+          last_name,
+        }
+      }`
+      request(url,mutation_user) 
+      .catch(error => {
+        window.alert(error)
+      })
+
       const mutation = `mutation {
         updateUserProfile (
           user_id: ${this.state.userid}, 
           age: \"${this.state.Age}\", 
           address: \"${this.state.City}\",
-          avatar: \"${this.state.photo}\",
+          avatar: \"${this.state.photoname}\",
           self_introduction: \"${this.state.Intro}\",
           job: \"${this.state.Job}\",
           gender: \"${this.state.Gender}\",
@@ -138,9 +172,9 @@ class DashHuman extends Component {
                 <input
                   type="text"
                   name="Firstname"
-                  placeholder = " Edit your firstname"
+                  placeholder = {this.state.Firstname}
                   className = "dash-humanname-box"
-                  value = {this.state.firstname}
+                  value = {this.state.Firstname}
                   onChange = {this.handlehumanChange}
                 />
             </div>
@@ -149,9 +183,9 @@ class DashHuman extends Component {
                 <input
                   type="text"
                   name="Lastname"
-                  placeholder = " Edit your lastname"
+                  placeholder = {this.state.Lastname}
                   className = "dash-humanname-box"
-                  value = {this.state.lastname}
+                  value = {this.state.Lastname}
                   onChange = {this.handlehumanChange}
                 />
             </div>          
@@ -160,7 +194,7 @@ class DashHuman extends Component {
                 <input
                   type="text"
                   name="City"
-                  placeholder = " Edit your city"
+                  placeholder = {this.state.City}
                   className = "dash-humancity-box"
                   value = {this.state.City}
                   onChange = {this.handlehumanChange}
@@ -196,7 +230,7 @@ class DashHuman extends Component {
                 <input
                   type="text"
                   name="Age"
-                  placeholder = " Edit your age range"
+                  placeholder = {this.state.Age}
                   className = "dash-humanage-box"
                   value = {this.state.Age}
                   onChange = {this.handlehumanChange}
@@ -207,6 +241,7 @@ class DashHuman extends Component {
               <div className="dash-humanjob-box">
                 <textarea
                   name="Job"
+                  placeholder = {this.state.Job}
                   value={this.state.Job}
                   onChange={this.handlehumanChange}
                   className="dash-humanjob-box"
@@ -218,6 +253,7 @@ class DashHuman extends Component {
               <div className="dash-humanintro-box">
                 <textarea
                   name="Intro"
+                  placeholder = {this.state.Intro}
                   value={this.state.Intro}
                   onChange={this.handlehumanChange}
                   className="dash-humanintro-box"
@@ -236,7 +272,8 @@ class DashPet extends Component {
   constructor() {
     super();
     this.state = {
-      Photo: null,
+      Petphoto: null,
+      Petphotoname: "",
       Birthday: "",
       Weight: "",
       Breed: "",
@@ -269,10 +306,12 @@ class DashPet extends Component {
           getPetProfilesByUsername(username: \"${ this.state.username }\") {
           nick_name,
           avatar,
+          id,
           }
         }`
         request(url,query_pet)
         .then(response => {
+          console.log(response.getPetProfilesByUsername)
           this.setState({
             pets: response.getPetProfilesByUsername
           })
@@ -291,8 +330,13 @@ class DashPet extends Component {
 
 
   handlepetfileUpload(event) {
-    const file = event.target.files[0]
-    this.setState({Photo:file})
+    const file = URL.createObjectURL(event.target.files[0])
+    const filename = event.target.files[0].name
+    this.setState({
+      Petphotoname:filename,
+      Petphoto:file,
+    })
+
   }
 
   handlepetSubmit(event) {
@@ -303,7 +347,7 @@ class DashPet extends Component {
     const mutation = `mutation {
       updatePetProfile (
         id: ${ this.state.pets[0].id },
-        pet_avatar: \"${this.state.Photo}\",
+        pet_avatar: \"${this.state.Petphotoname}\",
         breed: \"${this.state.Breed}\",
         description: \"${this.state.Likes}\",
         dislike: \"${this.state.Dislikes}\",
@@ -329,17 +373,24 @@ class DashPet extends Component {
   }
 
   render () {
+
     var petname = "";
     var petphoto = null;
-    if (this.state.pets) {
+    if (this.state.Petphotoname) {
+      petphoto = this.state.Petphoto;
       petname = this.state.pets[0].nick_name;
-      petphoto = this.state.pets[0].avatar;
+    }
+    else{
+      if (this.state.pets) {
+        petname = this.state.pets[0].nick_name;
+        petphoto = "https://pawtascy.s3-us-west-1.amazonaws.com/" + this.state.pets[0].avatar;
+      }
     }
     return (
       <div>
         <form onSubmit={this.handlepetSubmit}>
           <div className="dash-human-photo-div">
-            <img src={petphoto} className="user_photo"/><h1 className="user_name">{petname}</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <img src={petphoto} className="pet_photo"/><h1 className="user_name">{petname}</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <h1 className="dash-human-change-photo-text">Change Portfolio Image</h1>&nbsp;&nbsp;&nbsp;
             <input type="file" onChange={this.handlepetfileUpload} className="dash-human-change-photo-click"></input>
           </div>
@@ -436,6 +487,7 @@ class DashPwd extends Component {
       NewPwd: "",
       Confirm: "",
       photo: null,
+      photoname: "",
       username: "",
       userid: "",
 
@@ -443,7 +495,7 @@ class DashPwd extends Component {
     const email = Auth.getEmail()
     const url = 'http://127.0.0.1:9000/api'
     const query = `{
-      getUserByEmail(email:\"${ email }\" ) {
+      getUserWithProfileByEmail(email:\"${ email }\" ) {
         username,
         password,
         id,
@@ -455,11 +507,12 @@ class DashPwd extends Component {
     }`    
     request(url,query)
     .then(response => {
-      const res = response.getUserByEmail;
+      const res = response.getUserWithProfileByEmail;
+      const user_avatar = "https://pawtascy.s3-us-west-1.amazonaws.com/" + res.user_profile.avatar
       if (res.user_profile) {
         this.setState({ 
           username: res.username,
-          photo: res.userprofile.avatar,
+          photo: user_avatar,
           userid: res.id,
           password: res.password,
         })
