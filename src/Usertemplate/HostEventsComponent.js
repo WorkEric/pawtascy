@@ -10,6 +10,7 @@ class HostEventsComponent extends Component {
     this.state = {
       userid: "",
       user_hostevents: [],
+      user_hostevents_image: [],
     }
     const email = Auth.getEmail()
     const url = 'http://127.0.0.1:9000/api'
@@ -39,7 +40,27 @@ class HostEventsComponent extends Component {
           this.setState({
             user_hostevents: response.getHostEventsByUserId
           })
-        })    
+        }) 
+        .then(response => {
+          var i;
+          const events = this.state.user_hostevents;
+          var eventimage = [];
+          var query_events_images;
+          for (i=0;i<events.length;i++) {
+            query_events_images = `{
+                getEventById(id: ${events[i].id}) {
+                  cover
+                }
+            }`
+            request(url,query_events_images)
+            .then(response => {
+              eventimage.push(response.getEventById.cover)
+              this.setState({user_hostevents_image: eventimage})
+            })
+          }
+
+
+        }) 
     });
 
   }
@@ -49,6 +70,12 @@ class HostEventsComponent extends Component {
   render() {
 
     let events = this.state.user_hostevents
+    let eventsimage = this.state.user_hostevents_image
+    var i;
+    for (i = 0; i < eventsimage.length; i++) {
+      events[i]['image'] = "https://pawtascy.s3-us-west-1.amazonaws.com/" + eventsimage[i];
+    }
+
   	return (
       <div>
         <Container>

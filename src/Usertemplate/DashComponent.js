@@ -282,7 +282,8 @@ class DashPet extends Component {
       Health: "",
       Chara: "",
       username: "",
-      pets: null,
+      Petid: "",
+      Petname: "",
     }
 
 
@@ -304,16 +305,36 @@ class DashPet extends Component {
     .then(data => {
         const query_pet = `{
           getPetProfilesByUsername(username: \"${ this.state.username }\") {
-          nick_name,
-          avatar,
-          id,
+            id
+            nick_name
+            breed
+            birthday
+            gender
+            weight
+            character
+            is_neutered
+            dislike
+            health
+            description
           }
         }`
         request(url,query_pet)
         .then(response => {
-          console.log(response.getPetProfilesByUsername)
+          const pets = response.getPetProfilesByUsername
           this.setState({
-            pets: response.getPetProfilesByUsername
+            Petid: pets[0].id,
+            Petphoto: "",
+            Petphotoname: "",
+            Birthday: "",
+            Weight: "",
+            Breed: "",
+            Likes: "",
+            Dislikes: "",
+            Health: "",
+            Chara: "",
+            username: "",
+            Petname: "",
+
           })
 
         })
@@ -346,7 +367,7 @@ class DashPet extends Component {
 
     const mutation = `mutation {
       updatePetProfile (
-        id: ${ this.state.pets[0].id },
+        id: ${ this.state.Petid },
         pet_avatar: \"${this.state.Petphotoname}\",
         breed: \"${this.state.Breed}\",
         description: \"${this.state.Likes}\",
@@ -377,13 +398,13 @@ class DashPet extends Component {
     var petname = "";
     var petphoto = null;
     if (this.state.Petphotoname) {
-      petphoto = this.state.Petphoto;
-      petname = this.state.pets[0].nick_name;
+      petphoto = this.state.Petphotoname;
+      petname = this.state.Petname;
     }
     else{
       if (this.state.pets) {
-        petname = this.state.pets[0].nick_name;
-        petphoto = "https://pawtascy.s3-us-west-1.amazonaws.com/" + this.state.pets[0].avatar;
+        petname = this.state.Petname;
+        petphoto = "https://pawtascy.s3-us-west-1.amazonaws.com/" + this.state.Petphotoname;
       }
     }
     return (
